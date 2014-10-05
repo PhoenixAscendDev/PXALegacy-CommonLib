@@ -1,0 +1,5 @@
+L:\Projects\API\JB2Common\JB2Common\bin\Release\JB2.Common.dll
+L:\Projects\API\JB2Common\JB2Common\bin\Release\JB2.Common.pdb
+L:\Projects\API\JB2Common\JB2Common\obj\Release\JB2.Common.dll
+L:\Projects\API\JB2Common\JB2Common\obj\Release\JB2.Common.pdb
+L:\Projects\API\JB2Common\JB2Common\obj\Release\JB2Common.csprojResolveAssemblyReference.cache

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Text;
 
 namespace JB2.Common
 {
-    public interface IPerson<TKey> : IIDNamePair<TKey,string>
+    public interface IIDNamePair<TKey,TName>
     {
-        string DisplayName { get; set; }
+        TKey ID { get; set; }
+        TName Name { get; set; }
     }
 }

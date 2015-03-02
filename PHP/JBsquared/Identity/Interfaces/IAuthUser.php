@@ -1,6 +1,8 @@
 <?php
 
 namespace JBsquared\JB2Login\Interfaces;
+
+
  
 interface JB2LoginUser {
  

@@ -34,18 +34,23 @@ class Player implements IBaseObject  {
    
    protected function loadById($id)
    {
+		//echo 'Player:startloadById';
         $sqlstatement = $this->dbstatements['player'].' where p.ID = "'.$id.'"';
 		try
 		{
 			$p = $this->repo->output($sqlstatement);
-			$this->fill($p);
+			self::fill($p);
 		}
 		catch(Exception $e)
 		{
+			var_dump($e);
 		}
+		//echo 'Player:endloadById';
    }  
+   
    protected function fill($r)
    {
+		//echo 'Player:startfill';
 		if($r != null)
 		{
 			$this->id = $r->ID;
@@ -60,6 +65,7 @@ class Player implements IBaseObject  {
    
    public function save()
    {
+		//echo 'Player:beforesave';
 		$result = FALSE;
 		if($this->isNew())  //inserted a new record
 		{
@@ -73,6 +79,9 @@ class Player implements IBaseObject  {
 				$this->loadById($this->repo->lastInsert_id);
 			}
 		}
+		//echo 'Player:aftersave';
+		//var_dump($this);
+		
 			
 	 return $result; 
    }

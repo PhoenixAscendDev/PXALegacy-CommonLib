@@ -12,22 +12,22 @@ class AuthPlayer extends Player  {
 	private $uid;
 
 	
-	
-	public function __construct($repo) {
+	public function __construct($provider,$uid,$repo) {
+		$this->provider = $provider;
+		$this->uid = $uid;
 		$this->dbstatements['playerProvider'] = "select p.ID,p.SquareHeadID,p.Email,p.FirstName,p.LastName,p.Birthdate,p.City,p.Gender, auth.Provider,auth.Provider_UID from Player as p join  Player_OAuth as auth on auth.Player_ID = p.ID";		
 		parent::__construct($repo);
-	}
-	
+	}	
    public static function withProvider($provider,$uid,$repo)
    {
-		$instance = new self($repo);
-		$instance->loadByProvider($provider,$uid);		
+		$instance = new self($provider,$uid,$repo);
+		$instance->loadByProvider($provider,$uid);	
 		return $instance;
    }
    
    public static function signIn($provider,$uid,$app)
    {
-		$instance = new self($app->repo);
+		$instance = new self($provider,$uid,$app->repo);
 		$resultID = 0;
 		$insertSQL = "INSERT INTO Player_Signin_Audit(Player_ID,Provider,Signin_Date,Application_ID) SELECT a.Player_ID,'".$provider."',now(),".$app->id." from Player_OAuth as a where a.Provider = '".$provider."' and a.Provider_UID = '".$uid."'";
 	 
@@ -38,6 +38,14 @@ class AuthPlayer extends Player  {
 		return $instance;
    }
    
+   public static function doesExist($provider,$uid,$repo)
+   {
+		$sql= "select ID from Player_OAuth where Provider = '".$provider."' and Provider_UID = '".$uid."'";
+		$result = $repo->query($sql);
+		return $result->num_rows >= 1;
+   }
+   
+   
    
    
    protected function loadByProvider($provider,$uid)
@@ -46,7 +54,7 @@ class AuthPlayer extends Player  {
 		try
 		{
 			$p = $this->repo->output($sqlstatement);
-			$this->fill($p);
+			self::fill($p);
 		}
 		catch(Exception $e)
 		{
@@ -61,6 +69,7 @@ class AuthPlayer extends Player  {
 	
    protected function fill($r)
    {
+	//echo 'AuthPlayer:startfill';
 		if($r != null)
 		{
 			parent::fill($r);
@@ -71,22 +80,20 @@ class AuthPlayer extends Player  {
    
    public function save()
    {
-		$isNew = $this->isNew();
-		
-		if(parent::save() and $isNew == TRUE)
+		parent::save();	
+		$result = FALSE;		
+		if( !self::doesExist($this->provider,$this->uid,$this->repo))
+			$insertSQL = "INSERT INTO Player_OAuth(Player_ID,Provider,Provider_UID) VALUES('".$this->id."','".$this->provider."','".$this->uid."')";
+		else	
+			$insertSQL = "UPDATE Player_OAuth set Player_ID = '".$this->id."' where Provider = '".$this->provider."' and Provider_UID = '".$this->uid."'";
+			
+		$result = $this->repo->query($insertSQL);
+		//if we saved this lets reload the player object complete with the provider;
+		if($result == TRUE)
 		{
-			$result = FALSE;
-				$insertSQL = "INSERT INTO Player_OAuth(Player_ID,Provider,Provider_UID) VALUES('".$this->id."','".$this->provider."','".$this->uid."')";
-				$result = $this->repo->query($insertSQL);
-				
-				var_dump($this->repo);
-				
-				//if we saved this lets reload the player object complete with the provider;
-				if($result == TRUE)
-				{
-					$this->loadByProvider($this->provider,$this->uid);
-				}
+			$this->loadByProvider($this->provider,$this->uid);
 		}
+	
 		
    }
    

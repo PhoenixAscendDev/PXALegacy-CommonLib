@@ -37,7 +37,7 @@ class Repository {
 	// Destructor - close DB connection
     public function __destruct() {
 		$this->db->close();
-		echo "db connection destroyed";
+		//echo "db connection destroyed";
     }
 	
 	

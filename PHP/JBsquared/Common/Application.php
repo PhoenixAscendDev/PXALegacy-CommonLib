@@ -12,7 +12,7 @@ class  Application implements IBaseObject  {
    public $name;
    public $repo;
    private $appkey;
-   private $oAuthconfig;
+   public $oAuthconfig;
    protected $dbstatements = Array(
 	'application' => "select ID,Name,ApplicationType,ProjectCode,AppKey from Application as application",
 	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth"

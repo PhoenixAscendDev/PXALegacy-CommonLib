@@ -13,14 +13,15 @@ class Player implements IBaseObject  {
 	public $birthdate;
 	public $city;
 	public $gender;
-	private $repo;
-	   protected $dbstatements = Array(
+	protected $repo;
+	protected $dbstatements = Array(
 	'player' => "select ID,SquareHeadID,Email,FirstName,LastName,Birthdate,City,Gender from Player as p"
    );
 
 
    public function __construct($repo) {
 		$this->repo = $repo;
+		$this->id = 0;
    }
    
    public static function withID($id,$repo)
@@ -45,13 +46,42 @@ class Player implements IBaseObject  {
    }  
    protected function fill($r)
    {
-		$this->id = $r->ID;
-		$this->email = $r->Email;
-		$this->firstname = $r->FirstName;
-		$this->lastname = $r->LastName;
-		$this->birthdate = $r->Birthdate;
-		$this->city = $r->City;
-		$this->gender = $r->Gender;
+		if($r != null)
+		{
+			$this->id = $r->ID;
+			$this->email = $r->Email;
+			$this->firstname = $r->FirstName;
+			$this->lastname = $r->LastName;
+			$this->birthdate = $r->Birthdate;
+			$this->city = $r->City;
+			$this->gender = $r->Gender;
+		}
    }
+   
+   public function save()
+   {
+		$result = FALSE;
+		if($this->isNew())  //inserted a new record
+		{
+			$resultID = 0;
+			$insertSQL = "INSERT INTO Player(Email,FirstName,LastName) VALUES('".$this->email."','".$this->firstname."','".$this->lastname."')";
+			$result = $this->repo->query($insertSQL);
+			
+			//if we saved this lets reload the player object;
+			if($result == TRUE)
+			{
+				$this->loadById($this->repo->lastInsert_id);
+			}
+		}
+			
+	 return $result; 
+   }
+   
+   public function isNew()
+   {
+		return $this->id == 0;
+   }
+   
+   
 }
 ?>

@@ -11,6 +11,7 @@ class Repository {
 	private $db;
 	public $format = 'json';
 	private static $initialized = false;
+	public $lastInsert_id;
 	private static $dbstatements = Array( 
 	 'application' => "select ID,Name,ApplicationType,AuthU,AuthP from Application as application"	
 	);
@@ -36,7 +37,7 @@ class Repository {
 	// Destructor - close DB connection
     public function __destruct() {
 		$this->db->close();
-		echo "Being destroyed";
+		echo "db connection destroyed";
     }
 	
 	
@@ -77,7 +78,15 @@ class Repository {
 		else
 		return $results;
 		
-	}	
+	}
+	
+	public function query($query)
+	{
+		$result = $this->db->query($query);
+		if($result == TRUE)
+			$this->lastInsert_id = $this->db->insert_id;
+		return $result;
+	}
   	
 	public function output($query)
 	{
@@ -118,6 +127,8 @@ class Repository {
 		else
 		return $results;
 	}
+	
+	
 	
 	
 	

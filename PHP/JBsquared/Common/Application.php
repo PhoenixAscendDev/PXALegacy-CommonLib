@@ -15,7 +15,7 @@ class  Application implements IBaseObject  {
    private $oAuthconfig;
    protected $dbstatements = Array(
 	'application' => "select ID,Name,ApplicationType,ProjectCode,AppKey from Application as application",
-	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth";
+	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth"
    );
    
    public function __construct($appkey) {
@@ -39,11 +39,11 @@ class  Application implements IBaseObject  {
    {
 		try
 		{
-			$this->id = $app->ID;
-			$this->name = $app->Name;
-			$this->appkey = $app->AppKey;
-			$this->projectCode = $app->ProjectCode;
-			$this->oAuthconfig = $this->get_oAuthconfig($app->ID);
+			$this->id = $row->ID;
+			$this->name = $row->Name;
+			$this->appkey = $row->AppKey;
+			$this->projectCode = $row->ProjectCode;
+			$this->oAuthconfig = $this->get_oAuthconfig($row->ID);
 		}
 		catch(Exception $e)
 		{
@@ -54,10 +54,10 @@ class  Application implements IBaseObject  {
    private function get_oAuthconfig($appid) {
    
 		$result = array(
-					"base_url" => "http://localhost/fivetwo/library/oAuth/"),
+					"base_url" => "http://localhost/fivetwo/library/oAuth/",
 					"providers" => array(),
 					"debug_mode" => false,
-					"debug_file" => ""
+					"debug_file" => "",
 					);
 		try
 		{

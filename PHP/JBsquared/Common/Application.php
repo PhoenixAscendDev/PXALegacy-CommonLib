@@ -7,22 +7,26 @@ use JBsquared\Common\Repository;
 
 class  Application implements IBaseObject  {
 
-   public $ProjectCode;
-   public $Appkey;
-   public $Id;
-   public $Name;
-   public $Repo;
-   protected $dbstatements;
+   public $projectCode;
+   public $id;
+   public $name;
+   public $repo;
+   private $appkey;
+   protected $dbstatements = Array(
+	'application' => "select ID,Name,ApplicationType from Application as application"
+   );
    
-   public function __construct() {
-		$this->Repo = new Repository();
-		$this->dbstatements = array();	
-		$this->dbstatements['application'] = "select ID,Name,ApplicationType from Application as application";
-	}
-	
-   public function getByProjectCode($projectCode) {
-        return $projectCode;
-		//return $this->Repo->output($this->dbstatements['application'].' where ProjectCode = 456');
+   public function __construct($appkey) {
+		$this->repo = new Repository($appkey);
+		$this->appKey = $appkey;
+		$this->get();
+		//$this->dbstatements = array();	
+		//$this->dbstatements['application'] = "select ID,Name,ApplicationType from Application as application";		
+   }
+   
+   private function get()
+   {
+		var_dump($this->repo->output($this->dbstatements['application']));
    }
    
    

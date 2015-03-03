@@ -1,13 +1,18 @@
 <?php
  
 namespace JBsquared\Common;
- 
- 
-public class Repository {
 
+use Mysqli; 
+ 
+class Repository {
+
+
+	private $db;
+	public $format = 'json';
 	public function __construct() {
 		$this->db = new mysqli("mysql.jbsquared.com", "jbsquared_api", "api1029JB2", "jbsquared_appdata");
 		$this->dbstatements['application'] = "select ID,Name,ApplicationType from Application as application";
+		$this->format = 'json';
 		if ($this->format == 'json') {
 			if (!function_exists('json_decode')) {
 				throw new Exception('The JSON library could not be loaded, and is needed for the JSON format.');
@@ -20,7 +25,7 @@ public class Repository {
 		$this->db->close();
     }
   
-	private $db;
+	
 	
 	public function output($query)
 	{

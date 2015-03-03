@@ -14,7 +14,7 @@ class  Application implements IBaseObject  {
    private $appkey;
    public $oAuthconfig;
    protected $dbstatements = Array(
-	'application' => "select ID,Name,ApplicationType,ProjectCode,AppKey from Application as application",
+	'application' => "select ID,Name,ApplicationType,ProjectCode,AppKey,oAuth_baseURL from Application as application",
 	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth"
    );
    
@@ -44,6 +44,7 @@ class  Application implements IBaseObject  {
 			$this->appkey = $row->AppKey;
 			$this->projectCode = $row->ProjectCode;
 			$this->oAuthconfig = $this->get_oAuthconfig($row->ID);
+			$this->oAuthconfig["base_url"] = $row->oAuth_baseURL;
 		}
 		catch(Exception $e)
 		{

@@ -87,6 +87,37 @@ class Repository {
 			$this->lastInsert_id = $this->db->insert_id;
 		return $result;
 	}
+	
+	public function run($sql,$paramType)
+	{
+		$numargs = func_num_args();
+		
+		$arg_list = func_get_args();
+		
+		$stmt = $this->db->prepare($sql);
+		$params = array();
+		
+		//var_dump($stmt);
+		//$params[] = & $paramType;
+		
+		if ($numargs > 2) {
+			$n = count($arg_list);
+			for($i = 1; $i < $n; $i++) {
+				$params[] = & $arg_list[$i];
+			}	
+		}
+		
+		if($stmt === false) {
+			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->errno . ' ' . $conn->error, E_USER_ERROR);
+		}
+		
+		call_user_func_array(array($stmt, 'bind_param'), $params);
+		
+		$stmt->execute();
+		
+		return $this->returnObject($stmt->get_result());
+		
+	}
   	
 	public function output($query)
 	{
@@ -94,17 +125,24 @@ class Repository {
 		$sqlResults = $this->db->query($query);
 		$results = array();
 		
+		if($sqlResults != null)
+		{
+			$sqlResults->data_seek(0);
+			while ($obj = $sqlResults->fetch_object()) {
+				array_push($results,$obj);
+			}
 
-		$sqlResults->data_seek(0);
-		while ($obj = $sqlResults->fetch_object()) {
-			array_push($results,$obj);
+			if( count($results) == 1)
+				return $results[0];
+			else
+			return $results;
 		}
-
-		if( count($results) == 1)
-			return $results[0];
 		else
-		return $results;
+			return null;
 	}
+	
+	
+	
 	
 	public function outputWithParam($query,$paramType,$param)
 	{
@@ -126,6 +164,26 @@ class Repository {
 			return $results[0];
 		else
 		return $results;
+	}
+	
+	private function returnObject($sqlResults)
+	{
+		$results = array();
+		
+		if($sqlResults != null)
+		{
+
+			$sqlResults->data_seek(0);
+			while ($obj = $sqlResults->fetch_object()) {
+				array_push($results,$obj);
+			}
+
+			if( count($results) == 1)
+				return $results[0];
+			else
+			return $results;
+		}
+		return null;		
 	}
 	
 	

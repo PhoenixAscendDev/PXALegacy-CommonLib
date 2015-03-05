@@ -13,9 +13,10 @@ class Player implements IBaseObject  {
 	public $birthdate;
 	public $city;
 	public $gender;
+	public $apikey;
 	protected $repo;
 	protected $dbstatements = Array(
-	'player' => "select ID,SquareHeadID,Email,FirstName,LastName,Birthdate,City,Gender from Player as p"
+	'player' => "select ID,SquareHeadID,Email,FirstName,LastName,Birthdate,City,Gender,APIkey from Player as p"
    );
 
 
@@ -60,6 +61,7 @@ class Player implements IBaseObject  {
 			$this->birthdate = $r->Birthdate;
 			$this->city = $r->City;
 			$this->gender = $r->Gender;
+			$this->apikey = $r->APIkey;
 		}
    }
    

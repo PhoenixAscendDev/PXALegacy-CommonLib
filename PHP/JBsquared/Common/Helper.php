@@ -72,7 +72,7 @@ class Helper {
 	public static function sendHttpResponse($status = 200, $body = '', $content_type = 'text/html')
 	{
 		self::initialize();
-		$status_header = 'HTTP/1.1 ' . $status . ' ' . getHttpStatusCodeMessage($status);
+		$status_header = 'HTTP/1.1 ' . $status . ' ' . self::getHttpStatusCodeMessage($status);
 		header($status_header);
 		header('Content-type: ' . $content_type);
 		echo $body;

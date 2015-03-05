@@ -108,7 +108,7 @@ class Repository {
 		}
 		
 		if($stmt === false) {
-			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->errno . ' ' . $conn->error, E_USER_ERROR);
+			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $this->db->errno . ' ' . $this->db->error, E_USER_ERROR);
 		}
 		
 		call_user_func_array(array($stmt, 'bind_param'), $params);

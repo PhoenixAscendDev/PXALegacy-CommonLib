@@ -15,13 +15,16 @@ class  Application implements IBaseObject  {
    public $oAuthconfig;
    protected $dbstatements = Array(
 	'application' => "select ID,Name,ApplicationType,ProjectCode,AppKey,oAuth_baseURL from Application as application",
-	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth"
+	'app_providers' => "select ID,Application_ID,Provider,Provider_Key,Provider_Secret from Application_OAuth as oAuth",
+	'has-access' => "select UpdateDate from API_Whitelist as wlist join Application as a on a.AppKey = wlist.Application_Appkey where a.Appkey = ? and wlist.Player_APIkey = ?"
    );
    
    public function __construct($appkey) {
 		$this->repo = new Repository($appkey);
 		$this->loadbyAppKey($appkey);				
    }
+   
+   
    
    protected function loadbyAppKey($appkey) {  
 		try
@@ -34,6 +37,8 @@ class  Application implements IBaseObject  {
 		}
 		
    }
+   
+   
    
    protected function fill($row)
    {
@@ -51,6 +56,18 @@ class  Application implements IBaseObject  {
 			
 		}		
    }
+   
+   public function isValidAPI($apikey)
+   {
+		$result = $this->repo->run($this->dbstatements['has-access'],'ss',$this->appkey,$apikey);
+		if($result == null)
+			return false;
+		return (strtotime(date("Y-m-d")) >= strtotime($result->UpdateDate));
+   
+   }
+   
+   
+   
    
    private function get_oAuthconfig($appid) {
    

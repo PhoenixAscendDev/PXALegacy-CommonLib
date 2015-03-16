@@ -97,7 +97,7 @@ class Repository {
 		$stmt = $this->db->prepare($sql);
 		$params = array();
 		
-		//var_dump($stmt);
+
 		//$params[] = & $paramType;
 		
 		if ($numargs > 2) {
@@ -107,13 +107,26 @@ class Repository {
 			}	
 		}
 		
+		
 		if($stmt === false) {
 			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $this->db->errno . ' ' . $this->db->error, E_USER_ERROR);
+			echo 'Wrong SQL: ' . $sql . ' Error: ' . $this->db->errno . ' ' . $this->db->error, E_USER_ERROR;
 		}
 		
-		call_user_func_array(array($stmt, 'bind_param'), $params);
-		
 		$stmt->execute();
+		try
+		{
+			call_user_func_array(array($stmt, 'bind_param'), $params);
+			$stmt->execute();
+		}
+		catch(Exception $ex)
+		{
+			var_dump($ex);
+			
+		}
+		
+		
+		$this->lastInsert_id = $this->db->insert_id;
 		
 		return $this->returnObject($stmt->get_result());
 		

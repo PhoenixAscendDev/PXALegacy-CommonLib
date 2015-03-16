@@ -62,7 +62,7 @@ class  Application implements IBaseObject  {
 		$result = $this->repo->run($this->dbstatements['has-access'],'ss',$this->appkey,$apikey);
 		if($result == null)
 			return false;
-		return (strtotime(date("Y-m-d")) >= strtotime($result->UpdateDate));
+		return (strtotime(date("Y-m-d")) >= strtotime($result[0]->UpdateDate));
    
    }
    

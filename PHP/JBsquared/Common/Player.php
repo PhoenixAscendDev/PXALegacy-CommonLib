@@ -2,6 +2,7 @@
  
 namespace JBsquared\Common;
 
+use JBsquared\Common\Helper;
 use JBsquared\Common\Interfaces\IBaseObject;
 
 class Player implements IBaseObject  {
@@ -23,6 +24,7 @@ class Player implements IBaseObject  {
    public function __construct($repo) {
 		$this->repo = $repo;
 		$this->id = 0;
+		$this->apikey = Helper::keyGen(29);
    }
    
    public static function withID($id,$repo)
@@ -67,12 +69,15 @@ class Player implements IBaseObject  {
    
    public function save()
    {
-		//echo 'Player:beforesave';
 		$result = FALSE;
 		if($this->isNew())  //inserted a new record
 		{
+			//$resultID = 0;
+			//$insertSQL = "INSERT INTO Player(Email,FirstName,LastName,APIkey) VALUES(?,?,?,?)";			
+			//$result = $this->repo->run($insertSQL,'ssss',$this->email,$this->firstname,$this->lastname,$this->apikey);
+			
 			$resultID = 0;
-			$insertSQL = "INSERT INTO Player(Email,FirstName,LastName) VALUES('".$this->email."','".$this->firstname."','".$this->lastname."')";
+			$insertSQL = "INSERT INTO Player(Email,FirstName,LastName,APIkey) VALUES('".$this->email."','".$this->firstname."','".$this->lastname."','".$this->apikey."')";
 			$result = $this->repo->query($insertSQL);
 			
 			//if we saved this lets reload the player object;

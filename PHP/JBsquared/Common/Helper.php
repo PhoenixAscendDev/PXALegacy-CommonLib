@@ -68,6 +68,27 @@ class Helper {
 	   
 	}
 	
+	public static function shortenString($string,$maxlength,$trailchars)
+	{
+		$result = $string;
+		try
+		{
+			if( strlen($string) > $maxlength)
+			{
+				$result = substr($string,0,($maxlength - strlen($trailchars))).$trailchars;			
+			}
+		
+		}
+		catch(Exception $ex)
+		{
+		}
+		
+		return $result;
+		
+	
+	
+	}
+	
 	// Helper method to send a HTTP response code/message
 	public static function sendHttpResponse($status = 200, $body = '', $content_type = 'text/html')
 	{
@@ -77,6 +98,22 @@ class Helper {
 		header('Content-type: ' . $content_type);
 		echo $body;
 	}
+	
+	public static function keygen($length=10)
+	{
+		$key = '';
+		list($usec, $sec) = explode(' ', microtime());
+		mt_srand((float) $sec + ((float) $usec * 100000));
+		
+		$inputs = array_merge(range('z','a'),range(0,9),range('A','Z'));
+
+		for($i=0; $i<$length; $i++)
+		{
+			$key .= $inputs{mt_rand(0,61)};
+		}
+		return $key;
+	}
+	
 	
 	public static function transform_HTML($string, $length = null) 
 	{

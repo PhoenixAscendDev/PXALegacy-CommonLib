@@ -15,7 +15,7 @@ class AuthPlayer extends Player  {
 	public function __construct($provider,$uid,$repo) {
 		$this->provider = $provider;
 		$this->uid = $uid;
-		$this->dbstatements['playerProvider'] = "select p.ID,p.SquareHeadID,p.Email,p.FirstName,p.LastName,p.Birthdate,p.City,p.Gender, auth.Provider,auth.Provider_UID from Player as p join  Player_OAuth as auth on auth.Player_ID = p.ID";		
+		$this->dbstatements['playerProvider'] = "select p.ID,p.SquareHeadID,p.Email,p.FirstName,p.LastName,p.Birthdate,p.City,p.Gender, auth.Provider,auth.Provider_UID,p.APIkey from Player as p join  Player_OAuth as auth on auth.Player_ID = p.ID";		
 		parent::__construct($repo);
 	}	
    public static function withProvider($provider,$uid,$repo)

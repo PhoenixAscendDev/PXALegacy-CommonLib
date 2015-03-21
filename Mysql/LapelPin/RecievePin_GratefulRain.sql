@@ -15,7 +15,7 @@ create temporary table tmpPins(select * from jbsquared_appdata.Player_Pin where 
 #JBsquared Signin Pin
 insert into tmpPins(Player_ID,Pin_ID,DateRecieved,Description) 
 select l.Player_ID,3,l.CreateDate,'' 
-  from fiveandtwo.Player_EntryLog where lower(TextValue) like '% rain %' or lower(TextValue) like '% rain' or lower(TextValue) like 'rain %' or lower(TextValue) = 'rain'
+  from fiveandtwo.Player_EntryLog as l where (lower(l.TextValue) like '% rain %' or lower(l.TextValue) like '% rain' or lower(l.TextValue) like 'rain %' or lower(l.TextValue) = 'rain')
   and ((playerid = 0) or (l.Player_ID = playerid));
 
 #insert 
@@ -26,9 +26,6 @@ where t.Player_ID not in (select Player_ID from jbsquared_appdata.Player_Pin as 
 
 set playerpinid = LAST_INSERT_ID();
 
-select ID,Player_ID,Pin_ID,DateRecieved,Description,ActionAudit_ID
-  from Player_Pin
- where Pin_ID = playerpinid;
 
 drop table tmpPins;
 

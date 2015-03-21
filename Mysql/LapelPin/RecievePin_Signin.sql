@@ -30,6 +30,8 @@ set playerpinid = LAST_INSERT_ID();
 select ID,Player_ID,Pin_ID,DateRecieved,Description,ActionAudit_ID
   from Player_Pin
  where Pin_ID = playerpinid;
+ 
+ drop table tmpPins;
 
 
 end//

@@ -23,7 +23,7 @@ select su.Player_ID,2,min(Signin_Date) as DateRecieved, ''
 insert into jbsquared_appdata.Player_Pin(Player_ID,Pin_ID,DateRecieved,Description)
 select t.Player_ID,t.Pin_ID,t.DateRecieved,''
   from tmpPins as t
-where t.Player_ID not in (select Player_ID from jbsquared_appdata.Player_Pin as p where p.Player_ID = t.Player_ID and p.Pin_ID and t.Pin_ID);
+where t.Player_ID not in (select Player_ID from jbsquared_appdata.Player_Pin as p where p.Player_ID = t.Player_ID and p.Pin_ID = t.Pin_ID);
 
 set playerpinid = LAST_INSERT_ID();
 

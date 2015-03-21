@@ -37,15 +37,16 @@ end if;
 
 #set the sp call
 set @s = concat('call ',pin_fx,';');
+set @id = playerid;
 
 prepare stmt from @s;
 
-#execute stmt using playerid;
+execute stmt using @id;
 
 DEALLOCATE PREPARE stmt;
 
-insert into API_Whitelist(Player_APIkey)
-values(pin_fx);
+insert into jbsquared_appdata.JBsquaredPin_ActionTrigger_Audit(Pin_ID,Action_ID,Statement,Parameter,DateRun)
+values(pin_id,auditid,pin_fx,@id,now());
 
 
 

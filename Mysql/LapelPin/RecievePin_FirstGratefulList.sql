@@ -1,0 +1,38 @@
+drop procedure RecievePin_FirstGratefulList;
+delimiter //
+create procedure RecievePin_FirstGratefulList(IN playerid INT)
+begin
+
+declare playerpinid int default 0;
+
+if playerid is null then
+  set playerid = 0;
+end if;
+
+create temporary table tmpPins(select * from jbsquared_appdata.Player_Pin where 1 = 0);
+
+
+#1st FiveAndTwo List
+insert into tmpPins(Player_ID,Pin_ID,DateRecieved,Description) 
+select f.Player_ID,1,dd.full_date,min(f.Date_Key)
+  from fiveandtwo.Fact_Player_Date as f
+  join fiveandtwo.Dim_Date as dd on dd.date_key = f.Date_Key
+where ( (playerid = 0) or (f.Player_ID = playerid))
+group by f.Player_ID;
+
+#insert 
+insert into jbsquared_appdata.Player_Pin(Player_ID,Pin_ID,DateRecieved,Description)
+select t.Player_ID,t.Pin_ID,t.DateRecieved,''
+  from tmpPins as t
+where t.Player_ID not in (select Player_ID from jbsquared_appdata.Player_Pin as p where p.Player_ID = t.Player_ID and p.Pin_ID and t.Pin_ID);
+
+set playerpinid = LAST_INSERT_ID();
+
+select ID,Player_ID,Pin_ID,DateRecieved,Description,ActionAudit_ID
+  from Player_Pin
+ where Pin_ID = playerpinid;
+
+
+end//
+
+delimiter ;

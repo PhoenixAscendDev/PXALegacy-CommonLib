@@ -39,22 +39,21 @@ end if;
 set @s = concat('call ',pin_fx,';');
 set @id = playerid;
 
-#prepare stmt from @s;
-
-#execute stmt using @id;
-
-
-
 insert into jbsquared_appdata.JBsquaredPin_ActionTrigger_Audit(Pin_ID,Action_ID,Statement,Parameter,DateRun)
 values(pin_id,auditid,pin_fx,@id,now());
+
+prepare stmt from @s;
+
+execute stmt using @id;
 
 
 
 end loop get_pin;
+DROP PREPARE stmt;
 
 close pin_cursor;
 
-#DEALLOCATE PREPARE stmt;
+
 
 
 

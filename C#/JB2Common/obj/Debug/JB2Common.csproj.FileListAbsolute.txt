@@ -6,3 +6,4 @@ C:\scratch\API-JB2Common\C#\JB2Common\bin\Debug\JB2.Common.dll
 C:\scratch\API-JB2Common\C#\JB2Common\bin\Debug\JB2.Common.pdb
 C:\scratch\API-JB2Common\C#\JB2Common\obj\Debug\JB2.Common.dll
 C:\scratch\API-JB2Common\C#\JB2Common\obj\Debug\JB2.Common.pdb
+C:\scratch\API-JB2Common\C#\JB2Common\obj\Debug\JB2Common.csprojResolveAssemblyReference.cache

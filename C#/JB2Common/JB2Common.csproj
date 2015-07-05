@@ -45,6 +45,7 @@
     <Compile Include="IDie.cs" />
     <Compile Include="ILookupItem.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="IObject.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="ObjectTag.cs" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JB2.Common.Interfaces
+namespace JB2.Common
 {
     public interface IRepository<T,Tkey>
     {

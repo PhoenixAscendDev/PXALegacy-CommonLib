@@ -41,6 +41,7 @@
     <Compile Include="DataTable.cs" />
     <Compile Include="DieFace.cs" />
     <Compile Include="Enum\DiceType.cs" />
+    <Compile Include="Enum\KeyBitSize.cs" />
     <Compile Include="Error\SqliteException.cs" />
     <Compile Include="IDie.cs" />
     <Compile Include="ILookupItem.cs" />

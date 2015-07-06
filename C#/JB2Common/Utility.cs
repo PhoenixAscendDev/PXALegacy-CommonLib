@@ -22,6 +22,9 @@ namespace JB2.Common
         /// <param name="trailText"></param>
         /// <returns></returns>
         /// 
+
+
+
         public static string ShortText(string text, int maxLength, string trailText)
         {
             string result = string.Empty;
@@ -46,6 +49,33 @@ namespace JB2.Common
             if (lowerCase)
                 return builder.ToString().ToLower();
             return builder.ToString();
+        }
+
+        public static string GenerateKey(Enum.KeyBitSize bitSize,string passphrase)
+        {
+            if (string.IsNullOrEmpty(passphrase))
+                passphrase = RandomString(10, false);
+
+            byte[] keyBytes = new byte[0];
+            switch(bitSize)
+            {
+                case Enum.KeyBitSize.keybit128:
+                   keyBytes =  ComputeWep128(passphrase);
+                   break;
+                case Enum.KeyBitSize.keybit152:
+                   keyBytes =  ComputeWep156(passphrase);
+                   break;
+                default:
+                   keyBytes = ComputeWep40(passphrase)[0];
+                   break;
+            }
+
+            string result = string.Empty;
+            if(keyBytes.Length > 0)
+                result = BitConverter.ToString(keyBytes).Replace("-", "");
+
+            return result;
+
         }
 
 
@@ -89,7 +119,7 @@ namespace JB2.Common
 
 
 
-        public static List<byte[]> ComputeWep40(string str)
+        private static List<byte[]> ComputeWep40(string str)
         {
             byte[] pseed = new byte[4];
             int i = 0;
@@ -115,14 +145,14 @@ namespace JB2.Common
             return result;
         }
 
-        public static byte[] ComputeWep128(string str)
+        private static byte[] ComputeWep128(string str)
         {
             byte[] result = ComputeWep156(str);
             Array.Resize(ref result, 13);
             return result;
         }
 
-        public static byte[] ComputeWep156(string str)
+        private static byte[] ComputeWep156(string str)
         {
             while (str.Length < 64)
                 str = str + str;

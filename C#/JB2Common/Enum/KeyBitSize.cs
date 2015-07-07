@@ -9,6 +9,6 @@ namespace JB2.Common.Enum
         keybit64,
         keybit128,
         keybit152,
-        //keybit256
+        keybit256
     }
 }

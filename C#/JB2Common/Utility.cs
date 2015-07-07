@@ -53,6 +53,7 @@ namespace JB2.Common
 
         public static string GenerateKey(Enum.KeyBitSize bitSize,string passphrase)
         {
+            string result = string.Empty;
             if (string.IsNullOrEmpty(passphrase))
                 passphrase = RandomString(10, false);
 
@@ -65,12 +66,19 @@ namespace JB2.Common
                 case Enum.KeyBitSize.keybit152:
                    keyBytes =  ComputeWep156(passphrase);
                    break;
+                case Enum.KeyBitSize.keybit256:
+                    var cryptoProvider = new RNGCryptoServiceProvider();
+                    byte[] secretKeyByteArray = new byte[32]; //256 bit
+                    cryptoProvider.GetBytes(secretKeyByteArray);
+                    result = Convert.ToBase64String(secretKeyByteArray);
+                   return result;
                 default:
                    keyBytes = ComputeWep40(passphrase)[0];
                    break;
+
             }
 
-            string result = string.Empty;
+            
             if(keyBytes.Length > 0)
                 result = BitConverter.ToString(keyBytes).Replace("-", "");
 

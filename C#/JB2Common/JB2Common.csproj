@@ -43,6 +43,8 @@
     <Compile Include="Enum\DiceType.cs" />
     <Compile Include="Enum\KeyBitSize.cs" />
     <Compile Include="Error\SqliteException.cs" />
+    <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IDie.cs" />
     <Compile Include="ILookupItem.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />

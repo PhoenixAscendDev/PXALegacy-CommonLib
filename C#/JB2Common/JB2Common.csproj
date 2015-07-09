@@ -45,7 +45,10 @@
     <Compile Include="Error\SqliteException.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="IAddress.cs" />
+    <Compile Include="IBusiness.cs" />
     <Compile Include="IDie.cs" />
+    <Compile Include="IImage.cs" />
     <Compile Include="ILookupItem.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

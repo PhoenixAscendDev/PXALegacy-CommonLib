@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JB2.Common</RootNamespace>
     <AssemblyName>JB2.Common</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +53,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="IObject.cs" />
     <Compile Include="IPerson.cs" />
+    <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

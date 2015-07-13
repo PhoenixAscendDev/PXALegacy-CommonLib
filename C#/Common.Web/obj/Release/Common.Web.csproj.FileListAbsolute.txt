@@ -1,0 +1,4 @@
+L:\Projects\API\API-JB2Common\C#\Common.Web\bin\Release\JB2.Common.Web.dll
+L:\Projects\API\API-JB2Common\C#\Common.Web\bin\Release\JB2.Common.Web.pdb
+L:\Projects\API\API-JB2Common\C#\Common.Web\obj\Release\JB2.Common.Web.dll
+L:\Projects\API\API-JB2Common\C#\Common.Web\obj\Release\JB2.Common.Web.pdb

@@ -1,0 +1,3 @@
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuth.Client.ConsoleTest\bin\Debug\JB2.OAuth.Client.ConsoleTest.exe.config
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuth.Client.ConsoleTest\obj\Debug\JB2.OAuth.Client.ConsoleTest.csprojResolveAssemblyReference.cache
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuth.Client.ConsoleTest\obj\Debug\JB2.OAuth.Client.ConsoleTest.csproj.App.config

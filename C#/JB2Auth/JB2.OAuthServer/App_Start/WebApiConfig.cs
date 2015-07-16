@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace JB2.OAuthServer
+namespace JB2.OAuth
 {
     public static class WebApiConfig
     {

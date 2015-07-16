@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.OAuthServer", "JB2.OAuthServer\JB2.OAuthServer.csproj", "{CFA2BEBB-D70A-40DD-ACF3-5D265DF78B43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.OAuth.Client.ConsoleTest", "JB2.OAuth.Client.ConsoleTest\JB2.OAuth.Client.ConsoleTest.csproj", "{ABA8E82D-AF9C-4257-97F2-4CC04A2CF4AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CFA2BEBB-D70A-40DD-ACF3-5D265DF78B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA2BEBB-D70A-40DD-ACF3-5D265DF78B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA2BEBB-D70A-40DD-ACF3-5D265DF78B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA8E82D-AF9C-4257-97F2-4CC04A2CF4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA8E82D-AF9C-4257-97F2-4CC04A2CF4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA8E82D-AF9C-4257-97F2-4CC04A2CF4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA8E82D-AF9C-4257-97F2-4CC04A2CF4AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

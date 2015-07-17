@@ -50,3 +50,4 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\FSharp.Data.DesignT
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\OAuth2Client.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\VersionOne.Parsers.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\FSharp.Core.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Debug\JB2.OAuthServer.csprojResolveAssemblyReference.cache

@@ -17,3 +17,5 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\bin\System.Web.WebPages
 L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\obj\Debug\WebApp-AuthTest.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\obj\Debug\WebApp-AuthTest.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\obj\Debug\WebApp-AuthTest.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\bin\Constrants.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\WebApp-AuthTest\bin\Constrants.pdb

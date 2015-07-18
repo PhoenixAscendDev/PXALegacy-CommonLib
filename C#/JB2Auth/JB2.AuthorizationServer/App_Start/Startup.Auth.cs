@@ -1,4 +1,7 @@
 ﻿using Constrants;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -12,6 +15,9 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 
+using System.Data.Entity;
+
+
 namespace JB2.AuthorizationServer
 {
     public partial class Startup
@@ -19,6 +25,10 @@ namespace JB2.AuthorizationServer
 
         public void ConfigureAuth(IAppBuilder app)
         {
+
+           // app.CreatePerOwinContext<OAuthDataContext>(() => new OAuthDataContext());
+            //app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
+
             // Enable Application Sign In Cookie
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -27,6 +37,7 @@ namespace JB2.AuthorizationServer
                 LoginPath = new PathString(Paths.LoginPath),
                 LogoutPath = new PathString(Paths.LogoutPath),
             });
+
 
             // Enable External Sign In Cookie
             app.SetDefaultSignInAsAuthenticationType("External");
@@ -39,7 +50,7 @@ namespace JB2.AuthorizationServer
             });
 
             // Enable google authentication
-            app.UseGoogleAuthentication();
+            //app.UseGoogleAuthentication();
 
             // Setup Authorization Server
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
@@ -50,6 +61,13 @@ namespace JB2.AuthorizationServer
 #if DEBUG
                 AllowInsecureHttp = true,
 #endif
+                //Provider = new JB2AuthorizationServerProvider
+                //{
+                //    OnValidateClientRedirectUri = ValidateClientRedirectUri,
+                //    //OnValidateClientAuthentication = ValidateClientAuthentication,
+                //    //OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
+                //    OnGrantClientCredentials = GrantClientCredetails
+                //},
                 // Authorization server provider which controls the lifecycle of Authorization Server
                 Provider = new OAuthAuthorizationServerProvider
                 {
@@ -75,6 +93,19 @@ namespace JB2.AuthorizationServer
             });
         }
 
+        private static UserManager<IdentityUser> CreateManager(
+            IdentityFactoryOptions<UserManager<IdentityUser>> options,
+            IOwinContext context)
+        {
+            var userStore =
+                new UserStore<IdentityUser>(context.Get<OAuthDataContext>());
+
+            var manager =
+                new UserManager<IdentityUser>(userStore);
+
+            return manager;
+        }
+
         private Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
         {
             if (context.ClientId == Clients.Client1.Id)
@@ -88,24 +119,24 @@ namespace JB2.AuthorizationServer
             return Task.FromResult(0);
         }
 
-        private Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
-        {
-            string clientId;
-            string clientSecret;
-            if (context.TryGetBasicCredentials(out clientId, out clientSecret) ||
-                context.TryGetFormCredentials(out clientId, out clientSecret))
-            {
-                if (clientId == Clients.Client1.Id && clientSecret == Clients.Client1.Secret)
-                {
-                    context.Validated();
-                }
-                else if (clientId == Clients.Client2.Id && clientSecret == Clients.Client2.Secret)
-                {
-                    context.Validated();
-                }
-            }
-            return Task.FromResult(0);
-        }
+        //private Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        //{
+        //    string clientId;
+        //    string clientSecret;
+        //    if (context.TryGetBasicCredentials(out clientId, out clientSecret) ||
+        //        context.TryGetFormCredentials(out clientId, out clientSecret))
+        //    {
+        //        if (clientId == Clients.Client1.Id && clientSecret == Clients.Client1.Secret)
+        //        {
+        //            context.Validated();
+        //        }
+        //        else if (clientId == Clients.Client2.Id && clientSecret == Clients.Client2.Secret)
+        //        {
+        //            context.Validated();
+        //        }
+        //    }
+        //    return Task.FromResult(0);
+        //}
 
         private Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {

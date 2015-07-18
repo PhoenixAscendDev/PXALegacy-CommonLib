@@ -35,3 +35,13 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Debug\JB2.AuthorizationServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Debug\JB2.AuthorizationServer.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Core.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Owin.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Core.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Owin.xml

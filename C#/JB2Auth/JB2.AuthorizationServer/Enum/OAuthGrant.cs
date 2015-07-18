@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace JB2.OAuth.Enum
+namespace JB2.AuthorizationServer.Enum
 {
-    public enum OAuthGrant
+    public enum AuthGrantType
     {
         Code = 1,
         Implicit = 2,

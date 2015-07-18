@@ -33,9 +33,8 @@
 
                 var uri = addQueryString(authorizeUri, {
                     'client_id': '42ff5dad3c274c97a3a7c3d44b67bb42',
-                    'redirect_uri': returnUri,
                     'state': nonce,
-                    'scope': 'bio notes',
+                    'scope': 'basic,klatsch',
                     'response_type': 'token',
                 });
 

@@ -1,0 +1,17 @@
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\EmptyMVC.dll.config
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\EmptyMVC.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\EmptyMVC.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Helpers.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Mvc.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Razor.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.Deployment.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.Razor.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Helpers.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Mvc.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.Razor.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.Deployment.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\bin\System.Web.WebPages.Razor.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\obj\Debug\EmptyMVC.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\EmptyMVC\obj\Debug\EmptyMVC.pdb

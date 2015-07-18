@@ -53,7 +53,11 @@ namespace JB2.AuthorizationServer.Controllers
         }
 
 
-
+        public ActionResult Logintest()
+        {
+            LoginViewModel m = new LoginViewModel();
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -72,7 +76,9 @@ namespace JB2.AuthorizationServer.Controllers
                 }
             }
 
-            return View();
+            LoginViewModel m = new LoginViewModel();
+
+            return View(m);
         }
 
         public ActionResult Logout()
@@ -112,51 +118,72 @@ namespace JB2.AuthorizationServer.Controllers
         #region User
 
         // POST: /Account/Register
-        public ActionResult Register()
+        public async Task<ActionResult> Register()
         {
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-        //        user.FirstName = model.FirstName;
-        //        user.LastName = model.LastName;
-        //        if (model.DisplayName == null)
-        //        {
-        //            user.DisplayName = user.FirstName + " " + user.LastName;
-        //        }
-        //        else
-        //        {
-        //            user.DisplayName = model.DisplayName;
-        //        }
-        //        user.CellPhone = model.CellPhone;
+            string username = Request.Form["new_username"];
+            string password = Request.Form["new_passowrd"];
+            string birthday = Request.Form["new_birthday"];
 
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, Birthdate = Convert.ToDateTime(birthday) };
 
-        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-        //            // Send an email with this link
-        //            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        //            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        //            try
-        //            {
-        //                await UserManager.SendEmailAsync(user.Id, "New CITS Account",
-        //                    "Dear " + user.FirstName + " " + user.LastName + ",<br \\>" +
-        //                    "This is to confirm that your account for USDA Chemical Inventory Tracking System (CITS) is now active. The following username has been created for you: <br \\><br \\>" +
-        //                    "Username: " + user.UserName + " <br \\><br \\>" +
-        //                    "To sign in and create a new password, click or copy/paste the link into your browser: <a href=\"" + callbackUrl + "\">" + callbackUrl + "</a><br \\><br \\>" +
-        //                    "For more information or if you believe you have received this message in error, please contact your <a href=\"" + "mailto:admin@usda.org" + "\"> SOHES Administrator </a> at 301-504-6084.<br \\><br \\>" +
-        //                    "Thank you.");
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                ModelState.AddModelError("", ex.Message);
-        //                return View(model);
-        //            }
-        //            //return View("ConfirmEmail");
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        AddErrors(result);
+            var result = await UserManager.CreateAsync(newUser, password);
+            if(result.Succeeded)
+            {
+                var authentication = HttpContext.GetOwinContext().Authentication;
+
+                authentication.SignIn(
+                        new AuthenticationProperties { IsPersistent = isPersistent },
+                        new ClaimsIdentity(new[] { new Claim(
+                       ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) },
+                           "Application"));
+
+                //await SignInManager.SignInAsync(newUser, isPersistent: false, rememberBrowser: false);
+            }
+
+
+            //if (!string.IsNullOrEmpty(Request.Form["username"]))
+            //{
+            //    var user = new ApplicationUser { UserName = username, Email = model.Email };
+            //    //user.FirstName = model.FirstName;
+            //    //user.LastName = model.LastName;
+            //    if (model.DisplayName == null)
+            //    {
+            //        user.DisplayName = user.FirstName + " " + user.LastName;
+            //    }
+            //    else
+            //    {
+            //        user.DisplayName = model.DisplayName;
+            //    }
+            //    user.CellPhone = model.CellPhone;
+
+            //    var result = await UserManager.CreateAsync(user, model.Password);
+            //    if (result.Succeeded)
+            //    {
+            //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+            //        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            //        // Send an email with this link
+            //        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            //        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            //        try
+            //        {
+            //            await UserManager.SendEmailAsync(user.Id, "New CITS Account",
+            //                "Dear " + user.FirstName + " " + user.LastName + ",<br \\>" +
+            //                "This is to confirm that your account for USDA Chemical Inventory Tracking System (CITS) is now active. The following username has been created for you: <br \\><br \\>" +
+            //                "Username: " + user.UserName + " <br \\><br \\>" +
+            //                "To sign in and create a new password, click or copy/paste the link into your browser: <a href=\"" + callbackUrl + "\">" + callbackUrl + "</a><br \\><br \\>" +
+            //                "For more information or if you believe you have received this message in error, please contact your <a href=\"" + "mailto:admin@usda.org" + "\"> SOHES Administrator </a> at 301-504-6084.<br \\><br \\>" +
+            //                "Thank you.");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            ModelState.AddModelError("", ex.Message);
+            //            return View(model);
+            //        }
+            //        //return View("ConfirmEmail");
+            //        return RedirectToAction("Index", "Home");
+            //    }
+            //    AddErrors(result);
             //}
 
             //// If we got this far, something failed, redisplay form

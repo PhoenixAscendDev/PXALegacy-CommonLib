@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -19,23 +20,9 @@ namespace JB2.AuthorizationServer
         }
 
         [Required]
-        [StringLength(50)]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        [Display(Name = "Birthday")]
+        public System.DateTime Birthdate { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [StringLength(100)]
-        [Display(Name = "Display Name")]
-        public string DisplayName { get; set; }
-
-        [Required]
-        [RegularExpression(@"((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}", ErrorMessage = "Invalid Phone Number!")]
-        [Display(Name = "Cell Phone")]
-        public string CellPhone { get; set; }
-
+      
     }
 }

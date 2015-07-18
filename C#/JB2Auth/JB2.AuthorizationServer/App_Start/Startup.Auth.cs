@@ -26,8 +26,8 @@ namespace JB2.AuthorizationServer
         public void ConfigureAuth(IAppBuilder app)
         {
 
-           // app.CreatePerOwinContext<OAuthDataContext>(() => new OAuthDataContext());
-            //app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
+            app.CreatePerOwinContext<OAuthDataContext>(() => new OAuthDataContext());
+            app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
 
             // Enable Application Sign In Cookie
             app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -61,21 +61,21 @@ namespace JB2.AuthorizationServer
 #if DEBUG
                 AllowInsecureHttp = true,
 #endif
-                //Provider = new JB2AuthorizationServerProvider
+                Provider = new JB2AuthorizationServerProvider(),
                 //{
                 //    OnValidateClientRedirectUri = ValidateClientRedirectUri,
-                //    //OnValidateClientAuthentication = ValidateClientAuthentication,
-                //    //OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
-                //    OnGrantClientCredentials = GrantClientCredetails
+                ////OnValidateClientAuthentication = ValidateClientAuthentication,
+                ////    //OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
+                ////    OnGrantClientCredentials = GrantClientCredetails
                 //},
                 // Authorization server provider which controls the lifecycle of Authorization Server
-                Provider = new OAuthAuthorizationServerProvider
-                {
-                    OnValidateClientRedirectUri = ValidateClientRedirectUri,
-                    OnValidateClientAuthentication = ValidateClientAuthentication,
-                    OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
-                    OnGrantClientCredentials = GrantClientCredetails
-                },
+                //Provider = new OAuthAuthorizationServerProvider
+                //{
+                //    OnValidateClientRedirectUri = ValidateClientRedirectUri,
+                //    OnValidateClientAuthentication = ValidateClientAuthentication,
+                //    OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
+                //    OnGrantClientCredentials = GrantClientCredetails
+                //},
 
                 // Authorization code provider which creates and receives authorization code
                 AuthorizationCodeProvider = new AuthenticationTokenProvider
@@ -137,6 +137,8 @@ namespace JB2.AuthorizationServer
         //    }
         //    return Task.FromResult(0);
         //}
+
+        
 
         private Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {

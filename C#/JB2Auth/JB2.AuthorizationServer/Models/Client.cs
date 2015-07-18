@@ -13,5 +13,7 @@ namespace JB2.AuthorizationServer
         public Enum.AuthGrantType AllowedGrant { get; set; }
 
         public DateTimeOffset CreatedOn { get; set; }
+
+        public string ReturnUrl { get; set; }
     }
 }

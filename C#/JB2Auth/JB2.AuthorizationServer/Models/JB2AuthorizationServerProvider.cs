@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
+using Constrants;
 using System;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -14,6 +15,13 @@ namespace JB2.AuthorizationServer
 {
     public class JB2AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
+      
+
+        public JB2AuthorizationServerProvider()
+        {
+            
+        }
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             string clientId;
@@ -126,6 +134,56 @@ namespace JB2.AuthorizationServer
 
                 context.Rejected();
             }
+        }
+
+        public override async Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
+        {
+
+            string clientId = context.ClientId;
+            string clientSecret;
+
+            //if (context.TryGetBasicCredentials(out clientId, out clientSecret))
+            //{
+
+
+
+            UserManager<IdentityUser> userManager = context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
+
+            OAuthDataContext dbContext = context.OwinContext.Get<OAuthDataContext>();
+            
+           
+
+            try
+            {
+                Client client = await dbContext.Clients.FirstOrDefaultAsync(clientEntity => clientEntity.Id == clientId);
+
+                context.Validated(client.ReturnUrl);
+                
+                //Client client = dbContext.
+                        //.Clients
+                        //.FirstOrDefaultAsync(clientEntity => clientEntity.Id == clientId);
+
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+
+
+
+
+
+            //if (context.ClientId == Clients.Client1.Id)
+            //{
+            //    context.Validated(Clients.Client1.RedirectUrl);
+            //}
+            //else if (context.ClientId == Clients.Client2.Id)
+            //{
+            //    context.Validated(Clients.Client2.RedirectUrl);
+            //}
+            //return Task.FromResult(0);
         }
     }
 }

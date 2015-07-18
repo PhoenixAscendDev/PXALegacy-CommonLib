@@ -158,6 +158,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs">
       <SubType>Code</SubType>
@@ -170,6 +171,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\JB2AuthorizationServerProvider.cs" />
     <Compile Include="Models\OAuthDataContext.cs" />

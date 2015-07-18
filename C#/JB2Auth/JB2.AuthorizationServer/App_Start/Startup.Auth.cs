@@ -25,9 +25,13 @@ namespace JB2.AuthorizationServer
 
         public void ConfigureAuth(IAppBuilder app)
         {
-
+            //oAuth
             app.CreatePerOwinContext<OAuthDataContext>(() => new OAuthDataContext());
             app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
+
+            //User
+            app.CreatePerOwinContext(ApplicationDataContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Enable Application Sign In Cookie
             app.UseCookieAuthentication(new CookieAuthenticationOptions

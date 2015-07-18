@@ -1,15 +1,60 @@
-﻿using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Data.Entity.Validation;
+using System.Net.Mail;
 
 namespace JB2.AuthorizationServer.Controllers
 {
     public class AccountController : Controller
     {
+
+        private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+
+        public AccountController()
+        {
+        }
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set { _signInManager = value; }
+        }
+
+
+
+
         public ActionResult Login()
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
@@ -62,5 +107,63 @@ namespace JB2.AuthorizationServer.Controllers
 
             return View();
         }
+
+
+        #region User
+
+        // POST: /Account/Register
+        public ActionResult Register()
+        {
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        //        user.FirstName = model.FirstName;
+        //        user.LastName = model.LastName;
+        //        if (model.DisplayName == null)
+        //        {
+        //            user.DisplayName = user.FirstName + " " + user.LastName;
+        //        }
+        //        else
+        //        {
+        //            user.DisplayName = model.DisplayName;
+        //        }
+        //        user.CellPhone = model.CellPhone;
+
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            try
+        //            {
+        //                await UserManager.SendEmailAsync(user.Id, "New CITS Account",
+        //                    "Dear " + user.FirstName + " " + user.LastName + ",<br \\>" +
+        //                    "This is to confirm that your account for USDA Chemical Inventory Tracking System (CITS) is now active. The following username has been created for you: <br \\><br \\>" +
+        //                    "Username: " + user.UserName + " <br \\><br \\>" +
+        //                    "To sign in and create a new password, click or copy/paste the link into your browser: <a href=\"" + callbackUrl + "\">" + callbackUrl + "</a><br \\><br \\>" +
+        //                    "For more information or if you believe you have received this message in error, please contact your <a href=\"" + "mailto:admin@usda.org" + "\"> SOHES Administrator </a> at 301-504-6084.<br \\><br \\>" +
+        //                    "Thank you.");
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                ModelState.AddModelError("", ex.Message);
+        //                return View(model);
+        //            }
+        //            //return View("ConfirmEmail");
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        AddErrors(result);
+            //}
+
+            //// If we got this far, something failed, redisplay form
+            //return View(model);
+            return View();
+        }
+
+        #endregion User
     }
 }

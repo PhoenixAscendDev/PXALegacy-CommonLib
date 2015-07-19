@@ -1,0 +1,45 @@
+﻿@using System
+@using System.Linq
+@using System.Security.Claims
+@using System.Web
+@using Microsoft.Owin.Security
+@{
+    var authentication = Context.GetOwinContext().Authentication;
+
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title.</title>
+    <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel='stylesheet'>
+    <link href="~/Content/jb2-main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <img src="~/Content/Images/JBsquared%20Login_200Nomargin.png" style="margin-top:140px;" />
+            </div>
+            <div class="col-xs-8 vcenter">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

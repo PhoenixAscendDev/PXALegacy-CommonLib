@@ -186,6 +186,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Shared\_popupLayout.cshtml" />
     <None Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Account\External.cshtml" />

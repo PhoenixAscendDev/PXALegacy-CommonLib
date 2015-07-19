@@ -73,12 +73,13 @@ namespace JB2.AuthorizationServer.Controllers
                         new ClaimsIdentity(new[] { new Claim(
                        ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) },
                            "Application"));
+                    
                 }
             }
 
             LoginViewModel m = new LoginViewModel();
 
-            return View(m);
+            return View();
         }
 
         public ActionResult Logout()
@@ -121,24 +122,36 @@ namespace JB2.AuthorizationServer.Controllers
         public async Task<ActionResult> Register()
         {
             string username = Request.Form["new_username"];
-            string password = Request.Form["new_passowrd"];
+            string password = Request.Form["new_password"];
             string birthday = Request.Form["new_birthday"];
 
-            ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, Birthdate = Convert.ToDateTime(birthday) };
-
-            var result = await UserManager.CreateAsync(newUser, password);
-            if(result.Succeeded)
+            try
             {
-                var authentication = HttpContext.GetOwinContext().Authentication;
+                ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, Birthdate = Convert.ToDateTime(birthday) };
 
-                authentication.SignIn(
-                        new AuthenticationProperties { IsPersistent = isPersistent },
-                        new ClaimsIdentity(new[] { new Claim(
-                       ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) },
-                           "Application"));
+                var result = await UserManager.CreateAsync(newUser, password);
 
-                //await SignInManager.SignInAsync(newUser, isPersistent: false, rememberBrowser: false);
+                if (result.Succeeded)
+                {
+                    var authentication = HttpContext.GetOwinContext().Authentication;
+
+                    authentication.SignIn(
+                            new AuthenticationProperties { IsPersistent = true },
+                            new ClaimsIdentity(new[] { new Claim(
+                       ClaimsIdentity.DefaultNameClaimType, username) },
+                               "Application"));
+
+                    //await SignInManager.SignInAsync(newUser, isPersistent: false, rememberBrowser: false);
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+
+            return View("Login");
+
+           
 
 
             //if (!string.IsNullOrEmpty(Request.Form["username"]))

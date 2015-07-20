@@ -22,3 +22,4 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.csprojResolveAssemblyReference.cache

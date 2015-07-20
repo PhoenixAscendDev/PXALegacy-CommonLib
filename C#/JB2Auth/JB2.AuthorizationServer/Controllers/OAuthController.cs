@@ -4,6 +4,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace JB2.AuthorizationServer.Controllers
 {
@@ -25,16 +28,23 @@ namespace JB2.AuthorizationServer.Controllers
                 return new HttpUnauthorizedResult();
             }
 
-            var scopes = (Request.QueryString.Get("scope") ?? "").Split(' ');
+            var clientid = Request.QueryString.Get("client_id");
+            var scopes = (Request.QueryString.Get("scope") ?? "").Split(',');
 
             if (Request.HttpMethod == "POST")
             {
                 if (!string.IsNullOrEmpty(Request.Form.Get("submit.Grant")))
                 {
+                    //var dbClaims = userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d");
                     identity = new ClaimsIdentity(identity.Claims, "Bearer", identity.NameClaimType, identity.RoleClaimType);
                     foreach (var scope in scopes)
                     {
-                        identity.AddClaim(new Claim("urn:oauth:scope", scope));
+                        Claim scopeClaim = new Claim(clientid + ":scope", scope);
+                        
+                        identity.AddClaim(scopeClaim);
+                        AddClaim(identity.Name, scopeClaim);
+                        //if (!userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d").Contains(scopeClaim))
+                         //   userManager.AddClaim("aeffcd94-0804-450f-9caf-265c3b54009d", scopeClaim);
                     }
                     authentication.SignIn(identity);
                 }
@@ -47,6 +57,30 @@ namespace JB2.AuthorizationServer.Controllers
             }
 
             return View();
+        }
+
+
+        private bool AddClaim(string username, Claim newClaim)
+        {
+
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = userManager.FindByName(username);
+
+            if(user != null)
+            {
+                var dbClaims = userManager.GetClaims(user.Id);
+                bool existsAlready = false;
+                foreach(Claim c in dbClaims)
+                {
+                    if( (c.Type == newClaim.Type) && (c.Value == newClaim.Value))
+                        existsAlready = true;
+                }
+
+                if(!existsAlready)
+                    userManager.AddClaim(user.Id,newClaim);
+            }
+            return true;
+
         }
     }
 }

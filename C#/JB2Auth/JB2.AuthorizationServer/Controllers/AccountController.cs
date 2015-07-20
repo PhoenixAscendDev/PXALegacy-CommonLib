@@ -53,27 +53,31 @@ namespace JB2.AuthorizationServer.Controllers
         }
 
 
-        public ActionResult Logintest()
-        {
-            LoginViewModel m = new LoginViewModel();
-            return View();
-        }
 
         public ActionResult Login()
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
+
             if (Request.HttpMethod == "POST")
             {
                 var isPersistent = !string.IsNullOrEmpty(Request.Form.Get("isPersistent"));
 
                 if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
                 {
-                    authentication.SignIn(
-                        new AuthenticationProperties { IsPersistent = isPersistent },
-                        new ClaimsIdentity(new[] { new Claim(
-                       ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) },
-                           "Application"));
-                    
+                    string username = Request.Form["username"];
+                    string password = Request.Form["password"];
+
+                    var user = UserManager.Find(username, password);
+
+                    if(user != null)
+                    {
+                        authentication.SignIn(
+                                        new AuthenticationProperties { IsPersistent = isPersistent },
+                                        new ClaimsIdentity(new[] { new Claim(
+                                                ClaimsIdentity.DefaultNameClaimType, username) },"Application"));
+
+
+                    }
                 }
             }
 

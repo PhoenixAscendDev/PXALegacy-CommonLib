@@ -1,6 +1,7 @@
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll.config
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Host.SystemWeb.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Security.dll
@@ -11,6 +12,8 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Net.Http.Form
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Common.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Host.SystemWeb.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Security.xml
@@ -20,9 +23,6 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Net.Http.Form
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.pdb
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Common.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.pdb
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.csprojResolveAssemblyReference.cache

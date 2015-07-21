@@ -123,16 +123,16 @@ namespace JB2.AuthorizationServer.Controllers
         #region User
 
         // POST: /Account/Register
-        public async Task<ActionResult> Register()
+        public async Task<ActionResult> Register(LoginViewModel﻿ model)
         {
-            string username = Request.Form["new_username"];
-            string password = Request.Form["new_password"];
-            string birthday = Request.Form["new_birthday"];
-            string displayname = Request.Form["new_new_displayname"];
+            string username = model.RegisterUser.Email;
+            string password = model.RegisterUser.Password;
+            DateTime birthday = model.RegisterUser.Birthdate;
+            string displayname = model.RegisterUser.DisplayName;
 
             try
             {
-                ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, DisplayName = displayname, Birthdate = Convert.ToDateTime(birthday) };
+                ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, DisplayName = displayname, Birthdate = birthday };
 
                 var result = await UserManager.CreateAsync(newUser, password);
 

@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp-AuthTest", "WebApp-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Login", "JB2.Login\JB2.Login.csproj", "{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class Lib", "Class Lib", "{A604146B-88DF-4E47-A1D4-DE939E7929C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FD514B8B-E46E-433B-870C-10F300952607}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +58,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{592208EC-369D-42BD-B42D-8D3EE547BDCA} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
+		{ABB2823E-3C21-4650-A466-71DAEF85DAA8} = {FD514B8B-E46E-433B-870C-10F300952607}
+		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
 	EndGlobalSection
 EndGlobal

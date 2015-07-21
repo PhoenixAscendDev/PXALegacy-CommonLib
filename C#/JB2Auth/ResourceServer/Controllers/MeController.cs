@@ -7,6 +7,9 @@ using System.Web.Http;
 
 using System.Security.Claims;
 
+using JB2.Login.Attributes;
+using JB2.Login.Enum;
+
 
 namespace ResourceServer.Controllers
 {
@@ -21,10 +24,10 @@ namespace ResourceServer.Controllers
         }
        // +		[1]	{auth:client: 42ff5dad3c274c97a3a7c3d44b67bb42}	System.Security.Claims.Claim
 
+        [ScopeAuthorize(ClaimScope.testDenied)]
         public string Get()
         {
-            Claim claim = _identity.Claims.FirstOrDefault(c => c.Type == "auth:client");
-            return claim.ToString();
+            return JB2.Login.Helper.CurrentAuthPlayer.ToString();
         }
     }
 }

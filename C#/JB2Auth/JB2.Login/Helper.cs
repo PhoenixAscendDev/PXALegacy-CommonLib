@@ -19,7 +19,7 @@ namespace JB2.Login
         {
             get
             {
-                return (ClaimsIdentity)HttpContext.Current.User;
+                return (ClaimsIdentity)HttpContext.Current.User.Identity;
             }
         }
 
@@ -52,9 +52,11 @@ namespace JB2.Login
 
                 try
                 {
-                    foreach(Claim c in CurrentAuthPlayer.Claims)
+                    var claims = CurrentAuthPlayer.Claims;
+                    var claimType = CurrentAuthClientID + CLIENTSCOPE;
+                    foreach(Claim c in claims)
                     {
-                        if (c.Type == CurrentAuthClientID + CLIENTSCOPE)
+                        if (c.Type == claimType)
                             result.Add((Enum.ClaimScope)System.Enum.Parse(typeof(Enum.ClaimScope), c.Value));
                     }
                 }
@@ -64,6 +66,20 @@ namespace JB2.Login
                 }
 
                 return result.ToArray();
+            }
+
+
+        }
+
+        public static bool IsScopeAuthorized(Enum.ClaimScope scope)
+        {
+            try
+            {
+                return CurrentScope.Contains(scope);
+            }
+            catch
+            {
+                return false;
             }
 
 

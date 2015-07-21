@@ -53,7 +53,7 @@ namespace JB2.AuthorizationServer.Controllers
         }
 
 
-
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel﻿ model)
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
@@ -123,6 +123,7 @@ namespace JB2.AuthorizationServer.Controllers
         #region User
 
         // POST: /Account/Register
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(LoginViewModel﻿ model)
         {
             string username = model.RegisterUser.Email;

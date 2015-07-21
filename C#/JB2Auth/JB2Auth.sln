@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceServer", "ResourceS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp-AuthTest", "WebApp-AuthTest\WebApp-AuthTest.csproj", "{ABB2823E-3C21-4650-A466-71DAEF85DAA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Login", "JB2.Login\JB2.Login.csproj", "{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{ABB2823E-3C21-4650-A466-71DAEF85DAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB2823E-3C21-4650-A466-71DAEF85DAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABB2823E-3C21-4650-A466-71DAEF85DAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

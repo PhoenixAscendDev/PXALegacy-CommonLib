@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="JB2-Bowtie" Class="LoginDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=polkadot;Connect Timeout=60" SettingsObjectName="JB2.Login.Properties.Settings" SettingsPropertyName="JB2_BowtieConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.jb2login_Get_PlayerClient" Method="jb2login_Get_PlayerClient">
+    <Parameter Name="playerid" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="clientid" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="jb2login_Get_PlayerClientResult">
+      <Column Name="PlayerID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Scope" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

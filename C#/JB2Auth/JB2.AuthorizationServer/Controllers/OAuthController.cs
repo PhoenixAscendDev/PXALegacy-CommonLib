@@ -37,6 +37,9 @@ namespace JB2.AuthorizationServer.Controllers
                 {
                     //var dbClaims = userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d");
                     identity = new ClaimsIdentity(identity.Claims, "Bearer", identity.NameClaimType, identity.RoleClaimType);
+
+                    // add the clientid to identity so API can test against the scope
+                    identity.AddClaim(new Claim("auth:client", clientid));
                     foreach (var scope in scopes)
                     {
                         Claim scopeClaim = new Claim(clientid + ":scope", scope);

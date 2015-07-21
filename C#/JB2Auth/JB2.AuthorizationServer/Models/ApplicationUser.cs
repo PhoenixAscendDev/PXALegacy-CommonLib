@@ -23,6 +23,10 @@ namespace JB2.AuthorizationServer
         [Display(Name = "Birthday")]
         public System.DateTime Birthdate { get; set; }
 
+        [Required]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
       
     }
 }

@@ -128,10 +128,11 @@ namespace JB2.AuthorizationServer.Controllers
             string username = Request.Form["new_username"];
             string password = Request.Form["new_password"];
             string birthday = Request.Form["new_birthday"];
+            string displayname = Request.Form["new_new_displayname"];
 
             try
             {
-                ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, Birthdate = Convert.ToDateTime(birthday) };
+                ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, DisplayName = displayname, Birthdate = Convert.ToDateTime(birthday) };
 
                 var result = await UserManager.CreateAsync(newUser, password);
 

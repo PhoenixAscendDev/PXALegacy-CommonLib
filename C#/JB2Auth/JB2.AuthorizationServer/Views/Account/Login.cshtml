@@ -27,8 +27,8 @@
             <div class="login">
                 <form method="POST">
                     <ul class="ul-list">
-                        <li><input type="email" required class="input" id="username" name="username" placeholder="Your Email" /><span class="icon"><i class="fa fa-envelope-o"></i></span></li>
-                        <li><input type="password" required class="input" id="password" name="password" placeholder="Password" /><span class="icon"><i class="fa fa-lock"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.Email, null, new { @type = "email", @class = "input", @placeholder = "Your Email" })<span class="icon"><i class="fa fa-envelope-o"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="icon"><i class="fa fa-lock"></i></span></li>
                         <li><span class="remember"><input type="checkbox" id="isPersistent" name="isPersistent"> <label for="check">Remember Me</label></span><span class="remember"><a href="">Forget Password</a></span></li>
                         <li><input type="submit" value="SIGN IN" name="submit.Signin" class="btn"></li>
                     </ul>

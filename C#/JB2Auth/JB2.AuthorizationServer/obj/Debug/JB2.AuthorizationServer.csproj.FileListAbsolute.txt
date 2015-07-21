@@ -4,6 +4,7 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Authori
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Constrants.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Core.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -22,7 +23,11 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Deployment.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Http.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Common.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Net.Http.Formatting.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Constrants.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Core.xml
@@ -42,6 +47,8 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Deployment.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Http.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Net.Http.Formatting.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Debug\JB2.AuthorizationServer.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Debug\JB2.AuthorizationServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Debug\JB2.AuthorizationServer.pdb

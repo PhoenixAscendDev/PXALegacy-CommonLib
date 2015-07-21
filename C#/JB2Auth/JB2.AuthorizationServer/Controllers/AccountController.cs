@@ -54,7 +54,7 @@ namespace JB2.AuthorizationServer.Controllers
 
 
 
-        public ActionResult Login()
+        public ActionResult Login(LoginViewModel﻿ model)
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
 
@@ -64,8 +64,8 @@ namespace JB2.AuthorizationServer.Controllers
 
                 if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
                 {
-                    string username = Request.Form["username"];
-                    string password = Request.Form["password"];
+                    string username = model.Email; // Request.Form["username"];
+                    string password = model.Password;
 
                     var user = UserManager.Find(username, password);
 

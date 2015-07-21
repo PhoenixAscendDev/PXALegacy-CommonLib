@@ -216,6 +216,10 @@
       <Project>{592208ec-369d-42bd-b42d-8d3ee547bdca}</Project>
       <Name>Constrants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Login\JB2.Login.csproj">
+      <Project>{295fa71c-14f9-4cc5-bffb-0580de5ddfc8}</Project>
+      <Name>JB2.Login</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

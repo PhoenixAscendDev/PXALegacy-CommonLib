@@ -31,6 +31,49 @@ namespace JB2.AuthorizationServer.Controllers
             var clientid = Request.QueryString.Get("client_id");
             var scopes = (Request.QueryString.Get("scope") ?? "").Split(',');
 
+
+            //If user already has granted the scope then go ahead and sign them in 
+
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = userManager.FindByName(identity.Name);
+
+            JB2.Login.Enum.ClaimScope[] dbScopes = JB2.Login.Helper.RetreievePlayerScope(user.Id, clientid);
+            bool needGrant = false;
+            if(dbScopes.Length > 0)
+            {
+                foreach(string s in scopes)
+                {
+                    if (!JB2.Login.Helper.IsScopeAuthorized(dbScopes, s))
+                        needGrant = true;
+                }
+            }
+            else
+            {
+                needGrant = true;
+            }
+
+            if(!needGrant)
+            {
+                //sign the user in,already granted previously
+                //var dbClaims = userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d");
+                identity = new ClaimsIdentity(identity.Claims, "Bearer", identity.NameClaimType, identity.RoleClaimType);
+
+                // add the clientid to identity so API can test against the scope
+                identity.AddClaim(new Claim("auth:client", clientid));
+                foreach (var scope in scopes)
+                {
+                    Claim scopeClaim = new Claim(clientid + ":scope", scope);
+
+                    identity.AddClaim(scopeClaim);
+                    AddClaim(identity.Name, scopeClaim);
+                    //if (!userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d").Contains(scopeClaim))
+                    //   userManager.AddClaim("aeffcd94-0804-450f-9caf-265c3b54009d", scopeClaim);
+                }
+                authentication.SignIn(identity);
+            }
+
+
+
             if (Request.HttpMethod == "POST")
             {
                 if (!string.IsNullOrEmpty(Request.Form.Get("submit.Grant")))

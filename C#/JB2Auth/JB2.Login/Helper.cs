@@ -86,6 +86,46 @@ namespace JB2.Login
         }
 
 
+        public static Enum.ClaimScope[] RetreievePlayerScope(string playerID,string clientID )
+        {
+
+            JB2.Login.Data.LoginRepository repo = new Data.LoginRepository();
+            try
+            {
+                return repo.GetPlayerClient(playerID, clientID).Scope;
+            }
+            catch(Exception ex)
+            {
+                return new Enum.ClaimScope[0];
+            }
+            
+         
+        }
+
+
+        public static bool IsScopeAuthorized(Enum.ClaimScope[]  scopes,Enum.ClaimScope test)
+        {
+            return scopes.Contains(test);
+        }
+
+        public static bool IsScopeAuthorized(Enum.ClaimScope[] scopes, string test)
+        {
+            try
+            {
+                Enum.ClaimScope scope = (Enum.ClaimScope)System.Enum.Parse(typeof(Enum.ClaimScope), test);
+                return IsScopeAuthorized(scopes, scope);
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
+
+
+
+
         
 
 

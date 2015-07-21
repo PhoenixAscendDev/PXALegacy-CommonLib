@@ -1,0 +1,67 @@
+﻿@model JB2.AuthorizationServer.LoginViewModel﻿
+
+@using System
+@using System.Linq
+@using System.Security.Claims
+@using System.Web
+@using Microsoft.Owin.Security
+@{
+    var authentication = Context.GetOwinContext().Authentication;
+    Layout = "~/Views/Shared/_popupLayout.cshtml";
+}
+
+<div id="login-form">
+
+    <input type="radio" checked id="login" name="switch" class="hide">
+    <input type="radio" id="signup" name="switch" class="hide">
+
+    <div>
+        <ul class="form-header">
+            <li><label for="login"><i class="fa fa-lock"></i> LOGIN<label for="login"></li>
+            <li><label for="signup"><i class="fa fa-user-plus"></i> REGISTER</label></li>
+        </ul>
+    </div>
+
+    <div class="section-out">
+        <section class="login-section">
+            <div class="login">
+                <form method="POST">
+                    @Html.AntiForgeryToken()
+                    <ul class="ul-list">
+                        <li>@Html.TextBoxFor(m => m.Email, null, new { @type = "email", @class = "input", @placeholder = "Your Email" })<span class="icon"><i class="fa fa-envelope-o"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="icon"><i class="fa fa-lock"></i></span></li>
+                        <li><span class="remember"><input type="checkbox" id="isPersistent" name="isPersistent"> <label for="check">Remember Me</label></span><span class="remember"><a href="">Forget Password</a></span></li>
+                        <li><input type="submit" value="SIGN IN" name="submit.Signin" class="btn"></li>
+                    </ul>
+                </form>
+            </div>
+
+            <div class="social-login" style="display:none;">
+                Or sign in with &nbsp;
+                <a href="" class="fb"><i class="fa fa-facebook"></i></a>
+                <a href="" class="tw"><i class="fa fa-twitter"></i></a>
+                <a href="" class="gp"><i class="fa fa-google-plus"></i></a>
+                <a href="" class="in"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </section>
+
+        <section class="signup-section">
+            <div class="login">
+                <form method="post" action="/Account/Register">
+                    @Html.AntiForgeryToken()
+                    <ul class="ul-list">
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.DisplayName,null,new { @type="text", @class="input", @placeholder="Display Name"})<span class="icon"><i class="fa fa-user"></i></span></li>
+                       <li>@Html.TextBoxFor(m => m.RegisterUser.Email, null, new { @type = "text", @class = "input", @placeholder = "Your Email" })<span class="icon"><i class="fa fa-envelope-o"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="icon"><i class="fa fa-lock"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.Birthdate, null, new { @class = "input", @placeholder = "Birthday" })<span class="icon"><i class="fa fa-birthday-cake"></i></span></li>
+                        <li>@Html.CheckBoxFor(m => m.RegisterUser.AcceptTerms,null)<label>I accept terms and conditions</label></li>
+                        <li><input type="submit" value="SIGN UP" class="btn"></li>
+                    </ul>
+                </form>
+            </div>
+
+
+        </section>
+    </div>
+
+</div>

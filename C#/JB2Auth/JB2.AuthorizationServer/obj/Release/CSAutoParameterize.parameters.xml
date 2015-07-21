@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="OAuthDbContext-Web.config Connection String" description="OAuthDbContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=polkadot;Password=boborama40!@DBA;Connect Timeout=60" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\scratch\\API-JB2Common\\C\#\\JB2Auth\\JB2\.AuthorizationServer\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OAuthDbContext']/@connectionString" />
+  </parameter>
+</parameters>

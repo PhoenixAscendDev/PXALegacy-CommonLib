@@ -1,0 +1,5 @@
+C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\bin\Release\Constrants.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\bin\Release\Constrants.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\obj\Release\Constrants.csprojResolveAssemblyReference.cache
+C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\obj\Release\Constrants.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\obj\Release\Constrants.pdb

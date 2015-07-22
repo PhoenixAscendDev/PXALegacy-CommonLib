@@ -26,9 +26,6 @@ C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.x
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.csprojResolveAssemblyReference.cache
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.pdb
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll.config
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Host.SystemWeb.dll
@@ -52,5 +49,8 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.csprojResolveAssemblyReference.cache
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.ResourceServer.dll.config
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.ResourceServer.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.ResourceServer.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\JB2.ResourceServer.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\JB2.ResourceServer.pdb

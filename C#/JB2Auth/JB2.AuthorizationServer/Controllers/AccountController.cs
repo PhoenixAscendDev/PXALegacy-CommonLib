@@ -53,7 +53,7 @@ namespace JB2.AuthorizationServer.Controllers
         }
 
 
-        [ValidateAntiForgeryToken]
+        
         public ActionResult Login(LoginViewModel﻿ model)
         {
             var authentication = HttpContext.GetOwinContext().Authentication;

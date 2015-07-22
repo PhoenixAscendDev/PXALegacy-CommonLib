@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" managedRuntimeVersion="v4.0" />
-  <setAcl path="C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" managedRuntimeVersion="v4.0" />
+  <setAcl path="L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

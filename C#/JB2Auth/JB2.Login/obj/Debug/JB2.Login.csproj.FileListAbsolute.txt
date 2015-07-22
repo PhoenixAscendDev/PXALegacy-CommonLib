@@ -61,3 +61,4 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\System.Web.Http.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.csprojResolveAssemblyReference.cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.csprojResolveAssemblyReference.cache

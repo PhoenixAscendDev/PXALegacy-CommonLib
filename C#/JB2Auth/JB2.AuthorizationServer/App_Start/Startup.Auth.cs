@@ -62,9 +62,9 @@ namespace JB2.AuthorizationServer
                 AuthorizeEndpointPath = new PathString(Paths.AuthorizePath),
                 TokenEndpointPath = new PathString(Paths.TokenPath),
                 ApplicationCanDisplayErrors = true,
-#if DEBUG
+//#if DEBUG
                 AllowInsecureHttp = true,
-#endif
+//#endif
                 Provider = new JB2AuthorizationServerProvider(),
                 //{
                 //    OnValidateClientRedirectUri = ValidateClientRedirectUri,

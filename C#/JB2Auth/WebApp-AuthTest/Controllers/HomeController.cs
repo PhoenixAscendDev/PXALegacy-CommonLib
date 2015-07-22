@@ -16,6 +16,7 @@ namespace WebApp_AuthTest.Controllers
 
         public ActionResult SignIn()
         {
+          
             return View();
         }
     }

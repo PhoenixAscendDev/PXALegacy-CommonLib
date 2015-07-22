@@ -24,9 +24,18 @@ namespace ResourceServer.Controllers
         }
        // +		[1]	{auth:client: 42ff5dad3c274c97a3a7c3d44b67bb42}	System.Security.Claims.Claim
 
-        [ScopeAuthorize(ClaimScope.testDenied)]
+        [ScopeAuthorize(ClaimScope.basic_profile)]
+        [HttpGet]
         public string Get()
         {
+        //string result = "Hello world! Time is: " + DateTime.Now;
+        //var resp = new HttpResponseMessage(HttpStatusCode.OK);
+
+        //// add this line to allow cross domain
+        //resp.Headers.Add("Access-Control-Allow-Origin", "*");
+        //resp.Content = new StringContent(result, System.Text.Encoding.UTF8, "text/plain");
+        //return resp;
+            //return "at least the url worked";
             return JB2.Login.Helper.CurrentAuthPlayer.ToString();
         }
     }

@@ -51,17 +51,42 @@
             });
 
             $('#CallApi').click(function () {
-                $.ajax(apiUri, {
-                    beforeSend: function (xhr) {
+                alert(apiUri);
+                $.ajax({ 
+                    url: apiUri,
+                    type: 'GET',
+                    beforeSend: function(xhr)
+                    {
                         xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
                     },
-                    dataType: 'text',
-                    cache: false,
-                    success: function (data) {
-                        console.log(data);
+                    success: function(data){
+                        alert(data);
                         $('#output').text(data);
+                    },
+                    error: function(xhr,ajaxOptions,thrownError)
+                    {
+                        alert(ajaxOptions);
+                        alert(thrownError);
                     }
                 });
+                //$.ajax(apiUri, {
+                //    beforeSend: function (xhr) {
+                //        xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
+                //        alert($('#AccessToken').val());
+                //    },
+                //    dataType: 'text',
+                //    cache: false,
+                //    success: function (data) {
+                //        alert(data);
+                //        console.log(data);
+                //        $('#output').text(data);
+                //    },
+                //    error: function(xhr,ajaxOptions,thrownError)
+                //    {
+                //        alert(xhr.response_type);
+                //        alert(thrownError);
+                //}
+                //});
             });
 
             function addQueryString(uri, parameters) {

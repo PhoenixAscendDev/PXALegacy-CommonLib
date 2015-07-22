@@ -49,8 +49,8 @@
             }
 
             var fragments = getFragment();
-            alert(fragments.access_token);
-            alert(window.opener);
+           // alert(fragments.access_token);
+           // alert(window.opener);
             if (window.opener && window.opener.oauth && window.opener.oauth.signin) {
                 window.opener.oauth.signin(fragments);
             }

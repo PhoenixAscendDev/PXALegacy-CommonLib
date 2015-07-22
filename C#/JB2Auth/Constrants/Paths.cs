@@ -11,15 +11,15 @@ namespace Constrants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:11625"; //;
-        //public const string AuthorizationServerBaseAddress = "http://login.jbsquared.com";
+        //public const string AuthorizationServerBaseAddress = "http://localhost:11625"; //;
+        public const string AuthorizationServerBaseAddress = "http://login.jbsquared.com";
 
 
         /// <summary>
         /// ResourceServer project should run on this URL
         /// </summary>
-        //public const string ResourceServerBaseAddress = "http://api.jbsquared.com/login";  //"http://localhost:38385";
-        public const string ResourceServerBaseAddress = "http://localhost:38385"; 
+        public const string ResourceServerBaseAddress = "http://api.jbsquared.com/login";  //"http://localhost:38385";
+        //public const string ResourceServerBaseAddress = "http://localhost:38385"; 
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'
         /// </summary>
@@ -34,6 +34,6 @@ namespace Constrants
         public const string TokenPath = "/OAuth/Token";
         public const string LoginPath = "/Account/Login";
         public const string LogoutPath = "/Account/Logout";
-        public const string MePath = "/api/Me";
+        public const string MePath = "/api/me/get";
     }
 }

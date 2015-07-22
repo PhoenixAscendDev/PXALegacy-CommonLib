@@ -55,8 +55,14 @@ namespace JB2.AuthorizationServer.Controllers
             if(!needGrant)
             {
                 //sign the user in,already granted previously
-                //var dbClaims = userManager.GetClaims("aeffcd94-0804-450f-9caf-265c3b54009d");
+               
+                
                 identity = new ClaimsIdentity(identity.Claims, "Bearer", identity.NameClaimType, identity.RoleClaimType);
+
+                //add userid - right now global id but would like user to have a unquie id per client for security
+                Claim idClaim = new Claim(clientid + ":userid", user.Id);
+                identity.AddClaim(idClaim);
+                AddClaim(identity.Name, idClaim);
 
                 // add the clientid to identity so API can test against the scope
                 identity.AddClaim(new Claim("auth:client", clientid));

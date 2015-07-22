@@ -36,7 +36,7 @@ namespace ResourceServer.Controllers
         //resp.Content = new StringContent(result, System.Text.Encoding.UTF8, "text/plain");
         //return resp;
             //return "at least the url worked";
-            return JB2.Login.Helper.CurrentAuthPlayer.ToString();
+            return JB2.Login.Helper.CurrentAuthClientID;
         }
     }
 }

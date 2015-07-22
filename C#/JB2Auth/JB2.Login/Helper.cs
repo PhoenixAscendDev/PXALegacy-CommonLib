@@ -14,6 +14,7 @@ namespace JB2.Login
     {
         private const string CLIENTCLAIM = "auth:client";
         private const string CLIENTSCOPE = ":scope";
+        private const string USERIDCLAIM = ":userid";
 
         public static ClaimsIdentity CurrentAuthPlayer
         {
@@ -21,6 +22,28 @@ namespace JB2.Login
             {
                 return (ClaimsIdentity)HttpContext.Current.User.Identity;
             }
+        }
+
+        public static string CurrentAuthUserId
+        {
+            get
+            {
+                string result = string.Empty;
+                try
+                {
+
+                    Claim claim = Helper.CurrentAuthPlayer.Claims.FirstOrDefault(c => c.Type == CurrentAuthClientID + USERIDCLAIM);
+                    result = claim.Value;
+                }
+                catch(Exception ex)
+                {
+
+                }
+                return result;
+
+            }
+
+
         }
 
         public static string CurrentAuthClientID

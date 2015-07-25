@@ -18,7 +18,7 @@ using System.Web.Http.Results;
 
 namespace JB2.API.Filters
 {
-    public class PlayerAuthenticationAttribute : Attribute, IAuthenticationFilter
+    public class APIAuthenticationAttribute : Attribute, IAuthenticationFilter
     {
         private static Dictionary<string, string> allowedApps = new Dictionary<string, string>();
         private readonly UInt64 requestMaxAgeInSeconds = 300;  //5 mins
@@ -26,6 +26,14 @@ namespace JB2.API.Filters
         //private JB2.Bowtie.IUnitOfWork _uofw;
         private string _headerDelimiter = ":";
         private string _signatureFormat = "{0}J{1}B{2}2{3}API_{4}";
+        private Enum.APIType _api;
+
+
+
+        public APIAuthenticationAttribute(Enum.APIType api)
+        {
+            
+        }
 
         public PlayerAuthenticationAttribute()
         {

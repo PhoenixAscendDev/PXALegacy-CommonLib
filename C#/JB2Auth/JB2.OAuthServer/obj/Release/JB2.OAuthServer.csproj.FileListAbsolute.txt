@@ -50,3 +50,4 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Release\JB2.OAuth.Migrat
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Release\JB2.OAuthServer.csproj.GenerateResource.Cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Release\JB2.OAuth.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Release\JB2.OAuth.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Release\JB2.OAuthServer.csprojResolveAssemblyReference.cache

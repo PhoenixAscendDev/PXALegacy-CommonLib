@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JB2.Login
+namespace JB2.Login.Data
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -33,7 +33,7 @@ namespace JB2.Login
     #endregion
 		
 		public LoginDataContext() : 
-				base(global::JB2.Login.Properties.Settings.Default.JB2_BowtieConnectionString, mappingSource)
+				base(global::JB2.Login.Data.Properties.Settings.Default.JB2_BowtieConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

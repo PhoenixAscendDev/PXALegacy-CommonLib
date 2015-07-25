@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.OAuthServer", "JB2.OAuthServer\JB2.OAuthServer.csproj", "{CFA2BEBB-D70A-40DD-ACF3-5D265DF78B43}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class Lib", "Class Lib", "{A604146B-88DF-4E47-A1D4-DE939E7929C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FD514B8B-E46E-433B-870C-10F300952607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Login.Data", "JB2.Login.Data\JB2.Login.Data.csproj", "{D0F48220-758B-40AC-A0EB-72A21CFC53C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Login.Helper", "JB2.Login.Helper\JB2.Login.Helper.csproj", "{F0A057AF-851C-43AD-B17D-75C158DF92E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,12 +59,22 @@ Global
 		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F48220-758B-40AC-A0EB-72A21CFC53C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F48220-758B-40AC-A0EB-72A21CFC53C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F48220-758B-40AC-A0EB-72A21CFC53C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F48220-758B-40AC-A0EB-72A21CFC53C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A057AF-851C-43AD-B17D-75C158DF92E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A057AF-851C-43AD-B17D-75C158DF92E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A057AF-851C-43AD-B17D-75C158DF92E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A057AF-851C-43AD-B17D-75C158DF92E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{592208EC-369D-42BD-B42D-8D3EE547BDCA} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
 		{295FA71C-14F9-4CC5-BFFB-0580DE5DDFC8} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
+		{592208EC-369D-42BD-B42D-8D3EE547BDCA} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
+		{D0F48220-758B-40AC-A0EB-72A21CFC53C0} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
+		{F0A057AF-851C-43AD-B17D-75C158DF92E6} = {A604146B-88DF-4E47-A1D4-DE939E7929C1}
 	EndGlobalSection
 EndGlobal

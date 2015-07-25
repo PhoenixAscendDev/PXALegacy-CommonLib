@@ -99,7 +99,6 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\System.Web.Http.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\System.Web.Http.WebHost.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\VersionOne.Parsers.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\bin\FSharp.Core.xml
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Debug\JB2.OAuthServer.csprojResolveAssemblyReference.cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Debug\JB2.OAuth.Migrations.init.resources
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Debug\JB2.OAuthServer.csproj.GenerateResource.Cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.OAuthServer\obj\Debug\JB2.OAuth.dll

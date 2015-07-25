@@ -29,10 +29,11 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\System.Net.Http.For
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\System.Web.Http.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.csprojResolveAssemblyReference.cache
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\EntityFramework.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\JB2.Login.dll.config
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\JB2.Login.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\JB2.Login.pdb
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\EntityFramework.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\EntityFramework.SqlServer.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\JB2.Common.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\Microsoft.AspNet.Identity.Core.dll
@@ -58,7 +59,5 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\Microsoft.Owin.Security.
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\Newtonsoft.Json.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\System.Net.Http.Formatting.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Debug\System.Web.Http.xml
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.csprojResolveAssemblyReference.cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.pdb
-L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Debug\JB2.Login.csprojResolveAssemblyReference.cache

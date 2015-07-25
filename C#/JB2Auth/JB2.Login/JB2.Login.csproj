@@ -93,18 +93,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ScopeAuthorizeAttribute.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Login.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Login.dbml</DependentUpon>
-    </Compile>
     <Compile Include="LoginService.cs" />
-    <Compile Include="Models\BaseRespository.cs" />
     <Compile Include="Models\ClaimScope.cs" />
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\LoginRepository.cs" />
     <Compile Include="Models\OAuthGrant.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerClient.cs" />
@@ -120,11 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Login.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Login.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,11 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Login.dbml.layout">
-      <DependentUpon>Login.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

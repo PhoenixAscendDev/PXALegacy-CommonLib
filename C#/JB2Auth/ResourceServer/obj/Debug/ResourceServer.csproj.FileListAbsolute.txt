@@ -29,7 +29,9 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll.config
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\ResourceServer.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Data.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Helper.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Security.dll
@@ -37,10 +39,14 @@ C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Security.O
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Newtonsoft.Json.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Owin.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Net.Http.Formatting.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Cors.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Common.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Data.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Helper.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Host.SystemWeb.xml
@@ -49,6 +55,7 @@ C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Microsoft.Owin.Security.O
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\Newtonsoft.Json.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Net.Http.Formatting.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.xml
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Owin.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebHost.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Debug\ResourceServer.csprojResolveAssemblyReference.cache

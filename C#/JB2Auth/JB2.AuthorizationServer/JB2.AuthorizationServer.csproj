@@ -217,6 +217,14 @@
       <Project>{592208ec-369d-42bd-b42d-8d3ee547bdca}</Project>
       <Name>Constrants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Login.Data\JB2.Login.Data.csproj">
+      <Project>{d0f48220-758b-40ac-a0eb-72a21cfc53c0}</Project>
+      <Name>JB2.Login.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Login.Helper\JB2.Login.Helper.csproj">
+      <Project>{f0a057af-851c-43ad-b17d-75c158df92e6}</Project>
+      <Name>JB2.Login.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Login\JB2.Login.csproj">
       <Project>{295fa71c-14f9-4cc5-bffb-0580de5ddfc8}</Project>
       <Name>JB2.Login</Name>

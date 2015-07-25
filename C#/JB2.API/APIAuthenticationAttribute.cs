@@ -32,10 +32,10 @@ namespace JB2.API.Filters
 
         public APIAuthenticationAttribute(Enum.APIType api)
         {
-            
+            this._scope = scope;
         }
 
-        public PlayerAuthenticationAttribute()
+        public APIAuthenticationAttribute()
         {
             _uofw = JB2.Bowtie.Web.Helper.UnitofWork;
             

@@ -24,9 +24,7 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Razor
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Deployment.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.dll
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Http.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Common.dll
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Net.Http.Formatting.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Constrants.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.xml
@@ -48,8 +46,6 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Razor
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Deployment.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.xml
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.Http.xml
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Net.Http.Formatting.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\JB2.AuthorizationServer.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\JB2.AuthorizationServer.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.AuthorizationServer.dll.config
@@ -106,3 +102,7 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Net.
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\JB2.AuthorizationServer.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\JB2.AuthorizationServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\obj\Release\JB2.AuthorizationServer.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.pdb

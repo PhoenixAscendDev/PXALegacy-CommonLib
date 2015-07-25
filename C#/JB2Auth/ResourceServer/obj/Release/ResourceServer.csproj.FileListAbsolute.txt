@@ -57,3 +57,10 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.WebH
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\ResourceServer\obj\Release\ResourceServer.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Data.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Helper.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Cors.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Data.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Helper.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.xml

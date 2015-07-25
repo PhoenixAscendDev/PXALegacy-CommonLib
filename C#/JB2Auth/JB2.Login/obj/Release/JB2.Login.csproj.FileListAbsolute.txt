@@ -27,7 +27,6 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\Microsoft.Owin.Securit
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\Newtonsoft.Json.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\System.Net.Http.Formatting.xml
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\System.Web.Http.xml
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.csprojResolveAssemblyReference.cache
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\JB2.Login.dll.config

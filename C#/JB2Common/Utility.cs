@@ -24,6 +24,22 @@ namespace JB2.Common
         /// 
 
 
+        public static IEnumerable<int> RandomSubsetOfRange(int min, int max, int count)
+        {
+            Random random = new Random();
+
+            int size = max - min + 1;
+            for (int i = 0; i <= size; i += 1)
+            {
+                if (random.NextDouble() <= ((float)count / (float)(size - i + 1)))
+                {
+                    yield return min + i;
+                    count -= 1;
+                }
+            }
+        }
+
+
 
         public static string ShortText(string text, int maxLength, string trailText)
         {

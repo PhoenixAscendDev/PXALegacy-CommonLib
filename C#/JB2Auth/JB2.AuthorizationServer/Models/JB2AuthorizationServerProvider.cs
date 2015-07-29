@@ -145,14 +145,9 @@ namespace JB2.AuthorizationServer
             //if (context.TryGetBasicCredentials(out clientId, out clientSecret))
             //{
 
-
-
             UserManager<IdentityUser> userManager = context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
 
             OAuthDataContext dbContext = context.OwinContext.Get<OAuthDataContext>();
-            
-           
-
             try
             {
                 Client client = await dbContext.Clients.FirstOrDefaultAsync(clientEntity => clientEntity.Id == clientId);

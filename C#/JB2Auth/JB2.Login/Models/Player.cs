@@ -15,5 +15,8 @@ namespace JB2.Login
         public Common.Name NameInfo {get;set;}
         public string ID {get;set;}
         public string Name {get;set;}
+        public string ProfileUrl { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
     }
 }

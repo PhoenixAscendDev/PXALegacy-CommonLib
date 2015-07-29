@@ -68,6 +68,13 @@ namespace JB2.Login.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerid, clientid);
 			return ((ISingleResult<jb2login_Get_PlayerClientResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.jb2login_Profile_Get")]
+		public ISingleResult<jb2login_Profile_GetResult> jb2login_Profile_Get([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string playerid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), playerid);
+			return ((ISingleResult<jb2login_Profile_GetResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class jb2login_Get_PlayerClientResult
@@ -127,6 +134,104 @@ namespace JB2.Login.Data
 				if ((this._Scope != value))
 				{
 					this._Scope = value;
+				}
+			}
+		}
+	}
+	
+	public partial class jb2login_Profile_GetResult
+	{
+		
+		private string _ID;
+		
+		private string _Email;
+		
+		private string _Username;
+		
+		private System.Nullable<System.DateTime> _Birthdate;
+		
+		private string _DisplayName;
+		
+		public jb2login_Profile_GetResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(256)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this._Username = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Birthdate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Birthdate
+		{
+			get
+			{
+				return this._Birthdate;
+			}
+			set
+			{
+				if ((this._Birthdate != value))
+				{
+					this._Birthdate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(255)")]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this._DisplayName = value;
 				}
 			}
 		}

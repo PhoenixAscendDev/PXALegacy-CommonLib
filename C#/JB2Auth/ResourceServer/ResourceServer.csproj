@@ -38,6 +38,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JB2.Bowtie">
+      <HintPath>..\..\..\..\Bowtie\CodeLibrary\Bowtie.WebAPI\bin\JB2.Bowtie.dll</HintPath>
+    </Reference>
+    <Reference Include="JB2.Bowtie.Data.Linq">
+      <HintPath>..\..\..\..\Bowtie\CodeLibrary\Bowtie.WebAPI\bin\JB2.Bowtie.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="JB2.Bowtie.Economy">
+      <HintPath>..\..\..\..\Bowtie\CodeLibrary\Bowtie.WebAPI\bin\JB2.Bowtie.Economy.dll</HintPath>
+    </Reference>
+    <Reference Include="JB2.Bowtie.Service">
+      <HintPath>..\..\..\..\Bowtie\CodeLibrary\Bowtie.WebAPI\bin\JB2.Bowtie.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="JB2.Common, Version=1.0.0.39211, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\JB2Common\bin\Release\JB2.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>

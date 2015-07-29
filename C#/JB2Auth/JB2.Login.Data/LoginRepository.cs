@@ -27,6 +27,27 @@ namespace JB2.Login.Data
              return query.ToArray().FirstOrDefault();
         }
 
+        public JB2.Login.Player GetPlayer(string playerID)
+        {
+            var query = from i in _dbcontext.jb2login_Profile_Get(playerID)
+                        select (Player)getPlayer(i);
+            return query.FirstOrDefault();
+        }
+
+        internal static JB2.Login.Player getPlayer<T>(T r) where T: class
+        {
+            Player result = new Player()
+            {
+                ID = getString(r,"ID"),
+                DisplayName = getString(r,"DisplayName"),
+                Birthdate = getDate(r,"Birthdate"),
+                Username = getString(r,"Username"),
+                Email = getString(r,"Email"),
+                ProfileUrl = JB2.Gravatar.GetImageUrl(getString(r,"Email"),100,string.Empty)            
+            };
+            return result;
+        }
+
         internal static PlayerClient getPlayerClient<T>(T r) where T : class
         {
             PlayerClient result = new PlayerClient()

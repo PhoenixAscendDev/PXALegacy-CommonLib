@@ -60,4 +60,5 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\System.Net.Http.F
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\System.Web.Http.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.pdb
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\obj\Release\JB2.Login.csprojResolveAssemblyReference.cache
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\JB2.Gravatar.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\JB2.Login\bin\Release\JB2.Gravatar.pdb

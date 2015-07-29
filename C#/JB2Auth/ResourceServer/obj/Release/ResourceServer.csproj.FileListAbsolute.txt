@@ -64,3 +64,14 @@ C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Data.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Login.Helper.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\System.Web.Http.Cors.xml
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Data.Linq.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Economy.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Service.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Data.Linq.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Economy.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Bowtie.Service.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Gravatar.dll
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Gravatar.pdb
+C:\scratch\API-JB2Common\C#\JB2Auth\ResourceServer\bin\JB2.Common.pdb

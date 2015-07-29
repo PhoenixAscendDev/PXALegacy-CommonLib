@@ -28,14 +28,6 @@ namespace ResourceServer.Controllers
         [HttpGet]
         public string Get()
         {
-        //string result = "Hello world! Time is: " + DateTime.Now;
-        //var resp = new HttpResponseMessage(HttpStatusCode.OK);
-
-        //// add this line to allow cross domain
-        //resp.Headers.Add("Access-Control-Allow-Origin", "*");
-        //resp.Content = new StringContent(result, System.Text.Encoding.UTF8, "text/plain");
-        //return resp;
-            //return "at least the url worked";
             return JB2.Login.Helper.CurrentAuthClientID;
         }
     }

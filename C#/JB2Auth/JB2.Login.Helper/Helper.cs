@@ -24,6 +24,12 @@ namespace JB2.Login
             }
         }
 
+        public static JB2.Login.Player  RetrieveProfile(string playerID)
+        {
+            JB2.Login.Data.LoginRepository repo = new Data.LoginRepository();
+            return repo.GetPlayer(playerID);
+        }
+
         public static string CurrentAuthUserId
         {
             get

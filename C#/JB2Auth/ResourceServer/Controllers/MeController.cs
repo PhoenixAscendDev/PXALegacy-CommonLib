@@ -26,9 +26,40 @@ namespace ResourceServer.Controllers
 
         [ScopeAuthorize(ClaimScope.basic_profile)]
         [HttpGet]
-        public string Get()
+        public ProfileViewModel Get()
         {
-            return JB2.Login.Helper.CurrentAuthClientID;
+            string playerID = JB2.Login.Helper.CurrentAuthClientID;
+            
+
+            //JB2.Login.Player player = JB2.Login.Player
+
+            ProfileViewModel result = new ProfileViewModel();
+
+            try
+            {
+                JB2.Login.Player player = JB2.Login.Helper.RetrieveProfile(playerID);
+                result.ID = player.ID;            
+                result.Displayname = player.DisplayName;
+                result.ProfileUrl = JB2.Gravatar.GetImageUrl(player.Email, 100, string.Empty);
+                result.jBeanWallet = new JB2.Bowtie.Economy.JBeanWallet();
+                
+                result.Age = 35;
+
+                if (JB2.Login.Helper.IsScopeAuthorized(ClaimScope.birthday))
+                    result.Birthday = player.Birthdate;
+                if (JB2.Login.Helper.IsScopeAuthorized(ClaimScope.email))
+                    result.Email = player.Email;
+            }
+            catch(Exception ex)
+            {
+                ///TODO
+            }
+
+
+
+            return new ProfileViewModel();
+
+           
         }
     }
 }

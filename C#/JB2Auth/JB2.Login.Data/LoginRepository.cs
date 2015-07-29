@@ -43,7 +43,7 @@ namespace JB2.Login.Data
                 Birthdate = getDate(r,"Birthdate"),
                 Username = getString(r,"Username"),
                 Email = getString(r,"Email"),
-                ProfileUrl = JB2.Gravatar.GetImageUrl(getString(r,"Email"),100,string.Empty)            
+                ProfileUrl = string.Empty       
             };
             return result;
         }

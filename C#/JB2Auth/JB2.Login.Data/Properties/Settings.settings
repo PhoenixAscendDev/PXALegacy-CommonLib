@@ -10,5 +10,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=polkadot;Connect Timeout=60</Value>
     </Setting>
+    <Setting Name="JB2_BowtieConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=polkadot;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=polkadot;Connect Timeout=60</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

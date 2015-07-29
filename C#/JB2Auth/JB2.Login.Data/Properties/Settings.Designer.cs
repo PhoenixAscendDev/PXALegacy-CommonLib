@@ -33,5 +33,16 @@ namespace JB2.Login.Data.Properties {
                 return ((string)(this["JB2_BowtieConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=cx8yl1ofvr.database.windows.net;Initial Catalog=JB2-Bowtie;User ID=po" +
+            "lkadot;Connect Timeout=60")]
+        public string JB2_BowtieConnectionString1 {
+            get {
+                return ((string)(this["JB2_BowtieConnectionString1"]));
+            }
+        }
     }
 }

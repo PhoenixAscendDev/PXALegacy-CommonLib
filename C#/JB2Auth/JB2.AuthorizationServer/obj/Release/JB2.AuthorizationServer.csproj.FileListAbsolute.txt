@@ -106,5 +106,3 @@ C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.d
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.pdb
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Gravatar.dll
-C:\scratch\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Gravatar.pdb

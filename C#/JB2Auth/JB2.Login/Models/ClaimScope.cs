@@ -11,7 +11,11 @@ namespace JB2.Login.Enum
         basic_profile,
         birthday,
         public_game_activity,
-        testDenied
+        testDenied,
+        public_jbeanWallet,
+        email
+
+
 
     }
 }

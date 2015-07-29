@@ -9,6 +9,8 @@ namespace JB2.Common
 {
     public static class Utility
     {
+
+        
         /// <summary>
         /// 2010.04.12 (JB) Use this utility when you do not want to display the full value of a string.
         /// It will only display the first [maxLength] number of chars that you tell it

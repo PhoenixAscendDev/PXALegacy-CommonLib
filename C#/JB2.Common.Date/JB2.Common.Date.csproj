@@ -7,8 +7,8 @@
     <ProjectGuid>{3F3B616B-80F8-4CFD-9296-B8D677DEDBD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.API.Date</RootNamespace>
-    <AssemblyName>JB2.API.Date</AssemblyName>
+    <RootNamespace>JB2.Common.Date</RootNamespace>
+    <AssemblyName>JB2.Common.Date</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -21,8 +21,8 @@ namespace JB2.AuthorizationServer
         public Task SendAsync(IdentityMessage message)
         {
             // Credentials:
-            var credentialUserName = "noreply@me-sys.com";
-            var sentFrom = "noreply@me-sys.com";
+            var credentialUserName = "noreply@jbsquared.com";
+            var sentFrom = "noreply@jbsquared.com";
             var pwd = "yourApssword";
 
             // Configure the client:

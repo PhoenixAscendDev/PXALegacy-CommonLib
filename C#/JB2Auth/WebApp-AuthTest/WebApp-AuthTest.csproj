@@ -102,13 +102,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RoutConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Constrants\Constrants.csproj">
       <Project>{592208ec-369d-42bd-b42d-8d3ee547bdca}</Project>

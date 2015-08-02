@@ -1,4 +1,8 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@using Constrants
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Katana.Sandbox.WebClient - Client Page</title>
 </head>
@@ -49,11 +53,34 @@
             }
 
             var fragments = getFragment();
-           // alert(fragments.access_token);
+            alert(fragments.access_token);
+
+            var apiUri = '@(Paths.ResourceServerBaseAddress + Paths.MePath)';
+
            // alert(window.opener);
             if (window.opener && window.opener.oauth && window.opener.oauth.signin) {
                 window.opener.oauth.signin(fragments);
             }
+
+            $.ajax({
+                url: apiUri,
+                type: 'GET',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + fragments.access_token);
+                },
+                success: function (data) {
+                    alert(data);
+                    $('#output').text(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(apiUri);
+                    alert(ajaxOptions);
+                    alert(thrownError);
+                }
+            });
+
+
+
             window.close();
         })(jQuery);
     </script>

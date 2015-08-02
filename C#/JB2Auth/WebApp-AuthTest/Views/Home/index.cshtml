@@ -43,8 +43,20 @@
                     if (data.state !== nonce) {
                         return;
                     }
-
                     $('#AccessToken').val(data.access_token);
+                    $.ajax({
+                        url: apiUri,
+                        type: 'GET',
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(apiUri);
+                            alert(ajaxOptions);
+                            alert(thrownError);
+                        }
+                    });
+
                 }
 
                 window.open(uri, 'Authorize', 'width=640,height=480');

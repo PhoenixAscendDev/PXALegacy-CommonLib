@@ -7,7 +7,7 @@ using System.Net;
 
 namespace JB2.MediaWeb.Controllers
 {
-    public class AvatarController : Controller
+    public class AvatarImageController : Controller
     {
 
         
@@ -19,7 +19,7 @@ namespace JB2.MediaWeb.Controllers
                 id = "NotFound";
             }
             var webClient = new WebClient();
-            var url = JB2.Gravatar.GetImageUrlByEmail("jb@jbsquared.com", 180, "http://jbsquared.blob.core.windows.net/images/genericProfile.jpg");
+            var url = JB2.Gravatar.GetImageUrl(id, 80, "http://jbsquared.blob.core.windows.net/images/genericProfile_80.jpg");
             
             byte[] imageBytes = webClient.DownloadData(url);
                

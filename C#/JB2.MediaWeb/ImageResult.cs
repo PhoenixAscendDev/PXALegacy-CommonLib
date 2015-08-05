@@ -10,9 +10,6 @@ namespace JB2.MediaWeb
 {
     public static class ControllerExtensions
     {
-        
-
-
         public static ImageResult Image(this Controller controller, Stream imageStream, string contentType)
         {
             return new ImageResult(imageStream, contentType);

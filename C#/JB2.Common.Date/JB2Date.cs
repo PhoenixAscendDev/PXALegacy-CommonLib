@@ -174,6 +174,16 @@ namespace JB2.Common
             }
         }
 
+        public double StardateTNG
+        {
+            get
+            {
+                return this.ToStardateTNG();
+            }
+        }
+
+
+
         //[FullDateUK] CHAR(10), -- Date in dd-MM-yyyy format
         //[FullDateUSA] CHAR(10),-- Date in MM-dd-yyyy format
         //[DayOfMonth] VARCHAR(2), -- Field will hold day number of Month
@@ -277,6 +287,33 @@ namespace JB2.Common
         public int ToInt()
         {
             return (int)this;
+        }
+
+        public double ToStardateTNG()
+        {
+            try
+            {
+
+
+                DateTime StardateOrigin = new DateTime(1987, 07, 15);
+                DateTime TestDate = (DateTime)this;
+
+                //pulled from http://trekguide.com/Stardates.htm
+
+                TimeSpan timespan = TestDate - StardateOrigin;
+
+                var msec = timespan.TotalMilliseconds / (1000 * 60 * 60 * 24 * 0.036525);
+
+                msec = Math.Floor(msec + 410000);
+                msec = msec / 10;
+                return msec;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            
         }
 
         #endregion

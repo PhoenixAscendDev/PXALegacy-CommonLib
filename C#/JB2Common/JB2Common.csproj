@@ -46,6 +46,7 @@
     <Compile Include="Enum\KeyBitSize.cs" />
     <Compile Include="Error\SqliteException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
+    <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IAddress.cs" />

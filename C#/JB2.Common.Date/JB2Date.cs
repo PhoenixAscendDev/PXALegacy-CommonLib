@@ -163,6 +163,33 @@ namespace JB2.Common
             
         }
 
+        public byte WeekOfMonth
+        {
+
+            get
+            {
+                System.Globalization.GregorianCalendar gc = new GregorianCalendar();
+
+                var wofY = gc.GetWeekOfYear(this,CalendarWeekRule.FirstDay,DayOfWeek.Sunday);
+
+                var first = gc.GetWeekOfYear(new DateTime(this.Year,this.Month,1),CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+
+                return (byte) (wofY - first + 1);
+                //return this.ToDatetime().
+            }
+        }
+
+        public byte WeekOfYear
+        { 
+            get
+            {
+                System.Globalization.GregorianCalendar gc = new GregorianCalendar();
+                return (byte)gc.GetWeekOfYear(this, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+
+            }
+        
+        }
+
         public short Year
         {
             get

@@ -259,9 +259,16 @@ namespace JB2.Common
         {
             get
             {
-                System.Globalization.ChineseLunisolarCalendar clc = new ChineseLunisolarCalendar();
+                try
+                {
+                    System.Globalization.ChineseLunisolarCalendar clc = new ChineseLunisolarCalendar();
 
-                return clc.GetYear(this);
+                    return clc.GetYear(this);
+                }
+                catch(Exception ex)
+                {
+                    return 0;
+                }
             }
         }
 
@@ -307,7 +314,8 @@ namespace JB2.Common
 
         public static implicit operator JB2Date(DateTime jb2d)
         {
-            return new JB2Date(MINKEY);
+            string datekey = jb2d.ToString("yyyyMMdd");
+            return new JB2Date(Convert.ToInt32(datekey));
 
         }
 

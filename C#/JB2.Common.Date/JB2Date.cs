@@ -24,16 +24,6 @@ namespace JB2.Common
                 _datekey = MINKEY;
             else
                 _datekey = dateKey;
-            //base.serializableProperties = new List<string>();
-
-            //foreach(PropertyInfo p in this.GetType().GetProperties())
-            //{
-            //    base.serializableProperties.Add(p.Name);
-            //}
-           
-            //foreach(PropertyInfo p in this.GetType().)
-
-
         }
 
         #region Public Properties
@@ -109,8 +99,6 @@ namespace JB2.Common
                 return ((DateTime)this).ToString("dddd, dd MMMM yyyy");
             }
         }
-
-
 
 
         public byte DayOfMonth
@@ -202,6 +190,23 @@ namespace JB2.Common
         //[MonthName] VARCHAR(9),--January, February etc
         //[MonthOfQuarter] VARCHAR(2),-- Month Number belongs to Quarter
 
+
+        public string LunarPhase
+        {
+            get
+            {
+                return ((Enum.LunarPhaseSegments)this.ToLunarSegment()).ToString();
+            }
+        }
+
+        public byte LunarPhaseSegment
+        {
+            get
+            {
+                return (byte)this.ToLunarSegment();
+            }
+        }
+
         #endregion Public Properties
 
         #region implicit operators
@@ -289,6 +294,42 @@ namespace JB2.Common
             return (int)this;
         }
 
+
+        public int ToLunarSegment()
+        {
+
+            //source http://www.voidware.com/moon_phase.htm
+            int c;
+            int e;
+            int b;
+            double jd;
+
+            int year = this.Year;
+            int month = this.Month;
+            int day = this.DayOfMonth;
+
+            if (month < 3)
+            {
+                year--;
+                month += 12;
+            }
+            ++month;
+            c = (int)(365.25 * year);
+            e = (int)(30.6 * month);
+            jd = c + e + day - 694039.09;
+            jd /= 29.53;
+            b = (int)jd;
+            jd -= b;
+            b = (int)(jd * 8 + 0.5);
+            b = b & 7;
+            return b;
+
+        }
+           
+                
+
+
+
         public double ToStardateTNG()
         {
             try
@@ -298,7 +339,7 @@ namespace JB2.Common
                 DateTime StardateOrigin = new DateTime(1987, 07, 15);
                 DateTime TestDate = (DateTime)this;
 
-                //pulled from http://trekguide.com/Stardates.htm
+                //source http://trekguide.com/Stardates.htm
 
                 TimeSpan timespan = TestDate - StardateOrigin;
 
@@ -313,7 +354,6 @@ namespace JB2.Common
                 return 0;
             }
 
-            
         }
 
         #endregion

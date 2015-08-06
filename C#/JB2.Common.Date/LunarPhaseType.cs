@@ -8,6 +8,7 @@ namespace JB2.Common.Enum
 {
     public enum LunarPhaseSegments
     {
+
         NewMoon = 0,
         WaxingCrescent=1,
         FirstQuarter = 2,

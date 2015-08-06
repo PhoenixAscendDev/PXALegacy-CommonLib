@@ -247,6 +247,46 @@ namespace JB2.Common
             }
         }
 
+        public bool IsLeapYear
+        {
+            get
+            {
+                return DateTime.IsLeapYear(this.Year);
+            }
+        }
+
+        public int ChineseLunarYear
+        {
+            get
+            {
+                System.Globalization.ChineseLunisolarCalendar clc = new ChineseLunisolarCalendar();
+
+                return clc.GetYear(this);
+            }
+        }
+
+        
+
+        public string ChineseZodiac
+        {
+            get
+            {
+                try
+                {
+                    var cc = new System.Globalization.ChineseLunisolarCalendar();
+                    var SexanageryYear = cc.GetSexagenaryYear(this);
+                    var TerrestrialBranch = cc.GetTerrestrialBranch(SexanageryYear);
+                    //var cYear = "rat,ox,tiger,hare,dragon,snake,horse,sheep,monkey,fowl,dog,pig".Split(',');
+                    var cYear = "Rat,Ox,Tiger,Rabbit,Dragon,Snake,Horse,Goat,Monkey,Rooster,Dog,Pig".Split(',');
+                    return ((Enum.ChineseZodiac)(TerrestrialBranch - 1)).ToString();
+                }
+                catch(Exception ex)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
         #endregion Public Properties
 
         #region implicit operators

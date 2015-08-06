@@ -109,6 +109,34 @@ namespace JB2.Common
             }
         }
 
+        public byte DayofWeek
+        {
+            get
+            {
+                var dt = (DateTime)this;
+                return (byte)dt.DayOfWeek;
+            }
+        }
+
+
+        public byte DayofYear
+        {
+            get
+            {
+                var dt = (DateTime)this;
+                return (byte)dt.DayOfYear;
+            }
+        }
+
+        public string DayofWeekName
+        {
+            get
+            {
+                var dt = (DateTime)this;
+                return dt.DayOfWeek.ToString();
+            }
+        }
+
         public byte Month
         {
             get
@@ -126,6 +154,15 @@ namespace JB2.Common
             }
         }
 
+        public byte MonthOfQuarter
+        {
+            get
+            {
+                return (this.Month % 3) == 0 ? (byte)1 : (byte)(this.Month % 3);
+            }
+            
+        }
+
         public short Year
         {
             get
@@ -135,32 +172,8 @@ namespace JB2.Common
 
         }
 
-        public byte DayofWeek
-        {
-            get
-            {
-                var dt = (DateTime)this;
-                return (byte)dt.DayOfWeek;         
-            }
-        }
 
-        public string DayofWeekName
-        {
-            get
-            {
-                var dt = (DateTime)this;
-                return dt.DayOfWeek.ToString();
-            }
-        }
 
-        public byte DayofYear
-        {
-            get
-            {
-                var dt = (DateTime)this;
-                return (byte)dt.DayOfYear;
-            }
-        }
 
         public double StardateTNG
         {

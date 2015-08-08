@@ -2,11 +2,11 @@ C:\scratch\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Gravatar.dll
 C:\scratch\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Gravatar.pdb
 C:\scratch\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.dll
 C:\scratch\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.pdb
+C:\scratch\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Gravatar.dll
 L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Gravatar.pdb
+L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Common.dll
+L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Common.pdb
 L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.csprojResolveAssemblyReference.cache
 L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.dll
 L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.pdb
-C:\scratch\API-JB2Common\C#\JB2.Gravatar\obj\Release\JB2.Gravatar.csprojResolveAssemblyReference.cache
-L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Common.dll
-L:\Projects\API\API-JB2Common\C#\JB2.Gravatar\bin\Release\JB2.Common.pdb

@@ -1,8 +1,9 @@
-L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.pdb
-L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.pdb
 C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.dll
 C:\scratch\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\bin\Debug\Constrants.pdb
+L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.csprojResolveAssemblyReference.cache
+L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\Constrants\obj\Debug\Constrants.pdb

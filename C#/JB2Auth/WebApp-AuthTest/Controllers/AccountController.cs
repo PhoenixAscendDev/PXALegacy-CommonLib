@@ -15,10 +15,6 @@ namespace WebApp_AuthTest.Controllers
         }
 
 
-        [HttpPost]
-        public string SignIn(string accesstoken, string userid)
-        {
-            Session["AccessToken"] = accesstoken;
-        }
+       
     }
 }

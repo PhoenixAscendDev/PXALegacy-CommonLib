@@ -73,17 +73,7 @@ namespace JB2.Common.Data
         public IEnumerable<T> GetByRowKeyStartWith<T>(string partitionKey, string startwith, int noOfRecords) where T : ITableEntity, new()
         {
             var result = _table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords);
-
             return result;
-            //var query = new TableQuery<T>().Where(
-            //    TableQuery.CombineFilters(
-            //            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
-            //            TableOperators.And,
-            //            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, startwith)));
-            //var result = _table.ExecuteQuery(query).Take(noOfRecords).ToList();
-            //return result;
-
-
         }
 
 

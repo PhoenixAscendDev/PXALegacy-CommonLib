@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Data", "JB2.Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.GoogleAnalytics", "JB2.GoogleAnalytics\JB2.GoogleAnalytics.csproj", "{7F4DCDB4-BE13-4BD9-9C9F-9959E3057E65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Color", "JB2.Common.Color\JB2.Common.Color.csproj", "{38B96FB8-072F-48AC-99DD-E8910F6E36D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Data.AzureStorage", "JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj", "{AC8FDE4A-EA15-4FB8-A3B2-C759A4FADC7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{7F4DCDB4-BE13-4BD9-9C9F-9959E3057E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F4DCDB4-BE13-4BD9-9C9F-9959E3057E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F4DCDB4-BE13-4BD9-9C9F-9959E3057E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B96FB8-072F-48AC-99DD-E8910F6E36D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B96FB8-072F-48AC-99DD-E8910F6E36D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B96FB8-072F-48AC-99DD-E8910F6E36D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B96FB8-072F-48AC-99DD-E8910F6E36D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8FDE4A-EA15-4FB8-A3B2-C759A4FADC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8FDE4A-EA15-4FB8-A3B2-C759A4FADC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8FDE4A-EA15-4FB8-A3B2-C759A4FADC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8FDE4A-EA15-4FB8-A3B2-C759A4FADC7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

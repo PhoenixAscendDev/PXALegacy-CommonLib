@@ -53,7 +53,6 @@ namespace JB2.Common
             return result;
         }
 
-
         public static string RandomString(int size, bool lowerCase)
         {
             StringBuilder builder = new StringBuilder();

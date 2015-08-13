@@ -14,6 +14,11 @@ namespace JB2.Common.Data
             this.RowKey = rowKey;
         }
 
+        public ImageEntity()
+        {
+
+        }
+
         public string Url { get; set; }
         public string ThumbnailUrl { get; set; }
 

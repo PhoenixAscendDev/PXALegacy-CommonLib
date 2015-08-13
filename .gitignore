@@ -46,3 +46,9 @@ C#/JB2Auth/JB2.Login/obj/Release/JB2.Login.csproj.FileListAbsolute.txt
 C#/JB2Auth/JB2.OAuthServer/obj/Release/JB2.OAuth.dll
 *.pdb
 C#/JB2Common.v12.suo
+C#/Common.Web/bin/Release/JB2.Common.Web.dll
+C#/Common.Web/bin/Release/JB2.Common.Web.pdb
+C#/Common.Web/obj/Release/JB2.Common.Web.pdb
+C#/JB2.Gravatar/bin/Release/JB2.Gravatar.dll
+C#/JB2.Gravatar/bin/Release/JB2.Gravatar.pdb
+C#/JB2.Gravatar/obj/Release/JB2.Gravatar.dll

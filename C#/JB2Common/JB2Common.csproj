@@ -54,6 +54,7 @@
     <Compile Include="IDie.cs" />
     <Compile Include="IImage.cs" />
     <Compile Include="ILookupItem.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

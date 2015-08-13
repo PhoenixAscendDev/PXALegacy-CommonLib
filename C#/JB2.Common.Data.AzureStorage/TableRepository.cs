@@ -9,6 +9,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 
+using JB2.Common.Extensions;
+
 
 namespace JB2.Common.Data
 {
@@ -70,13 +72,16 @@ namespace JB2.Common.Data
 
         public IEnumerable<T> GetByRowKeyStartWith<T>(string partitionKey, string startwith, int noOfRecords) where T : ITableEntity, new()
         {
-            var query = new TableQuery<T>().Where(
-                TableQuery.CombineFilters(
-                        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
-                        TableOperators.And,
-                        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, startwith)));
-            var result = _table.ExecuteQuery(query).Take(noOfRecords).ToList();
+            var result = _table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords);
+
             return result;
+            //var query = new TableQuery<T>().Where(
+            //    TableQuery.CombineFilters(
+            //            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
+            //            TableOperators.And,
+            //            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, startwith)));
+            //var result = _table.ExecuteQuery(query).Take(noOfRecords).ToList();
+            //return result;
 
 
         }

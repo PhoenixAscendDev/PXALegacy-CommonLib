@@ -23,5 +23,30 @@ namespace JB2.Common.Extensions
         {
             return new ImageResult(new MemoryStream(imageBytes), contentType);
         }
+
+        public static System.Net.Http.HttpResponseMessage Image(this System.Web.Http.ApiController controller, MemoryStream imageStream, string contentType)
+        {
+            System.Net.Http.HttpResponseMessage httpResponseMessage = new System.Net.Http.HttpResponseMessage();
+            //httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+
+            //MemoryStream memoryStream = new MemoryStream(imageBytes);
+
+            httpResponseMessage.Content = new System.Net.Http.ByteArrayContent(imageStream.ToArray());
+            httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+            httpResponseMessage.StatusCode = System.Net.HttpStatusCode.OK;
+            //httpResponseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+            //
+
+            return httpResponseMessage;
+        }
+
+
+
+
+
+        public static System.Net.Http.HttpResponseMessage Image(this System.Web.Http.ApiController controller, byte[] imageBytes, string contentType)
+        {
+            return Image(controller,new MemoryStream(imageBytes), contentType);
+        }
     }
 }

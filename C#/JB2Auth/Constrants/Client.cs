@@ -10,8 +10,8 @@ namespace Constrants
     {
         public readonly static Client Client1 = new Client
         {
-            Id = "123456",
-            Secret = "abcdef",
+            Id = "42ff5dad3c274c97a3a7c3d44b67bb42",
+            Secret = "AGKN5JestC5ZAPky86oawZUPq7y6E99XuQXMz2JwrFLfumsbyX2rbCgFphJbSNX9pw==",
             RedirectUrl = Paths.AuthorizeCodeCallBackPath
         };
 

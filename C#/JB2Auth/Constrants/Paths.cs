@@ -11,7 +11,7 @@ namespace Constrants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:11628"; //;
+        public const string AuthorizationServerBaseAddress = "http://localhost:11629"; //;
         //public const string AuthorizationServerBaseAddress = "http://login.jbsquared.com";
 
 
@@ -23,12 +23,12 @@ namespace Constrants
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'
         /// </summary>
-        public const string ImplicitGrantCallBackPath = "http://localhost:38515/Home/SignIn";
+        public const string ImplicitGrantCallBackPath = "http://localhost:38516/Home/SignIn";
 
         /// <summary>
         /// AuthorizationCodeGrant project should be running on this URL.
         /// </summary>
-        public const string AuthorizeCodeCallBackPath = "http://localhost:38500/";
+        public const string AuthorizeCodeCallBackPath = "http://localhost:38516/Home/AGTest";
 
         public const string AuthorizePath = "/OAuth/Authorize";
         public const string TokenPath = "/OAuth/Token";

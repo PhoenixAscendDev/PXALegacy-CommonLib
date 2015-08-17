@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace JB2.Common
 {
+    [Obsolete("Please use Utility.GetAttributeOfType instead",false)]
     public static class Helper
     {
         public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute

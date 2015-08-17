@@ -10,7 +10,7 @@ namespace JB2.Common
     public static class Utility
     {
 
-        
+
         /// <summary>
         /// 2010.04.12 (JB) Use this utility when you do not want to display the full value of a string.
         /// It will only display the first [maxLength] number of chars that you tell it
@@ -24,6 +24,15 @@ namespace JB2.Common
         /// <param name="trailText"></param>
         /// <returns></returns>
         /// 
+
+
+        public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute
+        {
+            var type = enumVal.GetType();
+            var memInfo = type.GetMember(enumVal.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
+            return (attributes.Length > 0) ? (T)attributes[0] : null;
+        }
 
 
         public static IEnumerable<int> RandomSubsetOfRange(int min, int max, int count)

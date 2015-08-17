@@ -47,6 +47,7 @@
     <Compile Include="Error\SqliteException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
     <Compile Include="Extensions\DataExtenstions.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="ObjectTag.cs" />
+    <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceResult.cs" />
     <Compile Include="ShortGUID.cs" />

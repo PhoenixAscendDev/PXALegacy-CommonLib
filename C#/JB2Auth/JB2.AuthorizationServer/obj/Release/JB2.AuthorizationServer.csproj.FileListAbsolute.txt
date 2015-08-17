@@ -58,6 +58,7 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Authori
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Constrants.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.dll
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Common.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.dll
@@ -80,13 +81,13 @@ L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Deployment.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\System.Web.WebPages.Razor.dll
-L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Common.dll
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Constrants.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Data.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.Helper.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Login.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\EntityFramework.SqlServer.xml
+L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\JB2.Common.pdb
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Core.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 L:\Projects\API\API-JB2Common\C#\JB2Auth\JB2.AuthorizationServer\bin\Microsoft.AspNet.Identity.Owin.xml

@@ -5,10 +5,27 @@
 @using System.Security.Claims
 @using System.Web
 @using Microsoft.Owin.Security
+@using JB2.Common;
 @{
+    if(ViewBag.ServiceResult == null)
+{
+        ViewBag.ServiceResult = new JB2.Common.ServiceResult();
+}
     var authentication = Context.GetOwinContext().Authentication;
     Layout = "~/Views/Shared/_popupLayout.cshtml";
 }
+
+@if(ViewBag.FormMode == "register")
+{
+    <script>
+        $(document).ready(function () {
+            var ctl = $("#signup");
+            ctl.click();
+        });
+    </script>
+}
+
+
 
 <div id="login-form">
 
@@ -17,7 +34,7 @@
 
     <div>
         <ul class="form-header">
-            <li><label for="login"><i class="fa fa-lock"></i> LOGIN<label for="login"></li>
+            <li><label for="login"><i class="fa fa-lock"></i> LOGIN</label></li>
             <li><label for="signup"><i class="fa fa-user-plus"></i> REGISTER</label></li>
         </ul>
     </div>
@@ -48,12 +65,40 @@
         <section class="signup-section">
             <div class="login">
                 <form method="post" action="/Account/Register">
+                    @{
+                        var emailIconClass = "icon";
+                        var usernameIconClass = "icon";
+                        var passwordIconClass = "icon";
+                        var birthdayIconClass = "icon";
+
+                    }
+                                                            @if(!ViewBag.ServiceResult)
+                    {
+                        foreach(JB2.Common.Validation v in ViewBag.ServiceResult.Validation)
+                        {
+                            if(v.Name.ToLower() == "email")
+                             {
+                                emailIconClass = "erroricon";
+                              }
+                            if(v.Name.ToLower() == "birthday")
+                            {
+                                birthdayIconClass = "erroricon";
+                            }
+                            if(v.Name.ToLower() == "password")
+                            {
+                               passwordIconClass = "erroricon";
+                            }
+                        }
+                    }
+                        
+
+
                     @Html.AntiForgeryToken()
                     <ul class="ul-list">
-                        <li>@Html.TextBoxFor(m => m.RegisterUser.DisplayName,null,new { @type="text", @class="input", @placeholder="Display Name"})<span class="icon"><i class="fa fa-user"></i></span></li>
-                       <li>@Html.TextBoxFor(m => m.RegisterUser.Email, null, new { @type = "text", @class = "input", @placeholder = "Your Email" })<span class="icon"><i class="fa fa-envelope-o"></i></span></li>
-                        <li>@Html.TextBoxFor(m => m.RegisterUser.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="icon"><i class="fa fa-lock"></i></span></li>
-                        <li>@Html.TextBoxFor(m => m.RegisterUser.Birthdate, null, new { @class = "input", @placeholder = "Birthday" })<span class="icon"><i class="fa fa-birthday-cake"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.DisplayName,null,new { @type="text", @class="input", @placeholder="Display Name"})<span class="@usernameIconClass"><i class="fa fa-user"></i></span></li>
+                       <li>@Html.TextBoxFor(m => m.RegisterUser.Email, null, new { @type = "text", @class = "input", @placeholder = "Your Email" })<span class="@emailIconClass"><i class="fa fa-envelope-o"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="@passwordIconClass"><i class="fa fa-lock"></i></span></li>
+                        <li>@Html.TextBoxFor(m => m.RegisterUser.Birthdate, null, new { @class = "input", @placeholder = "Birthday" })<span class="@birthdayIconClass"><i class="fa fa-birthday-cake"></i></span></li>
                         <li>@Html.CheckBoxFor(m => m.RegisterUser.AcceptTerms,null)<label> &nbsp; &nbsp;I accept terms and conditions</label></li>
                         <li><input type="submit" value="SIGN UP" class="btn"></li>
                     </ul>

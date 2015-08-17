@@ -36,6 +36,8 @@ li,ul,body,input{margin:0; padding:0; list-style:none}
 .input{background:#fff; transition:all 800ms; width:247px; border-radius:3px 0 0 3px; font-family: 'Ropa Sans', sans-serif; border:solid 1px #ccc; border-right:none; outline:none; color:#999; height:40px; line-height:40px; display:inline-block; padding-left:10px; font-size:16px}
 .input,.login span.icon{vertical-align:top}
 .login span.icon{width:50px; transition:all 800ms; text-align:center; color:#999; height:40px; border-radius:0 3px 3px 0; background:#e8e8e8; height:40px; line-height:40px; display:inline-block; border:solid 1px #ccc; border-left:none; font-size:16px}
+.login span.erroricon{width:50px; transition:all 800ms; text-align:center; color:#fff; height:40px; border-radius:0 3px 3px 0; background-color:indianred; height:40px; line-height:40px; display:inline-block; border:solid 1px #ccc; border-left:none; font-size:16px}
+
 .input:focus:invalid{border-color:red}
 .input:focus:invalid+.icon{border-color:red}
 .input:focus:valid{border-color:green}

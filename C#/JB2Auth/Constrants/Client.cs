@@ -12,14 +12,14 @@ namespace Constrants
         {
             Id = "42ff5dad3c274c97a3a7c3d44b67bb42",
             Secret = "AGKN5JestC5ZAPky86oawZUPq7y6E99XuQXMz2JwrFLfumsbyX2rbCgFphJbSNX9pw==",
-            RedirectUrl = Paths.AuthorizeCodeCallBackPath
+            RedirectUrl = Paths.ImplicitGrantCallBackPath
         };
 
         public readonly static Client Client2 = new Client
         {
-            Id = "7890ab",
-            Secret = "7890ab",
-            RedirectUrl = Paths.ImplicitGrantCallBackPath
+            Id = "566",
+            Secret = "hash566",
+            RedirectUrl = Paths.AuthorizeCodeCallBackPath
         };
     }
 

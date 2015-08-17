@@ -75,20 +75,26 @@ namespace JB2.AuthorizationServer.Controllers
                                         new AuthenticationProperties { IsPersistent = isPersistent },
                                         new ClaimsIdentity(new[] { new Claim(
                                                 ClaimsIdentity.DefaultNameClaimType, username) },"Application"));
-
-
                     }
                 }
             }
 
             LoginViewModel m = new LoginViewModel();
 
+            ViewBag.FormMode = "login";
+            ViewBag.Jscript = "alert('login');";
             return View();
         }
 
         public ActionResult Logout()
         {
-            return View();
+            var authentication = HttpContext.GetOwinContext().Authentication;
+            authentication.SignOut();
+
+            ViewBag.FormMode = "login";
+            ViewBag.Jscript = "alert('login');";
+
+            return View("Login");
         }
 
         public ActionResult External()
@@ -130,9 +136,26 @@ namespace JB2.AuthorizationServer.Controllers
             string password = model.RegisterUser.Password;
             DateTime birthday = model.RegisterUser.Birthdate;
             string displayname = model.RegisterUser.DisplayName;
-
+            ViewBag.FormMode = "register";
+            JB2.Common.ServiceResult serviceResult = true;
             try
             {
+                if (UserManager.FindById(username) != null)
+                    serviceResult.Validation.Add(new JB2.Common.Validation("email", "The Email already exists") { IsValid = false });
+
+                if (birthday == DateTime.MinValue)
+                    serviceResult.Validation.Add(new JB2.Common.Validation("birthday", "Issue with Birthday") { IsValid = false });
+
+                var passwordCheck = await UserManager.PasswordValidator.ValidateAsync(password);
+                if(!passwordCheck.Succeeded)
+                    serviceResult.Validation.Add(new JB2.Common.Validation("password", "Password") { IsValid = false });
+
+                if(!serviceResult)
+                {
+                    throw new JB2.Common.Exceptions.ResultException("Validation Exception");
+                }
+
+
                 ApplicationUser newUser = new ApplicationUser() { Email = username, UserName = username, DisplayName = displayname, Birthdate = birthday };
 
                 var result = await UserManager.CreateAsync(newUser, password);
@@ -152,7 +175,12 @@ namespace JB2.AuthorizationServer.Controllers
             }
             catch(Exception ex)
             {
+                
 
+            }
+            finally
+            {
+                ViewBag.ServiceResult = serviceResult;
             }
 
             return View("Login");

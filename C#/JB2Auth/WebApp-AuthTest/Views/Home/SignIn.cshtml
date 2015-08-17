@@ -53,7 +53,7 @@
             }
 
             var fragments = getFragment();
-            alert(fragments.access_token);
+            //alert(fragments.access_token);
 
             var apiUri = '@(Paths.ResourceServerBaseAddress + Paths.MePath)';
 
@@ -69,13 +69,13 @@
                     xhr.setRequestHeader('Authorization', 'Bearer ' + fragments.access_token);
                 },
                 success: function (data) {
-                    alert(data);
+                    //alert(data);
                     $('#output').text(data);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(apiUri);
-                    alert(ajaxOptions);
-                    alert(thrownError);
+                    //alert(apiUri);
+                    //alert(ajaxOptions);
+                    //alert(thrownError);
                 }
             });
 

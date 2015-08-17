@@ -34,6 +34,15 @@ namespace JB2.Common
             return (attributes.Length > 0) ? (T)attributes[0] : null;
         }
 
+        public static int RandomNumber(int min, int max)
+        {
+            return ThreadSafeRandom.ThisThreadsRandom.Next(min, max);
+        }
+        public static int RandomNumber(int max)
+        {
+            return ThreadSafeRandom.ThisThreadsRandom.Next(max);
+        }
+
 
         public static IEnumerable<int> RandomSubsetOfRange(int min, int max, int count)
         {

@@ -72,3 +72,4 @@ C#/Common.Web/bin/Release/JB2.Common.Web.dll
 C#/JB2.Gravatar/bin/Release/JB2.Gravatar.dll
 C#/Common.Web/bin/Release/JB2.Common.Web.dll
 *.pdb
+*.pdb

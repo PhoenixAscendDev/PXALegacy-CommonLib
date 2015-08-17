@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using System.Data.Entity.Validation;
 using System.Net.Mail;
 
+using JB2.Common.Extensions;
+
 namespace JB2.AuthorizationServer.Controllers
 {
     public class AccountController : Controller
@@ -53,9 +55,16 @@ namespace JB2.AuthorizationServer.Controllers
         }
 
 
-        
-        public ActionResult Login(LoginViewModel﻿ model)
+
+        public async Task<ActionResult> Login(LoginViewModel﻿ model)
         {
+
+            if(!string.IsNullOrEmpty(Request.Form.Get("submit.Register")))
+            {
+                var register = await this.Register(model);
+                return register;              
+            }
+
             var authentication = HttpContext.GetOwinContext().Authentication;
 
             if (Request.HttpMethod == "POST")
@@ -89,13 +98,20 @@ namespace JB2.AuthorizationServer.Controllers
         public ActionResult Logout()
         {
             var authentication = HttpContext.GetOwinContext().Authentication;
-            authentication.SignOut();
+
+            return Logout(authentication);
+        }
+
+        public ActionResult Logout(IAuthenticationManager authManager)
+        {
+            authManager.SignOut();
 
             ViewBag.FormMode = "login";
             ViewBag.Jscript = "alert('login');";
 
-            return View("Login");
+            return View();
         }
+
 
         public ActionResult External()
         {
@@ -150,7 +166,12 @@ namespace JB2.AuthorizationServer.Controllers
                 if(!passwordCheck.Succeeded)
                     serviceResult.Validation.Add(new JB2.Common.Validation("password", "Password must be at least 8 characters long and contain a number") { IsValid = false });
 
-                if(!serviceResult)
+                if(!username.IsEmail())
+                    serviceResult.Validation.Add(new JB2.Common.Validation("email", "Email is not a valid email ") { IsValid = false });
+
+
+
+                if (!serviceResult)
                 {
                     throw new JB2.Common.Exceptions.ResultException("Validation Exception");
                 }
@@ -169,7 +190,6 @@ namespace JB2.AuthorizationServer.Controllers
                             new ClaimsIdentity(new[] { new Claim(
                        ClaimsIdentity.DefaultNameClaimType, username) },
                                "Application"));
-
                     //await SignInManager.SignInAsync(newUser, isPersistent: false, rememberBrowser: false);
                 }
             }

@@ -22,6 +22,18 @@ namespace JB2.AuthorizationServer.Controllers
             var authentication = HttpContext.GetOwinContext().Authentication;
             var ticket = authentication.AuthenticateAsync("Application").Result;
             var identity = ticket != null ? ticket.Identity : null;
+            if (Request.HttpMethod == "POST")
+            {
+                if (!string.IsNullOrEmpty(Request.Form.Get("submit.LogOut")))
+                {
+                    authentication.SignOut("Application");
+                    identity = null;       
+                }
+                    
+            }
+
+            
+            
             if (identity == null)
             {
                 authentication.Challenge("Application");
@@ -30,8 +42,6 @@ namespace JB2.AuthorizationServer.Controllers
 
             var clientid = Request.QueryString.Get("client_id");
             var scopes = (Request.QueryString.Get("scope") ?? "").Split(',');
-
-
             //If user already has granted the scope then go ahead and sign them in 
 
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();

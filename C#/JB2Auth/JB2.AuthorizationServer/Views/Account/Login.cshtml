@@ -64,7 +64,7 @@
 
         <section class="signup-section">
             <div class="login">
-                <form method="post" action="/Account/Register">
+                <form method="POST">
                     @{
                         var emailIconClass = "icon";
                         var usernameIconClass = "icon";
@@ -100,7 +100,7 @@
                         <li>@Html.TextBoxFor(m => m.RegisterUser.Password, null, new { @type = "password", @class = "input", @placeholder = "Password" })<span class="@passwordIconClass"><i class="fa fa-lock"></i></span></li>
                         <li>@Html.TextBoxFor(m => m.RegisterUser.Birthdate, null, new { @class = "input", @placeholder = "Birthday" })<span class="@birthdayIconClass"><i class="fa fa-birthday-cake"></i></span></li>
                         <li>@Html.CheckBoxFor(m => m.RegisterUser.AcceptTerms,null)<label> &nbsp; &nbsp;I accept terms and conditions</label></li>
-                        <li><input type="submit" value="SIGN UP" class="btn"></li>
+                        <li><input type="submit" value="SIGN UP" name="submit.Register" class="btn"></li>
                     </ul>
                 </form>
             </div>

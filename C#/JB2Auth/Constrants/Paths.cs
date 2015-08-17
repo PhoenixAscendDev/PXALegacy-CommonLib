@@ -11,7 +11,7 @@ namespace Constrants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:11629"; //;
+        public const string AuthorizationServerBaseAddress = "http://localhost:11630"; //;
         //public const string AuthorizationServerBaseAddress = "http://login.jbsquared.com";
 
 

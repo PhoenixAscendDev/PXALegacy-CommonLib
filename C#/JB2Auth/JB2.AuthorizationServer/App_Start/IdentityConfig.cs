@@ -90,7 +90,7 @@ namespace JB2.AuthorizationServer
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 8,
                 RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = false,

@@ -148,7 +148,7 @@ namespace JB2.AuthorizationServer.Controllers
 
                 var passwordCheck = await UserManager.PasswordValidator.ValidateAsync(password);
                 if(!passwordCheck.Succeeded)
-                    serviceResult.Validation.Add(new JB2.Common.Validation("password", "Password") { IsValid = false });
+                    serviceResult.Validation.Add(new JB2.Common.Validation("password", "Password must be at least 8 characters long and contain a number") { IsValid = false });
 
                 if(!serviceResult)
                 {

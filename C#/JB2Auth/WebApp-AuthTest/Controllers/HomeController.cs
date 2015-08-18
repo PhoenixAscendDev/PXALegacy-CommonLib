@@ -12,6 +12,23 @@ namespace WebApp_AuthTest.Controllers
 {
     public class HomeController : Controller
     {
+        
+        public ActionResult SaveToken()
+        {
+            var accessToken = Request.Form["htn_token"];
+            Session["accessToken"] = accessToken;
+
+            InitializeWebServerClient();
+            var resourceServerUri = new Uri(Paths.ResourceServerBaseAddress);
+            var client = new HttpClient(_webServerClient.CreateAuthorizingHandler(accessToken));
+            var body = client.GetStringAsync(new Uri(resourceServerUri, Paths.MePath)).Result;
+            
+            ViewBag.ApiResponse = body;
+
+
+
+            return View("Index");
+        }
 
         private WebServerClient _webServerClient;
         // GET: Home

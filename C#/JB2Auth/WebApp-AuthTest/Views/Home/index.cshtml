@@ -8,6 +8,11 @@
 <body style="background-color: azure">
     <h1>Implicit Grant</h1>
     <h2>Client Page</h2>
+    <form id="frm_SaveToken" method="post" action="Home/SaveToken" >
+        <input id="submit.SaveToken" type="submit" />
+        <input id="htn_token" name="htn_token" type="hidden" />
+
+    </form>
     <form id="form1">
         <div>
             Access Token<br />
@@ -15,6 +20,7 @@
             <input id="Authorize" type="button" name="signin.AccessToken" value="Authorize" />
             <br />
             <input id="CallApi" name="submit.CallApi" value="Access Protected Resource API" type="button" />
+            
         </div>
         <div id="output">
         </div>
@@ -44,6 +50,9 @@
                         return;
                     }
                     $('#AccessToken').val(data.access_token);
+                    $('#htn_token').val(data.access_token);
+                    alert($('#htn_token').val());
+                    $('#frm_SaveToken').submit();
                     $.ajax({
                         url: apiUri,
                         type: 'GET',

@@ -18,7 +18,7 @@ namespace Constrants
         /// <summary>
         /// ResourceServer project should run on this URL
         /// </summary>
-        public const string ResourceServerBaseAddress = "http://profile.jbsquared.com/Services/";//"http://api.jbsquared.com/login";  //"http://localhost:38385";
+        public const string ResourceServerBaseAddress = "http://profile.jbsquared.com/Services";//"http://api.jbsquared.com/login";  //"http://localhost:38385";
         //public const string ResourceServerBaseAddress = "http://localhost:38385"; 
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'

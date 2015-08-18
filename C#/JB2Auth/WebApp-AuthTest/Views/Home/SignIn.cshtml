@@ -10,6 +10,7 @@
     <h1>Implicit Grant</h1>
     <h2>Client Page</h2>
     <p>Welcome back!</p>
+
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
     <script type="text/javascript">
         (function ($) {
@@ -53,7 +54,7 @@
             }
 
             var fragments = getFragment();
-            //alert(fragments.access_token);
+            alert(fragments.access_token);
 
             var apiUri = '@(Paths.ResourceServerBaseAddress + Paths.MePath)';
 

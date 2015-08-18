@@ -11,14 +11,14 @@ namespace Constrants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:11630"; //;
-        //public const string AuthorizationServerBaseAddress = "http://login.jbsquared.com";
+        //public const string AuthorizationServerBaseAddress = "http://localhost:11630"; //;
+        public const string AuthorizationServerBaseAddress = "http://profile.jbsquared.com";
 
 
         /// <summary>
         /// ResourceServer project should run on this URL
         /// </summary>
-        public const string ResourceServerBaseAddress = "http://api.jbsquared.com/login";  //"http://localhost:38385";
+        public const string ResourceServerBaseAddress = "http://profile.jbsquared.com/Services/";//"http://api.jbsquared.com/login";  //"http://localhost:38385";
         //public const string ResourceServerBaseAddress = "http://localhost:38385"; 
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'

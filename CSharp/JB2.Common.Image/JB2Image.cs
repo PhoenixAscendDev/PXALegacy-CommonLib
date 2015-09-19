@@ -16,6 +16,17 @@ namespace JB2.Common
 
         }
 
+        private JB2Image(byte[] imageContent)
+        {
+            _image = null;
+        }
+
+
+        private JB2Image(System.IO.MemoryStream stream)
+        {
+            _image = System.Drawing.Image.FromStream(stream);
+        }
+
         private JB2Image(System.Drawing.Image image)
         {
             _image = image;
@@ -23,11 +34,20 @@ namespace JB2.Common
 
         #endregion
 
+        public int Height
+        {
+            get
+            {
+                return _image.Height;
+            }
+        }
 
-
-
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public int Width {
+            get
+            {
+                return _image.Width;
+            }
+        }
 
         public byte[] ImageContent { get; set; }
 
@@ -94,6 +114,14 @@ namespace JB2.Common
 
         }
 
+        static public JB2Image FromUrl(string url)
+        {
+
+            var result = new JB2Image();
+
+            return result;
+
+        }
 
 
         #endregion Static members

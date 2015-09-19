@@ -8,6 +8,10 @@ namespace JB2.Common.Enum
 {
     public enum ImageFormatType
     {
-        Jpeg
+        Jpeg,
+        Gif,
+        Png,
+        Bmp,
+        Icon
     }
 }

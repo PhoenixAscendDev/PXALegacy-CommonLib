@@ -34,9 +34,16 @@ namespace JB2.Common
 
         public JB2Image GetThumbnail(int width, int height)
         {
-            //System.Drawing.Image thumbnailImage = this._image.GetThumbnailImage();
+            System.Drawing.Image thumbnailImage = this._image.GetThumbnailImage(width,height,new System.Drawing.Image.GetThumbnailImageAbort(this.ThumbnailCallback),IntPtr.Zero);
 
-            return new JB2Image();
+            System.IO.MemoryStream memStream = new System.IO.MemoryStream();
+
+            thumbnailImage.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            var result = new JB2Image(thumbnailImage);
+
+
+            return result;
             //// create an image object, using the filename we just retrieved
             //System.Drawing.Image image = System.Drawing.Image.FromFile(Server.MapPath(file));
 
@@ -57,16 +64,19 @@ namespace JB2.Common
 
             //// load the byte array with the image
             //imageStream.Read(imageContent, 0, (int)imageStream.Length);
+        }
 
+        private bool ThumbnailCallback()
+        {
+            return true;
         }
 
         #region Static members
 
         static public JB2Image FromFile(string filename)
         {
-            //System.Drawing.Image image = System.Drawing.Image.FromFile(System.Web.HttpContext.Current.Server.MapPath(filename));
+            System.Drawing.Image image = System.Drawing.Image.FromFile(filename);
 
-            System.Drawing.Image image = null;
             var result = new JB2Image(image);
 
             return result;
@@ -75,4 +85,7 @@ namespace JB2.Common
 
         #endregion Static members
     }
+
 }
+
+

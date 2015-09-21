@@ -95,6 +95,33 @@ namespace JB2.Common
         }
 
 
+        public JB2Image ConvertFormat(Enum.ImageFormatType formatType)
+        {
+            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+
+
+            //System.Drawing.Imaging.ImageFormat format = 
+            switch(formatType)
+            {
+                case Enum.ImageFormatType.Bmp:
+                    this._image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                    break;
+                case Enum.ImageFormatType.Gif:
+                    this._image.Save(stream, System.Drawing.Imaging.ImageFormat.Gif);
+                    break;
+                case Enum.ImageFormatType.Icon:
+                    this._image.Save(stream, System.Drawing.Imaging.ImageFormat.Icon);
+                    break;
+                case Enum.ImageFormatType.Jpeg:
+                    this._image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                    break;
+            }
+            //System.Drawing.Image newImage = System.Drawing.Image.FromStream(stream);
+
+            return new JB2Image(stream);
+        }
+
+
         #endregion Public Methods
 
         private bool ThumbnailCallback()

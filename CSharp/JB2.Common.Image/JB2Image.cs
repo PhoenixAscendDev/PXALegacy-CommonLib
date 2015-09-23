@@ -18,7 +18,10 @@ namespace JB2.Common
 
         private JB2Image(byte[] imageContent)
         {
-            _image = null;
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(imageContent);
+            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+
+            _image = returnImage;
         }
 
 
@@ -144,7 +147,14 @@ namespace JB2.Common
         static public JB2Image FromUrl(string url)
         {
 
-            var result = new JB2Image();
+            var webClient = new System.Net.WebClient();
+            byte[] imageBytes = webClient.DownloadData(url);
+
+            //System.IO.MemoryStream ms = new MemoryStream(imageBtyes);
+
+            JB2Image result = new JB2Image(imageBytes);
+
+
 
             return result;
 

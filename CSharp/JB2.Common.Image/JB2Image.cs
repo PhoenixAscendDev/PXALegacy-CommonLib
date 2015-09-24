@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public class JB2Image
+    public class JB2Image : JB2.Common.IImage
     {
         private System.Drawing.Image _image;
 
@@ -43,6 +43,10 @@ namespace JB2.Common
             {
                 return _image.Height;
             }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public int Width {
@@ -50,9 +54,32 @@ namespace JB2.Common
             {
                 return _image.Width;
             }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public byte[] ImageContent { get; set; }
+        public string Url
+        {
+            get; set;
+        }
+
+        public byte[] FileContent
+        {
+            get
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                this._image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                return ms.ToArray();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         #region Public Methods
 

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Data.AzureStorag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Image", "JB2.Common.Image\JB2.Common.Image.csproj", "{49966C64-7A12-47CA-B746-7FC632DC7592}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Font", "JB2.Common.Font\JB2.Common.Font.csproj", "{30AD61B4-340C-4BBB-88BD-B22D83E2B179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{49966C64-7A12-47CA-B746-7FC632DC7592}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49966C64-7A12-47CA-B746-7FC632DC7592}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49966C64-7A12-47CA-B746-7FC632DC7592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30AD61B4-340C-4BBB-88BD-B22D83E2B179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AD61B4-340C-4BBB-88BD-B22D83E2B179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AD61B4-340C-4BBB-88BD-B22D83E2B179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AD61B4-340C-4BBB-88BD-B22D83E2B179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

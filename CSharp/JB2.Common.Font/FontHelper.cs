@@ -21,21 +21,25 @@ namespace JB2.Common
             PrivateFontCollection collection = new PrivateFontCollection();
             // Add the custom font families. 
             // (Alternatively use AddMemoryFont if you have the font in memory, retrieved from a database).
+           
             collection.AddFontFile(@"E:\Downloads\actest.ttf");
             Font f = new Font(collection.Families.First(), 16);
 
             return f;
         }
 
-        //private static AzureTableRepository FontDB
-        //{
-        //    get
-        //    {
-        //        Microsoft.WindowsAzure.Storage.
-        //        JB2.Common.Data.AzureHelper.GetStorageAccount
+        private static AzureTableRepository FontDB
+        {
+            get
+            {
+                Microsoft.WindowsAzure.Storage.CloudStorageAccount account =  JB2.Common.Data.AzureHelper.GetStorageAccount("jbsquared", "iGf7AhI5v12hig85TsVkJSuPwvB42EncTMFogXFcqGlEcVMo5oXf0PvsMkxOQQeDmM21UtqHHtwyjR3MG3Di5g==");
 
-        //    }
-        //}
+                return new AzureTableRepository(account, "assets");
+                
+               
+
+            }
+        }
 
 
     }

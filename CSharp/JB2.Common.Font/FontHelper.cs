@@ -24,7 +24,7 @@ namespace JB2.Common
             // Add the custom font families. 
             // (Alternatively use AddMemoryFont if you have the font in memory, retrieved from a database).
 
-            FontTableEntry fontEntry = FontDB.GetEntity<FontTableEntry>("font", "font_ffft");
+            FontTableEntry fontEntry = FontDB.GetEntity<FontTableEntry>("font", "font_" + fontcode);
 
             byte[] fontByteArray = JB2.Common.Utility.GetBinaryFromUrl(fontEntry.UrlPath);     
             //byte* ptr = fontByteArray;
@@ -35,7 +35,7 @@ namespace JB2.Common
                 var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(fontByteArray, 0);
                 PrivateFontCollection fontCollection = new PrivateFontCollection();
                 fontCollection.AddMemoryFont(ptr, fontByteArray.Length);
-                Font f = new Font(collection.Families.First(), 16);
+                Font f = new Font(fontCollection.Families.First(), 16);
                 return f;
             }
             finally

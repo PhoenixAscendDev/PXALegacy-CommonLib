@@ -17,8 +17,12 @@ namespace JB2.Common
 {
     public static class FontHelper
     {
-
         public static Font GetFont(string fontcode)
+        {
+            return GetFont(fontcode, 16);
+        }
+
+        public static Font GetFont(string fontcode, int fontEmSize)
         {
             PrivateFontCollection collection = new PrivateFontCollection();
             // Add the custom font families. 
@@ -35,7 +39,7 @@ namespace JB2.Common
                 var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(fontByteArray, 0);
                 PrivateFontCollection fontCollection = new PrivateFontCollection();
                 fontCollection.AddMemoryFont(ptr, fontByteArray.Length);
-                Font f = new Font(fontCollection.Families.First(), 16);
+                Font f = new Font(fontCollection.Families.First(), fontEmSize);
                 return f;
             }
             finally

@@ -59,7 +59,14 @@ namespace JB2.Common
             }
         }
 
+        public static byte[] GetBinaryFromUrl(string url)
+        {
+            var webClient = new System.Net.WebClient();
+            byte[] dataBytes = webClient.DownloadData(url);
 
+            return dataBytes;
+
+        }
 
         public static string ShortText(string text, int maxLength, string trailText)
         {

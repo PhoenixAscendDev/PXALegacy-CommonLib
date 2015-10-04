@@ -8,6 +8,8 @@ using System.Drawing.Text;
 
 using JB2.Common.Data;
 
+using System.Runtime.InteropServices;
+
 
 
 
@@ -21,11 +23,29 @@ namespace JB2.Common
             PrivateFontCollection collection = new PrivateFontCollection();
             // Add the custom font families. 
             // (Alternatively use AddMemoryFont if you have the font in memory, retrieved from a database).
-           
-            collection.AddFontFile(@"E:\Downloads\actest.ttf");
-            Font f = new Font(collection.Families.First(), 16);
 
-            return f;
+            FontTableEntry fontEntry = FontDB.GetEntity<FontTableEntry>("font", "font_ffft");
+
+            byte[] fontByteArray = JB2.Common.Utility.GetBinaryFromUrl(fontEntry.UrlPath);     
+            //byte* ptr = fontByteArray;
+
+            var handle = GCHandle.Alloc(fontByteArray, GCHandleType.Pinned);
+            try
+            {
+                var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(fontByteArray, 0);
+                PrivateFontCollection fontCollection = new PrivateFontCollection();
+                fontCollection.AddMemoryFont(ptr, fontByteArray.Length);
+                Font f = new Font(collection.Families.First(), 16);
+                return f;
+            }
+            finally
+            {
+                // don't forget to unpin the array!
+                handle.Free();
+            }
+            
+           // collection.AddMemoryFont(new IntPtr(ptr), fontByteArray.Length);
+           // return f;
         }
 
         private static AzureTableRepository FontDB

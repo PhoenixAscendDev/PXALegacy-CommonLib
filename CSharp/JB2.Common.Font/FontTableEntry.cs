@@ -53,7 +53,7 @@ namespace JB2.Common
 
         public byte[] Content
         {
-            get; set;
+            get; set; 
         }
      
     }

@@ -78,3 +78,4 @@ C#/Common.Web/bin/Release/JB2.Common.Web.dll
 C#/JB2.Gravatar/bin/Release/JB2.Gravatar.dll
 C#/JB2.Gravatar/bin/Release/JB2.Gravatar.pdb
 C#/JB2.Gravatar/bin/Release/JB2.Gravatar.pdb
+*.sln

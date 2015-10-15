@@ -57,18 +57,43 @@ namespace JB2.Common.Data
         {
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
-            byte[] result = null;
 
-            blockBlob.DownloadToByteArray(result, 0);
+            //byte[] result = null;
 
-            return result;
+            //blockBlob.DownloadToByteArray(result, 0);
+
+            //return result;
+
+            blockBlob.FetchAttributes();
+            long fileByteLength = blockBlob.Properties.Length;
+            byte[] fileContent = new byte[fileByteLength];
+            //for (int i = 0; i < fileByteLength; i++)
+            //{
+            //    fileContent[i] = 0x20;
+            //}
+
+            blockBlob.DownloadToByteArray(fileContent, 0);
+
+            return fileContent;
+
+
+            //byte[] data = ;
+            //using (var stream = new MemoryStream(data, writable: false))
+            //{
+            //    blockBlob.UploadFromStream(stream);
+            //}
+
+            //return data;
+
+
         }
 
-        public Stream GetStream(string blobName)
+        public MemoryStream GetStream(string blobName)
         {
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
-            Stream result = null;
+
+            MemoryStream result = new MemoryStream();
 
             blockBlob.DownloadToStream(result);
 
@@ -92,7 +117,7 @@ namespace JB2.Common.Data
             };
 
             var sasToken = blockBlob.GetSharedAccessSignature(policy, headers);
-            return blockBlob.Uri.AbsoluteUri + sasToken;
+            return blockBlob.Uri.AbsoluteUri; //+ sasToken ;
         }
         
         public bool Delete(string blobName)

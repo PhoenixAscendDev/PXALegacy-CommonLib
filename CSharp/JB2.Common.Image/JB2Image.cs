@@ -171,6 +171,16 @@ namespace JB2.Common
 
         }
 
+        static public JB2Image FromByteArray(byte[] byteArray)
+        {
+            return new JB2Image(byteArray);
+        }
+
+        static public JB2Image FromStream(System.IO.MemoryStream stream)
+        {
+            return new JB2Image(stream);
+        }
+
         static public JB2Image FromUrl(string url)
         {
 

@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
+      <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
+      <Name>JB2.Common.Data.AzureStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Font\JB2.Common.Font.csproj">
       <Project>{30ad61b4-340c-4bbb-88bd-b22d83e2b179}</Project>
       <Name>JB2.Common.Font</Name>

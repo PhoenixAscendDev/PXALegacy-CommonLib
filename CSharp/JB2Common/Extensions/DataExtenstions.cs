@@ -20,6 +20,28 @@ namespace JB2.Common.Extensions
 
     public static class JB2Extensions
     {
+
+        public static void Shuffle2<T>(this IEnumerable<T> source)
+        {
+
+            source = source.ShuffleIterator<T>();
+
+        }
+
+        private static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source)
+        {
+            var buffer = source.ToList();
+            int n = buffer.Count();
+            for (int i = 0; i < buffer.Count; i++)
+            {
+                int j = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
+                yield return buffer[j];
+
+                buffer[j] = buffer[i];
+            }
+        }
+
+
         public static void Shuffle<T>(this IList<T> list)
         {
             int n = list.Count;

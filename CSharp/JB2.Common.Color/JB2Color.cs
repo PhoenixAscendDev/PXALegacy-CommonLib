@@ -13,6 +13,7 @@ namespace JB2.Common
         private System.Drawing.Color _systemColor;
         private int _hex;
         private RGB _rgb;
+        private HSV _hsv;
 
         #region Constructors
 
@@ -28,17 +29,22 @@ namespace JB2.Common
             _name = name;
         }
 
-        private JB2Color(RGB rgb)
+        private JB2Color(RGB rgb) : this(System.Drawing.ColorTranslator.FromHtml("#" + rgb.HexString))
         {
-            _systemColor = System.Drawing.ColorTranslator.FromHtml("#" + rgb.HexString);
-            _rgb = rgb;
 
+
+        }
+
+        private JB2Color(HSV hsv) : this(ColorHelper.ColorConverter(hsv) )
+        {
+            
         }
 
         private JB2Color(System.Drawing.Color color)
         {
             _systemColor = color;
             _rgb = ColorHelper.RGBConverter(color);
+            _hsv = ColorHelper.HSVConverter(color);
 
         }
 
@@ -74,7 +80,7 @@ namespace JB2.Common
         {
             get
             {
-                return 0;
+                return _systemColor.ToArgb();
 
             }
 
@@ -86,6 +92,14 @@ namespace JB2.Common
             {
                 return _rgb;
 
+            }
+        }
+
+        public HSV HSV
+        {
+            get
+            {
+                return _hsv;
             }
         }
 
@@ -111,6 +125,7 @@ namespace JB2.Common
             return color.RGB.HexString;
         }
 
+
         public static implicit operator System.Drawing.Color(JB2Color rhs)
         {
             return rhs._systemColor;
@@ -134,6 +149,11 @@ namespace JB2.Common
             return  new JB2Color(new RGB(hexString));
         }
 
+        public static JB2Color FromHex(int hex)
+        {
+            return new JB2Color(new RGB(hex));
+        }
+
         public static JB2Color FromRGB(RGB rgb)
         {
             return new JB2Color(rgb);
@@ -144,9 +164,14 @@ namespace JB2.Common
             return new JB2Color(new RGB(red, green, blue));
         }
 
-        public static JB2Color FromRGB( int hex)
+        public static JB2Color FromHSV( HSV hsv)
         {
-            return new JB2Color(new RGB(hex));
+            return new JB2Color(hsv);
+        }
+
+        public static JB2Color FromHSV(double hue, double saturation, double value)
+        {
+            return new JB2Color(new HSV(hue, saturation, value));
         }
 
         #endregion Static From 

@@ -18,6 +18,8 @@ namespace ConsoleTest
             JB2.Common.RGB rgb = new RGB("fff1f1");
 
             Console.WriteLine(rgb.ToString());
+
+            JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");
             Console.ReadLine();
             //JB2.Common.Data.AzureHelper.AccountName = "jb2bowtie";
             //JB2.Common.Data.AzureHelper.AccountKey = "frIlemrNzlvAbKNhiyYCeW+otbFXBoJb0TodzbgwzF8IBEZMtifrHfx0Y+o1+jwvUL4FcAGYepHlgqrG0iCc1Q==";

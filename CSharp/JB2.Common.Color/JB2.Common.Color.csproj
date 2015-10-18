@@ -45,6 +45,7 @@
     <Compile Include="ColorHelper.cs" />
     <Compile Include="JB2Color.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HSV.cs" />
     <Compile Include="RGB.cs" />
   </ItemGroup>
   <ItemGroup>

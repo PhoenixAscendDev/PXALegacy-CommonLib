@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorHelper.cs" />
     <Compile Include="JB2Color.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RGB.cs" />

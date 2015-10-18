@@ -28,8 +28,17 @@ namespace JB2.Common
             _name = name;
         }
 
-        private JB2Color(RGB rgbValue)
+        private JB2Color(RGB rgb)
         {
+            _systemColor = System.Drawing.ColorTranslator.FromHtml("#" + rgb.HexString);
+            _rgb = rgb;
+
+        }
+
+        private JB2Color(System.Drawing.Color color)
+        {
+            _systemColor = color;
+            _rgb = ColorHelper.RGBConverter(color);
 
         }
 
@@ -82,6 +91,42 @@ namespace JB2.Common
 
         #endregion Properties
 
+
+        #region Operators
+
+        public static bool operator ==(JB2Color x, JB2Color y)
+        {
+            if ((object)x == null) return (object)y == null;
+            return x._systemColor == y._systemColor;
+        }
+
+        public static bool operator !=(JB2Color x, JB2Color y)
+        {
+            return !(x == y);
+        }
+
+
+        public static implicit operator string (JB2Color color)
+        {
+            return color.RGB.HexString;
+        }
+
+        public static implicit operator System.Drawing.Color(JB2Color rhs)
+        {
+            return rhs._systemColor;
+        }
+
+        public static implicit operator JB2Color(System.Drawing.Color sdc)
+        {
+            var result = new JB2Color(sdc);
+
+            return result;
+        }
+
+
+
+        #endregion Operators
+
         #region Static From
 
         public static JB2Color FromHex(string hexString)
@@ -105,6 +150,8 @@ namespace JB2.Common
         }
 
         #endregion Static From 
+
+
 
     }
 }

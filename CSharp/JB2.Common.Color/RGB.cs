@@ -55,6 +55,13 @@ namespace JB2.Common
             _blue = blue;
         }
 
+        public RGB(System.Drawing.Color color)
+        {
+            _red = color.R;
+            _green = color.G;
+            _blue = color.B;
+        }
+
         #endregion Constructors
 
 
@@ -84,6 +91,20 @@ namespace JB2.Common
                 return _blue;
             }
         }
+
+        public string HexString
+        {
+            get
+            {
+                string red = _red.ToString("X2");
+                string green = _green.ToString("X2");
+                string blue = _blue.ToString("X2");
+
+                string hexString = red + green + blue;
+
+                return hexString;
+            }
+        }
         public int Value
         {
             get
@@ -95,21 +116,11 @@ namespace JB2.Common
         }
         #endregion Properties
 
-
-
-
         #region ToString
 
         public override string ToString()
         {
-            string red = _red.ToString("X2");
-            string green = _green.ToString("X2");
-            string blue = _blue.ToString("X2");
-
-            string hexString = red + green + blue;
-
-            return hexString;
-            
+            return "RGB(" + _red.ToString() + ","  + _green.ToString() + "," + _blue.ToString() + ")";     
         }
 
         #endregion

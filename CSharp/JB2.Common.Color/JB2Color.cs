@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public class JB2Color : JB2.Common.IIDNamePair<string, string>
+    public class JB2Color
     {
         private string _id;
         private string _name;
@@ -19,15 +19,9 @@ namespace JB2.Common
 
         public JB2Color()
         {
-            _id = JB2.Common.ShortGuid.NewGuid();
-            _name = "color-" + _id;
+
         }
 
-        public JB2Color(string id, string name, RGB rgbValue)
-        {
-            _id = id;
-            _name = name;
-        }
 
         private JB2Color(RGB rgb) : this(System.Drawing.ColorTranslator.FromHtml("#" + rgb.HexString))
         {

@@ -7,7 +7,7 @@
     <ProjectGuid>{38B96FB8-072F-48AC-99DD-E8910F6E36D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Color</RootNamespace>
+    <RootNamespace>JB2.Common</RootNamespace>
     <AssemblyName>JB2.Common.Color</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

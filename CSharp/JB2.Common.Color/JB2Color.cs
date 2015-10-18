@@ -168,7 +168,48 @@ namespace JB2.Common
             return new JB2Color(new HSV(hue, saturation, value));
         }
 
+        public static JB2Color GetRandom()
+        {
+            int r = JB2.Common.Utility.RandomNumber(0, 255);
+            int g = JB2.Common.Utility.RandomNumber(0, 255);
+            int b = JB2.Common.Utility.RandomNumber(0, 255);
+
+            return JB2Color.FromRGB(r, g, b);
+        }
+
+
+
         #endregion Static From 
+
+        #region Static Colors
+
+        public static JB2Color White
+        {
+            get
+            {
+                return JB2Color.FromHex("ffffff");
+            }
+        }
+
+        public static JB2Color Black
+        {
+            get
+            {
+                return JB2Color.FromHex("000000");
+            }
+        }
+
+        public static JB2Color Empty
+        {
+            get
+            {
+                return JB2Color.White;
+            }
+        }
+
+
+
+        #endregion Static Colors
 
 
 

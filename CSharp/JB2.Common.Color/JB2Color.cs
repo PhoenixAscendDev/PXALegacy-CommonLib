@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public class JB2Color : JB2.Common.IIDNamePair<string,string>
+    public class JB2Color : JB2.Common.IIDNamePair<string, string>
     {
         private string _id;
         private string _name;
         private System.Drawing.Color _systemColor;
-        private int _rbg;
+        private int _hex;
+        private RGB _rgb;
+
+        #region Constructors
 
         public JB2Color()
         {
@@ -19,11 +22,20 @@ namespace JB2.Common
             _name = "color-" + _id;
         }
 
-        public JB2Color(string id,string name)
+        public JB2Color(string id, string name, RGB rgbValue)
         {
             _id = id;
             _name = name;
         }
+
+        private JB2Color(RGB rgbValue)
+        {
+
+        }
+
+        #endregion Constructors
+
+        #region Properties
         public string ID
         {
             get { return _id; }
@@ -59,14 +71,40 @@ namespace JB2.Common
 
         }
 
-        public int RGB
+        public RGB RGB
         {
             get
             {
-                return 0;
+                return _rgb;
 
             }
         }
+
+        #endregion Properties
+
+        #region Static From
+
+        public static JB2Color FromHex(string hexString)
+        {
+            return  new JB2Color(new RGB(hexString));
+        }
+
+        public static JB2Color FromRGB(RGB rgb)
+        {
+            return new JB2Color(rgb);
+        }
+
+        public static JB2Color FromRGB(int red, int green, int blue)
+        {
+            return new JB2Color(new RGB(red, green, blue));
+        }
+
+        public static JB2Color FromRGB( int hex)
+        {
+            return new JB2Color(new RGB(hex));
+        }
+
+        #endregion Static From 
 
     }
 }

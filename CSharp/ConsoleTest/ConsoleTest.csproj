@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Color\JB2.Common.Color.csproj">
+      <Project>{38b96fb8-072f-48ac-99dd-e8910f6e36d9}</Project>
+      <Name>JB2.Common.Color</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
       <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
       <Name>JB2.Common.Data.AzureStorage</Name>

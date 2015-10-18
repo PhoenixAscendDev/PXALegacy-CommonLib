@@ -88,24 +88,32 @@ namespace JB2.Common
         {
             get
             {
-                return 0;
+                int value = Int32.Parse(this.ToString(), System.Globalization.NumberStyles.HexNumber);
+
+                return value;
             }
         }
-
-
-
         #endregion Properties
+
+
 
 
         #region ToString
 
         public override string ToString()
         {
-            return string.Empty;
+            string red = _red.ToString("X2");
+            string green = _green.ToString("X2");
+            string blue = _blue.ToString("X2");
+
+            string hexString = red + green + blue;
+
+            return hexString;
             
         }
 
         #endregion
+
 
 
     }

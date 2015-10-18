@@ -66,8 +66,17 @@ namespace JB2.Common
         {
             get
             {
-                return string.Empty;
+                return RGB.HexString;
             }
+        }
+
+        public int HexValue
+        {
+            get
+            {
+                return RGB.Value;
+            }
+
         }
 
         public int ARGB
@@ -148,11 +157,16 @@ namespace JB2.Common
 
         public static JB2Color FromHex(string hexString)
         {
-            return  new JB2Color(new RGB(hexString));
+            if (string.IsNullOrEmpty(hexString))
+                return JB2Color.Empty;
+            else
+                return  new JB2Color(new RGB(hexString));
         }
 
         public static JB2Color FromHex(int hex)
         {
+
+            
             return new JB2Color(new RGB(hex));
         }
 

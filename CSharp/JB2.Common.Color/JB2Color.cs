@@ -97,6 +97,14 @@ namespace JB2.Common
             }
         }
 
+        public string HtmlValue
+        {
+            get
+            {
+                return "#" + this.HexString.ToUpper();
+            }
+        }
+
         #endregion Properties
 
 

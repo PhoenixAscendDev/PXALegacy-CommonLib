@@ -119,16 +119,17 @@ namespace JB2.Common
 
         #region Operators
 
-        public static bool operator ==(JB2Color x, JB2Color y)
-        {
-            if ((object)x == null) return (object)y == null;
-            return x._systemColor == y._systemColor;
-        }
+        //public static bool operator ==(JB2Color x, JB2Color y)
+        //{
+        //    if 
+        //    if ((object)x == null) return (object)y == null;
+        //    return x._systemColor == y._systemColor;
+        //}
 
-        public static bool operator !=(JB2Color x, JB2Color y)
-        {
-            return !(x == y);
-        }
+        //public static bool operator !=(JB2Color x, JB2Color y)
+        //{
+        //    return !(x == y);
+        //}
 
 
         public static implicit operator string (JB2Color color)

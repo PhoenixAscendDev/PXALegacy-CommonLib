@@ -109,7 +109,7 @@ namespace JB2.Common
         {
             get
             {
-                int value = Int32.Parse(this.ToString(), System.Globalization.NumberStyles.HexNumber);
+                int value = Int32.Parse(this.HexString, System.Globalization.NumberStyles.HexNumber);
 
                 return value;
             }

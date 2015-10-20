@@ -71,7 +71,7 @@ namespace JB2.Common
             get
             {
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                this._image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                this._image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 return ms.ToArray();
             }
 

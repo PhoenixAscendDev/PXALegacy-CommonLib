@@ -67,6 +67,14 @@ namespace JB2.Common
             }
         }
 
+        public string HueString
+        {
+            get
+            {
+                return Convert.ToInt32(_hue).ToString() + "°";
+            }
+        }
+
         public double Saturation
         {
             get
@@ -75,11 +83,27 @@ namespace JB2.Common
             }
         }
 
+        public string SaturationString
+        {
+            get
+            {
+                return Convert.ToInt32(_saturation * 100.00).ToString() + "%";
+            }
+        }
+
         public double Value
         {
             get
             {
                 return _value;
+            }
+        }
+
+        public string ValueString
+        {
+            get
+            {
+                return Convert.ToInt32(_value * 100.00).ToString() + "%";
             }
         }
 

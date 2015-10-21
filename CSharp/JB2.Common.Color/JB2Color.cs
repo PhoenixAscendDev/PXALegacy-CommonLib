@@ -14,6 +14,7 @@ namespace JB2.Common
         private int _hex;
         private RGB _rgb;
         private HSV _hsv;
+        private HSL _hsl;
 
         #region Constructors
 
@@ -39,6 +40,7 @@ namespace JB2.Common
             _systemColor = color;
             _rgb = ColorHelper.RGBConverter(color);
             _hsv = ColorHelper.HSVConverter(color);
+            _hsl = ColorHelper.HSLConverter(color);
 
         }
 
@@ -103,6 +105,14 @@ namespace JB2.Common
             get
             {
                 return _hsv;
+            }
+        }
+
+        public HSL HSL
+        {
+            get
+            {
+                return _hsl;
             }
         }
 

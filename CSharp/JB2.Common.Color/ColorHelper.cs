@@ -138,31 +138,65 @@ namespace JB2.Common
 
         public static JB2Color GetComplementaryColor(JB2Color color)
         {
-            double newHue = (color.HSV.Hue + 180.00);
+            double newHue = (color.HSL.Hue + 180.00);
             newHue = newHue > 360.00 ? newHue - 360.00 : newHue; 
-            return JB2Color.FromHSV(newHue, color.HSV.Saturation, color.HSV.Value);
+            return JB2Color.FromHSL(newHue, color.HSL.Saturation, color.HSL.Lightness);
+        }
+
+        public static JB2Color[] GetComplementaryColors(JB2Color color)
+        {
+            List<JB2Color> colors = new List<JB2Color>(2);
+
+            colors.Add(color);
+            colors.Add(GetComplementaryColor(color));
+
+            return colors.ToArray();
+
+        }
+
+        public static JB2Color[] GetSplitComplementaryColors(JB2Color color)
+        {
+            List<JB2Color> colors = new List<JB2Color>(3);
+
+            colors.Add(color);
+
+            JB2Color complement = GetComplementaryColor(color);
+
+            JB2Color[] adjcolors = GetAdjacentColors(complement, 30, 1);
+
+            colors.Add(adjcolors[0]);
+            colors.Add(adjcolors[2]);
+
+            return colors.ToArray();
         }
 
         public static JB2Color[] GetAdjacentColors(JB2Color color)
         {
-            return GetAdjacentColors(color,30);
+            return GetAdjacentColors(color,30,2);
 
         }
 
-        public static JB2Color[]  GetAdjacentColors(JB2Color color, int degrees)
+
+
+        public static JB2Color[]  GetAdjacentColors(JB2Color color, int degrees, int numOfColors)
         {
+            List<JB2Color> colors = new List<JB2Color>(numOfColors * 2);
 
-            double newHue1 = color.HSV.Hue + Convert.ToDouble(degrees);
-            newHue1 = newHue1 > 360.00 ? newHue1 - 360.00 : newHue1;
+            for (int i = numOfColors; i >= 1; i--)
+            {
+                double newHue = color.HSL.Hue - Convert.ToDouble(degrees * i);
+                newHue = newHue > 360.00 ? newHue - 360.00 : newHue;
+                colors.Add(JB2Color.FromHSL(newHue, color.HSL.Saturation, color.HSL.Lightness));
+            }
 
-            double newHue2 = color.HSV.Hue - Convert.ToDouble(degrees);
-            newHue2 = newHue2 > 360.00 ? newHue2 - 360.00 : newHue2;
+            colors.Add(color);
 
-            List<JB2Color> colors = new List<JB2Color>(2);
-
-            colors.Add(JB2Color.FromHSV(newHue1, color.HSV.Saturation, color.HSV.Value));
-            colors.Add(JB2Color.FromHSV(newHue1, color.HSV.Saturation, color.HSV.Value));
-
+            for (int i = 1; i <= numOfColors; i++)
+            {
+                double newHue = color.HSL.Hue + Convert.ToDouble(degrees * i);
+                newHue = newHue > 360.00 ? newHue - 360.00 : newHue;
+                colors.Add(JB2Color.FromHSL(newHue, color.HSL.Saturation, color.HSL.Lightness));
+            }
 
             return colors.ToArray();
         }
@@ -174,7 +208,38 @@ namespace JB2.Common
 
         public static JB2Color[] GetTriadColors(JB2Color color, int degrees)
         {
-            return ColorHelper.GetAdjacentColors(color, 120);
+            JB2Color[] colors = ColorHelper.GetAdjacentColors(color, 120,1);
+
+            //base color goes first
+            return new JB2Color[] { colors[1], colors[0], colors[2] };
+        }
+
+
+        public static JB2Color[] GetTetradColors(JB2Color color)
+        {
+            return GetTetradColors(color, 30);
+        }
+
+        public static JB2Color[] GetTetradColors(JB2Color color, int degrees)
+        {
+            List<JB2Color> colors = new List<JB2Color>(4);
+
+            colors.Add(color);
+
+
+            colors.Add(HueShift(color, degrees));
+            colors.Add(HueShift(color, 180));
+            colors.Add(HueShift(color, 180 + degrees));
+
+            return colors.ToArray();
+
+        }
+
+        public static JB2Color HueShift(JB2Color color, int degrees)
+        {
+            double newHue = (color.HSL.Hue + Convert.ToDouble(degrees));
+            newHue = newHue > 360.00 ? newHue - 360.00 : newHue;
+            return JB2Color.FromHSL(newHue, color.HSL.Saturation, color.HSL.Lightness);
 
         }
 
@@ -194,6 +259,7 @@ namespace JB2.Common
             else
                 return temp1;
         }
+
 
     }
 

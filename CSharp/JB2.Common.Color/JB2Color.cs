@@ -196,9 +196,16 @@ namespace JB2.Common
             return new JB2Color(hsv);
         }
 
+
+
         public static JB2Color FromHSV(double hue, double saturation, double value)
         {
             return new JB2Color(new HSV(hue, saturation, value));
+        }
+
+        public static JB2Color FromHSL(double hue, double saturation, double lightness)
+        {
+            return new JB2Color(ColorHelper.ConvertHSLToColor(hue, saturation, lightness));
         }
 
         public static JB2Color GetRandom()

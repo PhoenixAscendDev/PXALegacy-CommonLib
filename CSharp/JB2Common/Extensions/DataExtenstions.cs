@@ -25,6 +25,20 @@ namespace JB2.Common.Extensions
             return System.Text.RegularExpressions.Regex.Split(value, ">*<");
         }
 
+        public static System.Collections.BitArray ToBitArray(this string s)
+        {
+            List<bool> marks = new List<bool>(s.Length);
+
+            foreach(char c in s.ToCharArray())
+            {
+                marks.Add(c == '1' ? true : false);
+            }
+
+            return new System.Collections.BitArray(marks.ToArray());
+        }
+
+
+
     }
 
     public static class JB2Extensions
@@ -61,6 +75,19 @@ namespace JB2.Common.Extensions
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static string ToBitString(this System.Collections.BitArray bits)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < bits.Count; i++)
+            {
+                char c = bits[i] ? '1' : '0';
+                sb.Append(c);
+            }
+
+            return sb.ToString();
         }
     }
 }

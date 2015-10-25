@@ -18,6 +18,15 @@ namespace JB2.Common.Extensions
         }
     }
 
+    public static class StringExtenstions
+    {
+        public static string[] Split(this string value, string seperator )
+        {
+            return System.Text.RegularExpressions.Regex.Split(value, ">*<");
+        }
+
+    }
+
     public static class JB2Extensions
     {
 

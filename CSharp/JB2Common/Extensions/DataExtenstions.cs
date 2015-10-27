@@ -18,6 +18,29 @@ namespace JB2.Common.Extensions
         }
     }
 
+    public static class ListExtenstions
+    {
+        public static void Move<T>(this IList<T> list, int iIndexToMove,
+        Enum.ElevatorDirection direction)
+        {
+
+            if (direction == Enum.ElevatorDirection.Up)
+            {
+                var old = list[iIndexToMove - 1];
+                list[iIndexToMove - 1] = list[iIndexToMove];
+                list[iIndexToMove] = old;
+            }
+            else
+            {
+                var old = list[iIndexToMove + 1];
+                list[iIndexToMove + 1] = list[iIndexToMove];
+                list[iIndexToMove] = old;
+            }
+        }
+
+
+    }
+
     public static class StringExtenstions
     {
         public static string[] Split(this string value, string seperator )

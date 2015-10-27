@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes.cs" />
     <Compile Include="Database\IDatabaseHandler.cs" />
     <Compile Include="DataRow.cs" />
     <Compile Include="DataTable.cs" />

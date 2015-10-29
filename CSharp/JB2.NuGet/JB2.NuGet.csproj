@@ -102,6 +102,10 @@
     <Content Include="Packages\RouteMagic.1.2\RouteMagic.1.2.nupkg" />
     <Content Include="Packages\WebActivatorEx.2.0.2\WebActivatorEx.2.0.2.nupkg" />
     <Content Include="Packages\JB2.Common.0.1.6.nupkg" />
+    <Content Include="Packages\JB2.Bowtie.0.1.0.nupkg" />
+    <Content Include="Packages\JB2.Data.Azure.0.1.6.nupkg" />
+    <Content Include="Packages\JB2.Common.Font.0.1.6.nupkg" />
+    <Content Include="Packages\JB2.Common.Web.0.1.6.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">

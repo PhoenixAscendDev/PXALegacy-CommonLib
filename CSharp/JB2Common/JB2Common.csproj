@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
+    <Compile Include="BaseCollection.cs" />
     <Compile Include="Database\IDatabaseHandler.cs" />
     <Compile Include="DataRow.cs" />
     <Compile Include="DataTable.cs" />

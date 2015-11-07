@@ -54,6 +54,8 @@
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="IDNameCollection.cs" />
+    <Compile Include="IDNamePair.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
     <Compile Include="Interfaces\IDie.cs" />

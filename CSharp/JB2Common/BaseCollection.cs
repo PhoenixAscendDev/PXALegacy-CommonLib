@@ -8,9 +8,15 @@ namespace JB2.Common
 {
     public class BaseCollection<T> : IEnumerable<T>
     {
-        private IEnumerable<T> _list;
+        protected IEnumerable<T> _list;
 
         #region Constructors
+
+        public BaseCollection()
+        {
+            List<T> list = new List<T>();
+            _list = list;
+        }
 
         public BaseCollection(T thing)
         {
@@ -48,7 +54,21 @@ namespace JB2.Common
 
         #endregion IEnumerable
 
-        
+        T this[int index]
+        {
+            get
+            {
+                return _list.ToArray()[index];
+            }
+            set
+            {
+                T[] newlist = _list.ToArray();
+                newlist[index] = value;
+                _list = newlist;
+            }
+        }
+
+
 
     }
 }

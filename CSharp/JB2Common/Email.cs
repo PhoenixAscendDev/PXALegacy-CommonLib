@@ -14,6 +14,7 @@ namespace JB2.Common
         private bool _isverified;
         private string _address;
         private string _displayName;
+        
 
         #endregion Fields
 

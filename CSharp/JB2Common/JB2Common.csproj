@@ -45,6 +45,7 @@
     <Compile Include="DataRow.cs" />
     <Compile Include="DataTable.cs" />
     <Compile Include="DieFace.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Enum\DiceType.cs" />
     <Compile Include="Enum\ElevatorDirectionType.cs" />
     <Compile Include="Enum\KeyBitSize.cs" />

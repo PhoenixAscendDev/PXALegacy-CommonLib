@@ -30,14 +30,13 @@ namespace JB2.Common.Data
         {
             get
             {
-                
+              
                 var name = AccountName;
                 var key = AccountKey;
                 if (string.IsNullOrEmpty(name))
                     name = "jbsquared";
                 if (string.IsNullOrEmpty(key))
                     key = "";
-
                 return GetStorageAccount(name,key);
             }
         }
@@ -47,7 +46,6 @@ namespace JB2.Common.Data
         {
             var cstring = string.Format(_cstring, accountName, accountKey);
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(cstring);
-
             return storageAccount;
 
         }

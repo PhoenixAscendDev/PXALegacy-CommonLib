@@ -36,7 +36,7 @@ namespace JB2.Common.Data
                 if (string.IsNullOrEmpty(name))
                     name = "jbsquared";
                 if (string.IsNullOrEmpty(key))
-                    key = "iGf7AhI5v12hig85TsVkJSuPwvB42EncTMFogXFcqGlEcVMo5oXf0PvsMkxOQQeDmM21UtqHHtwyjR3MG3Di5g==";
+                    key = "";
 
                 return GetStorageAccount(name,key);
             }

@@ -20,7 +20,7 @@ namespace JB2.Infrastructure
             {
                 var storagekey = ConfigurationManager.AppSettings[STORAGEKEYNAME];
 
-                return AzureHelper.GetStorageAccount("jbsquared", storagekey);
+                return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
             }
 
         }

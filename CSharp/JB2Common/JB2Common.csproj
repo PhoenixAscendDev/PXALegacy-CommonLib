@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="IStorageAccount.cs" />
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="ObjectTag.cs" />

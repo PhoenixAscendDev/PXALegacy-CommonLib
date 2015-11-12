@@ -45,7 +45,16 @@ namespace JB2.Common.Data
         public static CloudStorageAccount GetStorageAccount(string accountName, string accountKey)
         {
             var cstring = string.Format(_cstring, accountName, accountKey);
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(cstring);
+            CloudStorageAccount storageAccount;
+            try
+            {
+                storageAccount = CloudStorageAccount.Parse(cstring);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
             return storageAccount;
 
         }

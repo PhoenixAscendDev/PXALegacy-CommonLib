@@ -105,7 +105,7 @@
     <Content Include="Packages\JB2.Common.Font.0.1.6.nupkg" />
     <Content Include="Packages\JB2.Common.Web.0.1.6.nupkg" />
     <Content Include="Packages\JB2.Common.0.1.10.nupkg" />
-    <Content Include="Packages\JB2.Data.Azure.0.1.7.nupkg" />
+    <Content Include="Packages\JB2.Data.Azure.0.1.8.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP.pubxml" />

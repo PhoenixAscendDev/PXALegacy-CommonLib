@@ -5,6 +5,15 @@ using System.Text;
 
 namespace JB2.Common
 {
+    public class IDNamePair : IDNamePair<string,string>
+    {
+        public IDNamePair(string id,string name) : base(id,name)
+        {
+
+        }
+    }
+
+
     public class IDNamePair<TKey, TName> : IIDNamePair<TKey, TName>
         where TKey : IComparable
         where TName : IComparable

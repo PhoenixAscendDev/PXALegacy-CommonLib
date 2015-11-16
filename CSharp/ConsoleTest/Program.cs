@@ -40,9 +40,12 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
-            System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
+            //Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
+            //System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
 
+            var test = JB2.Infrastructure.KeyVaultUtility.JB2KeyVault;
+
+            var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("testRSAKey");
 
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 

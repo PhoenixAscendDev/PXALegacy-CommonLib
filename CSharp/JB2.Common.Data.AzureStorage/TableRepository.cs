@@ -18,14 +18,14 @@ namespace JB2.Common.Data
 {
     public class AzureTableRepository
     {
-
-
         #region Fields
         private CloudTableClient _tableClient;
         private CloudTable _table;
 
         private LocalResolver _resolver;
-        private RsaKey _key;
+
+        private Microsoft.Azure.KeyVault.Core.IKey _key;
+
 
         private TableRequestOptions _insertOptions;
         private TableRequestOptions _retrieveOptions;
@@ -47,19 +47,10 @@ namespace JB2.Common.Data
 
             _table.CreateIfNotExists();
 
-            _key = new RsaKey("private:key1");
+            //_key = new RsaKey("private:key1");
             _resolver = new LocalResolver();
-            _resolver.Add(_key);
 
-            _insertOptions = new TableRequestOptions()
-            {
-                EncryptionPolicy = new TableEncryptionPolicy(this._key, null)
-            };
-
-            _retrieveOptions = new TableRequestOptions()
-            {
-                EncryptionPolicy = new TableEncryptionPolicy(null, this._resolver)
-            };
+            //_resolver.Add(_key);
     }
 
         #endregion Constructors
@@ -189,7 +180,36 @@ namespace JB2.Common.Data
             return _table.ExecuteQuery(query);
         }
 
-    
+
+        public ServiceResult SetEncyptKey(Microsoft.Azure.KeyVault.Core.IKey key)
+        {
+
+            try
+            {
+                this._key = key;
+                this._resolver = new LocalResolver();
+                this._resolver.Add(key);
+
+                _insertOptions = new TableRequestOptions()
+                {
+                    EncryptionPolicy = new TableEncryptionPolicy(this._key, null)
+                };
+
+                _retrieveOptions = new TableRequestOptions()
+                {
+                    EncryptionPolicy = new TableEncryptionPolicy(null, this._resolver)
+                };
+
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+       
+
 
 
 

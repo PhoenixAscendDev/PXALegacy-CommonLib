@@ -43,10 +43,11 @@ namespace ConsoleTest
             //Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
             //System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
 
-            var test = JB2.Infrastructure.KeyVaultUtility.JB2KeyVault;
+            //var test = JB2.Infrastructure.KeyVaultUtility.JB2KeyVaultClient;
 
-            var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("testRSAKey");
+            //var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
 
+            var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 
             //Console.WriteLine(rgb.ToString());

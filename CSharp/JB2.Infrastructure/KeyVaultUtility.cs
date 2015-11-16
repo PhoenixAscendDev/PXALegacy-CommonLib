@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Threading;
+
 using Microsoft.Azure;
 using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Core;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
+
+//using Microsoft.WindowsAzure.Storage;
+//using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace JB2.Infrastructure
 {
@@ -15,10 +22,11 @@ namespace JB2.Infrastructure
         private const string ADCLIENTID = "JB2:AD-clientID";
         private const string ADCLIENTKEY = "JB2:AD-clientSecret";
         private const string VAULTURI = "JB2:vaultUri";
+        private const string RSAKeyID1 = "JB2:RSAKey1-ID";
 
         public static string CreateRSAKey(string secretName)
         {
-            KeyVaultClient cloudVault = JB2KeyVault;
+            KeyVaultClient cloudVault = JB2KeyVaultClient;
             string vaultUri = CloudConfigurationManager.GetSetting(VAULTURI);
 
             try
@@ -50,7 +58,7 @@ namespace JB2.Infrastructure
             return cloudSecret.SecretIdentifier.BaseIdentifier;
         }
 
-        public static KeyVaultClient JB2KeyVault
+        public static KeyVaultClient JB2KeyVaultClient
         {
             get
             {
@@ -59,6 +67,39 @@ namespace JB2.Infrastructure
             }
         }
 
+        public static KeyVaultKeyResolver Resolver
+        {
+            get
+            {
+                return new KeyVaultKeyResolver(GetAccessToken);
+            }
+        }
+
+        public static IKey RSAKey1
+        {
+            get
+            {
+                return GetKey(CloudConfigurationManager.GetSetting(RSAKeyID1));
+            }
+        }
+
+        public static IKey GetKey(string keyID)
+        {
+            // If there are multiple key sources like Azure Key Vault and local KMS, set up an aggregate resolver as follows.
+            // This helps users to define a plug-in model for all the different key providers they support.
+           // AggregateKeyResolver aggregateResolver = new AggregateKeyResolver()
+           //     .Add(Resolver);
+
+            // Set up a caching resolver so the secrets can be cached on the client. This is the recommended usage
+            // pattern since the throttling targets for Storage and Key Vault services are orders of magnitude
+            // different.
+            //CachingKeyResolver cachingResolver = new CachingKeyResolver(2, aggregateResolver);
+
+            // Create a key instance corresponding to the key ID. This will cache the secret.
+            IKey cloudKey = Resolver.ResolveKeyAsync(keyID, CancellationToken.None).GetAwaiter().GetResult();
+
+            return cloudKey;
+        }
 
         public static async Task<string> GetAccessToken(string authority, string resource, string scope)
         {
@@ -71,7 +112,6 @@ namespace JB2.Infrastructure
 
             return result.AccessToken;
         }
-
 
     }
 }

@@ -14,7 +14,7 @@ namespace JB2.Common
         string FloorLevel { get; set; }
         string PostalCode { get; set; }
         string StateProvince { get; set; }
-        string FullAddress { get; set; }
+        string FullAddress { get;  }
         IGeolocation GeoLocation { get; set; }
 
         string CityAndState { get; }

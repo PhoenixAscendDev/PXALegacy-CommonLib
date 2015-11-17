@@ -14,4 +14,14 @@ namespace JB2.Common.Attributes
             this.Hex = hex;
         }
     }
+
+    public class Description: System.Attribute
+    {
+        public string Value;
+
+        public Description(string value)
+        {
+            this.Value = value;
+        }
+    }
 }

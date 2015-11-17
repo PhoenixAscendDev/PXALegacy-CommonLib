@@ -45,6 +45,9 @@
     <Compile Include="GeoLocation.cs" />
     <Compile Include="MapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateProvidence.cs" />
+    <Compile Include="USAStates.cs" />
+    <Compile Include="USAStateType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">

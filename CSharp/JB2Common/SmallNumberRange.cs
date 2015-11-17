@@ -14,6 +14,8 @@ namespace JB2.Common
         private byte _max;
 
         #endregion Fields
+
+        #region Properties
         public byte Max
         {
             get
@@ -40,9 +42,15 @@ namespace JB2.Common
             }
         }
 
+        #endregion Properties
+
+        #region Methods
+
         public bool IsWithinRange(byte value)
         {
-            return (Enumerable.Range(_min, _max).Contains(value));
+            return (Enumerable.Range(_min, _max-_min).Contains(value));
         }
+
+        #endregion Methods
     }
 }

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="Countries.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="GeoDistanceType.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="MapHelper.cs" />

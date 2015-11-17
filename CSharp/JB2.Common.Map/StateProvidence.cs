@@ -73,6 +73,11 @@ namespace JB2.Common
             return _lookup.ID;
         }
 
+        public string ToUpper()
+        {
+            return ToString().ToUpper();
+        }
+
         #endregion ToString
 
 

@@ -8,7 +8,7 @@ namespace JB2.Common
     public class Address : IAddress
     {
         #region Fields
-        private string _country;
+        private Country _country;
 
         #endregion Fields
 
@@ -18,12 +18,12 @@ namespace JB2.Common
         {
 
         }
-        public Address(string countrycode)
-        {
-            if (countrycode.ToLower() == "us")
-                _country = "United States";
-                //_country = new Lookup<string,string>( { Key = "US", Name = "United States", Id = "1", ItemType = "Country" };
-        }
+        //public Address()
+        //{
+        //    if (countrycode.ToLower() == "us")
+        //       // _country = "United States";
+        //        //_country = new Lookup<string,string>( { Key = "US", Name = "United States", Id = "1", ItemType = "Country" };
+        //}
 
         #endregion Constructor
 
@@ -44,7 +44,7 @@ namespace JB2.Common
             get;
             set;
         }
-        public string State
+        public StateProvidence State
         {
             get;
             set;
@@ -65,7 +65,7 @@ namespace JB2.Common
                 return sBuilder.ToString();
             }
         }
-        public  string Country
+        public  Country Country
         {
             get
             {

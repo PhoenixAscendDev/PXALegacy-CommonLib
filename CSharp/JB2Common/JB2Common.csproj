@@ -70,7 +70,8 @@
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
-    <Compile Include="IStorageAccount.cs" />
+    <Compile Include="Interfaces\IRange.cs" />
+    <Compile Include="Interfaces\IStorageAccount.cs" />
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="ObjectTag.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceResult.cs" />
     <Compile Include="ShortGUID.cs" />
+    <Compile Include="SmallNumberRange.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Validation.cs" />

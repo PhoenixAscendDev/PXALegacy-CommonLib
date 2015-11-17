@@ -15,7 +15,10 @@ namespace JB2.Common
         string PostalCode { get; set; }
         string StateProvince { get; set; }
         string FullAddress { get; set; }
-        string CityAndState { get; }
         IGeolocation GeoLocation { get; set; }
+
+        string CityAndState { get; }
+
+        string ToUSMailStandard();
     }
 }

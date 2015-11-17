@@ -60,6 +60,7 @@
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
     <Compile Include="Interfaces\IDie.cs" />
+    <Compile Include="Interfaces\IGeoLocation.cs" />
     <Compile Include="Interfaces\IImage.cs" />
     <Compile Include="Interfaces\ILookupItem.cs" />
     <Compile Include="Interfaces\Image.cs" />

@@ -90,6 +90,7 @@
     <Content Include="Packages\elmah.1.2.2\content\web.config.transform" />
     <Content Include="Packages\elmah.1.2.2\elmah.1.2.2.nupkg" />
     <Content Include="Packages\elmah.corelibrary.1.2.2\elmah.corelibrary.1.2.2.nupkg" />
+    <Content Include="Packages\JB2.Common.Map.0.1.2.nupkg" />
     <Content Include="Packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
     <Content Include="Packages\Microsoft.Web.Xdt.2.1.1\Microsoft.Web.Xdt.2.1.1.nupkg" />
     <Content Include="Packages\Ninject.3.0.1.10\Ninject.3.0.1.10.nupkg" />
@@ -105,8 +106,7 @@
     <Content Include="Packages\JB2.Common.Font.0.1.6.nupkg" />
     <Content Include="Packages\JB2.Common.Web.0.1.6.nupkg" />
     <Content Include="Packages\JB2.Data.Azure.0.1.8.nupkg" />
-    <Content Include="Packages\JB2.Common.0.1.11.nupkg" />
-    <Content Include="Packages\JB2.Common.Map.0.1.1.nupkg" />
+    <Content Include="Packages\JB2.Common.0.1.12.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP.pubxml" />

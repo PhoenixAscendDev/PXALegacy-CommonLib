@@ -30,5 +30,12 @@ namespace JB2.Common
         }
 
         #endregion Constructors
+
+        #region Methods
+
+
+        
+
+        #endregion Methods
     }
 }

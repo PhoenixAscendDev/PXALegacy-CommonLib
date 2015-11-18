@@ -34,9 +34,15 @@ namespace JB2.Common
 
         #region Properties
 
-        
+
 
         #endregion Properties
+
+        #region Methods
+
+        
+
+        #endregion Methods
 
 
 
@@ -66,6 +72,12 @@ namespace JB2.Common
                 newlist[index] = value;
                 _list = newlist;
             }
+        }
+
+
+        public T Find(Func<T, bool> predicate)
+        {
+            return _list.FirstOrDefault(predicate);
         }
 
 

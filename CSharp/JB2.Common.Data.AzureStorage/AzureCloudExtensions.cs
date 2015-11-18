@@ -14,8 +14,8 @@ namespace JB2.Common.Extensions
     // code source - http://www.codeproject.com/Tips/790554/StartsWith-comparison-for-searching-in-Azure-Table
     {
         public static IEnumerable<TElement> StartsWith<TElement>
-        (this CloudTable table, string partitionKey, string searchStr,
-        string columnName = "RowKey",int recordLimit = 1000) where TElement : ITableEntity, new()
+        (this CloudTable table, string partitionKey, string searchStr, 
+        string columnName = "RowKey",int recordLimit = 1000, bool decrypt = false) where TElement : ITableEntity, new()
         {
             if (string.IsNullOrEmpty(searchStr)) return null;
 

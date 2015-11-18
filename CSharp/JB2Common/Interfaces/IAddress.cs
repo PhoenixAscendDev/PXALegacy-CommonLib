@@ -6,6 +6,19 @@ namespace JB2.Common
 {
     public interface IAddress
     {
-        string FullAddress { get; set; }
+        string AddressLine1 { get; set; }
+        string AddressLine2 { get; set; }
+        string Building { get; set; }
+        string City { get; set; }
+        string CountryRegion { get; set; }
+        string FloorLevel { get; set; }
+        string PostalCode { get; set; }
+        string StateProvince { get; set; }
+        string FullAddress { get;  }
+        IGeolocation GeoLocation { get; set; }
+
+        string CityAndState { get; }
+
+        string ToUSMailStandard();
     }
 }

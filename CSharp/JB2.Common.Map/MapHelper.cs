@@ -54,7 +54,8 @@ namespace JB2.Common
                         //if (!(CultureList.Contains(GetRegionInfo.EnglishName)))
                         //{
                             Country c = new Country(GetRegionInfo.ThreeLetterISORegionName, GetRegionInfo.EnglishName);
-                            CultureList.Add(c);
+                            if(!CultureList.Contains<Country>(c))
+                                CultureList.Add(c);
                         //}
                     }
 

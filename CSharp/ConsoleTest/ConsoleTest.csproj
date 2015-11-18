@@ -147,6 +147,10 @@
       <Project>{49966c64-7a12-47ca-b746-7fc632dc7592}</Project>
       <Name>JB2.Common.Image</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
+      <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
+      <Name>JB2.Common.Map</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
       <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>
       <Name>JB2.Infrastructure</Name>

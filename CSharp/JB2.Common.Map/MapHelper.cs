@@ -76,7 +76,7 @@ namespace JB2.Common
 
         }
 
-        public static Country GetCountry()
+        public static Country GetCountryByCountryCode(string code)
         {
             return new Country();
         }
@@ -84,6 +84,11 @@ namespace JB2.Common
         public static StateProvidence GetUSAState(Enum.USAStateType type)
         {
             return _allUSAStates[type];
+        }
+
+        public static StateProvidence GetStateByAbbreviation(string abbreviation)
+        {
+            return new StateProvidence(abbreviation, string.Empty);           
         }
 
     }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public class StateProvidence 
+    public class StateProvince
     {
         #region
         protected IIDNamePair<string, string> _lookup;
         #endregion
 
         #region Constructor
-        public StateProvidence(string abbreviation,string fullname )
+        public StateProvince(string abbreviation,string fullname )
         {
             _lookup = new IDNamePair<string, string>(abbreviation, fullname);
         }
@@ -49,19 +49,19 @@ namespace JB2.Common
 
         #region Implicit Operators
 
-        public static implicit operator string(StateProvidence s)
+        public static implicit operator string(StateProvince s)
         {
             return s.Abbreviation;
         }
 
-        public static implicit operator IDNamePair<string,string>(StateProvidence s)
+        public static implicit operator IDNamePair<string,string>(StateProvince s)
         {
             return (IDNamePair<string,string>)s._lookup;
         }
 
-        public static implicit operator StateProvidence(IDNamePair<string,string> i)
+        public static implicit operator StateProvince(IDNamePair<string,string> i)
         {
-            return new StateProvidence(i.ID, i.Name);
+            return new StateProvince(i.ID, i.Name);
         }
 
         #endregion Implicit Operators

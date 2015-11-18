@@ -54,7 +54,8 @@ namespace JB2.Common
                         //if (!(CultureList.Contains(GetRegionInfo.EnglishName)))
                         //{
                             Country c = new Country(GetRegionInfo.ThreeLetterISORegionName, GetRegionInfo.EnglishName);
-                            CultureList.Add(c);
+                            if(!CultureList.Contains<Country>(c))
+                                CultureList.Add(c);
                         //}
                     }
 
@@ -76,14 +77,21 @@ namespace JB2.Common
 
         }
 
-        public static Country GetCountry()
+
+        public static Country GetCountryByCountryCode(string code)
         {
-            return new Country();
+            var countries = AllCountries;
+            return countries.Find(x => x.Abbreviation == code.ToUpper());
         }
 
-        public static StateProvidence GetUSAState(Enum.USAStateType type)
+        public static StateProvince GetUSAState(Enum.USAStateType type)
         {
             return _allUSAStates[type];
+        }
+
+        public static StateProvince GetStateByAbbreviation(string abbreviation)
+        {
+            return new StateProvince(abbreviation, "unknown");           
         }
 
     }

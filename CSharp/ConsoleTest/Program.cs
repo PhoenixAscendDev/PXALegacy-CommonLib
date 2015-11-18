@@ -47,10 +47,14 @@ namespace ConsoleTest
 
             //var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
 
-            var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
+            //var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 
             //Console.WriteLine(rgb.ToString());
+
+            var countries = JB2.Common.MapHelper.AllCountries;
+            
+            var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
 
             //JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");
             Console.ReadLine();

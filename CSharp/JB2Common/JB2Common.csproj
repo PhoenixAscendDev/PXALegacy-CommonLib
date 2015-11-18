@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\ILookupItem.cs" />
     <Compile Include="Interfaces\Image.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />
+    <Compile Include="Interfaces\IObjectCollection.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServiceResult.cs" />

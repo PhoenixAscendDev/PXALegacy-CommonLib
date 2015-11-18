@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public class Country
+    public class Country : IEquatable<Country>, IComparable,IComparable<Country>
     {
         #region Fields
         protected IIDNamePair<string, string> _lookup;
@@ -75,6 +75,57 @@ namespace JB2.Common
         {
             return ToString().ToUpper();
         }
+
+
         #endregion ToString()
+
+        #region IEqualable
+        public bool Equals(Country other)
+        {
+            return (this.Abbreviation.Equals(other.Abbreviation) && this.FullName.Equals(other.FullName));
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Abbreviation.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            Country c = obj as Country;
+            if (c != null)
+            {
+                return Equals(c);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        #endregion IEqualable
+
+        #region IComparable
+
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Country other = obj as Country;
+            if (other != null)
+               return this.CompareTo(other);
+            else
+                throw new ArgumentException("Object is not a Country");
+        }
+
+        public int CompareTo(Country other)
+        {
+            if (other == null)
+                return 1;
+            return this.Abbreviation.CompareTo(other.Abbreviation);
+        }
+
+        #endregion IComparable
     }
 }

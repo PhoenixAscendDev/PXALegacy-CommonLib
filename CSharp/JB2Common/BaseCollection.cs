@@ -6,7 +6,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class BaseCollection<T> : IEnumerable<T>
+    public class BaseCollection<T> : IEnumerable<T>, IObjectCollection<T>
     {
         protected IEnumerable<T> _list;
 
@@ -34,9 +34,48 @@ namespace JB2.Common
 
         #region Properties
 
-        
+
 
         #endregion Properties
+
+        #region Methods
+
+        public int Count()
+        {
+            return _list.Count();
+        }
+
+        public ServiceResult Add(T item)
+        {
+            try
+            {
+                _list.ToList().Add(item);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
+        public ServiceResult Remove(T item)
+        {
+            try
+            {
+                _list.ToList().Remove(item);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
+            
+
+        
+
+        #endregion Methods
 
 
 
@@ -54,7 +93,7 @@ namespace JB2.Common
 
         #endregion IEnumerable
 
-        T this[int index]
+        public  T this[int index]
         {
             get
             {
@@ -66,6 +105,12 @@ namespace JB2.Common
                 newlist[index] = value;
                 _list = newlist;
             }
+        }
+
+
+        public T Find(Func<T, bool> predicate)
+        {
+            return _list.FirstOrDefault(predicate);
         }
 
 

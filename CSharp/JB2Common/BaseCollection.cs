@@ -40,6 +40,39 @@ namespace JB2.Common
 
         #region Methods
 
+        public int Count()
+        {
+            return _list.Count();
+        }
+
+        public ServiceResult Add(T item)
+        {
+            try
+            {
+                _list.ToList().Add(item);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
+        public ServiceResult Remove(T item)
+        {
+            try
+            {
+                _list.ToList().Remove(item);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
+            
+
         
 
         #endregion Methods

@@ -77,19 +77,21 @@ namespace JB2.Common
 
         }
 
+
         public static Country GetCountryByCountryCode(string code)
         {
-            return new Country();
+            var countries = AllCountries;
+            return countries.Find(x => x.Abbreviation == code.ToUpper());
         }
 
-        public static StateProvidence GetUSAState(Enum.USAStateType type)
+        public static StateProvince GetUSAState(Enum.USAStateType type)
         {
             return _allUSAStates[type];
         }
 
-        public static StateProvidence GetStateByAbbreviation(string abbreviation)
+        public static StateProvince GetStateByAbbreviation(string abbreviation)
         {
-            return new StateProvidence(abbreviation, string.Empty);           
+            return new StateProvince(abbreviation, "unknown");           
         }
 
     }

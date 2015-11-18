@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class Address : IAddress
+    public class Address : IAddress<StateProvince,Country,IGeolocation>
     {
         #region Fields
         private Country _country;
@@ -44,11 +44,7 @@ namespace JB2.Common
             get;
             set;
         }
-        public StateProvidence State
-        {
-            get;
-            set;
-        }
+
         public string CityAndState
         {
             get
@@ -56,26 +52,16 @@ namespace JB2.Common
                 StringBuilder sBuilder = new StringBuilder();
                 if (!string.IsNullOrEmpty(this.City))
                     sBuilder.Append(this.City);
-                if (!string.IsNullOrEmpty(this.State))
+                if (!string.IsNullOrEmpty(this.StateProvince))
                 {
                     if (!string.IsNullOrEmpty(this.City))
                         sBuilder.Append(", ");
-                    sBuilder.Append(this.State);
+                    sBuilder.Append(this.StateProvince);
                 }
                 return sBuilder.ToString();
             }
         }
-        public  Country Country
-        {
-            get
-            {
-                return _country;
-            }
-            set
-            {
-                _country = value;
-            }
-        }
+        
         public string PostalCode
         {
             get;
@@ -100,9 +86,16 @@ namespace JB2.Common
            
         }
 
-        public string CountryRegion
+        public Country CountryRegion
         {
-            get; set;
+            get
+            {
+                return _country;
+            }
+            set
+            {
+                _country = value;
+            }
         }
 
         public string FloorLevel
@@ -110,7 +103,7 @@ namespace JB2.Common
             get; set;
         }
 
-        public string StateProvince
+        public StateProvince StateProvince
         {
             get; set;
         }
@@ -137,7 +130,7 @@ namespace JB2.Common
                 sBuilder.Append(this.AddressLine2.ToUpper());
             }
             sBuilder.Append("\n");
-            sBuilder.Append(this.City.ToUpper() + " " + this.State.ToUpper());
+            sBuilder.Append(this.City.ToUpper() + " " + this.StateProvince.ToUpper());
             if (!string.IsNullOrEmpty(this.PostalCode))
                 sBuilder.Append(this.PostalCode.ToUpper());
 
@@ -157,11 +150,11 @@ namespace JB2.Common
             if (!string.IsNullOrEmpty(this.AddressLine2)) sBuilder.AppendLine(this.AddressLine2);
             sBuilder.Append(this.City);
             sBuilder.Append(", ");
-            sBuilder.Append(this.State);
+            sBuilder.Append(this.StateProvince);
             sBuilder.Append(" ");
             sBuilder.Append(this.PostalCode);
             sBuilder.Append(" ");
-            sBuilder.Append(this.Country);
+            sBuilder.Append(this.CountryRegion);
 
             return sBuilder.ToString();
         }

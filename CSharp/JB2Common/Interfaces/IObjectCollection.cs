@@ -10,5 +10,12 @@ namespace JB2.Common
         T this[int index] { get; set; }
 
         T Find(Func<T, bool> predicate);
+
+        int Count();
+
+        ServiceResult Add(T item);
+        ServiceResult Remove(T item);
+
+        
     }
 }

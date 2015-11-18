@@ -8,11 +8,11 @@ using JB2.Common.Attributes;
 
 namespace JB2.Common
 {
-    public class USAStates : BaseCollection<StateProvidence>
+    public class USAStates : BaseCollection<StateProvince>
     {
         #region Fields
 
-        Dictionary<Enum.USAStateType, StateProvidence> _dictionay;
+        Dictionary<Enum.USAStateType, StateProvince> _dictionay;
 
         #endregion Fields
 
@@ -20,13 +20,13 @@ namespace JB2.Common
 
         public USAStates() : base()
         {
-            _dictionay = new Dictionary<Enum.USAStateType, StateProvidence>();
+            _dictionay = new Dictionary<Enum.USAStateType, StateProvince>();
 
             var states = System.Enum.GetValues(typeof(Enum.USAStateType));
 
             foreach(Enum.USAStateType state in states)
             {
-                StateProvidence sp = new StateProvidence(state.ToString(), state.GetAttributeOfType<Description>().Value);
+                StateProvince sp = new StateProvince(state.ToString(), state.GetAttributeOfType<Description>().Value);
                 _dictionay.Add(state,sp);
             }
 
@@ -41,7 +41,7 @@ namespace JB2.Common
 
         #region Methods
 
-        public StateProvidence this[Enum.USAStateType state]
+        public StateProvince this[Enum.USAStateType state]
         {
             get
             {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class BaseCollection<T> : IEnumerable<T>
+    public class BaseCollection<T> : IEnumerable<T>, IObjectCollection<T>
     {
         protected IEnumerable<T> _list;
 
@@ -60,7 +60,7 @@ namespace JB2.Common
 
         #endregion IEnumerable
 
-        T this[int index]
+        public  T this[int index]
         {
             get
             {

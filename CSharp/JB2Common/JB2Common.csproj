@@ -83,6 +83,7 @@
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
+    <Compile Include="TimeRange.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Validation.cs" />
   </ItemGroup>

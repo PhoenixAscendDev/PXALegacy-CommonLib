@@ -107,11 +107,11 @@
     <Content Include="Packages\JB2.Common.Web.0.1.6.nupkg" />
     <Content Include="Packages\JB2.Data.Azure.0.1.8.nupkg" />
     <Content Include="Packages\JB2.Common.0.1.12.nupkg" />
+    <Content Include="Packages\JB2.Infrastructure.0.1.2.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\jbsquared-nuget - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\jbsquared-nuget - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Infrastructure", "JB2.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Map", "JB2.Common.Map\JB2.Common.Map.csproj", "{9EDA2EB9-032A-4072-950E-D3BF1EB8BA4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Scheduler", "JB2.Common.Scheduler\JB2.Common.Scheduler.csproj", "{FB4FDDE0-8031-4220-B613-7A7E6D575B13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{9EDA2EB9-032A-4072-950E-D3BF1EB8BA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EDA2EB9-032A-4072-950E-D3BF1EB8BA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EDA2EB9-032A-4072-950E-D3BF1EB8BA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4FDDE0-8031-4220-B613-7A7E6D575B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4FDDE0-8031-4220-B613-7A7E6D575B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4FDDE0-8031-4220-B613-7A7E6D575B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4FDDE0-8031-4220-B613-7A7E6D575B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

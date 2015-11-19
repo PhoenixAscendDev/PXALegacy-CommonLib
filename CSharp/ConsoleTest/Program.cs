@@ -52,9 +52,9 @@ namespace ConsoleTest
 
             //Console.WriteLine(rgb.ToString());
 
-            var countries = JB2.Common.MapHelper.AllCountries;
+            //var countries = JB2.Common.MapHelper.AllCountries;
             
-            var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
+            //var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
 
             //JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");
             Console.ReadLine();

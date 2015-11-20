@@ -9,23 +9,17 @@ using JB2.Common.Log.Enum;
 namespace JB2.Common.Log
 {
 
-    public interface ILogger : ILogger<LogServerityType>
+    public interface ILogger : ILogger<LogServerityType,string,ILogEntry>
     {
 
     }
 
 
-    public interface ILogger<TServerity>
+    public interface ILogger<TServerity,TKey,TLogEntry>
         where TServerity : IComparable
+        where TLogEntry : ILogEntry<TKey,TServerity>
     {
-        bool IsDebugEnabled { get; }
-        bool IsVerboseEnabled { get; }
-        bool IsInformationalEnabled { get; }
-        bool IsWarningEnabled { get; }
-        bool IsFatalEnabled { get; }
-        bool IsErrorEnabled { get; }
-
-        void Write(string message, TServerity severity);
-        void Write(string message, Exception exception, TServerity severity);
+        bool IsEnabled(TServerity severity);
+        void Log(TLogEntry entry);       
     }
 }

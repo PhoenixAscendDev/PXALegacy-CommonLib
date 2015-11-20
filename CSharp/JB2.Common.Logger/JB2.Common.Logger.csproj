@@ -42,8 +42,16 @@
   <ItemGroup>
     <Compile Include="ILogEntry.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="LogEntry.cs" />
+    <Compile Include="LogExtensions.cs" />
     <Compile Include="LogServerityType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JB2Common\JB2Common.csproj">
+      <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>
+      <Name>JB2Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

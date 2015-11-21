@@ -50,6 +50,7 @@
     <Compile Include="LogManager.cs" />
     <Compile Include="LogSearch.cs" />
     <Compile Include="LogServerityType.cs" />
+    <Compile Include="NotLogServerityEnabled.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

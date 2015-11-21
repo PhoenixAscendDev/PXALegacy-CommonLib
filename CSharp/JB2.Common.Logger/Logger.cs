@@ -19,6 +19,15 @@ namespace JB2.Common.Log
                 return _serverityFlag[serverity];
         }
 
+        public void SetAllServerity(bool enable)
+        {
+            _serverityFlag = new Dictionary<LogServerityType, bool>();
+            foreach(Enum.LogServerityType e in System.Enum.GetValues(typeof(Enum.LogServerityType)))
+            {
+                _serverityFlag.Add(e, enable);
+            }
+        }
+
         public void SetServerityType(Enum.LogServerityType type, bool enable)
         {
             if (!_serverityFlag.ContainsKey(type))

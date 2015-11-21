@@ -7,7 +7,7 @@ using JB2.Common.Log.Enum;
 
 namespace JB2.Common.Log
 {
-    public sealed class LogSearch : ILogSearch<string, Enum.LogServerityType,string>
+    public sealed class LogSearch : ILogSearch
     {
         //public readonly IEnumerable<string> IDs;
 

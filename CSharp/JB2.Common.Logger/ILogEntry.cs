@@ -18,4 +18,6 @@ namespace JB2.Common.Log
         Exception Exception { get; }
         DateTime LogDate { get; }
     }
+
+    
 }

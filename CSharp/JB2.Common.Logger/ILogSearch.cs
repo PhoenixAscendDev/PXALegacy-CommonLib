@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Log
 {
+
+    public interface ILogSearch : ILogSearch<string,Enum.LogServerityType,string>
+    {
+
+    }
     public interface ILogSearch<TKey,TServerity,TComparsion>
     {
         IEnumerable<TKey> IDs { get; set; }

@@ -23,5 +23,15 @@ namespace JB2.Common.Log
 
         }
         #endregion Constructors
+
+        #region Properties
+
+        public string Serverity { get; set; }
+        public string ID { get; set; }
+        public string Message { get; set; }
+        public string Exception { get; set; }
+        public string LogDate { get; set; }
+
+        #endregion Properties
     }
 }

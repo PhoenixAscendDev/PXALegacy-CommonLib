@@ -90,7 +90,7 @@ namespace JB2.Common.Log
                     try
                     {
                         this.prevErrorLog = result;
-                        this.prevErrorLogManager = new ErrorLogManager(result);
+                        this.prevErrorLogManager = new ElmahLogManager(result,this.repository);
                     }
                     finally
                     {

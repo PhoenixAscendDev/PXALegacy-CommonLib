@@ -38,7 +38,7 @@ namespace JB2.Common.Log
 
         public IEnumerable<ILogEntry> GetLogEntries(ILogSearch search)
         {
-            var eList = _table.ExecuteQuery<LogTableEntry>(azurequeryfromSearch(search,_partition));
+            var eList = _table.ExecuteQuery<LogTableEntry>(azurequeryfromSearch(search,_partition).Take(search.MaxRecordReturned));
             List<ILogEntry> result = new List<ILogEntry>(eList.Count());
             foreach(LogTableEntry e in eList)
             {

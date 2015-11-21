@@ -31,14 +31,28 @@ namespace JB2.Common.Log
 
     public static class LogRepoExtenstion
     {
+        public static IEnumerable<ILogEntry> GetLogEntriesByServerity(this ILogRepo repo, Enum.LogServerityType serverity)
+        {
+
+            return (IEnumerable<ILogEntry>)repo.GetLogEntries(LogSearch.SearchBySeverity(serverity, QueryComparison.Equal));
+        }
+
+        public static IEnumerable<ILogEntry> GetLogEntiresByDate(this ILogRepo repo, DateTime date, string comparison)
+        {
+            return (IEnumerable<ILogEntry>)repo.GetLogEntry(LogSearch.SearchByDate(date, comparison));
+        }
+
+
+        public static ILogEntry GetLogEntryById(this ILogRepo repo, string id)
+        {
+            return (ILogEntry)repo.GetLogEntry(LogSearch.SearchByID(id, QueryComparison.Equal));
+        }
 
     }
 
-
-    public static class ExceptionExtensions
+    public static class ExceptionExtenstion
     {
-
-        public static void LogIt(this Exception ex, ILogger logger,Enum.LogServerityType serverity)
+        public static void LogIt(this Exception ex, ILogger logger, Enum.LogServerityType serverity)
         {
             logger.Log(serverity, ex);
         }

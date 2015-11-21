@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Log
 {
-    public  class LogManager
+    public class LogManager
     {
         private static ILogger _logger;
+        private static ILogRepo _logrepo;
 
-        public static void Configure( ILogger logger )
+        public static void Configure( ILogger logger, ILogRepo repository )
         {
              _logger = logger;
+            _logrepo = repository;
         }
 
         public static ILogger Logger
@@ -22,6 +24,16 @@ namespace JB2.Common.Log
                 return _logger;
             }
         }
+
+        public static ILogRepo Repository
+        {
+            get
+            {
+                return _logrepo;
+            }
+        }
+
+
 
 
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1EA875A-2865-45EC-9296-B278F5815DA9}</ProjectGuid>
+    <ProjectGuid>{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Log</RootNamespace>
-    <AssemblyName>JB2.Common.Log</AssemblyName>
+    <RootNamespace>JB2.Common.Log.Elmah</RootNamespace>
+    <AssemblyName>JB2.Common.Log.Elmah</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,23 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogEntry.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="ILogRepo.cs" />
-    <Compile Include="ILogSearch.cs" />
-    <Compile Include="LogEntry.cs" />
-    <Compile Include="LogExtensions.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="LogManager.cs" />
-    <Compile Include="LogSearch.cs" />
-    <Compile Include="LogServerityType.cs" />
+    <Compile Include="ElmahAdaptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
+      <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
+      <Name>JB2.Common.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">
       <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>
       <Name>JB2Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

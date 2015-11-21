@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Scheduler", "JB2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Logger", "JB2.Common.Logger\JB2.Common.Logger.csproj", "{E1EA875A-2865-45EC-9296-B278F5815DA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Log.Elmah", "JB2.Common.Log.Elmah\JB2.Common.Log.Elmah.csproj", "{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{E1EA875A-2865-45EC-9296-B278F5815DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1EA875A-2865-45EC-9296-B278F5815DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1EA875A-2865-45EC-9296-B278F5815DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,7 +8,7 @@ using JB2.Common.Log.Enum;
 
 using JB2.Common.Data;
 using Microsoft.WindowsAzure.Storage;
-
+using Microsoft.WindowsAzure.Storage.Table;
 
 
 namespace JB2.Common.Log
@@ -38,13 +38,54 @@ namespace JB2.Common.Log
 
         public IEnumerable<ILogEntry> GetLogEntries(ILogSearch search)
         {
-            throw new NotImplementedException();
+            var eList = _table.ExecuteQuery<LogTableEntry>(azurequeryfromSearch(search,_partition));
+            List<ILogEntry> result = new List<ILogEntry>(eList.Count());
+            foreach(LogTableEntry e in eList)
+            {
+                result.Add(logfromentry(e));
+            }
+
+            return result;
         }
 
         public ILogEntry GetLogEntry(ILogSearch search)
         {
-            throw new NotImplementedException();
+            return GetLogEntries(search).FirstOrDefault();
         }
+
+        public bool StoreLogEntry(ILogEntry entry)
+        {
+            //because of how NoSQL we are storing the entry multiple times for fast query
+            try
+            {
+                var te = entryfromLog(entry, _partition);
+
+                te.RowKey = "id:" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+                te.RowKey = "serverity: " + entry.Serverity.ToString() + ":" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+                te.RowKey = "logdate:" + ((JB2Date)entry.LogDate).DateKey + ":" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+
+                te.PartitionKey = te.PartitionKey + ":" + ((JB2Date)entry.LogDate).DateKey;
+                te.RowKey = "id:" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
+
+
+
+        #region private static
 
 
         private static LogTableEntry entryfromLog(ILogEntry e, string partition)
@@ -65,6 +106,111 @@ namespace JB2.Common.Log
             DateTime dt = Convert.ToDateTime(e.LogDate);
             return new LogEntry(e.ID, type, e.Message, null, dt);
         }
+
+        private static TableQuery<LogTableEntry> azurequeryfromSearch(ILogSearch s,string partitionKey)
+        {
+            TableQuery<LogTableEntry> result = null;
+            List<string> conditions = new List<string>();
+            var partitionValue = partitionKey;
+
+            //search by Serverity
+            foreach (string id in s.IDs)
+            {
+                string searchStr = "id:" + id;
+                char lastChar = searchStr[searchStr.Length - 1];
+                char nextLastChar = (char)((int)lastChar + 1);
+                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                string condition = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                );
+                conditions.Add(condition);
+            }
+
+            //search by Serverity
+            foreach(LogServerityType severity in s.Serveritys)
+            {
+                string searchStr = "serverity:" + severity.ToString() + ":";
+                char lastChar = searchStr[searchStr.Length - 1];
+                char nextLastChar = (char)((int)lastChar + 1);
+                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                string condition = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                );
+                conditions.Add(condition);
+            }
+
+
+            //search by Date
+            if(s.LogDate != DateTime.MinValue)
+            {
+                string searchStr = "logdate:" + ((JB2Date)s.LogDate).DateKey + ":";
+                char lastChar = searchStr[searchStr.Length - 1];
+                char nextLastChar = (char)((int)lastChar + 1);
+                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                string condition = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                );
+                conditions.Add(condition);
+
+                partitionKey = partitionKey + ":" + ((JB2Date)s.LogDate).DateKey;
+            }
+
+
+            //combine the conditions
+            var prefixCondition = string.Join("and", conditions.ToArray());
+
+            string filterString = TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
+                TableOperators.And,
+                prefixCondition
+                );
+
+
+            return new TableQuery<LogTableEntry>().Where(filterString);
+
+        }
+
+
+
+
+
+            
+
+
+
+
+        //    public static IEnumerable<TElement> StartsWith<TElement>
+        //(this CloudTable table, string partitionKey, string searchStr,
+        //string columnName = "RowKey", int recordLimit = 1000, bool decrypt = false) where TElement : ITableEntity, new()
+        //{
+        //    if (string.IsNullOrEmpty(searchStr)) return null;
+
+        //    char lastChar = searchStr[searchStr.Length - 1];
+        //    char nextLastChar = (char)((int)lastChar + 1);
+        //    string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+        //    string prefixCondition = TableQuery.CombineFilters(
+        //        TableQuery.GenerateFilterCondition(columnName, QueryComparisons.GreaterThanOrEqual, searchStr),
+        //        TableOperators.And,
+        //        TableQuery.GenerateFilterCondition(columnName, QueryComparisons.LessThan, nextSearchStr)
+        //        );
+
+        //    string filterString = TableQuery.CombineFilters(
+        //        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
+        //        TableOperators.And,
+        //        prefixCondition
+        //        );
+        //    var query = new TableQuery<TElement>().Where(filterString);
+        //    return table.ExecuteQuery<TElement>(query).Take(recordLimit);
+        //}
+
+
+        #endregion private static
 
 
     }

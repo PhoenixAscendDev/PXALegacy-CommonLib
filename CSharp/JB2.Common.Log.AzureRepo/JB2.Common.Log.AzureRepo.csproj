@@ -77,6 +77,10 @@
       <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
       <Name>JB2.Common.Data.AzureStorage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Date\JB2.Common.Date.csproj">
+      <Project>{3f3b616b-80f8-4cfd-9296-b8d677dedbd9}</Project>
+      <Name>JB2.Common.Date</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
       <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
       <Name>JB2.Common.Logger</Name>

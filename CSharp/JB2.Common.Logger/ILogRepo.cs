@@ -17,5 +17,9 @@ namespace JB2.Common.Log
     {
         IEnumerable<TLogEntry> GetLogEntries(TSearch search);
         TLogEntry GetLogEntry(TSearch search);
+
+        bool StoreLogEntry(TLogEntry entry);
     }
+
+   
 }

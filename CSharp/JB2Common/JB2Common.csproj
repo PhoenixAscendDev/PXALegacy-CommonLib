@@ -49,6 +49,7 @@
     <Compile Include="Enum\DiceType.cs" />
     <Compile Include="Enum\ElevatorDirectionType.cs" />
     <Compile Include="Enum\KeyBitSize.cs" />
+    <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Error\SqliteException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
     <Compile Include="Extensions\DataExtenstions.cs" />

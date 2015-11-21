@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JB2.Common.Log.Elmah")]
+[assembly: AssemblyTitle("JB2.Common.Log.AzureRepo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JB2.Common.Log.Elmah")]
+[assembly: AssemblyProduct("JB2.Common.Log.AzureRepo")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5fe22fd2-943c-4d58-ad84-568f21f1d6fc")]
+[assembly: Guid("304a01aa-5acd-4228-8474-46590f50e4e2")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -10,8 +10,9 @@ namespace JB2.Common.Log
     {
         private static ILogger _logger;
         private static ILogRepo _logrepo;
+        private static bool _repoEnabled;
 
-        public static void Configure( ILogger logger, ILogRepo repository )
+        public static void Configure( ILogger logger, ILogRepo repository,bool enableRepo  = false)
         {
              _logger = logger;
             _logrepo = repository;
@@ -30,6 +31,18 @@ namespace JB2.Common.Log
             get
             {
                 return _logrepo;
+            }
+        }
+
+        public static bool IsRepoEnabled
+        {
+            get
+            {
+                return _repoEnabled;
+            }
+            set
+            {
+                _repoEnabled = true;
             }
         }
 

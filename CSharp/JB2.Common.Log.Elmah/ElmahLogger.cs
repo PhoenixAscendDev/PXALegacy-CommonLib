@@ -14,7 +14,7 @@ namespace JB2.Common.Log
     {
 
         #region Constructor
-        public ElmahLogger()
+        public ElmahLogger(ILogRepo repo)
         {
             base.SetAllServerity(true);
 
@@ -33,6 +33,7 @@ namespace JB2.Common.Log
                     {
                         var annotatedException = new Exception(entry.Message, entry.Exception);
                         ErrorSignal.FromCurrentContext().Raise(annotatedException);
+
                     }
                     else
                     {

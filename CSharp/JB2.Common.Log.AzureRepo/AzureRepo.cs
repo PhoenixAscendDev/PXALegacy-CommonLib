@@ -76,7 +76,7 @@ namespace JB2.Common.Log
 
                 return true;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 return false;
             }
@@ -90,9 +90,9 @@ namespace JB2.Common.Log
 
         private static LogTableEntry entryfromLog(ILogEntry e, string partition)
         {
-            return new LogTableEntry()
+            return new LogTableEntry(partition, "id:" + e.ID)
             {
-                Exception = e.Exception.ToString(),
+                Exception = e.Exception == null ? string.Empty : e.Exception.ToString(),
                 ID = e.ID,
                 LogDate = e.LogDate.ToString(),
                 Message = e.Message,
@@ -109,38 +109,45 @@ namespace JB2.Common.Log
 
         private static TableQuery<LogTableEntry> azurequeryfromSearch(ILogSearch s,string partitionKey)
         {
-            TableQuery<LogTableEntry> result = null;
+            
             List<string> conditions = new List<string>();
             var partitionValue = partitionKey;
 
-            //search by Serverity
-            foreach (string id in s.IDs)
+            //search by IDs
+
+            if (s.IDs != null)
             {
-                string searchStr = "id:" + id;
-                char lastChar = searchStr[searchStr.Length - 1];
-                char nextLastChar = (char)((int)lastChar + 1);
-                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
-                string condition = TableQuery.CombineFilters(
-                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
-                    TableOperators.And,
-                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
-                );
-                conditions.Add(condition);
+                foreach (string id in s.IDs)
+                {
+                    string searchStr = "id:" + id;
+                    char lastChar = searchStr[searchStr.Length - 1];
+                    char nextLastChar = (char)((int)lastChar + 1);
+                    string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                    string condition = TableQuery.CombineFilters(
+                        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                        TableOperators.And,
+                        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                    );
+                    conditions.Add(condition);
+                }
             }
 
             //search by Serverity
-            foreach(LogServerityType severity in s.Serveritys)
+            if (s.Serveritys != null)
             {
-                string searchStr = "serverity:" + severity.ToString() + ":";
-                char lastChar = searchStr[searchStr.Length - 1];
-                char nextLastChar = (char)((int)lastChar + 1);
-                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
-                string condition = TableQuery.CombineFilters(
-                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
-                    TableOperators.And,
-                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
-                );
-                conditions.Add(condition);
+                foreach (LogServerityType severity in s.Serveritys)
+                {
+                    string searchStr = "serverity:" + severity.ToString() + ":";
+                    char lastChar = searchStr[searchStr.Length - 1];
+                    char nextLastChar = (char)((int)lastChar + 1);
+                    string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                    string condition = TableQuery.CombineFilters(
+                        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                        TableOperators.And,
+                        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                    );
+                    conditions.Add(condition);
+                }
             }
 
 

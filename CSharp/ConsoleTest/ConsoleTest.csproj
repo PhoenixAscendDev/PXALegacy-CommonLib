@@ -147,6 +147,18 @@
       <Project>{49966c64-7a12-47ca-b746-7fc632dc7592}</Project>
       <Name>JB2.Common.Image</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Log.AzureRepo\JB2.Common.Log.AzureRepo.csproj">
+      <Project>{304a01aa-5acd-4228-8474-46590f50e4e2}</Project>
+      <Name>JB2.Common.Log.AzureRepo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Log.Elmah\JB2.Common.Log.Elmah.csproj">
+      <Project>{5fe22fd2-943c-4d58-ad84-568f21f1d6fc}</Project>
+      <Name>JB2.Common.Log.Elmah</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
+      <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
+      <Name>JB2.Common.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
       <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
       <Name>JB2.Common.Map</Name>

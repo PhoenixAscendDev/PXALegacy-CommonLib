@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Logger", "JB2.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Log.Elmah", "JB2.Common.Log.Elmah\JB2.Common.Log.Elmah.csproj", "{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Log.AzureRepo", "JB2.Common.Log.AzureRepo\JB2.Common.Log.AzureRepo.csproj", "{304A01AA-5ACD-4228-8474-46590F50E4E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE22FD2-943C-4D58-AD84-568F21F1D6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304A01AA-5ACD-4228-8474-46590F50E4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304A01AA-5ACD-4228-8474-46590F50E4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304A01AA-5ACD-4228-8474-46590F50E4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304A01AA-5ACD-4228-8474-46590F50E4E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

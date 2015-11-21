@@ -7,7 +7,7 @@ using JB2.Common.Log.Enum;
 
 namespace JB2.Common.Log
 {
-    public sealed class LogEntry : LogEntry<string,LogServerityType>, ILogEntry
+    public  class LogEntry : LogEntry<string,LogServerityType>, ILogEntry
     {
         public LogEntry(string id, LogServerityType serverity, string message, Exception exception, DateTime logDate)
             : base(id,serverity,message,exception,logDate)
@@ -16,7 +16,7 @@ namespace JB2.Common.Log
 
         public static LogEntry NewLogEntry(LogServerityType serverity, string message)
         {
-            return (LogEntry)NewLogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, message);
+            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, message,null,DateTime.Now);
         }
 
         public static LogEntry NewLogEntry(LogServerityType serverity, Exception exception)

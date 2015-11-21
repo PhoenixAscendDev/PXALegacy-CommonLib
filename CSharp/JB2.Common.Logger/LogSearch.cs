@@ -53,18 +53,18 @@ namespace JB2.Common.Log
 
         #region Static Methods
 
-        public static LogSearch SearchByID(string id,string comparison)
+        public static LogSearch SearchByID(string id,string comparison = JB2.Common.QueryComparison.Equal)
         {
             return new LogSearch(new string[1] { id }, null, DateTime.MinValue, comparison);
         }
-        public static LogSearch SearchBySeverity(Enum.LogServerityType serverity, string comparision)
+        public static LogSearch SearchBySeverity(Enum.LogServerityType serverity, string comparison = JB2.Common.QueryComparison.Equal)
         {
-            return new LogSearch(null, new Enum.LogServerityType[1] { serverity }, DateTime.MinValue, comparision);
+            return new LogSearch(null, new Enum.LogServerityType[1] { serverity }, DateTime.MinValue, comparison);
         }
 
-        public static LogSearch SearchByDate(DateTime date,string comparision)
+        public static LogSearch SearchByDate(DateTime date, string comparison = JB2.Common.QueryComparison.Equal)
         {
-            return new LogSearch(null, null, date, comparision);
+            return new LogSearch(null, null, date, comparison);
         }
 
         #endregion Static Methods

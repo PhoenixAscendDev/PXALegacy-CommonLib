@@ -37,7 +37,7 @@ namespace JB2.Common.Log
             return (IEnumerable<ILogEntry>)repo.GetLogEntries(LogSearch.SearchBySeverity(serverity, QueryComparison.Equal));
         }
 
-        public static IEnumerable<ILogEntry> GetLogEntiresByDate(this ILogRepo repo, DateTime date, string comparison)
+        public static IEnumerable<ILogEntry> GetLogEntriesByDate(this ILogRepo repo, DateTime date, string comparison)
         {
             return (IEnumerable<ILogEntry>)repo.GetLogEntry(LogSearch.SearchByDate(date, comparison));
         }
@@ -46,6 +46,11 @@ namespace JB2.Common.Log
         public static ILogEntry GetLogEntryById(this ILogRepo repo, string id)
         {
             return (ILogEntry)repo.GetLogEntry(LogSearch.SearchByID(id, QueryComparison.Equal));
+        }
+
+        public static IEnumerable<ILogEntry> GetMostRecentLogEntries(this ILogRepo repo,int maxRecords)
+        {
+            return (IEnumerable<ILogEntry>)repo.GetLogEntries(new LogSearch(null, null, DateTime.MinValue, "eq", maxRecords));
         }
 
     }

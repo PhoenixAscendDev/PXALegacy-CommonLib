@@ -37,7 +37,7 @@ namespace JB2.Common.Log
 
 
         public IEnumerable<ILogEntry> GetLogEntries(ILogSearch search)
-        {
+        {         
             var eList = _table.ExecuteQuery<LogTableEntry>(azurequeryfromSearch(search,_partition).Take(search.MaxRecordReturned));
             List<ILogEntry> result = new List<ILogEntry>(eList.Count());
             foreach(LogTableEntry e in eList)
@@ -112,6 +112,24 @@ namespace JB2.Common.Log
             
             List<string> conditions = new List<string>();
             var partitionValue = partitionKey;
+
+            //if IDs,Severity or LogDate is empty just return the top logs
+            if ((s.IDs == null) && (s.Serveritys == null) && (s.LogDate == DateTime.MinValue))
+            {
+                string searchStr = "id:";
+                char lastChar = searchStr[searchStr.Length - 1];
+                char nextLastChar = (char)((int)lastChar + 1);
+                string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+                string condition = TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, searchStr),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, nextSearchStr)
+                );
+                conditions.Add(condition);
+            }
+
+
+
 
             //search by IDs
 

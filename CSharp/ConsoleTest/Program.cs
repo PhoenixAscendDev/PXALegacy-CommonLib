@@ -15,6 +15,8 @@ using System.IO;
 
 using JB2.Common;
 
+using JB2.Common.Log;
+
 namespace ConsoleTest
 {
     class Program
@@ -44,8 +46,8 @@ namespace ConsoleTest
             var entry = JB2.Common.Log.LogEntry.NewLogEntry(JB2.Common.Log.Enum.LogServerityType.Informational, "This is a message");
             test.StoreLogEntry(entry);
 
-            var logentries = test.GetLogEntry(JB2.Common.Log.LogSearch.SearchByID("7yL5PlNxvEykzfTKZsdk9g"));
-
+            //var logentries = test.GetLogEntry(JB2.Common.Log.LogSearch.SearchByID("7yL5PlNxvEykzfTKZsdk9g"));
+            var logentries = test.GetMostRecentLogEntries(2);
             //Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
             //System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
 

@@ -8,8 +8,34 @@ namespace JB2.Common
 {
     public class MetaDataCollection : IEnumerable<IMetaData>, IObjectCollection<IMetaData>
     {
+        #region Fields
         private IDictionary<string, IMetaData> _dictionary;
+        #endregion Fields
 
+        #region Constructors
+        public MetaDataCollection(IMetaData thing)
+        {
+            IMetaData[] array = new IMetaData[1] { thing };
+            _dictionary = new Dictionary<string, IMetaData>();
+            _dictionary.Add(thing.PropertyName,thing);
+            //_list = array;
+        }
+
+        public MetaDataCollection(IEnumerable<IMetaData> things)
+        {
+            _dictionary = new Dictionary<string, IMetaData>();
+            foreach(IMetaData thing in things)
+            {
+                if (_dictionary.ContainsKey(thing.PropertyName))
+                {
+                    _dictionary.Add(thing.PropertyName, thing);
+                }
+                else
+                    _dictionary[thing.PropertyName] = thing;
+            }          
+        }
+
+        #endregion Constructors
 
         #region IObjectCollection
         public IMetaData this[int index]
@@ -59,7 +85,8 @@ namespace JB2.Common
 
         public ServiceResult Remove(IMetaData item)
         {
-            throw new NotImplementedException();
+            _dictionary.Remove(item.PropertyName);
+            return true;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

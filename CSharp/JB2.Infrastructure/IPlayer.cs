@@ -16,7 +16,6 @@ namespace JB2.Infrastructure
         int BitScore { get; set; }
         string FamilyID { get; set; }
 
-        
-       
+             
     }
 }

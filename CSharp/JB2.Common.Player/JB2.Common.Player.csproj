@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Family.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IPlayerRepo.cs" />
     <Compile Include="Player.cs" />

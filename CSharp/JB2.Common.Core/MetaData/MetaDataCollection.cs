@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JB2.Common
+{
+    public class MetaDataCollection : IEnumerable<IMetaData>, IObjectCollection<IMetaData>
+    {
+        #region Fields
+        private IDictionary<string, IMetaData> _dictionary;
+        #endregion Fields
+
+        #region Constructors
+        public MetaDataCollection(IMetaData thing)
+        {
+            IMetaData[] array = new IMetaData[1] { thing };
+            _dictionary = new Dictionary<string, IMetaData>();
+            _dictionary.Add(thing.PropertyName,thing);
+            //_list = array;
+        }
+
+        public MetaDataCollection(IEnumerable<IMetaData> things)
+        {
+            _dictionary = new Dictionary<string, IMetaData>();
+            foreach(IMetaData thing in things)
+            {
+                if (_dictionary.ContainsKey(thing.PropertyName))
+                {
+                    _dictionary.Add(thing.PropertyName, thing);
+                }
+                else
+                    _dictionary[thing.PropertyName] = thing;
+            }          
+        }
+
+        #endregion Constructors
+
+        #region IObjectCollection
+        public IMetaData this[int index]
+        {
+            get
+            {
+                return _dictionary.Values.ToArray()[index];
+            }
+
+            set
+            {
+                Add(value);
+            }
+        }
+
+        public ServiceResult Add(IMetaData item)
+        {
+            if( !_dictionary.ContainsKey(item.PropertyName))
+            {
+                _dictionary.Add(item.PropertyName, item);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int Count()
+        {
+            return _dictionary.Count();
+        }
+
+        public IMetaData Find(Func<IMetaData, bool> predicate)
+        {
+            return _dictionary.Values.ToList().FirstOrDefault(predicate);
+        }
+
+        #endregion IObjectCollection
+
+        #region IEnumerable
+        public IEnumerator<IMetaData> GetEnumerator()
+        {
+            return _dictionary.Values.GetEnumerator();
+
+        }
+
+        public ServiceResult Remove(IMetaData item)
+        {
+            _dictionary.Remove(item.PropertyName);
+            return true;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<IMetaData>)_dictionary).GetEnumerator();
+        }
+        #endregion IEnumerable
+    }
+}

@@ -135,6 +135,10 @@
       <Project>{38b96fb8-072f-48ac-99dd-e8910f6e36d9}</Project>
       <Name>JB2.Common.Color</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
       <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
       <Name>JB2.Common.Data.AzureStorage</Name>
@@ -147,9 +151,25 @@
       <Project>{49966c64-7a12-47ca-b746-7fc632dc7592}</Project>
       <Name>JB2.Common.Image</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Log.AzureRepo\JB2.Common.Log.AzureRepo.csproj">
+      <Project>{304a01aa-5acd-4228-8474-46590f50e4e2}</Project>
+      <Name>JB2.Common.Log.AzureRepo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Log.Elmah\JB2.Common.Log.Elmah.csproj">
+      <Project>{5fe22fd2-943c-4d58-ad84-568f21f1d6fc}</Project>
+      <Name>JB2.Common.Log.Elmah</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
+      <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
+      <Name>JB2.Common.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
       <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
       <Name>JB2.Common.Map</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
+      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
+      <Name>JB2.Common.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
       <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>

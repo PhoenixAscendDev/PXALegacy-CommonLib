@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FDFCFAC8-8074-48DE-A2E1-B8471D087901}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JB2.Common</RootNamespace>
+    <AssemblyName>JB2.Common.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes.cs" />
+    <Compile Include="BaseCollection.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Enum\ElevatorDirectionType.cs" />
+    <Compile Include="Enum\KeyBitSize.cs" />
+    <Compile Include="Enum\SortDirection.cs" />
+    <Compile Include="Exceptions\ResultException.cs" />
+    <Compile Include="Extensions\DataExtenstions.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
+    <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="IDNameCollection.cs" />
+    <Compile Include="IDNamePair.cs" />
+    <Compile Include="Interfaces\IAddress.cs" />
+    <Compile Include="Interfaces\IBusiness.cs" />
+    <Compile Include="Interfaces\IGeoLocation.cs" />
+    <Compile Include="Interfaces\IIDNamePair.cs" />
+    <Compile Include="Interfaces\IImage.cs" />
+    <Compile Include="Interfaces\ILookupItem.cs" />
+    <Compile Include="Interfaces\Image.cs" />
+    <Compile Include="Interfaces\IMetaData.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\IObjectCollection.cs" />
+    <Compile Include="Interfaces\IObjectService.cs" />
+    <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IRange.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IServiceResult.cs" />
+    <Compile Include="Interfaces\IStorageAccount.cs" />
+    <Compile Include="Interfaces\IValidation.cs" />
+    <Compile Include="MetaData\IMetaDatable.cs" />
+    <Compile Include="MetaData\MetaDataCollection.cs" />
+    <Compile Include="MetaData\DateTimeMetaData.cs" />
+    <Compile Include="MetaData\NumberMetaData.cs" />
+    <Compile Include="MetaData\MetaData.cs" />
+    <Compile Include="MetaData\StringMetaData.cs" />
+    <Compile Include="Name.cs" />
+    <Compile Include="ObjectTag.cs" />
+    <Compile Include="Pattern.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryComparsion.cs" />
+    <Compile Include="ServiceResult.cs" />
+    <Compile Include="ShortGUID.cs" />
+    <Compile Include="SmallNumberRange.cs" />
+    <Compile Include="ThreadSafeRandom.cs" />
+    <Compile Include="TimeRange.cs" />
+    <Compile Include="Validation.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

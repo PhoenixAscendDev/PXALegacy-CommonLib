@@ -167,6 +167,10 @@
       <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
       <Name>JB2.Common.Map</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
+      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
+      <Name>JB2.Common.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
       <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>
       <Name>JB2.Infrastructure</Name>

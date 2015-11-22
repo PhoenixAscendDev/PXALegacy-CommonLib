@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes.cs" />
     <Compile Include="Database\IDatabaseHandler.cs" />
     <Compile Include="DataRow.cs" />
     <Compile Include="DataTable.cs" />
@@ -53,7 +52,6 @@
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryComparsion.cs" />
-    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">

@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2Common", "JB2Common\JB2Common.csproj", "{EF5BDC83-9C62-4AB5-AEE1-08BBC073610D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FDFCFAC8-8074-48DE-A2E1-B8471D087901} = {FDFCFAC8-8074-48DE-A2E1-B8471D087901}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "Common.Web\Common.Web.csproj", "{4F44BFFB-6298-4EE2-AF0C-2600EB3B7479}"
 EndProject
@@ -25,9 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Image", "JB2.Common.Image\JB2.Common.Image.csproj", "{49966C64-7A12-47CA-B746-7FC632DC7592}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Font", "JB2.Common.Font\JB2.Common.Font.csproj", "{30AD61B4-340C-4BBB-88BD-B22D83E2B179}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FDFCFAC8-8074-48DE-A2E1-B8471D087901} = {FDFCFAC8-8074-48DE-A2E1-B8471D087901}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{473AFBDE-5429-4F86-968D-FDAD073585ED}"
 EndProject

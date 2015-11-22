@@ -138,10 +138,6 @@
       <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
       <Name>JB2.Common.Data.AzureStorage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JB2Common\JB2Common.csproj">
-      <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>
-      <Name>JB2Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -80,6 +80,7 @@
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryComparsion.cs" />
     <Compile Include="ServiceResult.cs" />
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />

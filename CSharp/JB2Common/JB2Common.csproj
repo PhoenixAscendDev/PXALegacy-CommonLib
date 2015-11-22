@@ -51,7 +51,6 @@
     <Compile Include="Helper.cs" />
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryComparsion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">

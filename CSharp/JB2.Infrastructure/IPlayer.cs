@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using JB2.Common;
 namespace JB2.Infrastructure
 {
-    public interface IPlayer : JB2.Common.IPerson<string>
+    public interface IPlayer : JB2.Common.IPerson<string> , IMetaDatable
     {
         string MasterUsername { get; set; }
         Email MasterEmail { get; set; }
@@ -16,7 +16,7 @@ namespace JB2.Infrastructure
         int BitScore { get; set; }
         string FamilyID { get; set; }
 
-        IMetaData GetMetaData(string propertyName);
+        
        
     }
 }

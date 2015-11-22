@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IServiceResult.cs" />
     <Compile Include="Interfaces\IStorageAccount.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
+    <Compile Include="MetaData\IMetaDatable.cs" />
     <Compile Include="MetaData\MetaDataCollection.cs" />
     <Compile Include="MetaData\DateTimeMetaData.cs" />
     <Compile Include="MetaData\NumberMetaData.cs" />

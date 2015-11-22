@@ -5,10 +5,8 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IPlayerRepo : IRepository<IPlayer,string>
+    public class Family : PlayerGroup
     {
-
-
-
+            
     }
 }

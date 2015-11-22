@@ -13,9 +13,10 @@ namespace JB2.Infrastructure
         string MasterUsername { get; set; }
         Email MasterEmail { get; set; }
         string jBeanWalletID { get; set; }
-
         int BitScore { get; set; }
-
         string FamilyID { get; set; }
+
+        IMetaData GetMetaData(string propertyName);
+       
     }
 }

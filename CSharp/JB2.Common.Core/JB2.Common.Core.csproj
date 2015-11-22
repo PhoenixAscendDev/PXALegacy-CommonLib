@@ -7,7 +7,7 @@
     <ProjectGuid>{FDFCFAC8-8074-48DE-A2E1-B8471D087901}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Core</RootNamespace>
+    <RootNamespace>JB2.Common</RootNamespace>
     <AssemblyName>JB2.Common.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -59,6 +59,7 @@
     <Compile Include="Interfaces\IImage.cs" />
     <Compile Include="Interfaces\ILookupItem.cs" />
     <Compile Include="Interfaces\Image.cs" />
+    <Compile Include="Interfaces\IMetaData.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Interfaces\IObjectCollection.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
@@ -68,6 +69,11 @@
     <Compile Include="Interfaces\IServiceResult.cs" />
     <Compile Include="Interfaces\IStorageAccount.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
+    <Compile Include="MetaDataCollection.cs" />
+    <Compile Include="MetaData\DateTimeMetaData.cs" />
+    <Compile Include="MetaData\NumberMetaData.cs" />
+    <Compile Include="MetaData\MetaData.cs" />
+    <Compile Include="MetaData\StringMetaData.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Pattern.cs" />
@@ -79,6 +85,7 @@
     <Compile Include="TimeRange.cs" />
     <Compile Include="Validation.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

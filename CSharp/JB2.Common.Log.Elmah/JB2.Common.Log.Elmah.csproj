@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
       <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
       <Name>JB2.Common.Logger</Name>

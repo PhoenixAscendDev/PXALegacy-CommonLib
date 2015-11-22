@@ -77,6 +77,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
       <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
       <Name>JB2.Common.Data.AzureStorage</Name>

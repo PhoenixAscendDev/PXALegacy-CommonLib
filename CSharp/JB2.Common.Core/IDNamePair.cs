@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JB2.Common
+{
+    public class IDNamePair : IDNamePair<string,string>
+    {
+        public IDNamePair(string id,string name) : base(id,name)
+        {
+
+        }
+    }
+
+
+    public class IDNamePair<TKey, TName> : IIDNamePair<TKey, TName>
+        where TKey : IComparable
+        where TName : IComparable
+    {
+        #region Fields
+
+        private TKey _id;
+        private TName _name;
+
+        #endregion Fields
+
+        #region Constructors
+
+        public IDNamePair(TKey id, TName name)
+        {
+            _id = id;
+            _name = name;
+        }
+
+        public IDNamePair()
+        {
+
+        }
+
+        #endregion Constructors
+
+
+        #region Properties
+
+        public TKey ID
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public TName Name
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
+        }
+
+        #endregion Properties
+    }
+}

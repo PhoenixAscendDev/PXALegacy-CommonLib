@@ -52,6 +52,10 @@
     <Compile Include="USAStateType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">
       <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>
       <Name>JB2Common</Name>

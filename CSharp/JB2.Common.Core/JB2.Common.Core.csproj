@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1EA875A-2865-45EC-9296-B278F5815DA9}</ProjectGuid>
+    <ProjectGuid>{FDFCFAC8-8074-48DE-A2E1-B8471D087901}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Log</RootNamespace>
-    <AssemblyName>JB2.Common.Log</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>JB2.Common.Core</RootNamespace>
+    <AssemblyName>JB2.Common.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,29 +41,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogEntry.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="ILogRepo.cs" />
-    <Compile Include="ILogSearch.cs" />
-    <Compile Include="LogEntry.cs" />
-    <Compile Include="LogExtensions.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="LogManager.cs" />
-    <Compile Include="LogSearch.cs" />
-    <Compile Include="LogServerityType.cs" />
-    <Compile Include="LogSort.cs" />
-    <Compile Include="NotLogServerityEnabled.cs" />
+    <Compile Include="BaseCollection.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Enum\ElevatorDirectionType.cs" />
+    <Compile Include="Enum\KeyBitSize.cs" />
+    <Compile Include="Enum\SortDirection.cs" />
+    <Compile Include="Exceptions\ResultException.cs" />
+    <Compile Include="Extensions\DataExtenstions.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
+    <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="IDNameCollection.cs" />
+    <Compile Include="IDNamePair.cs" />
+    <Compile Include="Interfaces\IAddress.cs" />
+    <Compile Include="Interfaces\IBusiness.cs" />
+    <Compile Include="Interfaces\IGeoLocation.cs" />
+    <Compile Include="Interfaces\IIDNamePair.cs" />
+    <Compile Include="Interfaces\IImage.cs" />
+    <Compile Include="Interfaces\ILookupItem.cs" />
+    <Compile Include="Interfaces\Image.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\IObjectCollection.cs" />
+    <Compile Include="Interfaces\IObjectService.cs" />
+    <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IRange.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IServiceResult.cs" />
+    <Compile Include="Interfaces\IStorageAccount.cs" />
+    <Compile Include="Interfaces\IValidation.cs" />
+    <Compile Include="Name.cs" />
+    <Compile Include="ObjectTag.cs" />
+    <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
-      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
-      <Name>JB2.Common.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JB2Common\JB2Common.csproj">
-      <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>
-      <Name>JB2Common</Name>
-    </ProjectReference>
+    <Compile Include="ServiceResult.cs" />
+    <Compile Include="ShortGUID.cs" />
+    <Compile Include="SmallNumberRange.cs" />
+    <Compile Include="ThreadSafeRandom.cs" />
+    <Compile Include="TimeRange.cs" />
+    <Compile Include="Validation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

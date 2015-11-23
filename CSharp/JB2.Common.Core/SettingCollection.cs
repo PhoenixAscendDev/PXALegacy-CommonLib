@@ -5,6 +5,13 @@ using System.Text;
 
 namespace JB2.Common
 {
+
+    public class SettingCollection<TKey> : SettingCollection<ISetting<TKey,IPerson<string>,string>,IPerson<string>,TKey,string>
+        where TKey : IComparable
+    {
+
+    }
+
     public class SettingCollection<TSetting,TUser,TKey,TUserKey> : BaseCollection<TSetting>
         where TSetting : ISetting<TKey,TUser,TUserKey>
         where TUser : IPerson<TUserKey>

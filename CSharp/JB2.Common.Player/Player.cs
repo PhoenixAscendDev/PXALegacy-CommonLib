@@ -5,33 +5,25 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class Player : IPlayer
+    public abstract class Player : IPlayer
     {
         #region Fields
-        private Name _nameinfo;
-        private string _id;
-        private MetaDataCollection _metadata;
+        protected Name _nameinfo;
+        protected string _id;
+        
         #endregion Fields
 
         #region Constructors
 
-        public Player() : this(JB2.Common.ShortGuid.NewGuid())
-        {
-
-        }
-
-        public Player(string id)
-        {
-            _id = id;
-        }
+        
 
         #endregion Constructors
 
         #region Properties
 
-        public string DisplayName { get; set; }
-        public JB2Date Birthdate { get; set; }
-        public string ID
+        public virtual string DisplayName { get; set; }
+        public virtual JB2Date Birthdate { get; set; }
+        public virtual string ID
         {
             get
             {
@@ -42,16 +34,16 @@ namespace JB2.Common
                 _id = value;
             }
         }
-        public string MasterUsername { get; set; }
-        public Email MasterEmail { get; set; }
-        public ProfileCollection Profiles { get; set; }
-        public PlayerProfile DefaultProfile { get; set; }
-        public int BitScore { get; set; }    
-        public string jBeanWalletID { get; set; }
+        public virtual string MasterUsername { get; set; }
+        public virtual Email MasterEmail { get; set; }
+        public virtual ProfileCollection Profiles { get; set; }
+        public virtual PlayerProfile DefaultProfile { get; set; }
+        public virtual int BitScore { get; set; }    
+        public virtual string jBeanWalletID { get; set; }
 
-        public string FamilyID { get; set; }
+        public  virtual  string FamilyID { get; set; }
         
-        public Name NameInfo
+        public virtual Name NameInfo
         {
             get
             {
@@ -64,7 +56,7 @@ namespace JB2.Common
             }
         }
 
-        public string Name
+        public virtual string Name
         {
             get
             {
@@ -82,10 +74,8 @@ namespace JB2.Common
 
         #region IMetaDatable
 
-        public IMetaData MetaData(string propertyName)
-        {
-            return _metadata[propertyName];
-        }
+        abstract public IMetaData MetaData(string propertyName);
+        
 
         #endregion IMetaDatable
 

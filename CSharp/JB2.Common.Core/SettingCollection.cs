@@ -6,9 +6,10 @@ using System.Text;
 namespace JB2.Common
 {
 
-    public class SettingCollection<TKey> : SettingCollection<ISetting<TKey,IPerson<string>,string>,IPerson<string>,TKey,string>
+    public class SettingCollection<TKey> : SettingCollection<ISetting,IPerson<string>,string,string>
         where TKey : IComparable
     {
+
 
     }
 
@@ -18,6 +19,23 @@ namespace JB2.Common
         where TUserKey : IComparable
         where TKey : IComparable
     {
+
+
+        public TSetting this[TKey index]
+        {
+            get
+            {
+                var dic = _list.ToDictionary(x => x.ID, x => x);
+                return dic[index];
+            }
+            set
+            {
+                var dic = _list.ToDictionary(x => x.ID, x => x);
+                dic[index] = value;
+
+                _list = dic.Values;
+            }
+        }
 
 
         virtual public void ChangeSetting(TKey settingKey,object value,TUser updatedby)

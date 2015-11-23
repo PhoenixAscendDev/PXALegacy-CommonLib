@@ -21,8 +21,7 @@ namespace JB2.Common
         public BaseCollection(T thing)
         {
             T[] array = new T[1] { thing};
-            _list = array;
-            
+            _list = array;           
         }
 
         public BaseCollection(IEnumerable<T> things)
@@ -45,7 +44,7 @@ namespace JB2.Common
             return _list.Count();
         }
 
-        public ServiceResult Add(T item)
+        virtual public ServiceResult Add(T item)
         {
             try
             {
@@ -58,7 +57,7 @@ namespace JB2.Common
             }
         }
 
-        public ServiceResult Remove(T item)
+        virtual public ServiceResult Remove(T item)
         {
             try
             {

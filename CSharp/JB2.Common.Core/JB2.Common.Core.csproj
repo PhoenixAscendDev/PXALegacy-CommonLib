@@ -68,6 +68,7 @@
     <Compile Include="Interfaces\IRange.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServiceResult.cs" />
+    <Compile Include="Interfaces\ISetting.cs" />
     <Compile Include="Interfaces\IStorageAccount.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="MetaData\IMetaDatable.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryComparsion.cs" />
     <Compile Include="ServiceResult.cs" />
+    <Compile Include="SettingCollection.cs" />
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />
     <Compile Include="ThreadSafeRandom.cs" />

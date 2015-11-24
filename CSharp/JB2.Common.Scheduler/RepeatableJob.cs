@@ -46,7 +46,7 @@ namespace JB2.Common.Scheduler
                 while (!_cancelled)
                 {
                     DoWorkAndSetFlags();
-                    Thread.Sleep(GetCoolDownSeconds());
+                    Thread.Sleep(1000 * GetCoolDownSeconds());
                     
 
                     if (_counter >= maxcounter)

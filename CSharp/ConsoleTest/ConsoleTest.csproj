@@ -167,6 +167,10 @@
       <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
       <Name>JB2.Common.Map</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Scheduler\JB2.Common.Scheduler.csproj">
+      <Project>{fb4fdde0-8031-4220-b613-7a7e6d575b13}</Project>
+      <Name>JB2.Common.Scheduler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
       <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
       <Name>JB2.Common.Utility</Name>

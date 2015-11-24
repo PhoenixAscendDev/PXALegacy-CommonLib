@@ -42,7 +42,9 @@ namespace JB2.Common.Scheduler
                     {
                         try
                         {
+                            //job.Start();
                             thread = new Thread(new ThreadStart(job.Start));
+                            thread.Start();
                             if(LoggingEnabled())
                             logger.LogDebug( string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                 job.Name,

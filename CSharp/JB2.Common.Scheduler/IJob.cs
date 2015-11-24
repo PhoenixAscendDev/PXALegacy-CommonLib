@@ -31,6 +31,6 @@ namespace JB2.Common.Scheduler
 
         event Action<IJob<TKey, TParameter>> Started;
         event Action<IJob<TKey, TParameter>> Completed;
-        event Action<IJob<TKey, TParameter>, int> ProgressChanged;
+        event Action<IJob<TKey, TParameter>, string,int> ProgressChanged;
     }
 }

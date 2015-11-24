@@ -11,28 +11,33 @@ namespace JB2.Common.Scheduler
         #region Fields
         private DateTime _exTime;
         private bool _inprogress;
-        
+        private bool _cancelled;
 
         #endregion Fields
         public virtual void Start()
         {
+            _cancelled = false;
             if(IsRepeatable())
             {
-                while(true)
+                while(!_cancelled)
                 {
-                    DoWork();
-
+                    DoWorkAndSetFlags();
                     Thread.Sleep(GetCoolDownSeconds());
                 }
             }
             else
             {
-                DoWork();
+                DoWorkAndSetFlags();
             }
         }
 
         public void Cancel()
         {
+            _inprogress = false;
+
+            if (ProgressChanged != null)
+                ProgressChanged(this, "Job manually canceled", 1);
+
 
         }
 
@@ -58,6 +63,22 @@ namespace JB2.Common.Scheduler
             }
         }
 
+        private void DoWorkAndSetFlags()
+        {
+            if (Started != null)
+                Started(this);
+
+            _inprogress = true;
+            _exTime = DateTime.Now;
+
+            DoWork();
+
+            _inprogress = false;
+            if (Completed != null)
+                Completed(this);
+
+        }
+
 
         public abstract bool IsRepeatable();
         public abstract ServiceResult DoWork();
@@ -71,6 +92,6 @@ namespace JB2.Common.Scheduler
 
         public event Action<IJob<string, object>> Started;
         public event Action<IJob<string, object>> Completed;
-        public event Action<IJob<string, object>, int> ProgressChanged;
+        public event Action<IJob<string, object>, string,int> ProgressChanged;
     }
 }

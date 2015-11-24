@@ -11,6 +11,11 @@ namespace JB2.Common
         {
 
         }
+
+        public IDNamePair() : base(string.Empty,string.Empty)
+        {
+
+        }
     }
 
 

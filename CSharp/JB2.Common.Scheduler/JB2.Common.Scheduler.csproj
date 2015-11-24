@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DayOfTimeRange.cs" />
     <Compile Include="IJob.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

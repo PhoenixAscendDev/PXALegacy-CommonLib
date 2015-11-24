@@ -22,6 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Image", "JB2.Common.Image\JB2.Common.Image.csproj", "{49966C64-7A12-47CA-B746-7FC632DC7592}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Helpers.FontHelper", "JB2.Common.Font\JB2.Helpers.FontHelper.csproj", "{30AD61B4-340C-4BBB-88BD-B22D83E2B179}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB02D4FF-31CD-4F81-8E0B-FD3A06DC6373} = {DB02D4FF-31CD-4F81-8E0B-FD3A06DC6373}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{473AFBDE-5429-4F86-968D-FDAD073585ED}"
 EndProject

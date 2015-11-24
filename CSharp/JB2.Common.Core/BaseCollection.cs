@@ -48,7 +48,9 @@ namespace JB2.Common
         {
             try
             {
-                _list.ToList().Add(item);
+                var l = _list.ToList();
+                l.Add(item);
+                _list = l;
                 return true;
             }
             catch (Exception ex)
@@ -61,7 +63,9 @@ namespace JB2.Common
         {
             try
             {
-                _list.ToList().Remove(item);
+                var l = _list.ToList();
+                l.Remove(item);
+                _list = l;
                 return true;
             }
             catch (Exception ex)

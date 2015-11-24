@@ -9,7 +9,21 @@ namespace JB2.Common
     public class SettingCollection<TKey> : SettingCollection<ISetting,IPerson<string>,string,string>
         where TKey : IComparable
     {
+        public SettingCollection() : base()
+        {
+            // List<T> list = new List<T>();
+            //_list = list;
+        }
 
+        public SettingCollection(ISetting thing) : base(thing)
+        {
+
+        }
+
+        public SettingCollection(IEnumerable<ISetting> things) : base(things)
+        {
+            //_list = things;
+        }
 
     }
 
@@ -19,6 +33,22 @@ namespace JB2.Common
         where TUserKey : IComparable
         where TKey : IComparable
     {
+
+        public SettingCollection() : base()
+        {
+           // List<T> list = new List<T>();
+            //_list = list;
+        }
+
+        public SettingCollection(TSetting thing) : base(thing)
+        {
+           
+        }
+
+        public SettingCollection(IEnumerable<TSetting> things) : base(things)
+        {
+            //_list = things;
+        }
 
 
         public TSetting this[TKey index]

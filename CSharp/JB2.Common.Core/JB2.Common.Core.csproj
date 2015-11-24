@@ -86,6 +86,7 @@
     <Compile Include="QueryComparsion.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="ServiceResult.cs" />
+    <Compile Include="Setting.cs" />
     <Compile Include="SettingCollection.cs" />
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />

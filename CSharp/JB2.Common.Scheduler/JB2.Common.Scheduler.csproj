@@ -45,7 +45,9 @@
     <Compile Include="IJob.cs" />
     <Compile Include="IScheduler.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="OnetimeJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepeatableJob.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulerHelper.cs" />
   </ItemGroup>

@@ -9,9 +9,9 @@ namespace JB2.Common.Scheduler
     public abstract class Job : IDNamePair, IJob
     {
         #region Fields
-        private DateTime _exTime;
-        private bool _inprogress;
-        private bool _cancelled;
+        protected DateTime _exTime;
+        protected bool _inprogress;
+        protected bool _cancelled;
 
         #endregion Fields
         public virtual void Start()
@@ -34,7 +34,7 @@ namespace JB2.Common.Scheduler
         public void Cancel()
         {
             _inprogress = false;
-
+            _cancelled = true;
             if (ProgressChanged != null)
                 ProgressChanged(this, "Job manually canceled", 1);
 
@@ -63,7 +63,7 @@ namespace JB2.Common.Scheduler
             }
         }
 
-        private void DoWorkAndSetFlags()
+        public void DoWorkAndSetFlags()
         {
             if (Started != null)
                 Started(this);
@@ -76,7 +76,6 @@ namespace JB2.Common.Scheduler
             _inprogress = false;
             if (Completed != null)
                 Completed(this);
-
         }
 
 

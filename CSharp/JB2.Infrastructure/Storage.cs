@@ -17,6 +17,7 @@ namespace JB2.Infrastructure
         private const string BOWTIEKEYNAME = "JB2:bowtieStorageKey";
         private const string LOGKEYNAME = "JB2:logKey";
         private const string ASSETTABLENAME = "assets";
+        private const string JBEAN_TABLENAME = "currency-jbean";
         public static StorageAccount GeneralAccount
         {
             get
@@ -26,6 +27,8 @@ namespace JB2.Infrastructure
                 //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
             }
         }
+
+
 
         public static StorageAccount BowtieAccount
         {
@@ -51,6 +54,14 @@ namespace JB2.Infrastructure
             get
             {
                 return GeneralAccount.GetTable(ASSETTABLENAME);
+            }
+        }
+
+        public static AzureTableRepository JBeanTable
+        {
+            get
+            {
+                return BowtieAccount.GetTable(JBEAN_TABLENAME);
             }
         }
     }

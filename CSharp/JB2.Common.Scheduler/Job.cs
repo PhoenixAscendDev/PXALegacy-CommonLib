@@ -63,7 +63,7 @@ namespace JB2.Common.Scheduler
             }
         }
 
-        public void DoWorkAndSetFlags()
+        public virtual void DoWorkAndSetFlags()
         {
             if (Started != null)
                 Started(this);

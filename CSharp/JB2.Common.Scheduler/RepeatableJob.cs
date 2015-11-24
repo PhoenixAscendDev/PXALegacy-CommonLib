@@ -10,7 +10,7 @@ namespace JB2.Common.Scheduler
     public abstract class RepeatableJob : Job
     {
         #region Fields
-        protected int _counter;
+        protected int _counter = 0;
         
         #endregion Fields
 
@@ -22,17 +22,12 @@ namespace JB2.Common.Scheduler
             }
         }
 
-        public override ServiceResult DoWork()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract override ServiceResult DoWork();
 
-        public override int GetCoolDownSeconds()
-        {
-            throw new NotImplementedException();
-        }
 
-        public abstract int MaxCounter();
+        public abstract override int GetCoolDownSeconds();
+      
+        public abstract int GetMaxCounter();
 
         public override bool IsRepeatable()
         {
@@ -41,19 +36,31 @@ namespace JB2.Common.Scheduler
 
         public override void Start()
         {
-            int maxcounter = MaxCounter();
+            int maxcounter = GetMaxCounter() == 0 ? int.MaxValue : GetMaxCounter();
+            
             _cancelled = false;
+
+
             if (IsRepeatable())
             {
                 while (!_cancelled)
                 {
                     DoWorkAndSetFlags();
                     Thread.Sleep(GetCoolDownSeconds());
-                    _counter++;
+                    
+
                     if (_counter >= maxcounter)
                     {
-                        Cancel();
+                        if (CounterMaxReached != null)
+                            CounterMaxReached(this);
+
+                        if (_counter == int.MaxValue)
+                            _counter = 0;
+                        else
+                            Cancel();
                     }
+                    _counter++;
+
                 }
             }
             else
@@ -61,6 +68,10 @@ namespace JB2.Common.Scheduler
                     DoWorkAndSetFlags();
                 }
             }
+
+
+
+        public event Action<IJob<string, object>> CounterMaxReached;
 
     }
 }

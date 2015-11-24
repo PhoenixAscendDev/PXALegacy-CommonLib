@@ -7,13 +7,13 @@ using System.Drawing;
 using System.Drawing.Text;
 
 using JB2.Common.Data;
-
+using JB2.Common.Data.Azure.Entries;
 using System.Runtime.InteropServices;
 
 
 
 
-namespace JB2.Common
+namespace JB2.Helpers
 {
     public static class FontHelper
     {
@@ -56,12 +56,7 @@ namespace JB2.Common
         {
             get
             {
-                Microsoft.WindowsAzure.Storage.CloudStorageAccount account =  JB2.Common.Data.AzureHelper.GetStorageAccount("jbsquared", "iGf7AhI5v12hig85TsVkJSuPwvB42EncTMFogXFcqGlEcVMo5oXf0PvsMkxOQQeDmM21UtqHHtwyjR3MG3Di5g==");
-
-                return new AzureTableRepository(account, "assets");
-                
-               
-
+                return JB2.Infrastructure.Storage.AssetTable;
             }
         }
 

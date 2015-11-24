@@ -7,8 +7,8 @@
     <ProjectGuid>{30AD61B4-340C-4BBB-88BD-B22D83E2B179}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Font</RootNamespace>
-    <AssemblyName>JB2.Common.Font</AssemblyName>
+    <RootNamespace>JB2.Helpers</RootNamespace>
+    <AssemblyName>JB2.Helpers.Font</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -88,6 +88,10 @@
     <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
       <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
       <Name>JB2.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
+      <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>
+      <Name>JB2.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">
       <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>

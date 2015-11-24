@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Scheduler
 {
-
     public interface IScheduler: IScheduler<string,object>
     { }
     public interface IScheduler<TJobKey,TJobParameter>
@@ -18,9 +17,12 @@ namespace JB2.Common.Scheduler
 
         JB2.Common.Log.ILogger GetLogger();
 
-        void DoJobs();
+        void StartJobs();
         void StopJobs();
 
+        bool LoggingEnabled();
+
         event Action<IScheduler<TJobKey,TJobParameter>> Started;
+        event Action<IScheduler<TJobKey, TJobParameter>> Stopped;
     }
 }

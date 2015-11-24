@@ -46,6 +46,8 @@ namespace ConsoleTest
             var entry = JB2.Common.Log.LogEntry.NewLogEntry(JB2.Common.Log.Enum.LogServerityType.Informational, "This is a message");
             test.StoreLogEntry(entry);
 
+            Console.WriteLine(356 % 300);
+
             //var logentries = test.GetLogEntry(JB2.Common.Log.LogSearch.SearchByID("7yL5PlNxvEykzfTKZsdk9g"));
             var logentries = test.GetMostRecentLogEntries(2);
             //Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");

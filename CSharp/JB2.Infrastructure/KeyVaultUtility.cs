@@ -66,7 +66,6 @@ namespace JB2.Infrastructure
                 return client;
             }
         }
-
         public static KeyVaultKeyResolver Resolver
         {
             get

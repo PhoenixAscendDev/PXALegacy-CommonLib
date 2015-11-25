@@ -55,12 +55,15 @@
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="ID\ID.cs" />
     <Compile Include="IDGenerator.cs" />
     <Compile Include="IDNameCollection.cs" />
     <Compile Include="IDNamePair.cs" />
+    <Compile Include="ID\ShortGuidID.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
     <Compile Include="Interfaces\IGeoLocation.cs" />
+    <Compile Include="Interfaces\IIDable.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />
     <Compile Include="Interfaces\IImage.cs" />
     <Compile Include="Interfaces\ILookupItem.cs" />

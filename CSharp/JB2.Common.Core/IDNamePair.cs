@@ -16,13 +16,11 @@ namespace JB2.Common
             if (string.IsNullOrEmpty(id))
                 _id = JB2.Common.NewID.ShortGuid();
 
-        }
-
-        
+        }        
     }
 
 
-    public class IDNamePair<TKey, TName> : IIDNamePair<TKey, TName>
+    public class IDNamePair<TKey, TName> : IDValue<TKey>, IIDNamePair<TKey, TName>
         where TKey : IComparable
         where TName : IComparable
     {
@@ -51,9 +49,9 @@ namespace JB2.Common
 
         #region Properties
 
-        public TKey ID
+        public override TKey ID
         {
-            get
+             get
             {
                 return _id;
             }
@@ -76,6 +74,13 @@ namespace JB2.Common
                 _name = value;
             }
         }
+
+        public override TKey GetID()
+        {
+            return _id;
+        }
+
+
 
         #endregion Properties
     }

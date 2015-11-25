@@ -44,7 +44,6 @@
     <Compile Include="DataTable.cs" />
     <Compile Include="DieFace.cs" />
     <Compile Include="Error\SqliteException.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

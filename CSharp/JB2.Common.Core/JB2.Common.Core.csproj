@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Attributes.cs" />
     <Compile Include="BaseCollection.cs" />
+    <Compile Include="DayofWeekTime.cs" />
     <Compile Include="DoubleRange.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Enum\ElevatorDirectionType.cs" />

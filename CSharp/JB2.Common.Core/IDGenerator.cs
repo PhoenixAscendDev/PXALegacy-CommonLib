@@ -45,8 +45,13 @@ namespace JB2.Common
             return wrapit(wrapper, t);
 
         }
+
+        public static string TickHash()
+        {
+            return TickHash(null);
+        }
         
-        public static string TicksHash(string wrapper)
+        public static string TickHash(string wrapper)
         {
             long ticks = DateTime.Now.Ticks;
             string t = string.Format("{0:X}", ticks).ToLower();

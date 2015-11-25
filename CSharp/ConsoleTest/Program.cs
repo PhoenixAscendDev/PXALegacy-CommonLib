@@ -147,12 +147,19 @@ namespace ConsoleTest
 
             var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
             var key2 = JB2.Infrastructure.Vault.RSAKey1;
+
+            Console.WriteLine(JB2.Common.NewID.ShortGuid("start_{0}_end"));
+            Console.WriteLine(JB2.Common.NewID.Guid());
+            Console.WriteLine(JB2.Common.NewID.Base62());
+            Console.WriteLine(JB2.Common.NewID.TickHash());
+            Console.WriteLine(JB2.Common.NewID.TimeHash());
+            Console.WriteLine(JB2.Common.NewID.UriHash(new Uri("http://wwww.jbsquared.com")));
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 
             //Console.WriteLine(rgb.ToString());
 
             //var countries = JB2.Common.MapHelper.AllCountries;
-            
+
             //var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
 
             //JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");

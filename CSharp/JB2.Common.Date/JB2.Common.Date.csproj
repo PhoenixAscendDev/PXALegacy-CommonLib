@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="JB2Date.cs" />
     <Compile Include="ChineseZodiac.cs" />
     <Compile Include="LunarPhaseType.cs" />

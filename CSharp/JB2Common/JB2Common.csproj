@@ -43,12 +43,7 @@
     <Compile Include="DataRow.cs" />
     <Compile Include="DataTable.cs" />
     <Compile Include="DieFace.cs" />
-    <Compile Include="Enum\DiceType.cs" />
-    <Compile Include="Enum\ElevatorDirectionType.cs" />
-    <Compile Include="Enum\KeyBitSize.cs" />
-    <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Error\SqliteException.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="JB2AppSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

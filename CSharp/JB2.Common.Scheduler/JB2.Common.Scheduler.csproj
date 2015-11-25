@@ -40,9 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DayOfTimeJob.cs" />
     <Compile Include="DayOfTimeRange.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="IJob.cs" />
+    <Compile Include="IScheduler.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="OnetimeJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepeatableJob.cs" />
+    <Compile Include="Scheduler.cs" />
+    <Compile Include="SchedulerHelper.cs" />
+    <Compile Include="SimpleScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
@@ -52,6 +61,10 @@
     <ProjectReference Include="..\JB2.Common.Date\JB2.Common.Date.csproj">
       <Project>{3f3b616b-80f8-4cfd-9296-b8d677dedbd9}</Project>
       <Name>JB2.Common.Date</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
+      <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
+      <Name>JB2.Common.Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

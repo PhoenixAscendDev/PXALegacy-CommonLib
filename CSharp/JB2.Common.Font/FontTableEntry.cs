@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace JB2.Common
+namespace JB2.Common.Data.Azure.Entries
 {
     public class FontTableEntry :  Microsoft.WindowsAzure.Storage.Table.TableEntity, JB2.Common.IIDNamePair<string, string>
     {

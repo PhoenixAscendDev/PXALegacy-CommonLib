@@ -11,6 +11,11 @@ namespace JB2.Common
         {
 
         }
+
+        public IDNamePair() : base(string.Empty,string.Empty)
+        {
+
+        }
     }
 
 
@@ -20,8 +25,8 @@ namespace JB2.Common
     {
         #region Fields
 
-        private TKey _id;
-        private TName _name;
+        protected TKey _id;
+        protected TName _name;
 
         #endregion Fields
 
@@ -35,7 +40,7 @@ namespace JB2.Common
 
         public IDNamePair()
         {
-
+            
         }
 
         #endregion Constructors

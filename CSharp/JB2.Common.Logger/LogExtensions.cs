@@ -27,6 +27,11 @@ namespace JB2.Common.Log
         {
             logger.Log(LogEntry.NewLogEntry(Enum.LogServerityType.Error, ex));
         }
+
+        public static void LogDebug(this ILogger logger, string message)
+        {
+            logger.Log(LogEntry.NewLogEntry(Enum.LogServerityType.Debug, message));
+        }
     }
 
     public static class LogRepoExtenstion

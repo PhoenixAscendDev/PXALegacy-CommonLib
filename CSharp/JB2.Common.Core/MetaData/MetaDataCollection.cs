@@ -51,6 +51,14 @@ namespace JB2.Common
             }
         }
 
+        public IMetaData this[string propertyName]
+        {
+            get
+            {
+                return _dictionary[propertyName];
+            }
+        }
+
         public ServiceResult Add(IMetaData item)
         {
             if( !_dictionary.ContainsKey(item.PropertyName))

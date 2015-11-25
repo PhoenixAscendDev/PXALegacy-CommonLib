@@ -20,18 +20,17 @@ namespace JB2.Common.Scheduler
         where TKey : IComparable
     {
         DateTime ExecutionTime { get; }
-        bool Repeat { get; }
         bool InProgress { get; }
 
+        bool IsRepeatable();
+        int GetCoolDownSeconds();
         TParameter GetParameters();
         void Start();
         void Cancel();
         ServiceResult DoWork();
 
-
-
         event Action<IJob<TKey, TParameter>> Started;
         event Action<IJob<TKey, TParameter>> Completed;
-        event Action<IJob<TKey, TParameter>, int> ProgressChanged;
+        event Action<IJob<TKey, TParameter>, string,int> ProgressChanged;
     }
 }

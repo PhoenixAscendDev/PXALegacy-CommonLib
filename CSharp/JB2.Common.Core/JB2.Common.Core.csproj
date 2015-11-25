@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,10 +44,13 @@
   <ItemGroup>
     <Compile Include="Attributes.cs" />
     <Compile Include="BaseCollection.cs" />
+    <Compile Include="DayofWeekTime.cs" />
+    <Compile Include="DoubleRange.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Enum\ElevatorDirectionType.cs" />
     <Compile Include="Enum\KeyBitSize.cs" />
     <Compile Include="Enum\SortDirection.cs" />
+    <Compile Include="Exceptions\NotConfiguredException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="Interfaces\IRange.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServiceResult.cs" />
+    <Compile Include="Interfaces\ISetting.cs" />
     <Compile Include="Interfaces\IStorageAccount.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="MetaData\IMetaDatable.cs" />
@@ -81,7 +86,10 @@
     <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryComparsion.cs" />
+    <Compile Include="Range.cs" />
     <Compile Include="ServiceResult.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="SettingCollection.cs" />
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />
     <Compile Include="ThreadSafeRandom.cs" />

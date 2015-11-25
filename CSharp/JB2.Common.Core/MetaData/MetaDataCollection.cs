@@ -6,22 +6,22 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class MetaDataCollection : IEnumerable<IMetaData>, IObjectCollection<IMetaData>
+    public class MetaDataCollection : IDNamePair, IEnumerable<IMetaData>, IObjectCollection<IMetaData>
     {
         #region Fields
         private IDictionary<string, IMetaData> _dictionary;
         #endregion Fields
 
         #region Constructors
-        public MetaDataCollection(IMetaData thing)
+        public MetaDataCollection(IMetaData thing, string id = null, string name = null)
+            : this(new IMetaData[1] { thing },id,name )
         {
-            IMetaData[] array = new IMetaData[1] { thing };
-            _dictionary = new Dictionary<string, IMetaData>();
-            _dictionary.Add(thing.PropertyName,thing);
-            //_list = array;
+           
+           
         }
 
-        public MetaDataCollection(IEnumerable<IMetaData> things)
+        public MetaDataCollection(IEnumerable<IMetaData> things, string id = null, string name=null )
+            : base(id,name)
         {
             _dictionary = new Dictionary<string, IMetaData>();
             foreach(IMetaData thing in things)
@@ -32,8 +32,11 @@ namespace JB2.Common
                 }
                 else
                     _dictionary[thing.PropertyName] = thing;
-            }          
+            }     
+                 
         }
+
+        
 
         #endregion Constructors
 

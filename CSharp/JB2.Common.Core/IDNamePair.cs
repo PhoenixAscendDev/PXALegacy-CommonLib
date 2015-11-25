@@ -7,15 +7,18 @@ namespace JB2.Common
 {
     public class IDNamePair : IDNamePair<string,string>
     {
+        public IDNamePair() : base(string.Empty, string.Empty)
+        {
+
+        }
         public IDNamePair(string id,string name) : base(id,name)
         {
+            if (string.IsNullOrEmpty(id))
+                _id = JB2.Common.NewID.ShortGuid();
 
         }
 
-        public IDNamePair() : base(string.Empty,string.Empty)
-        {
-
-        }
+        
     }
 
 

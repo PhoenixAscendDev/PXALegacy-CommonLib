@@ -4,10 +4,22 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class ObjectTag : IIDNamePair<int,string>
+    public class ObjectTag :  IntID, IIDNamePair<int,string>
     {
-        public int ID { get; set; }
+        public override int ID
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
         public string Name { get; set; }
 
+        
     }
 }

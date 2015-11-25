@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class BaseSetting : ISetting
+    public class BaseSetting : StringID, ISetting
     {
         #region Fields
         private string _id;
@@ -15,7 +15,8 @@ namespace JB2.Common
         private object _value;
         #endregion Fields
 
-        public string ID
+        #region Properties
+        public override string ID
         {
             get { return _id; }
             set { _id = value; }
@@ -44,5 +45,7 @@ namespace JB2.Common
             get { return _value; }
             set { _value = value; }
         }
+
+        #endregion Properties
     }
 }

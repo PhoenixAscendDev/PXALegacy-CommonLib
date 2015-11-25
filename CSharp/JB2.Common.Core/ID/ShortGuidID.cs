@@ -5,29 +5,17 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class ShortGuidID : IDValue<string>
+    public class ShortGuidID : StringID
     {
-        #region Fields
-        private string _id;
-        #endregion Fields
 
-        #region Constructors
-
-        public ShortGuidID() 
+        public ShortGuidID() : base(Enum.NewIDType.ShortGuid)
         {
-            _id = JB2.Common.NewID.ShortGuid();
+
         }
 
-        public ShortGuidID(string id)
+        public ShortGuidID(string id) : base(id)
         {
-            _id = id;
-        }
 
-        #endregion Constructors
-
-        public override string GetID()
-        {
-            return _id;
         }
     }
 }

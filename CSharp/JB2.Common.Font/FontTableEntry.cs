@@ -56,6 +56,12 @@ namespace JB2.Common.Data.Azure.Entries
         {
             get; set; 
         }
+
+        public string GetID()
+        {
+            return ID;
+        }
+
      
     }
 }

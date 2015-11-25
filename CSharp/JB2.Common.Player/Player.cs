@@ -5,11 +5,11 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public abstract class Player : IPlayer
+    public abstract class Player : ShortGuidID,IPlayer
     {
         #region Fields
         protected Name _nameinfo;
-        protected string _id;
+       
         
         #endregion Fields
 

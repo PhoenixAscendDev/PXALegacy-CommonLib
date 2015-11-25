@@ -59,7 +59,10 @@
     <Compile Include="IDGenerator.cs" />
     <Compile Include="IDNameCollection.cs" />
     <Compile Include="IDNamePair.cs" />
+    <Compile Include="ID\IntID.cs" />
+    <Compile Include="ID\NewIDType.cs" />
     <Compile Include="ID\ShortGuidID.cs" />
+    <Compile Include="ID\StringID.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
     <Compile Include="Interfaces\IGeoLocation.cs" />

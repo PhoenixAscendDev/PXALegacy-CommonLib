@@ -33,6 +33,11 @@ namespace JB2.Common
             get { return _admins.ToArray(); }
         }
 
+        public string GetID()
+        {
+            return _id;
+        }
+
         #endregion Properties
     }
 }

@@ -37,6 +37,14 @@ namespace JB2.Common
 
         #endregion Constructors
 
+        public IEnumerable<string> PropertyNames
+        {
+            get
+            {
+                return _dictionary.Keys;
+            }
+        }
+
         #region IObjectCollection
         public IMetaData this[int index]
         {
@@ -102,5 +110,7 @@ namespace JB2.Common
             return ((IEnumerable<IMetaData>)_dictionary).GetEnumerator();
         }
         #endregion IEnumerable
+
+
     }
 }

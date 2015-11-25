@@ -7,8 +7,6 @@ namespace JB2.Common
 {
     public class NumberMetaData : MetaData<int>, IMetaData
     {
-        
-
         public NumberMetaData(string propertyName, int value) : base(propertyName,value)
         {
 

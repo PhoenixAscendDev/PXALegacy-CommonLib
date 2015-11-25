@@ -10,7 +10,7 @@ namespace JB2.Common
         
         public StringMetaData(string propertyName, string value) : base(propertyName,value)
         {
-            
+                        
         }
 
 

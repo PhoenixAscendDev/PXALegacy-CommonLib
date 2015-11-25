@@ -51,6 +51,7 @@
     <Compile Include="RepeatableJob.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulerHelper.cs" />
+    <Compile Include="SimpleScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">

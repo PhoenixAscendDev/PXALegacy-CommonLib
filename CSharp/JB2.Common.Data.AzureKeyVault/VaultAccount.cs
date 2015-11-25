@@ -29,15 +29,6 @@ namespace JB2.Common.Data
 
         #region Properties
 
-        public object GetObject(IVaultKey key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StoreObject(IVaultKey key, object thing)
-        {
-            throw new NotImplementedException();
-        }
 
         public KeyVaultClient KeyVaultClient
         {
@@ -55,6 +46,17 @@ namespace JB2.Common.Data
             }
         }
         #endregion Properties
+
+        
+        public object GetObject(IVaultKey key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StoreObject(IVaultKey key, object thing)
+        {
+            throw new NotImplementedException();
+        }
 
         #region Implicit Operator
         public static implicit operator KeyVaultClient(AzureVaultAccount a)

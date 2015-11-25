@@ -138,6 +138,8 @@
     <Content Include="Packages\JB2.Color.0.2.0.nupkg" />
     <Content Include="Packages\JB2.Player.0.2.0.nupkg" />
     <Content Include="Packages\JB2.Common.0.2.0.nupkg" />
+    <Content Include="Packages\JB2.Common.Data.0.2.1.nupkg" />
+    <Content Include="Packages\JB2.Data.AzureVault.0.2.0.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %284%29.pubxml" />

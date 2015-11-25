@@ -26,9 +26,8 @@ namespace JB2.Common.Scheduler
                 }
             }
             else
-            {
                 DoWorkAndSetFlags();
-            }
+
         }
 
         public void Cancel()

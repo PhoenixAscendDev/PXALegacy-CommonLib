@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Text;
 
+
+using JB2.Infrastructure;
 using JB2.Common.Data;
 using JB2.Common.Data.Azure.Entries;
 using System.Runtime.InteropServices;
@@ -56,7 +58,7 @@ namespace JB2.Helpers
         {
             get
             {
-                return JB2.Infrastructure.Storage.AssetTable;
+                return Storage.AssetTable;
             }
         }
 

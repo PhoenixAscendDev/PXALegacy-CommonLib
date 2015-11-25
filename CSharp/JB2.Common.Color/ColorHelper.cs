@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 
-namespace JB2.Common
+using JB2.Common;
+
+namespace JB2.Helpers
 {
     public static class ColorHelper
     {

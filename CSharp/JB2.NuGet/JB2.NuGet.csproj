@@ -142,6 +142,7 @@
     <Content Include="Packages\JB2.Data.AzureVault.0.2.0.nupkg" />
     <Content Include="Packages\JB2.Common.Core.0.2.1.nupkg" />
     <Content Include="Packages\JB2.Common.Core.0.2.2.nupkg" />
+    <Content Include="Packages\JB2.Common.Core.0.2.3.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %284%29.pubxml" />

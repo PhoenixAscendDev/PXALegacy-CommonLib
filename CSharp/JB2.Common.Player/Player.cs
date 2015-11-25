@@ -43,7 +43,7 @@ namespace JB2.Common
 
         public  virtual  string FamilyID { get; set; }
         
-        public virtual Name NameInfo
+        public virtual Name Name
         {
             get
             {
@@ -56,18 +56,7 @@ namespace JB2.Common
             }
         }
 
-        public virtual string Name
-        {
-            get
-            {
-                return DisplayName;
-            }
-
-            set
-            {
-                DisplayName = value;
-            }
-        }
+       
 
         #endregion Properties
 

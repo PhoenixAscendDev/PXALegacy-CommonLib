@@ -32,6 +32,23 @@ namespace JB2.Common
             }
         }
 
+        public T Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+            }
+        }
+
+        public object GetValue()
+        {
+            return _value;
+        }
+
         public static  implicit operator T(MetaData<T> d)
         {
             return d._value;

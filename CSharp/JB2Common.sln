@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2Common", "JB2Common\JB2Common.csproj", "{EF5BDC83-9C62-4AB5-AEE1-08BBC073610D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{30AD61B4-340C-4BBB-88BD-B22D83E2B179} = {30AD61B4-340C-4BBB-88BD-B22D83E2B179}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "Common.Web\Common.Web.csproj", "{4F44BFFB-6298-4EE2-AF0C-2600EB3B7479}"
 EndProject

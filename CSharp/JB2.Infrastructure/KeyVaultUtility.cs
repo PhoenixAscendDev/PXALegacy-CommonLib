@@ -93,7 +93,6 @@ namespace JB2.Infrastructure
             // pattern since the throttling targets for Storage and Key Vault services are orders of magnitude
             // different.
             //CachingKeyResolver cachingResolver = new CachingKeyResolver(2, aggregateResolver);
-
             // Create a key instance corresponding to the key ID. This will cache the secret.
             IKey cloudKey = Resolver.ResolveKeyAsync(keyID, CancellationToken.None).GetAwaiter().GetResult();
 

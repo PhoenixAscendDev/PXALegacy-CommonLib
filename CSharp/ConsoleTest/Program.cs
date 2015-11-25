@@ -131,7 +131,7 @@ namespace ConsoleTest
 
             var scheduler = new TestScheduler(null);
 
-            scheduler.StartJobs();
+            //scheduler.StartJobs();
 
 
 
@@ -145,7 +145,8 @@ namespace ConsoleTest
 
             //var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
 
-            //var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
+            var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
+            var key2 = JB2.Infrastructure.Vault.RSAKey1;
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 
             //Console.WriteLine(rgb.ToString());

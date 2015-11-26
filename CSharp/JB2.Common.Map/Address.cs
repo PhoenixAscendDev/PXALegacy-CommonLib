@@ -5,10 +5,11 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public abstract class Address<TState,TCountry,IGeoLocation> : IAddress<TState, TCountry, IGeoLocation>,IAddress,IAddressable
+    public abstract class Address<TState,TCountry> : IAddress<TState, TCountry>,IAddress,IAddressable
     {
         #region Fields
-        private TCountry _country;
+       
+
 
         #endregion Fields
 
@@ -57,14 +58,7 @@ namespace JB2.Common
 
         public virtual IGeolocation GeoLocation
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get; set;
         }
 
         public virtual string Building
@@ -75,14 +69,7 @@ namespace JB2.Common
 
         public virtual TCountry CountryRegion
         {
-            get
-            {
-                return _country;
-            }
-            set
-            {
-                _country = value;
-            }
+            get; set;
         }
 
         public virtual string FloorLevel
@@ -177,10 +164,7 @@ namespace JB2.Common
         {
             return FullAddress;
         }
-        public object GetGeoLocation()
-        {
-            return GeoLocation;
-        }
+       
 
         #endregion IAddress
 

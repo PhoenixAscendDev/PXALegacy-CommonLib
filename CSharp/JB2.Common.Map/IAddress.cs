@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IAddress<TStateProvince, TCountry, TGeoLocation> : IAddress
+    public interface IAddress<TStateProvince, TCountry> : IAddress
     {
 
     }

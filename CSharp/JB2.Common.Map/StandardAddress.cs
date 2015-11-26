@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JB2.Common
+namespace JB2.Common.Map
 {
-    public class UnitedStatesAddress : Address<StateProvince, Country>
+    public class StandardAddress : Address<StateProvince, Country>
     {
-        public override string ToUSMailStandard()       
+        public override string ToUSMailStandard()
         {
             StringBuilder sBuilder = new StringBuilder();
             sBuilder.Append(this.AddressLine1.ToUpper());
@@ -22,19 +22,6 @@ namespace JB2.Common
                 sBuilder.Append(this.PostalCode.ToUpper());
 
             return sBuilder.ToString();
-        }
-
-        public override Country CountryRegion
-        { 
-            get
-            {
-                return Helpers.MapHelper.GetCountryByCountryCode("USA");
-            }
-
-            set
-            {
-                base.CountryRegion = value;
-            }
         }
     }
 }

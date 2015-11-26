@@ -5,11 +5,10 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class BaseSetting : StringID, ISetting
+    public class BaseSetting : IDNamePair, ISetting
     {
         #region Fields
-        private string _id;
-        private string _name;
+       
         private IPerson<string> _updatedBy;
         private DateTime _updatedByDate;
         private object _value;
@@ -22,7 +21,7 @@ namespace JB2.Common
             set { _id = value; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return _name; }
             set { _name = value; }

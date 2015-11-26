@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\ILookupItem.cs" />
     <Compile Include="Interfaces\Image.cs" />
     <Compile Include="Interfaces\IMetaData.cs" />
+    <Compile Include="Interfaces\INameable.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Interfaces\IObjectCollection.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="MetaData\MetaData.cs" />
     <Compile Include="MetaData\StringMetaData.cs" />
     <Compile Include="Name.cs" />
+    <Compile Include="NameValue.cs" />
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="SettingCollection.cs" />
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />
+    <Compile Include="StringName.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="TimeRange.cs" />
     <Compile Include="Validation.cs" />

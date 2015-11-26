@@ -16,7 +16,9 @@ namespace JB2.Common
             if (string.IsNullOrEmpty(id))
                 _id = JB2.Common.NewID.ShortGuid();
 
-        }        
+        }
+        
+        
     }
 
 
@@ -62,7 +64,7 @@ namespace JB2.Common
             }
         }
 
-        public TName Name
+        public virtual TName Name
         {
             get
             {
@@ -78,6 +80,11 @@ namespace JB2.Common
         public override TKey GetID()
         {
             return _id;
+        }
+
+        public virtual TName GetName()
+        {
+            return _name;
         }
 
 

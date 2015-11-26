@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IIDNamePair<TKey,TName> : IIDable<TKey>
+    public interface IIDNamePair<TKey,TName> : IIDable<TKey>,INameable<TName>
         where TKey : IComparable
         where TName : IComparable
     {

@@ -18,8 +18,11 @@ namespace JB2.Common
                 _id = value;
             }
         }
-        public string Name { get; set; }
-
+        public string Name { get; set; }   
         
+        public string GetName()
+        {
+            return Name;
+        }     
     }
 }

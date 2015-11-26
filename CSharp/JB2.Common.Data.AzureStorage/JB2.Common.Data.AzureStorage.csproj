@@ -120,6 +120,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressEntry.cs" />
     <Compile Include="AzureBlobRepository.cs" />
     <Compile Include="AzureCloudExtensions.cs" />
     <Compile Include="Helper.cs" />

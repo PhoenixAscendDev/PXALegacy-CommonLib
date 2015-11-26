@@ -5,54 +5,41 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class Address : IAddress<StateProvince,Country,IGeolocation>
+    public abstract class Address<TState,TCountry,IGeoLocation> : IAddress<TState, TCountry, IGeoLocation>,IAddress,IAddressable
     {
         #region Fields
-        private Country _country;
+        private TCountry _country;
 
         #endregion Fields
 
-        #region Constructor
-
-        public Address()
-        {
-
-        }
-        //public Address()
-        //{
-        //    if (countrycode.ToLower() == "us")
-        //       // _country = "United States";
-        //        //_country = new Lookup<string,string>( { Key = "US", Name = "United States", Id = "1", ItemType = "Country" };
-        //}
-
-        #endregion Constructor
+      
 
         #region Properties
 
-        public string AddressLine1
+        public virtual string AddressLine1
         {
             get;
             set;
         }
-        public string AddressLine2
+        public virtual string AddressLine2
         {
             get;
             set;
         }
-        public string City
+        public virtual string City
         {
             get;
             set;
         }
 
-        public string CityAndState
+        public virtual string CityAndState
         {
             get
             {
                 StringBuilder sBuilder = new StringBuilder();
                 if (!string.IsNullOrEmpty(this.City))
                     sBuilder.Append(this.City);
-                if (!string.IsNullOrEmpty(this.StateProvince))
+                if (!string.IsNullOrEmpty(this.StateProvince.ToString()))
                 {
                     if (!string.IsNullOrEmpty(this.City))
                         sBuilder.Append(", ");
@@ -61,14 +48,14 @@ namespace JB2.Common
                 return sBuilder.ToString();
             }
         }
-        
-        public string PostalCode
+
+        public virtual string PostalCode
         {
             get;
             set;
         }
 
-        public IGeolocation GeoLocation
+        public virtual IGeolocation GeoLocation
         {
             get
             {
@@ -80,13 +67,13 @@ namespace JB2.Common
             }
         }
 
-        public string Building
+        public virtual string Building
         {
             get;set;
            
         }
 
-        public Country CountryRegion
+        public virtual TCountry CountryRegion
         {
             get
             {
@@ -98,17 +85,17 @@ namespace JB2.Common
             }
         }
 
-        public string FloorLevel
+        public virtual string FloorLevel
         {
             get; set;
         }
 
-        public StateProvince StateProvince
+        public virtual TState StateProvince
         {
             get; set;
         }
 
-        public string FullAddress
+        public virtual string FullAddress
         {
             get
             {
@@ -120,22 +107,8 @@ namespace JB2.Common
 
         #region Methods
 
-        public virtual string ToUSMailStandard()
-        {
-            StringBuilder sBuilder = new StringBuilder();
-            sBuilder.Append(this.AddressLine1.ToUpper());
-            if (!string.IsNullOrEmpty(this.AddressLine2))
-            {
-                sBuilder.Append("\n");
-                sBuilder.Append(this.AddressLine2.ToUpper());
-            }
-            sBuilder.Append("\n");
-            sBuilder.Append(this.City.ToUpper() + " " + this.StateProvince.ToUpper());
-            if (!string.IsNullOrEmpty(this.PostalCode))
-                sBuilder.Append(this.PostalCode.ToUpper());
-
-            return sBuilder.ToString();
-        }
+        public abstract string ToUSMailStandard();
+        
 
         #endregion Methods
 
@@ -160,5 +133,66 @@ namespace JB2.Common
         }
 
         #endregion ToString
+
+        #region IAddress
+
+        public string GetAddressLine1()
+        {
+            return AddressLine1;
+        }
+        public string GetAddressLine2()
+        {
+            return AddressLine2;
+        }
+        public string GetBuilding()
+        {
+            return Building;
+        }
+        public string GetCity()
+        {
+            return City;
+        }
+
+        public string GetCityState()
+        {
+            return CityAndState;
+        }
+        public object GetCountryRegion()
+        {
+            return CountryRegion;
+        }
+        public string GetFloorLevel()
+        {
+            return FloorLevel;
+        }
+        public string GetPostalCode()
+        {
+            return PostalCode;
+        }
+        public object GetStateProvince()
+        {
+            return StateProvince;
+        }
+        public string GetFullAddress()
+        {
+            return FullAddress;
+        }
+        public object GetGeoLocation()
+        {
+            return GeoLocation;
+        }
+
+        #endregion IAddress
+
+
+        #region IAddressable
+
+        public IAddress ToAddress()
+        {
+            return this;
+        }
+
+
+        #endregion IAddressable
     }
 }

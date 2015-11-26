@@ -7,7 +7,7 @@ using System.Globalization;
 
 using JB2.Common;
 
-namespace JB2.Common
+namespace JB2.Common.Helpers
 {
     public static class MapHelper
     {

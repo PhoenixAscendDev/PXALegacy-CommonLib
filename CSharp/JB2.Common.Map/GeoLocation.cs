@@ -37,7 +37,7 @@ namespace JB2.Common
 
         public double GetDistanceTo(IGeolocation othergeo)
         {
-            return JB2.Common.MapHelper.GetDistance(this.Latitude, this.Longitude, othergeo.Latitude, othergeo.Longitude, Enum.GeoDistanceType.Miles);
+            return JB2.Common.Helpers.MapHelper.GetDistance(this.Latitude, this.Longitude, othergeo.Latitude, othergeo.Longitude, Enum.GeoDistanceType.Miles);
 
         }
         #endregion Public Methods

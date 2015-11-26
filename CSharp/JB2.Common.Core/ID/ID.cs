@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public abstract class IDValue<T> : IIDable<T>
+    public abstract class IDValue<T> : IIDProp<T>
     {
         public virtual T ID
         {

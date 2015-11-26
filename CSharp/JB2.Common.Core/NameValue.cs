@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public abstract class NameValue<T> : INameable<T>
+    public abstract class NameValue<T> : INameProp<T>
     {
         public virtual T Name
         {

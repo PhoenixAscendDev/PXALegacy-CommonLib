@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IIDable<T>
+    public interface IIDProp<T>
     {
 
         T GetID();

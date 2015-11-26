@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface INameable<T>
+    public interface INameProp<T>
     {
         T GetName();
     }

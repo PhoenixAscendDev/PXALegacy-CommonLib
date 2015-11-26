@@ -194,5 +194,12 @@ namespace JB2.Common
 
 
         #endregion IAddressable
+
+        #region IGeoLocationable
+        public IGeolocation ToGeoLocation()
+        {
+            return GeoLocation;
+        }
+        #endregion IGeoLocationable
     }
 }

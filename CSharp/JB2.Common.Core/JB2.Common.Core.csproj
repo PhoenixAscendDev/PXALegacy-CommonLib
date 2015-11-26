@@ -66,6 +66,7 @@
     <Compile Include="ID\StringID.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
+    <Compile Include="Interfaces\IGeocodeable.cs" />
     <Compile Include="Interfaces\IGeoLocation.cs" />
     <Compile Include="Interfaces\IIDable.cs" />
     <Compile Include="Interfaces\IIDNamePair.cs" />

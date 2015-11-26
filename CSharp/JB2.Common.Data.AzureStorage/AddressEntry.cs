@@ -84,6 +84,14 @@ namespace JB2.Common.Data
 
         #endregion IAddress
 
+        #region IGeoLocationable
+        public IGeolocation ToGeoLocation()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion IGeoLocationable
+
 
 
     }

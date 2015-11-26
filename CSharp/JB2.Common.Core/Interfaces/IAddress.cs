@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IAddress
+    public interface IAddress : IGeolocationable
     {
         string GetAddressLine1();
         string GetAddressLine2();
@@ -16,8 +16,10 @@ namespace JB2.Common
         string GetPostalCode();
         object GetStateProvince();
         string GetFullAddress();
-        object GetGeoLocation();
+        
 
         string ToUSMailStandard();
+
+        
     }   
 }

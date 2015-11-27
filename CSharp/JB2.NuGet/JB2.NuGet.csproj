@@ -152,6 +152,10 @@
     <Content Include="Packages\JB2.Common.Core.0.2.6.nupkg" />
     <Content Include="Packages\JB2.Common.Map.0.2.1.nupkg" />
     <Content Include="Packages\JB2.Data.Azure.0.2.1.nupkg" />
+    <Content Include="Packages\JB2.Identity.Core.0.1.0.nupkg" />
+    <Content Include="Packages\JB2.Identity.Core.0.1.1.nupkg" />
+    <Content Include="Packages\JB2.Economy.Core.0.1.1.nupkg" />
+    <Content Include="Packages\JB2.Economy.jBean.0.1.1.nupkg" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\jbsquared-nuget - FTP %284%29.pubxml" />

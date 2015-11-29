@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Extensions", "JB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Data.AzureKeyVault", "JB2.Common.Data.AzureKeyVault\JB2.Common.Data.AzureKeyVault.csproj", "{F550EF5C-2A4C-409A-A770-3AEA8E161AA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.WebAPI", "JB2.Common.WebAPI\JB2.Common.WebAPI.csproj", "{A0C0BF36-3529-4FF2-9D1C-34E6439B6587}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{F550EF5C-2A4C-409A-A770-3AEA8E161AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F550EF5C-2A4C-409A-A770-3AEA8E161AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F550EF5C-2A4C-409A-A770-3AEA8E161AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C0BF36-3529-4FF2-9D1C-34E6439B6587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C0BF36-3529-4FF2-9D1C-34E6439B6587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C0BF36-3529-4FF2-9D1C-34E6439B6587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C0BF36-3529-4FF2-9D1C-34E6439B6587}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

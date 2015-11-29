@@ -6,12 +6,12 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Security.Claims;
 
-namespace JB2.Common.Web
+namespace JB2.Common.WebAPI
 {
     public class BaseApiController : ApiController
     {
 
-        protected HttpResponseMessage createResponse<T>(T o, string fields, System.Net.HttpStatusCode code) where T : Models.IAPIResult
+        protected HttpResponseMessage createResponse<T>(T o, string fields, System.Net.HttpStatusCode code) where T : IAPIObject
         {
             HttpResponseMessage result = null;
 
@@ -25,7 +25,7 @@ namespace JB2.Common.Web
 
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(o, Newtonsoft.Json.Formatting.Indented, new Newtonsoft.Json.JsonSerializerSettings
             {
-                ContractResolver = new Models.ShouldSerializeContractResolver<Models.BaseModel>()
+                ContractResolver = new ShouldSerializeContractResolver<APIObject>()
             });
 
             var obj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
@@ -33,5 +33,4 @@ namespace JB2.Common.Web
             return result;
         }
     }
-}
 }

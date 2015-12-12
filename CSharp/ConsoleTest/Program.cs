@@ -12,6 +12,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
+using System.Text.RegularExpressions;
 
 using JB2.Common;
 
@@ -147,7 +148,9 @@ namespace ConsoleTest
 
             var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
             var key2 = JB2.Infrastructure.Vault.RSAKey1;
-
+            var link = "http://www.jbsquared.com";
+            Console.WriteLine(Regex.IsMatch(link, "^(?i)(https?|ftp)://.*$"));
+            //var link = new Uri("www.jbsquared.com");
             Console.WriteLine(JB2.Common.NewID.ShortGuid("start_{0}_end"));
             Console.WriteLine(JB2.Common.NewID.Guid());
             Console.WriteLine(JB2.Common.NewID.Base62());

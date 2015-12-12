@@ -45,6 +45,7 @@
     <Compile Include="SettingExtensions.cs" />
     <Compile Include="ShortGuidExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtenstions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">

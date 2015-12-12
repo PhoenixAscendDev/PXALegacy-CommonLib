@@ -49,7 +49,7 @@ namespace JB2.Common
         {
             //_list = things;
         }
-
+         
 
         public TSetting this[TKey index]
         {

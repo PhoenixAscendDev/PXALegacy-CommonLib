@@ -197,6 +197,24 @@ namespace JB2.Common
 
         }
 
+        static public JB2Image Empty(int width, int height, string colorhex = null)
+        {
+            var image = new System.Drawing.Bitmap(width, height);
+
+            if (colorhex != null)
+            {
+                using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(image))
+                {
+                    var color = System.Drawing.ColorTranslator.FromHtml("#" + colorhex.ToUpper());
+                    g.Clear(color);
+                }
+            }
+
+            return image;
+        }
+
+
+
 
         #endregion Static members
 

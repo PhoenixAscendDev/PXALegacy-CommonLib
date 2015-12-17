@@ -123,6 +123,7 @@
     <Compile Include="AddressEntry.cs" />
     <Compile Include="AzureBlobRepository.cs" />
     <Compile Include="AzureCloudExtensions.cs" />
+    <Compile Include="AzureTableEntity.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ImageEntity.cs" />
     <Compile Include="LocalResolver.cs" />

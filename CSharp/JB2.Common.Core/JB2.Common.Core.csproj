@@ -109,6 +109,7 @@
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="TimeRange.cs" />
     <Compile Include="Validation.cs" />
+    <Compile Include="VersionNumber.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

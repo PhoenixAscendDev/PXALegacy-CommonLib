@@ -125,7 +125,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs.cs" />
+    <Compile Include="Business.cs" />
+    <Compile Include="CompanyInfo.cs" />
+    <Compile Include="HQAddress.cs" />
+    <Compile Include="JB2Project.cs" />
     <Compile Include="KeyVaultUtility.cs" />
+    <Compile Include="People.cs" />
+    <Compile Include="ProductLine.cs" />
+    <Compile Include="Projects.cs" />
+    <Compile Include="StaffMember.cs" />
     <Compile Include="Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vault.cs" />
@@ -146,6 +154,14 @@
     <ProjectReference Include="..\JB2.Common.Data\JB2.Common.Data.csproj">
       <Project>{bed87119-b1c5-489d-ab31-5a78cf61c056}</Project>
       <Name>JB2.Common.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
+      <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
+      <Name>JB2.Common.Map</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
+      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
+      <Name>JB2.Common.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

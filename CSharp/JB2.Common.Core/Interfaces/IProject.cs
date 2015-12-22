@@ -17,5 +17,7 @@ namespace JB2.Common
         IEnumerable<IVersionNumber> GetVersions();
 
         IEnumerable<IReleaseNote<TKey>> GetReleaseNotes(IVersionNumber versionNumber);
+
+        string GetGoogleAnalyicCode();
     }
 }

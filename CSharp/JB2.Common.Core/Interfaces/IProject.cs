@@ -11,6 +11,11 @@ namespace JB2.Common
         IBusiness<TKey> GetOwner();
         IPerson<TKey> GetPOC();
 
-        IEnumerable<IVersionNumber> GetReleaseVersions();
+        string GetDescription();
+
+        string GetUri();
+        IEnumerable<IVersionNumber> GetVersions();
+
+        IEnumerable<IReleaseNote<TKey>> GetReleaseNotes(IVersionNumber versionNumber);
     }
 }

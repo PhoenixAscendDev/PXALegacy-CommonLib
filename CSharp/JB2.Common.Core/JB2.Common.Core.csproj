@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\IObjectCollection.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IProject.cs" />
     <Compile Include="Interfaces\IRange.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServiceResult.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Interfaces\ITagable.cs" />
     <Compile Include="Interfaces\IUpdateable.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
+    <Compile Include="Interfaces\IVersionNumber.cs" />
     <Compile Include="MetaData\IMetaDatable.cs" />
     <Compile Include="MetaData\MetaDataCollection.cs" />
     <Compile Include="MetaData\DateTimeMetaData.cs" />

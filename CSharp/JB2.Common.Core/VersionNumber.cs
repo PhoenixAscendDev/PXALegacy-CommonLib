@@ -9,6 +9,15 @@ namespace JB2.Common
 {
     public class VersionNumber : VersionNumber<int, int, int, int>
     {
+
+
+        #region Fields
+
+        protected DateTime _daterelease;
+
+        #endregion Fields
+
+        #region Constructor
         public VersionNumber(int major, int minor, int build, int revision) : this()
         {
             _major = major;
@@ -30,16 +39,28 @@ namespace JB2.Common
             _revision = version.Revision;
         }
 
+        #endregion Constructor
+
         public VersionNumber()
         {
             _format = "{0}.{1}.{2}.{3}";
             _isPrerelease = false;
         }
 
-        public static implicit operator int(VersionNumber v)
+        public static implicit operator int (VersionNumber v)
         {
             int result = (v.Major * 100000000) + (v.Minor * 1000000) + (v.Revision * 10000) + (v.Build);
             return result;
+        }
+
+        public static implicit operator string (VersionNumber v)
+        {
+            return v.ToFormattedString(v._format);
+        }
+
+        public static implicit operator DateTime(VersionNumber v)
+        {
+            return v._daterelease;
         }
 
         public override int ToInt()
@@ -47,12 +68,45 @@ namespace JB2.Common
             return (int)this;
         }
 
+        #region VersionNumber
+
+        public override DateTime GetReleaseDate()
+        {
+            return (DateTime)this;
+        }
+
+        public override bool IsPublic()
+        {
+            return !_isPrerelease;
+        }
+
+        public override string GetMajor()
+        {
+            return _major.ToString();
+        }
+
+        public override string GetMinor()
+        {
+            return _minor.ToString();
+        }
+
+        public override string GetBuild()
+        {
+            return _build.ToString();
+        }
+
+        public override string GetRevision()
+        {
+            return _revision.ToString();
+        }
+
+        #endregion VersionNumber
     }
-    public abstract class VersionNumber<TMajor,TMinor,TBuild,TRevision> : IComparable
-        where TMajor: IComparable
-        where TMinor: IComparable
-        where TBuild: IComparable
-        where TRevision: IComparable
+    public abstract class VersionNumber<TMajor, TMinor, TBuild, TRevision> : IComparable, IVersionNumber
+        where TMajor : IComparable
+        where TMinor : IComparable
+        where TBuild : IComparable
+        where TRevision : IComparable
     {
         #region Fields
         protected TMajor _major;
@@ -120,10 +174,38 @@ namespace JB2.Common
             return string.Format(format, major, minor, build, revision);
         }
 
+        #region IComparable
         public virtual int CompareTo(object obj)
         {
             VersionNumber v = (VersionNumber)obj;
             return v.ToInt().CompareTo(this.ToInt());
         }
+
+
+        #endregion IComparable
+
+        public string GetVersion()
+        {
+            return ToFormattedString(_format);
+        }
+
+        public abstract DateTime GetReleaseDate();
+
+        public abstract bool IsPublic();
+
+        public abstract string GetMajor();
+
+        public abstract string GetMinor();
+
+        public abstract string GetBuild();
+
+        public abstract string GetRevision();
+
+
+
+
+
+
+
     }
 }

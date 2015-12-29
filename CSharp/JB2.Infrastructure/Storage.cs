@@ -34,7 +34,7 @@ namespace JB2.Infrastructure
         {
             get
             {
-                var storagekey = ConfigurationManager.AppSettings[STORAGEKEYNAME];
+                var storagekey = ConfigurationManager.AppSettings[BOWTIEKEYNAME];
                 return StorageAccount.FromAzureStorage("jb2bowtie", storagekey);
                 //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
             }

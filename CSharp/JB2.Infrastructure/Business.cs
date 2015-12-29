@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using JB2.Common;
 
-namespace JB2.Infrastructure
+namespace JB2.Common
 {
     public class Business : IBusiness
     {

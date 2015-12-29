@@ -63,6 +63,31 @@ namespace JB2.Common
             return v._daterelease;
         }
 
+        public static implicit operator VersionNumber(string v)
+        {
+            return VersionNumber.FromString(v, '.');
+        }
+
+        public static VersionNumber FromString(string version,char seperator)
+        {
+            string[] parts = version.Split(seperator);
+            int major = 0;
+            int minor = 0;
+            int revision = 0;
+            int build = 0;
+
+            if (parts.Count() > 0)
+                int.TryParse(parts[0], out major);
+            if (parts.Count() > 1)
+                int.TryParse(parts[1], out minor);
+            if (parts.Count() > 3)
+                int.TryParse(parts[3], out revision);
+            if (parts.Count() > 2)
+                int.TryParse(parts[2], out build);
+
+            return new VersionNumber(major, minor, build, revision);
+        }
+
         public override int ToInt()
         {
             return (int)this;

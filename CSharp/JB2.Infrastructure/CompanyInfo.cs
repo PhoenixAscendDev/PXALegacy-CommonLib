@@ -4,30 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Configuration;
+using JB2.Infrastructure.Data;
 using JB2.Common;
 
 namespace JB2
 {
     public static class Info 
     {
-
+        private const string PRODJECTCODE = "JB2:projectCode";
         public static JB2.Infrastructure.HQAddress _address;
-        public static JB2.Infrastructure.Business _hq;       
+        public static JB2.Common.Business _hq;       
         public static IBusiness HQ
         { 
             get
             {
                 if(_hq == null)
                 {
-                    _hq = new Infrastructure.Business();
+                    _hq = new Business();
                     _hq.ID = "jb2-centreville";
                     _hq.Name = "JBsquared LLC";
                     _hq.MailingAddress = new JB2.Infrastructure.HQAddress();
                     _hq.POC = JB2.Infrastructure.People.JB;
                 }
                 return _hq;
-            }
-           
+            }          
         }
 
         public static IAddress MailingAddress
@@ -39,8 +40,9 @@ namespace JB2
                 return _address;
             }
         }
-        public static string SupportEmail()
+        public static string SupportEmail
         {
+            get
             {
                 return "support@jbsquared.com";
             }
@@ -51,6 +53,14 @@ namespace JB2
             get
             {
                 return "sales@jbsquared.com";
+            }
+        }
+
+        public static JB2Project Project
+        {
+            get
+            {
+                return (JB2Project)JB2.Infrastructure.Projects.Project(ConfigurationManager.AppSettings[PRODJECTCODE]);
             }
         }
 

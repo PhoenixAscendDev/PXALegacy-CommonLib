@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JB2.Infrastructure
+namespace JB2.Infrastructure.Enum
 {
     public enum ProductLine
     {

@@ -8,8 +8,6 @@ namespace JB2.Common.Log
 {
     public class LogTableEntry :  Microsoft.WindowsAzure.Storage.Table.TableEntity
     {
-        
-
         #region Constructors
         public LogTableEntry(string partitionKey, string rowKey)
         {

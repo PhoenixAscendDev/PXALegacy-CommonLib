@@ -37,18 +37,6 @@
       <HintPath>..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Core, Version=0.2.6.23895, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JB2.Common.Core.0.2.6\lib\JB2.Common.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="JB2.Common.Map, Version=0.2.1.23896, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JB2.Common.Map.0.2.1\lib\JB2.Common.Map.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="JB2.Common.Ultities, Version=0.2.0.42495, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JB2.Common.Utility.0.2.0\lib\JB2.Common.Ultities.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
       <Private>True</Private>
@@ -147,6 +135,10 @@
       <Project>{38b96fb8-072f-48ac-99dd-e8910f6e36d9}</Project>
       <Name>JB2.Common.Color</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Data.AzureKeyVault\JB2.Common.Data.AzureKeyVault.csproj">
       <Project>{f550ef5c-2a4c-409a-a770-3aea8e161aa5}</Project>
       <Name>JB2.Common.Data.AzureKeyVault</Name>
@@ -175,9 +167,17 @@
       <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
       <Name>JB2.Common.Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
+      <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
+      <Name>JB2.Common.Map</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Scheduler\JB2.Common.Scheduler.csproj">
       <Project>{fb4fdde0-8031-4220-b613-7a7e6d575b13}</Project>
       <Name>JB2.Common.Scheduler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
+      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
+      <Name>JB2.Common.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
       <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>

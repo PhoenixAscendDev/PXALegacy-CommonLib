@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage;
 
 using JB2.Common;
-namespace JB2.Infrastructure
-{
-    public class JB2Project : JB2.Common.IProject<string>
-    {
 
+using JB2.Infrastructure.Enum;
+namespace JB2.Infrastructure.Data
+{
+    public class JB2Project : JB2.Common.Data.AzureTableEntity,JB2.Common.IProject<string>
+    {
         #region Fields
         protected string _description;
         protected string _uri;
@@ -20,15 +22,23 @@ namespace JB2.Infrastructure
 
         #endregion Fields
 
+        public JB2Project(string partitionKey, string rowKey)
+        {
+
+        }
+        public JB2Project()
+        {
+
+        }
+
         public JB2Project(string code)
         {
             ID = code;
         }
-        public string ID { get; set; }
 
-        public string Name { get; set; }
+        public string LatestVersion { get; set; }
 
-        public ProductLine GetProductLine()
+        public JB2.Infrastructure.Enum.ProductLine GetProductLine()
         {
             string codeprefix = this.ID.Substring(0, 2).ToUpper();
             switch(codeprefix)
@@ -49,29 +59,21 @@ namespace JB2.Infrastructure
             throw new NotImplementedException();
         }
 
-        public string GetID()
-        {
-            return this.ID;
-        }
-
-        public string GetName()
-        {
-            return this.Name;
-        }
+        
 
         public IBusiness<string> GetOwner()
         {
-            throw new NotImplementedException();
+            return JB2.Info.HQ;
         }
 
         public IPerson<string> GetPOC()
         {
-            throw new NotImplementedException();
+            return JB2.Infrastructure.People.JB;
         }
 
         public IEnumerable<IReleaseNote<string>> GetReleaseNotes(IVersionNumber versionNumber)
         {
-            throw new NotImplementedException();
+            return JB2.Infrastructure.Projects.ReleaseNotes(this.ID, versionNumber);
         }
 
         public string GetUri()
@@ -79,9 +81,13 @@ namespace JB2.Infrastructure
             throw new NotImplementedException();
         }
 
+        public IVersionNumber GetLatestVersion()
+        {
+            return (VersionNumber)this.LatestVersion;
+        }
         public IEnumerable<IVersionNumber> GetVersions()
         {
-            throw new NotImplementedException();
+            return JB2.Infrastructure.Projects.Versions(this.GetID());
         }
 
         public string GetGoogleAnalyicCode()

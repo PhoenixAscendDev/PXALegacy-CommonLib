@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\IObjectCollection.cs" />
     <Compile Include="Interfaces\IObjectService.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IPoint.cs" />
     <Compile Include="Interfaces\IProject.cs" />
     <Compile Include="Interfaces\IRange.cs" />
     <Compile Include="Interfaces\IReleaseNote.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Interfaces\IUpdateable.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Interfaces\IVersionNumber.cs" />
+    <Compile Include="IntPoint.cs" />
     <Compile Include="MetaData\IMetaDatable.cs" />
     <Compile Include="MetaData\MetaDataCollection.cs" />
     <Compile Include="MetaData\DateTimeMetaData.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="NameValue.cs" />
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Pattern.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryComparsion.cs" />
     <Compile Include="Range.cs" />

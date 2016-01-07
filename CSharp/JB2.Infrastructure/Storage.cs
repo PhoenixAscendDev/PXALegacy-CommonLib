@@ -15,9 +15,23 @@ namespace JB2.Infrastructure
     {
         private const string STORAGEKEYNAME = "JB2:generalStorageKey";
         private const string BOWTIEKEYNAME = "JB2:bowtieStorageKey";
+        private const string SPROGKEYNAME = "JB2:sprogStorageKey";
         private const string LOGKEYNAME = "JB2:logKey";
         private const string ASSETTABLENAME = "assets";
         private const string JBEAN_TABLENAME = "currency-jbean";
+
+        public static StorageAccount SprogAccount
+        {
+            get
+            {
+                var storagekey = ConfigurationManager.AppSettings[SPROGKEYNAME];
+                return StorageAccount.FromAzureStorage("jb2sprog", storagekey);
+                //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
+            }
+        }
+
+
+
         public static StorageAccount GeneralAccount
         {
             get
@@ -27,8 +41,6 @@ namespace JB2.Infrastructure
                 //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
             }
         }
-
-
 
         public static StorageAccount BowtieAccount
         {

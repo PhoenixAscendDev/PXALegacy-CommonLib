@@ -67,7 +67,6 @@ namespace JB2.Common
             byte[] dataBytes = webClient.DownloadData(url);
 
             return dataBytes;
-
         }
 
         public static string ShortText(string text, int maxLength, string trailText)
@@ -280,6 +279,21 @@ namespace JB2.Common
                     block = 0;
                 }
             }
+        }
+
+
+        public static int[,] RotateMatrix(int[,] matrix, int size)
+        {
+            int[,] ret = new int[size, size];
+
+            for (int i = 0; i < size; ++i)
+            {
+                for (int j = 0; j < size; ++j)
+                {
+                    ret[i, j] = matrix[size - j - 1, i];
+                }
+            }
+            return ret;
         }
 
         /// <summary>

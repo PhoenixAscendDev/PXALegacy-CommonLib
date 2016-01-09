@@ -46,7 +46,7 @@ namespace JB2.Common.Scheduler
                             thread = new Thread(new ThreadStart(job.Start));
                             thread.Start();
                             if(LoggingEnabled())
-                            logger.LogDebug( string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
+                            logger.Log( LogServerityType.Debug, string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                 job.Name,
                                                                 job.ID.ToString()));
                         }       
@@ -65,7 +65,7 @@ namespace JB2.Common.Scheduler
                                                                     job.Name,
                                                                     job.ID.ToString()));
                         if (LoggingEnabled())
-                            logger.LogError(schedulerEx);
+                            logger.Log(LogServerityType.Error,schedulerEx);
                     }
                 }
                

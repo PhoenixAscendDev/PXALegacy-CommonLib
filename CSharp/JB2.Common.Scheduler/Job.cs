@@ -36,8 +36,6 @@ namespace JB2.Common.Scheduler
             _cancelled = true;
             if (ProgressChanged != null)
                 ProgressChanged(this, "Job manually canceled", 1);
-
-
         }
 
 

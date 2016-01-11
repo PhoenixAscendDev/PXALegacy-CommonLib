@@ -41,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericAttachment.cs" />
+    <Compile Include="ImageAttachment.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="IMessageAttachment.cs" />
+    <Compile Include="IMessageHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Image\JB2.Common.Image.csproj">
+      <Project>{49966c64-7a12-47ca-b746-7fc632dc7592}</Project>
+      <Name>JB2.Common.Image</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

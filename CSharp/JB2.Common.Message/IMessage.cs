@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public interface IMessage<Tkey> : IIDProp<Tkey>
+    public interface IMessage<Tkey,TTag> : IIDProp<Tkey>, ITagable<TTag>
+        where Tkey : IComparable
     {
         IPerson<Tkey> GetSender();
         Tkey To { get; set; }

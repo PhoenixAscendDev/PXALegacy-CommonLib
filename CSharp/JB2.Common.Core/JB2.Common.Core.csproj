@@ -65,6 +65,7 @@
     <Compile Include="ID\NewIDType.cs" />
     <Compile Include="ID\ShortGuidID.cs" />
     <Compile Include="ID\StringID.cs" />
+    <Compile Include="IFile.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IBusiness.cs" />
     <Compile Include="Interfaces\IGeocodeable.cs" />

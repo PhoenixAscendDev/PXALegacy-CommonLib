@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IFile : IObject<int,string,string>
+    public interface IFile : IObject<string,string,string>
     {
         byte[] GetFileContent();
         int GetFileSize();

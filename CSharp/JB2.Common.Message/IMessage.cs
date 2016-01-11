@@ -14,8 +14,14 @@ namespace JB2.Common
         Tkey From { get; set; }
         string Subject { get; set; }
         string Body { get; set; }
+        DateTime DateSent { get; set; }
+
+        bool IsRead { get; }
         IMessageHeader GetHeaderInfo();
         IEnumerable<IMessageAttachment> GetAttachments();
+        void Send();
+        void Read();
+
 
 
     }

@@ -21,8 +21,5 @@ namespace JB2.Common
         IEnumerable<IMessageAttachment> GetAttachments();
         void Send();
         void Read();
-
-
-
     }
 }

@@ -38,6 +38,10 @@ namespace JB2.Infrastructure.Data
 
         public string LatestVersion { get; set; }
 
+        public string TermsofServiceUri { get; set; }
+
+        public string PrivacyPolicyUri { get; set; }
+
         public JB2.Infrastructure.Enum.ProductLine GetProductLine()
         {
             string codeprefix = this.ID.Substring(0, 2).ToUpper();

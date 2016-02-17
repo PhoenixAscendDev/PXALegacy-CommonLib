@@ -33,8 +33,10 @@ namespace JB2.Common
                     var img = _jb2image.ToImage();
                     if (img != null)
                         return true;
+                    else
+                        return false;
                 }
-                catch()
+                catch(Exception ex)
                 {
                     return false;
                 }

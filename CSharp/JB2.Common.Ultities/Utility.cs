@@ -36,6 +36,12 @@ namespace JB2.Common
             return (attributes.Length > 0) ? (T)attributes[0] : null;
         }
 
+        /// <summary>
+        /// A 32-bit signed integer greater than or equal to minValue and less than maxValue; that is, the range of return values includes minValue but not maxValue. If minValue equals maxValue, minValue is returned.
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static int RandomNumber(int min, int max)
         {
             return ThreadSafeRandom.ThisThreadsRandom.Next(min, max);

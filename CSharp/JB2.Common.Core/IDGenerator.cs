@@ -71,15 +71,13 @@ namespace JB2.Common
             return wrapit(wrapper, t);
         }
 
-
-        public static string Base62()
+        public static string Base62(long? number = null)
         {
-            return Base62("{0}");
+            return Base62("{0}",number);
         }
-        public static string Base62(string wrapper)
+        public static string Base62(string wrapper, long? number = null)
         {
-            int random = ThreadSafeRandom.ThisThreadsRandom.Next();
-            var t =  base62ToString(random);
+            var t =  base62ToString(number == null ? ThreadSafeRandom.ThisThreadsRandom.Next() : (long)number);
 
             return wrapit(wrapper, t);
         }

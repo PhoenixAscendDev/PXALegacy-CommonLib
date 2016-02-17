@@ -129,15 +129,21 @@ namespace ConsoleTest
             //var test = new JB2.Common.Log.AzureRepo(table, "logentry");
             //var entry = JB2.Common.Log.LogEntry.NewLogEntry(JB2.Common.Log.Enum.LogServerityType.Informational, "This is a message");
             //test.StoreLogEntry(entry);
-            var t = JB2.Info.Project.GetVersions().LastOrDefault();
+            //var t = JB2.Info.Project.GetVersions().LastOrDefault();
 
-            var v = JB2.Common.VersionNumber.FromString("0.1.3",'.');
+            //var v = JB2.Common.VersionNumber.FromString("0.1.3",'.');
 
-            Console.WriteLine(v.ToInt().ToString());
+            //Console.WriteLine(v.ToInt().ToString());
 
 
-            var scheduler = new TestScheduler(null);
+            //var scheduler = new TestScheduler(null);
 
+            for(int i=0;i<110;i++)
+            {
+                //Console.Write(JB2.Common.Utility.RandomNumber(1, 3).ToString());
+                Console.WriteLine(JB2.Common.NewID.Base62("dew_{0}", 100));
+            }
+            Console.ReadLine();
             //scheduler.StartJobs();
 
 

@@ -15,6 +15,7 @@ namespace JB2.Infrastructure
     {
         private const string STORAGEKEYNAME = "JB2:generalStorageKey";
         private const string BOWTIEKEYNAME = "JB2:bowtieStorageKey";
+        private const string SOFTWAREKEYNAME = "JB2:softwareStorageKey";
         private const string SPROGKEYNAME = "JB2:sprogStorageKey";
         private const string LOGKEYNAME = "JB2:logKey";
         private const string ASSETTABLENAME = "assets";
@@ -38,6 +39,16 @@ namespace JB2.Infrastructure
             {
                 var storagekey = ConfigurationManager.AppSettings[STORAGEKEYNAME];
                 return StorageAccount.FromAzureStorage("jbsquared", storagekey);
+                //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
+            }
+        }
+
+        public static StorageAccount SoftwareAccount
+        {
+            get
+            {
+                var storagekey = ConfigurationManager.AppSettings[SOFTWAREKEYNAME];
+                return StorageAccount.FromAzureStorage("jb2softwaredata", storagekey);
                 //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
             }
         }

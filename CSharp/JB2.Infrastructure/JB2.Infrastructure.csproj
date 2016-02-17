@@ -128,12 +128,12 @@
     <Compile Include="Business.cs" />
     <Compile Include="CompanyInfo.cs" />
     <Compile Include="HQAddress.cs" />
-    <Compile Include="JB2Project.cs" />
     <Compile Include="JB2ReleaseVersion.cs" />
     <Compile Include="KeyVaultUtility.cs" />
     <Compile Include="People.cs" />
     <Compile Include="ProductLine.cs" />
     <Compile Include="Projects.cs" />
+    <Compile Include="JB2Project.cs" />
     <Compile Include="ReleaseNotes.cs" />
     <Compile Include="StaffMember.cs" />
     <Compile Include="Storage.cs" />

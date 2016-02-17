@@ -25,9 +25,6 @@ namespace JB2.Common
         /// <param name="maxLength"></param>
         /// <param name="trailText"></param>
         /// <returns></returns>
-        /// 
-
-
         public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute
         {
             var type = enumVal.GetType();
@@ -134,8 +131,6 @@ namespace JB2.Common
             return result;
 
         }
-
-
 
         #region String Conversations
 

@@ -5,6 +5,8 @@ using System.Text;
 
 namespace JB2.Common
 {
+
+
     public class MetaData<T> : IMetaData
     {
         protected  T _value;
@@ -44,9 +46,9 @@ namespace JB2.Common
             }
         }
 
-        public object GetValue()
+        public IMetaDataValue GetValue()
         {
-            return _value;
+            return new MetaDataValue(_value);
         }
 
         public static  implicit operator T(MetaData<T> d)

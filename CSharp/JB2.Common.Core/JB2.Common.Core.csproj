@@ -58,6 +58,8 @@
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Interfaces\IAddressable.cs" />
     <Compile Include="ID\ID.cs" />
+    <Compile Include="IValue.cs" />
+    <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />
     <Compile Include="IDNameCollection.cs" />
     <Compile Include="IDNamePair.cs" />

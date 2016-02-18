@@ -10,7 +10,7 @@ namespace JB2.Common
         string PropertyName { get; }
         Type PropertyType { get;}
 
-        object GetValue();
+        IMetaDataValue GetValue();
       //  object Value { get; set; }
     }
 

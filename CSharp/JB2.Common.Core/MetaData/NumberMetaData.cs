@@ -10,8 +10,7 @@ namespace JB2.Common
         public NumberMetaData(string propertyName, int value) : base(propertyName,value)
         {
 
-        }
-        
+        }      
 
         public static implicit operator int(NumberMetaData d)
         {

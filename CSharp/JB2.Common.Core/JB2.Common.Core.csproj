@@ -56,9 +56,9 @@
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
-    <Compile Include="IAddressable.cs" />
+    <Compile Include="Interfaces\IAddressable.cs" />
     <Compile Include="ID\ID.cs" />
-    <Compile Include="IDGenerator.cs" />
+    <Compile Include="NewID.cs" />
     <Compile Include="IDNameCollection.cs" />
     <Compile Include="IDNamePair.cs" />
     <Compile Include="ID\IntID.cs" />
@@ -102,6 +102,7 @@
     <Compile Include="MetaData\StringMetaData.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="NameValue.cs" />
+    <Compile Include="ObjectMetadata.cs" />
     <Compile Include="ObjectTag.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Point.cs" />

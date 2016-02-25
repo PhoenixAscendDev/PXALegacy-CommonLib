@@ -17,7 +17,7 @@ namespace JB2.Common.WebAPI
 
             //string[] fieldArray = fields.Split(',');
 
-            if (fields != "all")
+            if (fields.ToLower() != "all")
             {
                 o.serializableProperties = fields.Split(',').ToList();
             }

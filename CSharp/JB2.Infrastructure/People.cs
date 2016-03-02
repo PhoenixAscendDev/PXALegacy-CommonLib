@@ -8,6 +8,24 @@ namespace JB2.Infrastructure
 {
     public static class People
     {
+        public static StaffMember Guest
+        {
+            get
+            {
+                var guest = new StaffMember();
+                guest.ID = "jb2guest";
+                guest.Name = new Common.Name()
+                {
+                    First = "Duke",
+                    Last = "Bennett",
+                    Middle = ""
+                };
+                return guest;
+            }
+
+        }
+
+
         public static StaffMember JB
         {
             get

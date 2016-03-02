@@ -127,6 +127,7 @@
     <Compile Include="APIs.cs" />
     <Compile Include="Business.cs" />
     <Compile Include="CompanyInfo.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="HQAddress.cs" />
     <Compile Include="JB2ReleaseVersion.cs" />

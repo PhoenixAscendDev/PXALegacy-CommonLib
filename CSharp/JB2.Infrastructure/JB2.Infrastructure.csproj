@@ -35,6 +35,18 @@
       <HintPath>..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="JB2.Economy.AzureRepo, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Economy.jBean.0.1.2\lib\JB2.Economy.AzureRepo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Economy.Core, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Economy.Core.0.1.2\lib\JB2.Economy.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Economy.jBean, Version=0.1.2.25702, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Economy.jBean.0.1.2\lib\JB2.Economy.jBean.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
       <Private>True</Private>

@@ -8,7 +8,7 @@ using JB2.Common;
 
 namespace JB2.Common
 {
-    public class Business : IBusiness
+    public class Business : IBusiness<string>,IBusiness
     {
         public string ID { get; set; }
         

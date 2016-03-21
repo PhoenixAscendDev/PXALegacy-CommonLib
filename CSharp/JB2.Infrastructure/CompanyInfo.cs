@@ -14,11 +14,14 @@ namespace JB2
     {
         private const string PRODJECTCODE = "JB2:projectCode";
         public static JB2.Infrastructure.HQAddress _address;
-        public static JB2.Common.Business _hq;       
+        public static JB2.Common.Business _hq;  
+
+        
         public static IBusiness HQ
         { 
             get
             {
+                
                 if(_hq == null)
                 {
                     _hq = new Business();

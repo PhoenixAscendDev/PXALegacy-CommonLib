@@ -51,6 +51,12 @@ namespace JB2.Common
             return new MetaDataValue(_value);
         }
 
+        public bool UpdateValue(object value)
+        {
+            _value = (T)value;
+            return true;
+        }
+
         public static  implicit operator T(MetaData<T> d)
         {
             return d._value;

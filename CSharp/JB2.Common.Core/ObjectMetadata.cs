@@ -43,6 +43,12 @@ namespace JB2.Common
         {
             return _metadata.Add(item);
         }
+
+        public virtual bool ChangeMetaDataValue(string propertyname, object value)
+        {
+            _metadata[propertyname].UpdateValue(value);
+            return true;
+        }
         
         public virtual bool RemoveMetaData(IMetaData item)
         {

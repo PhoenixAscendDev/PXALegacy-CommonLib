@@ -8,10 +8,11 @@ namespace JB2.Common
     public interface IMetaData
     {
         string PropertyName { get; }
-        Type PropertyType { get;}
-
+        Type PropertyType { get; }
         IMetaDataValue GetValue();
-      //  object Value { get; set; }
+        bool UpdateValue(object value);
+
+        //  object Value { get; set; }
     }
 
     //public interface IMetaData<T> : IMetaData

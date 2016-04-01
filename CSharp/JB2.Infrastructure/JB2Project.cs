@@ -18,6 +18,8 @@ namespace JB2.Infrastructure.Data
 
         protected string _latestversion;
         protected string _googlecode;
+
+        protected Dictionary<string,IAPIKeySecretPair> _apikeys;
         
 
         #endregion Fields
@@ -41,6 +43,8 @@ namespace JB2.Infrastructure.Data
         public string TermsofServiceUri { get; set; }
 
         public string PrivacyPolicyUri { get; set; }
+
+        public string FacebookAppID { get; set; }
 
         public JB2.Infrastructure.Enum.ProductLine GetProductLine()
         {
@@ -97,6 +101,17 @@ namespace JB2.Infrastructure.Data
         public string GetGoogleAnalyicCode()
         {
             return _googlecode;
+        }
+
+        public IAPIKeySecretPair GetAPIKey(string apiName)
+        {
+            switch(apiName.ToLower())
+            {
+                case "facebook":
+                    return new ApiKeySecretPair() { APIkey = apiName };
+                    
+            }
+            return _apikeys[apiName];
         }
     }
 }

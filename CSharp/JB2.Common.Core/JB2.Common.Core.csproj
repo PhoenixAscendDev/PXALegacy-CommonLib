@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiKeySecretPair.cs" />
     <Compile Include="Attributes.cs" />
     <Compile Include="BaseCollection.cs" />
     <Compile Include="DayofWeekTime.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="ExtenstionAttribute.cs" />
     <Compile Include="Interfaces\IAddressable.cs" />
     <Compile Include="ID\ID.cs" />
+    <Compile Include="Interfaces\IAPIKeySecretPair.cs" />
+    <Compile Include="Interfaces\ICounterItem.cs" />
     <Compile Include="IValue.cs" />
     <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />

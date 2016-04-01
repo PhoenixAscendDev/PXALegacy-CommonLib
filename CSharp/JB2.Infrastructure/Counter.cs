@@ -30,6 +30,8 @@ namespace JB2.Infrastructure
             return result;
         }
 
+
+
         public static long Current(string counterName, long defaultStart=1)
         {
             var e = repo.GetEntity<DynamicTableEntity>("counter", "name:" + counterName);
@@ -38,20 +40,47 @@ namespace JB2.Infrastructure
             return e.Properties["value"].Int64Value == null ? defaultStart : (long)e.Properties["value"].Int64Value;
         }
 
+
+        public static long RandomIndex(JB2.Common.ICounterItem citem)
+        {
+            return RandomIndex(citem.GetCounterName());
+        }
+
+
+        public static long RandomIndex(string counterName)
+        {
+            var current = repo.GetEntity<DynamicTableEntity>("counter", "name:" + counterName);
+            long result = 0;
+            if (current != null)
+            {
+                int max = Convert.ToInt32(current.Properties["value"].Int64Value.GetValueOrDefault());
+                int min = Convert.ToInt32(current.Properties["startvalue"].Int64Value.GetValueOrDefault());
+
+                int random = JB2.Common.Utility.RandomNumber(min, max);
+
+                return Convert.ToInt64(random);
+            }
+            return result;
+        }
+
         private static void updateCounter(string counterName, long newValue)
         {
+           var previous =  repo.GetEntity<DynamicTableEntity>("counter", "name:" + counterName);
+
             var entity = new DynamicTableEntity("counter", "name:" + counterName, "*",
                 new Dictionary<string, EntityProperty>{
                     {"name", new EntityProperty(counterName)},
                     {"value", new EntityProperty(newValue)},
-                    {"dateupdate", new EntityProperty(System.DateTime.Now)}
+                    {"dateupdate", new EntityProperty(System.DateTime.Now) },
+                    {"startvalue", new EntityProperty(previous == null ? newValue : previous.Properties["startvalue"].Int64Value) }
             });
 
             var loge = new DynamicTableEntity("log", "name:" + counterName + "_" + newValue.ToString(), "*",
                 new Dictionary<string, EntityProperty>{
                     {"name", new EntityProperty(counterName)},
                     {"value", new EntityProperty(newValue)},
-                    {"dateupdate", new EntityProperty(System.DateTime.Now)}
+                    {"dateupdate", new EntityProperty(System.DateTime.Now)},
+                    {"previousvalue", new EntityProperty(previous == null ? newValue : previous.Properties["value"].Int64Value) }
             });
 
 

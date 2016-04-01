@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IProject<TKey> : IIDNamePair<TKey,string>
+    public interface IProject<TKey> : IIDNamePair<TKey, string>
         where TKey : IComparable
     {
         IBusiness<TKey> GetOwner();
@@ -19,5 +19,8 @@ namespace JB2.Common
         IEnumerable<IReleaseNote<TKey>> GetReleaseNotes(IVersionNumber versionNumber);
 
         string GetGoogleAnalyicCode();
+
+        IAPIKeySecretPair GetAPIKey(string apiName);
+
     }
 }

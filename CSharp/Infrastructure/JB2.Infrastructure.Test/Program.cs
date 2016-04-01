@@ -11,10 +11,11 @@ namespace JB2.Infrastructure.Test
         static void Main(string[] args)
         {
             var list = JB2.Infrastructure.Counter.GetNext("dewdrop",10,1000000);
-            foreach(long i in list)
-            {
-                Console.WriteLine( JB2.Common.NewID.Base62(i));
-            }
+            Console.WriteLine(Counter.RandomIndex("dewdrop"));
+            //foreach(long i in list)
+            //{
+            //    Console.WriteLine( JB2.Common.NewID.Base62(i));
+            //}
                        
             Console.ReadLine();
         }

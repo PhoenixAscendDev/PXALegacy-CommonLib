@@ -66,7 +66,10 @@ namespace JB2.Common
         {
             get
             {
-                return _dictionary[propertyName];
+                if (_dictionary.ContainsKey(propertyName))
+                    return _dictionary[propertyName];
+                else
+                    return null;
             }
         }
 

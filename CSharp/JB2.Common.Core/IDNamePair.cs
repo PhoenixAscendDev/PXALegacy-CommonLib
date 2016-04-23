@@ -5,6 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
+    [Serializable()]
     public class IDNamePair : IDNamePair<string,string>
     {
         public IDNamePair() : base(string.Empty, string.Empty)
@@ -21,7 +22,7 @@ namespace JB2.Common
         
     }
 
-
+    [Serializable()]
     public class IDNamePair<TKey, TName> : IDValue<TKey>, IIDNamePair<TKey, TName>
         where TKey : IComparable
         where TName : IComparable

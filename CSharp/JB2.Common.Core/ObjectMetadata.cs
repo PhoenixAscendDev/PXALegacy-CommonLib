@@ -5,6 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
+    [Serializable()]
     public abstract class ObjectWithMetadata<TKind, TKey, TTag> : IDNamePair<TKey,string>, IObject<TKind, TKey, TTag>,IMetaDatable
         where TKey : IComparable
     {

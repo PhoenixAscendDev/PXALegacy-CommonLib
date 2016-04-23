@@ -6,6 +6,7 @@ using System.Text;
 
 namespace JB2.Common
 {
+    [Serializable()]
     public class BaseCollection<T> : IEnumerable<T>, IObjectCollection<T>
     {
         protected IEnumerable<T> _list;

@@ -37,6 +37,22 @@
       <HintPath>..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="JB2.Common.Data.AzureStorage, Version=0.2.0.42495, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Data.Azure.0.2.0\lib\JB2.Common.Data.AzureStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Map, Version=0.2.1.23896, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Common.Map.0.2.1\lib\JB2.Common.Map.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Ultities, Version=0.2.0.42495, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Common.Utility.0.2.0\lib\JB2.Common.Ultities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Infrastructure, Version=0.2.13.6183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JB2.Infrastructure.0.2.13\lib\JB2.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
       <Private>True</Private>
@@ -54,7 +70,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.KeyVault.Extensions.1.0.0\lib\net45\Microsoft.Azure.KeyVault.Extensions.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Extensions.1.0.1\lib\net45\Microsoft.Azure.KeyVault.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -143,10 +159,6 @@
       <Project>{f550ef5c-2a4c-409a-a770-3aea8e161aa5}</Project>
       <Name>JB2.Common.Data.AzureKeyVault</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
-      <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
-      <Name>JB2.Common.Data.AzureStorage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Font\JB2.Helpers.FontHelper.csproj">
       <Project>{30ad61b4-340c-4bbb-88bd-b22d83e2b179}</Project>
       <Name>JB2.Helpers.FontHelper</Name>
@@ -167,21 +179,9 @@
       <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
       <Name>JB2.Common.Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Map\JB2.Common.Map.csproj">
-      <Project>{9eda2eb9-032a-4072-950e-d3bf1eb8ba4a}</Project>
-      <Name>JB2.Common.Map</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Scheduler\JB2.Common.Scheduler.csproj">
       <Project>{fb4fdde0-8031-4220-b613-7a7e6d575b13}</Project>
       <Name>JB2.Common.Scheduler</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
-      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
-      <Name>JB2.Common.Utility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JB2.Infrastructure\JB2.Infrastructure.csproj">
-      <Project>{db02d4ff-31cd-4f81-8e0b-fd3a06dc6373}</Project>
-      <Name>JB2.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">
       <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>

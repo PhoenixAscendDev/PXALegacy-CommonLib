@@ -138,12 +138,13 @@ namespace ConsoleTest
 
             //var scheduler = new TestScheduler(null);
 
-            for(int i=0;i<110;i++)
+            for (int i = 0; i < 110; i++)
             {
                 //Console.Write(JB2.Common.Utility.RandomNumber(1, 3).ToString());
-                Console.WriteLine(JB2.Common.NewID.Base62("dew_{0}", 100));
+                Console.WriteLine(JB2.Common.NewID.Pronounceable(8));
+
             }
-            Console.ReadLine();
+            //Console.ReadLine();
             //scheduler.StartJobs();
 
 
@@ -158,8 +159,8 @@ namespace ConsoleTest
 
             //var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
 
-            var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
-            var key2 = JB2.Infrastructure.Vault.RSAKey1;
+            //var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
+            //var key2 = JB2.Infrastructure.Vault.RSAKey1;
             var link = "http://www.jbsquared.com";
             Console.WriteLine(Regex.IsMatch(link, "^(?i)(https?|ftp)://.*$"));
             //var link = new Uri("www.jbsquared.com");
@@ -169,6 +170,7 @@ namespace ConsoleTest
             Console.WriteLine(JB2.Common.NewID.TickHash());
             Console.WriteLine(JB2.Common.NewID.TimeHash());
             Console.WriteLine(JB2.Common.NewID.UriHash(new Uri("http://wwww.jbsquared.com")));
+            Console.WriteLine(JB2.Common.NewID.Pronounceable(8));
             //JB2.Common.RGB rgb = new RGB("fff1f1");
 
             //Console.WriteLine(rgb.ToString());

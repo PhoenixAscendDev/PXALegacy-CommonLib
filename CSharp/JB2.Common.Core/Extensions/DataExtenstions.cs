@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
+
+
+
 namespace JB2.Common.Extensions
 {
     public static class DataExtenstions
@@ -43,7 +47,7 @@ namespace JB2.Common.Extensions
 
     public static class StringExtenstions
     {
-        public static string[] Split(this string value, string seperator )
+        public static string[] Split(this string value, string seperator)
         {
             return System.Text.RegularExpressions.Regex.Split(value, ">*<");
         }
@@ -52,13 +56,20 @@ namespace JB2.Common.Extensions
         {
             List<bool> marks = new List<bool>(s.Length);
 
-            foreach(char c in s.ToCharArray())
+            foreach (char c in s.ToCharArray())
             {
                 marks.Add(c == '1' ? true : false);
             }
 
             return new System.Collections.BitArray(marks.ToArray());
         }
+
+        public static string ToStringOrEmpty(this Object value)
+        {
+            return value == null ? string.Empty : value.ToString();
+        }
+
+
     }
 
     public static class ObjectExtensions

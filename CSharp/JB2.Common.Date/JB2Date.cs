@@ -307,6 +307,9 @@ namespace JB2.Common
             //dtfi.DateSeparator = "";
             //DateTime objDate = Convert.ToDateTime(strDate, dtfi);
 
+            if (rhs == null)
+                return JB2Date.MinDate();
+
             if(rhs._dt == DateTime.MinValue)
                 rhs._dt = new DateTime(rhs.Year, rhs.Month, rhs.DayOfMonth);
             return rhs._dt.GetValueOrDefault(DateTime.MinValue);

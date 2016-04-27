@@ -14,7 +14,7 @@ namespace JB2.Common
     {
         private int _datekey;
         private string _dateStringFormat = "";
-        private DateTime _dt;
+        private DateTime? _dt;
         static readonly int MINKEY = 17500101;
         static readonly int MAXKEY = 20201231;
 
@@ -306,10 +306,10 @@ namespace JB2.Common
             //dtfi.ShortDatePattern = "yyyymmdd";
             //dtfi.DateSeparator = "";
             //DateTime objDate = Convert.ToDateTime(strDate, dtfi);
+
             if(rhs._dt == DateTime.MinValue)
                 rhs._dt = new DateTime(rhs.Year, rhs.Month, rhs.DayOfMonth);
-
-            return rhs._dt;
+            return rhs._dt.GetValueOrDefault(DateTime.MinValue);
         }
 
         public static implicit operator JB2Date(DateTime jb2d)

@@ -66,7 +66,7 @@ namespace JB2.Common
             {
                 return (!IsWeekend);
             }
-            
+
         }
 
 
@@ -160,7 +160,7 @@ namespace JB2.Common
             {
                 return (this.Month % 3) == 0 ? (byte)1 : (byte)(this.Month % 3);
             }
-            
+
         }
 
         public byte WeekOfMonth
@@ -170,24 +170,24 @@ namespace JB2.Common
             {
                 System.Globalization.GregorianCalendar gc = new GregorianCalendar();
 
-                var wofY = gc.GetWeekOfYear(this,CalendarWeekRule.FirstDay,DayOfWeek.Sunday);
+                var wofY = gc.GetWeekOfYear(this, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
 
-                var first = gc.GetWeekOfYear(new DateTime(this.Year,this.Month,1),CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+                var first = gc.GetWeekOfYear(new DateTime(this.Year, this.Month, 1), CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
 
-                return (byte) (wofY - first + 1);
+                return (byte)(wofY - first + 1);
                 //return this.ToDatetime().
             }
         }
 
         public byte WeekOfYear
-        { 
+        {
             get
             {
                 System.Globalization.GregorianCalendar gc = new GregorianCalendar();
                 return (byte)gc.GetWeekOfYear(this, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
 
             }
-        
+
         }
 
         public short Year
@@ -265,14 +265,14 @@ namespace JB2.Common
 
                     return clc.GetYear(this);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return 0;
                 }
             }
         }
 
-        
+
 
         public string ChineseZodiac
         {
@@ -287,7 +287,7 @@ namespace JB2.Common
                     var cYear = "Rat,Ox,Tiger,Rabbit,Dragon,Snake,Horse,Goat,Monkey,Rooster,Dog,Pig".Split(',');
                     return ((Enum.ChineseZodiac)(TerrestrialBranch - 1)).ToString();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return string.Empty;
                 }
@@ -310,7 +310,7 @@ namespace JB2.Common
             if (rhs == null)
                 return JB2Date.MinDate();
 
-            if(rhs._dt == DateTime.MinValue)
+            if (rhs._dt == DateTime.MinValue)
                 rhs._dt = new DateTime(rhs.Year, rhs.Month, rhs.DayOfMonth);
             return rhs._dt.GetValueOrDefault(DateTime.MinValue);
         }
@@ -322,7 +322,7 @@ namespace JB2.Common
 
         }
 
-        public static implicit operator int(JB2Date rhs)
+        public static implicit operator int (JB2Date rhs)
         {
             return rhs._datekey;
         }
@@ -336,7 +336,7 @@ namespace JB2.Common
 
         #region Static Method
 
-        public static JB2Date  MinDate()
+        public static JB2Date MinDate()
         {
             return new JB2Date(MINKEY);
         }
@@ -362,7 +362,7 @@ namespace JB2.Common
                 "yyyyMMdd",
                 CultureInfo.InvariantCulture);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -416,9 +416,6 @@ namespace JB2.Common
             return b;
 
         }
-           
-                
-
 
 
         public double ToStardateTNG()
@@ -445,6 +442,13 @@ namespace JB2.Common
                 return 0;
             }
 
+        }
+
+        public override string ToString()
+        {
+            var datetime = (DateTime)this;
+
+            return datetime.ToString();
         }
 
         #endregion

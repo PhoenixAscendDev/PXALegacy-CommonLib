@@ -44,6 +44,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="EmptyAddress.cs" />
     <Compile Include="GeoDistanceType.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="IAddress.cs" />

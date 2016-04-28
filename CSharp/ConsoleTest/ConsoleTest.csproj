@@ -159,6 +159,10 @@
       <Project>{f550ef5c-2a4c-409a-a770-3aea8e161aa5}</Project>
       <Name>JB2.Common.Data.AzureKeyVault</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Date\JB2.Common.Date.csproj">
+      <Project>{3f3b616b-80f8-4cfd-9296-b8d677dedbd9}</Project>
+      <Name>JB2.Common.Date</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Font\JB2.Helpers.FontHelper.csproj">
       <Project>{30ad61b4-340c-4bbb-88bd-b22d83e2b179}</Project>
       <Name>JB2.Helpers.FontHelper</Name>

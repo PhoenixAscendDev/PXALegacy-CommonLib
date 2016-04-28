@@ -134,8 +134,9 @@ namespace ConsoleTest
             //var v = JB2.Common.VersionNumber.FromString("0.1.3",'.');
 
             //Console.WriteLine(v.ToInt().ToString());
-
-
+            var date = new JB2.Common.JB2Date(Convert.ToInt32("20160428"));
+            Console.WriteLine((System.DateTime)date);
+            Console.ReadLine();
             //var scheduler = new TestScheduler(null);
 
             for (int i = 0; i < 110; i++)

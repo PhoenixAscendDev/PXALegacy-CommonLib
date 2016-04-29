@@ -10,8 +10,13 @@ namespace JB2.Infrastructure.Test
     {
         static void Main(string[] args)
         {
-            var list = JB2.Infrastructure.Counter.GetNext("dewdrop",10,1000000);
-            Console.WriteLine(Counter.RandomIndex("dewdrop"));
+           // var list = JB2.Infrastructure.Counter.GetNext("dewdrop", 10, 1000000);
+
+            for (int i = 1; i <= 20; i++)
+            {
+                var id = JB2.Infrastructure.Counter.GetNext("dewdrop");
+                Console.WriteLine(id);
+            }
             //foreach(long i in list)
             //{
             //    Console.WriteLine( JB2.Common.NewID.Base62(i));

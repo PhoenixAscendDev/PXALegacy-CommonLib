@@ -177,7 +177,7 @@ namespace JB2.Infrastructure
                     });
 
                     repo.Insert<DynamicTableEntity>(entity, true);
-                    repo.Insert<DynamicTableEntity>(loge, false);
+                    repo.Insert<DynamicTableEntity>(loge, true);
 
                 }
 

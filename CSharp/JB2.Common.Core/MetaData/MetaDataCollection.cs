@@ -118,6 +118,15 @@ namespace JB2.Common
         }
         #endregion IEnumerable
 
+        public static MetaDataCollection Empty
+        {
+            get
+            {
+                var result = new MetaDataCollection(new List<MetaData<string>>(0));
+                return result;
+            }
+        }
+
 
     }
 }

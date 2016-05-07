@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
 using Microsoft.WindowsAzure.Storage.Auth;
-
+using JB2.Common.Data;
 
 using JB2.Common.Extensions;
 
@@ -34,9 +34,9 @@ namespace JB2.Common.Data
 
         #region Constructors
 
-        public AzureTableRepository(string tableName) : this(AzureHelper.StorageAccount,tableName)
+        public AzureTableRepository(string tableName) : this(AzureHelper.StorageAccount, tableName)
         {
-            
+
         }
 
 
@@ -51,12 +51,37 @@ namespace JB2.Common.Data
             _resolver = new LocalResolver();
 
             //_resolver.Add(_key);
-    }
+        }
 
         #endregion Constructors
 
 
         #region Inserts
+
+
+        public void Insert<T>(T entity, TableInsertMode option, bool encypt)
+            where T : ITableEntity
+        {
+            switch(option)
+            {
+               
+                case TableInsertMode.Insert:
+                    _table.Execute(TableOperation.Insert(entity), encypt ? this._insertOptions : null);
+                    break;
+                case TableInsertMode.Merge:
+                    _table.Execute(TableOperation.InsertOrMerge(entity), encypt ? this._insertOptions : null);
+                    break;
+                case TableInsertMode.Replace:
+                    _table.Execute(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null);
+                    break;
+                default:
+                    _table.Execute(TableOperation.Insert(entity), encypt ? this._insertOptions : null);
+                    break;
+
+            }
+           
+        }
+
 
         public void Insert<T>(T entity, bool replace,bool encypt)
             where T : ITableEntity

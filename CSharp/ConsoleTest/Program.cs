@@ -125,6 +125,10 @@ namespace ConsoleTest
 
         static void Main(string[] args)
         {
+
+            var s1 = "help me obi-wan, c3-PO , and r2-d2";
+            Console.WriteLine(JB2.Common.Utility.WordCount(s1));
+            Console.WriteLine(s1);
             //var table = JB2.Infrastructure.Storage.LogAccount.GetTable("apptest");
             //var test = new JB2.Common.Log.AzureRepo(table, "logentry");
             //var entry = JB2.Common.Log.LogEntry.NewLogEntry(JB2.Common.Log.Enum.LogServerityType.Informational, "This is a message");
@@ -147,6 +151,9 @@ namespace ConsoleTest
             }
             //Console.ReadLine();
             //scheduler.StartJobs();
+
+
+            
 
 
 

@@ -97,6 +97,35 @@ namespace JB2.Common
             return builder.ToString();
         }
 
+        public static int WordCount(string text, int minWorldLength = 1)
+        {
+            char[] delimiters = new char[] { ' ', '\r', '\n' };
+
+            var words = new List<string>();
+
+            words.AddRange(WordsInString(text));
+
+            return words.FindAll(x => x.Length >= minWorldLength).Count;
+        }
+
+        public static string[] WordsInString(string text, bool excludePunctuation = true)
+        {
+            
+            if (excludePunctuation)
+            {
+                text = new string( new List<char>(text.ToCharArray()).FindAll(c => !char.IsPunctuation(c)).ToArray());
+            }
+           
+            
+            char[] delimiters = new char[] { ' ', '\r', '\n' };
+
+            var words = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+            return words;
+        }
+
+
+
         public static string GenerateKey(Enum.KeyBitSize bitSize,string passphrase)
         {
             string result = string.Empty;

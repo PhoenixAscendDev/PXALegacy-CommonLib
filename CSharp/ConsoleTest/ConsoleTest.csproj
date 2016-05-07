@@ -45,10 +45,6 @@
       <HintPath>..\packages\JB2.Common.Map.0.2.2\lib\JB2.Common.Map.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Ultities, Version=0.2.0.42495, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JB2.Common.Utility.0.2.0\lib\JB2.Common.Ultities.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="JB2.Infrastructure, Version=0.2.13.6183, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\JB2.Infrastructure.0.2.13\lib\JB2.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -186,6 +182,10 @@
     <ProjectReference Include="..\JB2.Common.Scheduler\JB2.Common.Scheduler.csproj">
       <Project>{fb4fdde0-8031-4220-b613-7a7e6d575b13}</Project>
       <Name>JB2.Common.Scheduler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
+      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
+      <Name>JB2.Common.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2Common\JB2Common.csproj">
       <Project>{ef5bdc83-9c62-4ab5-aee1-08bbc073610d}</Project>

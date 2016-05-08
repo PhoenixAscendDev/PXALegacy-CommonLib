@@ -54,6 +54,7 @@
     <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Exceptions\NotConfiguredException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
+    <Compile Include="ExpirableObject.cs" />
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
@@ -61,6 +62,8 @@
     <Compile Include="ID\ID.cs" />
     <Compile Include="Interfaces\IAPIKeySecretPair.cs" />
     <Compile Include="Interfaces\ICounterItem.cs" />
+    <Compile Include="Interfaces\IExpirable.cs" />
+    <Compile Include="Interfaces\IExpirableDictionary.cs" />
     <Compile Include="IValue.cs" />
     <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />

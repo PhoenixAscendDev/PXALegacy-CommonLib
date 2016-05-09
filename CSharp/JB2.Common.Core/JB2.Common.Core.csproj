@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\ICounterItem.cs" />
     <Compile Include="Interfaces\IExpirable.cs" />
     <Compile Include="Interfaces\IExpirableDictionary.cs" />
+    <Compile Include="Interfaces\IRepositoryWithCache.cs" />
     <Compile Include="IValue.cs" />
     <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />

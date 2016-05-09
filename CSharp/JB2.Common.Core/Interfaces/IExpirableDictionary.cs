@@ -12,15 +12,15 @@ namespace JB2.Common
 
         TimeSpan DefaultTimeToLive { get; set; }
         TimeSpan AutoClearExpiredItemsFrequency { get; set; }
-        Dictionary<TKey, IExpirable<TValue>> ExpirableItems { get; set; }
+        Dictionary<TKey, IExpirable<TValue>> ExpirableItems { get;  }
 
         void Add(TKey key, TValue value, TimeSpan timeToLive);
         void Add(TKey key, TValue value, DateTime expires);
         void Add(KeyValuePair<TKey, IExpirable<TValue>> item);
         void Add(TKey key, IExpirable<TValue> value);
 
-        TValue this[TKey key, TimeSpan timeToLive] { get; set; }
-        TValue this[TKey key, DateTime expires] { get; set;}
+        TValue this[TKey key, TimeSpan timeToLive] { set; }
+        TValue this[TKey key, DateTime expires] { set;}
 
         void ClearExpiredItems();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JB2.Common.Interfaces
+namespace JB2.Common
 {
     public interface IRepositoryWithCache<TEntity, TKey, TSearchFilter> : IRepository<TEntity, TKey, TSearchFilter>
     {

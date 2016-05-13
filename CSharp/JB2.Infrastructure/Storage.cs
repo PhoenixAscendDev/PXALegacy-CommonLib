@@ -18,8 +18,14 @@ namespace JB2.Infrastructure
         private const string SOFTWAREKEYNAME = "JB2:softwareStorageKey";
         private const string SPROGKEYNAME = "JB2:sprogStorageKey";
         private const string LOGKEYNAME = "JB2:logKey";
+
+        private const string ECONOMYKEYNAME = "JB2:economyStorageKey";
+        private const string ECONOMYACCOUNT = "JB2:economy";
+
+        
         private const string ASSETTABLENAME = "assets";
         private const string JBEAN_TABLENAME = "currency-jbean";
+        
 
         public static StorageAccount SprogAccount
         {
@@ -69,6 +75,16 @@ namespace JB2.Infrastructure
             {
                 var key = ConfigurationManager.AppSettings[LOGKEYNAME];
                 return StorageAccount.FromAzureStorage("jb2log", key);
+            }
+        }
+
+        public static StorageAccount EconomyAccount
+        {
+            get
+            {
+                var key = ConfigurationManager.AppSettings[ECONOMYKEYNAME];
+                var account = ConfigurationManager.AppSettings[ECONOMYACCOUNT];
+                return StorageAccount.FromAzureStorage(account, key);
             }
         }
 

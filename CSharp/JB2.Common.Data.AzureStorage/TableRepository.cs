@@ -26,9 +26,9 @@ namespace JB2.Common.Data
 
         private Microsoft.Azure.KeyVault.Core.IKey _key;
 
-
         private TableRequestOptions _insertOptions;
         private TableRequestOptions _retrieveOptions;
+        private TableOperationCollection _operations;
 
         #endregion Fields
 
@@ -175,7 +175,6 @@ namespace JB2.Common.Data
 
         #region Deletes
 
-
         public ServiceResult Delete<T>(String partitionKey, String rowKey) where T : class, ITableEntity, new()
         {
             TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
@@ -193,9 +192,27 @@ namespace JB2.Common.Data
 
                 // Execute the operation.
                 _table.Execute(deleteOperation);
+                
             }
 
             return true;
+        }
+
+        public ServiceResult DeleteAllByPartitionKey(string partitionKey)
+        {
+            var elist = GetByPartitionKey<DynamicTableEntity>(partitionKey, 1000);
+
+            var operations = new TableOperationCollection();
+
+            foreach(var e in elist)
+            {
+                operations.Add(AzureTableOperationType.Delete, e);
+            }
+
+            var result = ExecuteBulk(operations);
+
+            return result.Count > 0;
+
         }
 
         #endregion Deletes
@@ -204,7 +221,6 @@ namespace JB2.Common.Data
         {
             return _table.ExecuteQuery(query);
         }
-
 
         public ServiceResult SetEncyptKey(Microsoft.Azure.KeyVault.Core.IKey key)
         {
@@ -232,6 +248,35 @@ namespace JB2.Common.Data
             {
                 return new ServiceResult(ex);
             }
+        }
+
+        public IList<TableResult> ExecuteBulk(TableOperationCollection collection)
+        {
+            var result = new List<TableResult>();
+
+            foreach(var pkey in collection.PartitionKeys)
+            {
+                var operations = collection.GetOperationsByPartitionKey(pkey);
+
+                TableBatchOperation batch = new TableBatchOperation();
+                foreach(var o in operations)
+                {
+                    if( batch.Count == 100)
+                    {
+                        var batchResults = _table.ExecuteBatch(batch);
+                        result.AddRange(batchResults);
+                        batch = new TableBatchOperation();
+                    }
+                    batch.Add(o);                  
+                }
+                if(batch.Count > 0)
+                {
+                    var batchResults = _table.ExecuteBatch(batch);
+                    result.AddRange(batchResults);
+                }
+            }
+
+            return result;
         }
        
 

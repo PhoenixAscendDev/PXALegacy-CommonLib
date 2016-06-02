@@ -33,7 +33,15 @@ namespace JB2.Common.Data
 
         public AzureTableRepository GetTable(string tableName)
         {
-            return new AzureTableRepository(_azureStorage, tableName);
+            try
+            {
+                return new AzureTableRepository(_azureStorage, tableName);
+            }
+            catch(StorageException ex)
+            {
+                throw new JB2.Common.Exceptions.StorageTableException(string.Format("Error connecting to table {0}",tableName), _azureStorage, tableName, ex);
+            }
+            
         }
 
         #endregion Properties

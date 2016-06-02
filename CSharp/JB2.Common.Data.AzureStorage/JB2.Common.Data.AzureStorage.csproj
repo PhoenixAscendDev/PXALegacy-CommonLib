@@ -125,6 +125,7 @@
     <Compile Include="AzureCloudExtensions.cs" />
     <Compile Include="AzureRepositoryWithCache.cs" />
     <Compile Include="AzureTableEntity.cs" />
+    <Compile Include="Exceptions\StorageException.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ImageEntity.cs" />
     <Compile Include="InsertOption.cs" />

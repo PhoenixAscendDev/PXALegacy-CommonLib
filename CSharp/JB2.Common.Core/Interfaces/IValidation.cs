@@ -5,11 +5,11 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public interface IValidation
+    public interface IValidation : IValidable
     {
         string Name { get; set; }
         string Message { get; set; }
-        bool IsValid { get; set; }
+
 
         Exception ToException();
     }

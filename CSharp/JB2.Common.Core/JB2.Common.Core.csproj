@@ -70,6 +70,8 @@
     <Compile Include="Interfaces\IRepositoryWithCache.cs" />
     <Compile Include="Interfaces\ISaveState.cs" />
     <Compile Include="Interfaces\ISaveStateable.cs" />
+    <Compile Include="Interfaces\ITradable.cs" />
+    <Compile Include="Interfaces\IValidable.cs" />
     <Compile Include="IValue.cs" />
     <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />

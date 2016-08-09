@@ -14,6 +14,12 @@ namespace JB2.Common
         #endregion Fields
 
         #region Constructors
+
+        public MetaDataCollection() : base()
+        {
+            _dictionary = new Dictionary<string, IMetaData>();
+        }
+
         public MetaDataCollection(IMetaData thing, string id = null, string name = null)
             : this(new IMetaData[1] { thing },id,name )
         {
@@ -70,7 +76,10 @@ namespace JB2.Common
                 if (_dictionary.ContainsKey(propertyName))
                     return _dictionary[propertyName];
                 else
-                    return null;
+                {
+                    _dictionary.Add(propertyName, new MetaData<object>(propertyName,null));
+                    return _dictionary[propertyName];
+                }
             }
         }
 

@@ -56,6 +56,10 @@ namespace JB2.Common.Data
         public abstract void Delete(TEntity entity);
         public abstract TEntity[] GetAll();
         public abstract TEntity[] GetAll(bool useCache = true);
+
+        public abstract TEntity[] GetAll(int? maxRecordCount);
+        public abstract TEntity[] GetAll(int? maxRecordCount,bool useCache = true);
+
         public abstract TEntity GetById(TKey id);
         public abstract TEntity GetById(TKey id, bool useCache = true);
         public abstract void Insert(TEntity entity);

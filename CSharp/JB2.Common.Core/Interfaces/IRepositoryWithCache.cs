@@ -14,6 +14,7 @@ namespace JB2.Common
 
         TEntity[] SearchFor(TSearchFilter filter, bool useCache = true);
         TEntity[] GetAll(bool useCache = true);
+        TEntity[] GetAll(int? maxRecordCount, bool useCache = true);
         TEntity GetById(TKey id, bool useCache = true);
 
 

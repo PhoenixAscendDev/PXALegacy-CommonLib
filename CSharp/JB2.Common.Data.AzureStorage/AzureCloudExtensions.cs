@@ -19,6 +19,8 @@ namespace JB2.Common.Extensions
         {
             if (string.IsNullOrEmpty(searchStr)) return null;
 
+
+
             char lastChar = searchStr[searchStr.Length - 1];
             char nextLastChar = (char)((int)lastChar + 1);
             string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;

@@ -146,12 +146,14 @@ namespace JB2.Common.Data
 
         #endregion Inserts
 
- 
+
         #region Retrieves
-        public IEnumerable<T> GetByPartitionKey<T>(string partitionKey, int noOfRecords) where T : ITableEntity, new()
+        public IEnumerable<T> GetByPartitionKey<T>(string partitionKey, int noOfRecords = 0) where T : ITableEntity, new()
         {
             var query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
-            var result = _table.ExecuteQuery(query).Take(noOfRecords).ToList();
+            // result =  this.E   _table.ExecuteQuery(query).Take(noOfRecords).ToList();
+            var result = ExecuteQuery<T>(query, noOfRecords);
+
             return result;
         }
 
@@ -167,7 +169,8 @@ namespace JB2.Common.Data
 
         public IEnumerable<T> GetByRowKeyStartWith<T>(string partitionKey, string startwith, int noOfRecords, bool decrypt = false) where T : ITableEntity, new()
         {
-            var result = _table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords, decrypt);
+            var query = new TableQuery<T>().Where(startsWithfilter(partitionKey, startwith));
+            var result = ExecuteQuery<T>(query, noOfRecords); //_table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords, decrypt);
             return result;
         }
 
@@ -217,9 +220,49 @@ namespace JB2.Common.Data
 
         #endregion Deletes
 
-        public IEnumerable<T> ExecuteQuery<T>(TableQuery<T> query) where T : class, ITableEntity, new()
+        public IEnumerable<T> ExecuteQuery<T>(TableQuery<T> query, int noOfRecords = 0) where T : ITableEntity, new()
         {
-            return _table.ExecuteQuery(query);
+            List<T> result = null;
+
+            if (noOfRecords < 0)
+                noOfRecords = 0;
+            
+            if (noOfRecords != 0 && noOfRecords <= 1000   )
+            {
+                result = _table.ExecuteQuery<T>(query).Take(noOfRecords).ToList();
+            }
+            else
+            {
+                TableContinuationToken continuationToken = null;
+                result = new List<T>(noOfRecords);
+                do
+                {
+                    Console.WriteLine(result.Count());
+                    ///https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/
+                    // Retrieve a segment (up to 1,000 entities).
+                    TableQuerySegment<T> tableQueryResult =
+                         _table.ExecuteQuerySegmented(query, continuationToken);
+
+                    // Assign the new continuation token to tell the service where to
+                    // continue on the next iteration (or null if it has reached the end).
+                    continuationToken = tableQueryResult.ContinuationToken;
+
+                    // Print the number of rows retrieved.
+                    //Console.WriteLine("Rows retrieved {0}", tableQueryResult.Results.Count);
+                    result.AddRange(tableQueryResult.Results);
+
+                    //we have enough records
+                    if (noOfRecords != 0 && result.Count() >= noOfRecords)
+                        continuationToken = null;
+
+                    // Loop until a null continuation token is received, indicating the end of the table.
+                } while (continuationToken != null) ;
+                Console.WriteLine("done with query");
+            }
+            Console.WriteLine("return results:" + result.Count());
+            if(noOfRecords != 0)
+                return result.Take(noOfRecords).ToList();
+            return result.ToList();
         }
 
         public ServiceResult SetEncyptKey(Microsoft.Azure.KeyVault.Core.IKey key)
@@ -277,6 +320,29 @@ namespace JB2.Common.Data
             }
 
             return result;
+        }
+
+
+        private string startsWithfilter(string partitionKey, string searchStr,string columnName = "RowKey")
+        {
+            if (string.IsNullOrEmpty(searchStr)) return null;
+
+            char lastChar = searchStr[searchStr.Length - 1];
+            char nextLastChar = (char)((int)lastChar + 1);
+            string nextSearchStr = searchStr.Substring(0, searchStr.Length - 1) + nextLastChar;
+            string prefixCondition = TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition(columnName, QueryComparisons.GreaterThanOrEqual, searchStr),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition(columnName, QueryComparisons.LessThan, nextSearchStr)
+                );
+
+            string filterString = TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
+                TableOperators.And,
+                prefixCondition
+                );
+
+            return filterString;
         }
        
 

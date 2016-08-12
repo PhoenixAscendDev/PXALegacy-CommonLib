@@ -16,6 +16,7 @@ namespace JB2.Common
 
         T[] SearchFor(Tfilter filter);
         T[] GetAll();
+        T[] GetAll(int? maxRecordCount);
         T GetById(Tkey id);
         
     }

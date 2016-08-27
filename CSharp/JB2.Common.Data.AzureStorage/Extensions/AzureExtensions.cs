@@ -49,6 +49,54 @@ namespace JB2.Common.Data
             return prop;
         }
 
+        public static DynamicTableEntity ToAzureTableEntity<TKind, TKey, TName, TTag, TUpdate>(this IObject<TKind, TKey, TName, TTag, TUpdate> o, string partitionKey, string rowKeyPropertyName = "ID", string[] propertyNames = null )
+            where TKey : IComparable
+            where TName : IComparable
+
+        {
+            DynamicTableEntity result = new DynamicTableEntity();
+
+            result.PartitionKey = partitionKey;
+
+            //set basic IObject Properties
+            result.Properties.Add("ID", new EntityProperty(o.GetID().ToString()));
+            result.Properties.Add("Name", new EntityProperty(o.GetName().ToString()));
+            result.Properties.Add("Kind", new EntityProperty(o.GetType().ToString()));
+
+            List<string> tags = new List<string>();
+
+            foreach(var t in tags)
+            {
+                tags.Add(t.ToString());
+            }
+
+            result.Properties.Add("TagsCSV", new EntityProperty(string.Join(",", tags)));
+            result.Properties.Add("LastUpdate", new EntityProperty(o.GetLastUpdate().ToString()));
+
+            //setup the rowkey
+            try
+            {
+                var rowValue = o.GetType().GetProperty(rowKeyPropertyName).GetValue(o, null);
+                result.RowKey = rowKeyPropertyName.ToLower() + ":" + rowValue.ToString();
+            }
+            catch (Exception ex)
+            {
+                result.RowKey = "rowkey:" + JB2.Common.NewID.ShortGuid();
+            }
+
+            //get the properties
+            foreach (var prop in o.GetType().GetProperties())
+            {
+                var obj = prop.GetValue(o, null);
+                string pName = "Prop_" + prop.Name;
+
+                var pValue = prop.GetValue(o, null);
+                
+                result.SetProperty<object> (pName, prop.GetValue(o, null));
+            }
+            return result;
+        }
+
 
 
     }

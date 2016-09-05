@@ -20,6 +20,7 @@ namespace JB2.Infrastructure.Data
         protected string _googlecode;
 
         protected Dictionary<string,IAPIKeySecretPair> _apikeys;
+        internal ushort _rng;
         
 
         #endregion Fields
@@ -65,6 +66,18 @@ namespace JB2.Infrastructure.Data
         public string GetDescription()
         {
             throw new NotImplementedException();
+        }
+
+        public ushort GetRNG()
+        {
+            ushort newRandy = JB2.Common.RNG.Plumber(_rng);
+            _rng = newRandy;
+
+            JB2.Infrastructure.Projects.UpdateProjectRNG(this.GetID(), newRandy);
+
+            
+
+            return newRandy;
         }
 
         

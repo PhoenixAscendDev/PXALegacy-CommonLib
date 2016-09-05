@@ -16,11 +16,11 @@ namespace JB2.Infrastructure.Test
 
             //for (int i = 1; i <= 20; i++)
             //{
-                
+
             //}
 
-            var result = JB2.Configuration.GetAppSetting("JB2:gerbigStorageKey");
-
+            // var result = JB2.Configuration.GetAppSetting("JB2:gerbigStorageKey");
+            var result = JB2.Info.Project.GetRNG();
             Console.WriteLine(result);
             //foreach(long i in list)
             //{

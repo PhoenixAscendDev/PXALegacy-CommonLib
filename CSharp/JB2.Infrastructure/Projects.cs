@@ -18,7 +18,10 @@ namespace JB2.Infrastructure
         {
             try
             {
-                return repo.GetEntity<JB2.Infrastructure.Data.JB2Project>("project", "code:" + projectCode);
+                JB2.Infrastructure.Data.JB2Project project = repo.GetEntity<JB2.Infrastructure.Data.JB2Project>("project", "code:" + projectCode);
+                project._rng = getProjectRNG(projectCode);
+
+                return project;
             }
             catch(Exception ex)
             {
@@ -48,6 +51,50 @@ namespace JB2.Infrastructure
             catch(Exception ex)
             {
                 return new List<JB2.Common.IReleaseNote>(0);
+            }
+        }
+
+        private static ushort getProjectRNG(string projectCode)
+        {
+            try
+            {
+                ushort rng = 0;
+
+                var p = repo.GetEntity<Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity>("project", "code:" + projectCode);
+
+                rng = (ushort)p.Properties["LastUsedRNG"].Int32Value.GetValueOrDefault();
+
+                return rng;
+            }
+
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public static bool UpdateProjectRNG(string projectCode, ushort newRNG)
+        {
+            try
+            {
+                Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity e = new Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity();
+                e.Properties.Add("LastUsedRNG", new Microsoft.WindowsAzure.Storage.Table.EntityProperty(newRNG));
+
+                e.PartitionKey = "project";
+                e.RowKey = "code:" + projectCode;
+
+                repo.Insert<Microsoft.WindowsAzure.Storage.Table.DynamicTableEntity>(e, Common.Data.TableInsertMode.Merge, false);
+
+                //test to make sure it past
+                ushort test = getProjectRNG(projectCode);
+
+                return test == newRNG;
+
+            }
+
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

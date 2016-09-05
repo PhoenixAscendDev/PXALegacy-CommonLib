@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JB2.Infrastructure</RootNamespace>
     <AssemblyName>JB2.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -37,6 +37,14 @@
     </Reference>
     <Reference Include="JB2.Common.Core, Version=0.3.21.13223, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\JB2.Common.Core.0.3.21.1\lib\JB2.Common.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Data.AzureStorage, Version=0.2.8.16344, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Data.Azure.0.2.8\lib\JB2.Common.Data.AzureStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.RNG, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.RNG.1.2.0\lib\JB2.Common.RNG.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JB2.Economy.AzureRepo, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -162,10 +170,6 @@
     <ProjectReference Include="..\JB2.Common.Data.AzureKeyVault\JB2.Common.Data.AzureKeyVault.csproj">
       <Project>{f550ef5c-2a4c-409a-a770-3aea8e161aa5}</Project>
       <Name>JB2.Common.Data.AzureKeyVault</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Data.AzureStorage\JB2.Common.Data.AzureStorage.csproj">
-      <Project>{ac8fde4a-ea15-4fb8-a3b2-c759a4fadc7f}</Project>
-      <Name>JB2.Common.Data.AzureStorage</Name>
     </ProjectReference>
     <ProjectReference Include="..\JB2.Common.Data\JB2.Common.Data.csproj">
       <Project>{bed87119-b1c5-489d-ab31-5a78cf61c056}</Project>

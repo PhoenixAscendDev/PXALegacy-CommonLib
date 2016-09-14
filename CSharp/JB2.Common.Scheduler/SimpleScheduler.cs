@@ -78,7 +78,7 @@ namespace JB2.Common.Scheduler
             return _jobs;
         }
 
-        public override ILogger GetLogger()
+        public override Log.ILogger GetLogger()
         {
             return _logger;
         }

@@ -61,6 +61,9 @@
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="IClass.cs" />
+    <Compile Include="ILogEntry.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Interfaces\IAddressable.cs" />
     <Compile Include="ID\ID.cs" />
     <Compile Include="Interfaces\IAPIKeySecretPair.cs" />
@@ -73,6 +76,8 @@
     <Compile Include="Interfaces\ITradable.cs" />
     <Compile Include="Interfaces\IValidable.cs" />
     <Compile Include="IValue.cs" />
+    <Compile Include="JB2Class.cs" />
+    <Compile Include="LogServerityType.cs" />
     <Compile Include="MetaData\MetaDataValue.cs" />
     <Compile Include="NewID.cs" />
     <Compile Include="IDNameCollection.cs" />

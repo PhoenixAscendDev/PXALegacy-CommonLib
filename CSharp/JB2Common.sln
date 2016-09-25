@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2Common", "JB2Common\JB2Common.csproj", "{EF5BDC83-9C62-4AB5-AEE1-08BBC073610D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -57,6 +57,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Message", "JB2.Common.Message\JB2.Common.Message.csproj", "{01A042A7-5430-4280-B86B-8C6D207B2AD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Game", "JB2.Common.Game\JB2.Common.Game.csproj", "{83A5F69F-68B2-43C2-85A4-031FB3AF6567}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.StockMarket", "JB2.Common.StockMarket\JB2.Common.StockMarket.csproj", "{BA16C116-FA82-469B-9296-2040A4B7D9D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +158,10 @@ Global
 		{83A5F69F-68B2-43C2-85A4-031FB3AF6567}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A5F69F-68B2-43C2-85A4-031FB3AF6567}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A5F69F-68B2-43C2-85A4-031FB3AF6567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -70,8 +70,19 @@ namespace JB2.Common
         #region Fields 
         protected MetaDataCollection _props;
         protected DateTime _lastupdate;
+        protected bool _defaultchangeLastUpdate;
 
         #endregion Fields
+
+        public virtual T GetProperity<T>(string index)
+        {
+            if (_props[index] != null)
+            {
+                _props.Add(new MetaData<T>(index, default(T)));
+            }
+
+            return (T)_props[index].GetValue().ObjectValue;
+        }
 
         public virtual T GetProperity<T>(string index, T defaultValue)
         {
@@ -81,6 +92,11 @@ namespace JB2.Common
             }
 
             return (T)_props[index].GetValue().ObjectValue;
+        }
+
+        public virtual void SetProperty<T>(string index, T newValue)
+        {
+            SetProperty<T>(index, newValue, _defaultchangeLastUpdate);
         }
 
         public virtual void SetProperty<T>(string index, T newValue, bool changeLastUpdate)

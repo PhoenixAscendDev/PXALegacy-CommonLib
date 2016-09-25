@@ -14,5 +14,7 @@ namespace JB2.Common
 
         IShareHolder<TKey,TStockValue> GetShareHolder(TKey accountID);
 
+        IStock<TKey, TStockValue> GetStockTran(string transactionID);
+
     }
 }

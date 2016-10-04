@@ -8,9 +8,9 @@ using Microsoft.WindowsAzure.Storage;
 using JB2.Common;
 
 using JB2.Infrastructure.Enum;
-namespace JB2.Infrastructure.Data
+namespace JB2.Infrastructure
 {
-    public class JB2Project : JB2.Common.Data.AzureTableEntity,JB2.Common.IProject<string>
+    public class JB2Project : JB2.Common.Data.AzureTableEntity, JB2.Common.IProject<string>
     {
         #region Fields
         protected string _description;
@@ -19,9 +19,9 @@ namespace JB2.Infrastructure.Data
         protected string _latestversion;
         protected string _googlecode;
 
-        protected Dictionary<string,IAPIKeySecretPair> _apikeys;
+        protected Dictionary<string, IAPIKeySecretPair> _apikeys;
         internal ushort _rng;
-        
+
 
         #endregion Fields
 
@@ -50,7 +50,7 @@ namespace JB2.Infrastructure.Data
         public JB2.Infrastructure.Enum.ProductLine GetProductLine()
         {
             string codeprefix = this.ID.Substring(0, 2).ToUpper();
-            switch(codeprefix)
+            switch (codeprefix)
             {
                 case "GA":
                     return ProductLine.Game;
@@ -75,12 +75,12 @@ namespace JB2.Infrastructure.Data
 
             JB2.Infrastructure.Projects.UpdateProjectRNG(this.GetID(), newRandy);
 
-            
+
 
             return newRandy;
         }
 
-        
+
 
         public IBusiness<string> GetOwner()
         {
@@ -118,13 +118,21 @@ namespace JB2.Infrastructure.Data
 
         public IAPIKeySecretPair GetAPIKey(string apiName)
         {
-            switch(apiName.ToLower())
+            switch (apiName.ToLower())
             {
                 case "facebook":
                     return new ApiKeySecretPair() { APIkey = apiName };
-                    
+
             }
             return _apikeys[apiName];
+        }
+
+        public static JB2Project Empty
+        {
+            get
+            {
+                return new JB2Project("JB-000");
+            }
         }
     }
 }

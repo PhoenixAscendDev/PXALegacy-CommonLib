@@ -161,6 +161,26 @@
             <param name="authenticationData">Authentication data</param>
             <returns>An ICryptoTransform for decrypting data</returns>
         </member>
+        <member name="T:Microsoft.Azure.KeyVault.Cryptography.Algorithms.AesCbc">
+            <summary>
+            AESCBC with PKCS7 Padding
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Cryptography.Algorithms.Aes128Cbc">
+            <summary>
+            AESCBC 128bit key with PKCS7 Padding
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Cryptography.Algorithms.Aes192Cbc">
+            <summary>
+            AESCBC 192bit key with PKCS7 Padding
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.Cryptography.Algorithms.Aes256Cbc">
+            <summary>
+            AESCBC 256bit key with PKCS7 Padding
+            </summary>
+        </member>
         <member name="T:Microsoft.Azure.KeyVault.Cryptography.KeyWrapAlgorithm">
             <summary>
             An abstract Key Wrap Algorithm

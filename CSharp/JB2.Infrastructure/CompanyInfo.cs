@@ -8,6 +8,8 @@ using System.Configuration;
 using JB2.Infrastructure.Data;
 using JB2.Common;
 
+using JB2.Infrastructure;
+
 namespace JB2
 {
     public static class Info 
@@ -63,7 +65,22 @@ namespace JB2
         {
             get
             {
-                return (JB2Project)JB2.Infrastructure.Projects.Project(ConfigurationManager.AppSettings[PRODJECTCODE]);
+                JB2Project project = null;
+
+                try
+                {
+                   project = (JB2Project)JB2.Infrastructure.Projects.Project(ConfigurationManager.AppSettings[PRODJECTCODE]);
+
+                    if (project == null)
+                        throw new NullReferenceException();
+                }
+                catch(Exception ex)
+                {
+                    project = JB2Project.Empty;
+                }
+
+
+                return project;
             }
         }
 

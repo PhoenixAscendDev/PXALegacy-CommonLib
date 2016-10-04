@@ -18,14 +18,14 @@ namespace JB2.Infrastructure
         {
             try
             {
-                JB2.Infrastructure.Data.JB2Project project = repo.GetEntity<JB2.Infrastructure.Data.JB2Project>("project", "code:" + projectCode);
+                JB2.Infrastructure.JB2Project project = repo.GetEntity<JB2.Infrastructure.JB2Project>("project", "code:" + projectCode);
                 project._rng = getProjectRNG(projectCode);
 
                 return project;
             }
             catch(Exception ex)
             {
-                return new JB2.Infrastructure.Data.JB2Project();
+                return null;
             }
         }
 

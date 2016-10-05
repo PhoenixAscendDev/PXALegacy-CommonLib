@@ -71,7 +71,6 @@ namespace JB2.Common
         protected MetaDataCollection _props;
         protected DateTime _lastupdate;
         protected bool _defaultchangeLastUpdate;
-
         #endregion Fields
 
         public virtual T GetProperity<T>(string index)

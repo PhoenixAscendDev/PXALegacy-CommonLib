@@ -10,6 +10,7 @@ namespace JB2
     public static class Configuration
     {
         private const string CURRENCYJBEAN = "JB2:jbeanCurrencyID";
+        private const string STOCKJBEAN = "JB2:jbeanStockExchangeID";
         public static string GetAppSetting(string name)
         {
             return ConfigurationManager.AppSettings[name];
@@ -20,6 +21,11 @@ namespace JB2
             var connection = ConfigurationManager.ConnectionStrings[name];
 
             return (connection != null ? connection.ConnectionString : string.Empty);
+        }
+
+        public static string GetjBeanStockMarketID()
+        {
+            return GetAppSetting(STOCKJBEAN);
         }
 
         public static string GetjBeanCurrencyID()

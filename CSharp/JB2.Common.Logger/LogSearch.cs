@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JB2.Common.Log.Enum;
+
+using JB2.Common;
+using JB2.Common.Enum;
 
 namespace JB2.Common.Log
 {

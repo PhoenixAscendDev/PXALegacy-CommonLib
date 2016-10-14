@@ -19,12 +19,12 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public SimpleScheduler(IJob job, JB2.Common.Log.ILogger logger) : base(job,logger)
+        public SimpleScheduler(IJob job, JB2.Common.ILogger logger) : base(job,logger)
         {
 
         }
 
-        public SimpleScheduler( IEnumerable<IJob> jobs, JB2.Common.Log.ILogger logger)
+        public SimpleScheduler( IEnumerable<IJob> jobs, JB2.Common.ILogger logger)
             : base(jobs,logger)
         {
 
@@ -41,17 +41,17 @@ namespace JB2.Common.Scheduler
 
         #region Fields
         private List<IJob<TJobKey, TJobParameter>> _jobs;
-        private JB2.Common.Log.ILogger _logger;
+        private JB2.Common.ILogger _logger;
         #endregion Fields;
 
         #region Constructors
 
-        public SimpleScheduler(IEnumerable<IJob<TJobKey, TJobParameter>> jobs, JB2.Common.Log.ILogger logger)
+        public SimpleScheduler(IEnumerable<IJob<TJobKey, TJobParameter>> jobs, JB2.Common.ILogger logger)
         {
             _jobs = jobs.ToList();
             _logger = logger;
         }
-        public SimpleScheduler( IJob<TJobKey,TJobParameter> job, JB2.Common.Log.ILogger logger)
+        public SimpleScheduler( IJob<TJobKey,TJobParameter> job, JB2.Common.ILogger logger)
         {
             _jobs = new List<IJob<TJobKey, TJobParameter>>();
             _jobs.Add(job);
@@ -78,7 +78,7 @@ namespace JB2.Common.Scheduler
             return _jobs;
         }
 
-        public override Log.ILogger GetLogger()
+        public override ILogger GetLogger()
         {
             return _logger;
         }

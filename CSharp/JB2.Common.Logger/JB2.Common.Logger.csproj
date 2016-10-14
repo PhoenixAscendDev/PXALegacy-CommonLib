@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogEntry.cs" />
-    <Compile Include="ILogger.cs" />
     <Compile Include="ILogRepo.cs" />
     <Compile Include="ILogSearch.cs" />
     <Compile Include="LogEntry.cs" />
@@ -49,7 +47,6 @@
     <Compile Include="Logger.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="LogSearch.cs" />
-    <Compile Include="LogServerityType.cs" />
     <Compile Include="LogSort.cs" />
     <Compile Include="NotLogServerityEnabled.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

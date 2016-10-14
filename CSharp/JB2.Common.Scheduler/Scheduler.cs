@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 using JB2.Helpers;
 using JB2.Common.Log;
-using JB2.Common.Log.Enum;
 
 namespace JB2.Common.Scheduler
 {
@@ -46,7 +45,7 @@ namespace JB2.Common.Scheduler
                             thread = new Thread(new ThreadStart(job.Start));
                             thread.Start();
                             if(LoggingEnabled())
-                            logger.Log( LogServerityType.Debug, string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
+                            logger.Log( Enum.LogServerityType.Debug, string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                 job.Name,
                                                                 job.ID.ToString()));
                         }       
@@ -65,7 +64,7 @@ namespace JB2.Common.Scheduler
                                                                     job.Name,
                                                                     job.ID.ToString()));
                         if (LoggingEnabled())
-                            logger.Log(LogServerityType.Error,schedulerEx);
+                            logger.Log(Enum.LogServerityType.Error,schedulerEx);
                     }
                 }
                
@@ -93,7 +92,7 @@ namespace JB2.Common.Scheduler
 
 
         public abstract IEnumerable<IJob<TJobKey, TJobParameter>> GetJobs();
-        public abstract JB2.Common.Log.ILogger GetLogger();
+        public abstract JB2.Common.ILogger GetLogger();
 
         public abstract void Add(IJob<TJobKey, TJobParameter> job);
         public abstract void Remove(IJob<TJobKey, TJobParameter> job);

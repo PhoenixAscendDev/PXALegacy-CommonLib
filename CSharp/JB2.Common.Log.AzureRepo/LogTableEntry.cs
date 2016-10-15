@@ -30,6 +30,8 @@ namespace JB2.Common.Log
         public string Exception { get; set; }
         public string LogDate { get; set; }
 
+        public string Tick { get; set; }
+
         #endregion Properties
     }
 }

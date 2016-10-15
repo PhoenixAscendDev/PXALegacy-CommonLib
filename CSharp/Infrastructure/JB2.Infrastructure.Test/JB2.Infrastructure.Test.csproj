@@ -49,8 +49,8 @@
       <HintPath>..\..\JB2.Infrastructure\packages\JB2.Log.0.2.1\lib\JB2.Common.Log.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Log.AzureRepo, Version=0.2.2.19801, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\JB2.Infrastructure\packages\JB2.Log.AzureRepo.0.2.2\lib\JB2.Common.Log.AzureRepo.dll</HintPath>
+    <Reference Include="JB2.Common.Log.AzureRepo, Version=0.2.3.3738, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\JB2.Infrastructure\packages\JB2.Log.AzureRepo.0.2.3.1\lib\JB2.Common.Log.AzureRepo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JB2.Common.RNG, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">

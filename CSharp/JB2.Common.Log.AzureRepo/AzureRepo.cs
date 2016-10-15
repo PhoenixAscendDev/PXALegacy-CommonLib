@@ -68,13 +68,22 @@ namespace JB2.Common.Log
                 te.RowKey = "serverity: " + entry.Serverity.ToString() + ":" + entry.ID;
                 _table.Insert<LogTableEntry>(te);
 
-                te.RowKey = "logdate:" + ((JB2Date)entry.LogDate).DateKey + ":" + entry.ID;
+                te.RowKey = "logdate:" + ((JB2Date)entry.LogDate).DateKey + "_" + entry.LogDate.ToString("HHmmss") + ":" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+                te.RowKey = "tick:" + te.Tick + ":" + entry.ID;
                 _table.Insert<LogTableEntry>(te);
 
 
                 te.PartitionKey = te.PartitionKey + ":" + ((JB2Date)entry.LogDate).DateKey;
                 te.RowKey = "id:" + entry.ID;
                 _table.Insert<LogTableEntry>(te);
+
+                te.RowKey = "tick:" + te.Tick + ":" + entry.ID;
+                _table.Insert<LogTableEntry>(te);
+
+
+
 
                 return true;
             }
@@ -98,7 +107,8 @@ namespace JB2.Common.Log
                 ID = e.ID,
                 LogDate = e.LogDate.ToString(),
                 Message = e.Message,
-                Serverity = ((int)e.Serverity).ToString()
+                Serverity = e.Serverity.ToString(),
+                Tick = e.LogDate.Ticks.ToString()
             };
         }
 

@@ -35,8 +35,8 @@
       <HintPath>..\Infrastructure\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Core, Version=0.3.21.13223, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\JB2.Common.Core.0.3.21.1\lib\JB2.Common.Core.dll</HintPath>
+    <Reference Include="JB2.Common.Core, Version=0.3.24.1217, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Common.Core.0.3.24\lib\JB2.Common.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JB2.Common.Data, Version=0.2.1.4612, Culture=neutral, processorArchitecture=MSIL">
@@ -49,6 +49,18 @@
     </Reference>
     <Reference Include="JB2.Common.Data.AzureStorage, Version=0.2.8.16344, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\JB2.Data.Azure.0.2.8\lib\JB2.Common.Data.AzureStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Date, Version=0.2.0.42495, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Date.0.2.0\lib\JB2.Common.Date.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Log, Version=0.2.1.19800, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Log.0.2.1\lib\JB2.Common.Log.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JB2.Common.Log.AzureRepo, Version=0.2.2.19801, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Log.AzureRepo.0.2.2\lib\JB2.Common.Log.AzureRepo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JB2.Common.Map, Version=0.2.3.3053, Culture=neutral, processorArchitecture=MSIL">
@@ -174,6 +186,7 @@
     <Compile Include="KeyVaultUtility.cs" />
     <Compile Include="People.cs" />
     <Compile Include="ProductLine.cs" />
+    <Compile Include="ProjectLogger.cs" />
     <Compile Include="Projects.cs" />
     <Compile Include="JB2Project.cs" />
     <Compile Include="ReleaseNotes.cs" />

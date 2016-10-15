@@ -21,6 +21,7 @@ namespace JB2.Infrastructure
 
         protected Dictionary<string, IAPIKeySecretPair> _apikeys;
         internal ushort _rng;
+        protected ILogger _logger;
 
 
         #endregion Fields
@@ -46,6 +47,18 @@ namespace JB2.Infrastructure
         public string PrivacyPolicyUri { get; set; }
 
         public string FacebookAppID { get; set; }
+
+        public ILogger Logger
+        {
+            get
+            {
+                return _logger;
+            }
+            set
+            {
+                _logger = value;
+            }
+        }
 
         public JB2.Infrastructure.Enum.ProductLine GetProductLine()
         {
@@ -125,6 +138,11 @@ namespace JB2.Infrastructure
 
             }
             return _apikeys[apiName];
+        }
+
+        public ILogger GetLogger()
+        {
+            return _logger;
         }
 
         public static JB2Project Empty

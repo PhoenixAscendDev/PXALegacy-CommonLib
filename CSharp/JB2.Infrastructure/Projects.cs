@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Configuration;
 
+
 namespace JB2.Infrastructure
 {
     public static class Projects
@@ -21,6 +22,9 @@ namespace JB2.Infrastructure
                 JB2.Infrastructure.JB2Project project = repo.GetEntity<JB2.Infrastructure.JB2Project>("project", "code:" + projectCode);
                 project._rng = getProjectRNG(projectCode);
 
+                var logRepo = new JB2.Common.Log.AzureRepo(JB2.Infrastructure.Storage.LogAccount, project.ID.Replace("-", ""));
+                project.Logger = new ProjectLogger(logRepo);
+                
                 return project;
             }
             catch(Exception ex)

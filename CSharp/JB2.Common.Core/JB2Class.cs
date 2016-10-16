@@ -26,7 +26,7 @@ namespace JB2.Common
 
         #region Constructors
 
-        public JB2ClassWithLog(TLogger logger)
+        public JB2ClassWithLog(TLogger logger) : base()
         {
             _logger = logger;
         }
@@ -73,8 +73,15 @@ namespace JB2.Common
         protected bool _defaultchangeLastUpdate;
         #endregion Fields
 
+        public JB2Class()
+        {
+            clearProps();
+        }
+
         public virtual T GetProperity<T>(string index)
         {
+            if (_props == null)
+                clearProps();
             if (_props[index] != null)
             {
                 _props.Add(new MetaData<T>(index, default(T)));
@@ -85,7 +92,9 @@ namespace JB2.Common
 
         public virtual T GetProperity<T>(string index, T defaultValue)
         {
-            if(_props[index] != null)
+            if (_props == null)
+                clearProps();
+            if (_props[index] != null)
             {
                 _props.Add(new MetaData<T>(index, defaultValue));
             }
@@ -103,6 +112,8 @@ namespace JB2.Common
             
             MetaData<T> newMeta = new MetaData<T>(index, newValue);
 
+            if (_props == null)
+                clearProps();
             //if property already exists and different then  dump and add
             if (_props[index] != null)
             {
@@ -122,7 +133,12 @@ namespace JB2.Common
 
         public virtual DateTime GetLastUpdate()
         {
-            throw new NotImplementedException();
+            return _lastupdate;
+        }
+
+        private void clearProps()
+        {
+            _props = new MetaDataCollection();
         }
     }
 }

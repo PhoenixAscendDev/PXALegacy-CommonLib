@@ -18,12 +18,14 @@ namespace JB2.Common.Log
 
         public static LogEntry NewLogEntry(LogServerityType serverity, string message)
         {
+
             return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, message,null,DateTime.Now);
         }
 
         public static LogEntry NewLogEntry(LogServerityType serverity, Exception exception)
         {
-            return (LogEntry)NewLogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, exception);
+            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, exception.Message, exception, DateTime.Now);
+            
         }
     }
 
@@ -71,7 +73,7 @@ namespace JB2.Common.Log
         }
         public static LogEntry<TKey, TServerity> NewLogEntry(TKey id, TServerity serverity, Exception exception)
         {
-            return new LogEntry<TKey, TServerity>(id, serverity, exception.Message, exception, DateTime.Now);
+             return new LogEntry<TKey, TServerity>(id, serverity, exception.Message, exception, DateTime.Now);
         }
 
     }

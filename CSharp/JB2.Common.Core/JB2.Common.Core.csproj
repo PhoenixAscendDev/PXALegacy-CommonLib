@@ -54,6 +54,7 @@
     <Compile Include="Enum\Rotation.cs" />
     <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Events\ExpirableRemovedEventArgs.cs" />
+    <Compile Include="Exceptions\JB2Exception.cs" />
     <Compile Include="Exceptions\NotConfiguredException.cs" />
     <Compile Include="Exceptions\ResultException.cs" />
     <Compile Include="ExpirableDictionary.cs" />

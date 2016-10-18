@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Exceptions
 {
-    public class NotConfiguredException : Exception
+    public class NotConfiguredException : JB2Exception
     {
         public NotConfiguredException()
             : this("Setting was not configured")

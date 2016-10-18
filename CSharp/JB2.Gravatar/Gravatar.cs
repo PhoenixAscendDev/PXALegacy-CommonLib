@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using JB2.Common.Extensions;
+using JB2.Common;
 
 namespace JB2
 {

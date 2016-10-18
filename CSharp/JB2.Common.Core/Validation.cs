@@ -31,7 +31,7 @@ namespace JB2.Common
         {
 
             if (_expection == null)
-                return new Exceptions.ResultException(this.Message);
+                return new ResultException(this.Message);
             else
                 return this._expection;
         }

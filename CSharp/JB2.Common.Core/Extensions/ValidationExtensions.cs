@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
-namespace JB2.Common.Extensions
+namespace JB2.Common
 {
     public static class ValidationExtensions
     {

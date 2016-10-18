@@ -61,7 +61,7 @@ namespace JB2.Common
             if (sr.Count > 0)
                 return sr._validation[0].ToException();
             else
-                return new Exceptions.ResultException("IsValid");
+                return new ResultException("IsValid");
         }
 
         public static implicit operator List<IValidation>(ServiceResult sr)

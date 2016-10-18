@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-using JB2.Common.Extensions;
+using JB2.Common;
 namespace JB2.Common
 {
     public class VersionNumber : VersionNumber<int, int, int, int>

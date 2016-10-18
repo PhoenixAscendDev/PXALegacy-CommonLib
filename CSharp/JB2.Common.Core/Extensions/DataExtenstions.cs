@@ -7,7 +7,7 @@ using System.Text;
 
 
 
-namespace JB2.Common.Extensions
+namespace JB2.Common
 {
     public static class DataExtenstions
     {

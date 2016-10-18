@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JB2.Common.Exceptions
+namespace JB2.Common
 {
     public class NotConfiguredException : JB2Exception
     {

@@ -5,13 +5,14 @@ using System.Text;
 
 namespace JB2.Common
 {
+
+
+
     public class MetaDataValue : IMetaDataValue
     {
         #region Field
         object _value;
         #endregion Field
-
-
 
         #region Static Implicit
 
@@ -56,7 +57,6 @@ namespace JB2.Common
         }
 
         #endregion Static Implicit
-
 
 
         #region Value Properties

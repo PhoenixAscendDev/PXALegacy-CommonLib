@@ -83,6 +83,8 @@ namespace JB2.Common
             }
         }
 
+
+
         public ServiceResult Add(IMetaData item)
         {
             if( !_dictionary.ContainsKey(item.PropertyName))
@@ -136,6 +138,15 @@ namespace JB2.Common
             }
         }
 
+        public static implicit operator Dictionary<string, IMetaData>(MetaDataCollection mdc)
+        {
+            return (Dictionary<string,IMetaData>)mdc._dictionary;
+        }
+
+        public IDictionary<string,IMetaData> ToDictionary()
+        {
+            return this._dictionary;
+        }
 
     }
 }

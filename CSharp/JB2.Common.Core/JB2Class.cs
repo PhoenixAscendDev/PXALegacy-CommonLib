@@ -94,7 +94,7 @@ namespace JB2.Common
         {
             if (_props == null)
                 clearProps();
-            if (_props[index] == null)
+            if (!_props.PropertyNames.Contains(index))
             {
                 _props.Add(new MetaData<T>(index, defaultValue));
             }

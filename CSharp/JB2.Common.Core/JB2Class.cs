@@ -94,7 +94,7 @@ namespace JB2.Common
         {
             if (_props == null)
                 clearProps();
-            if (_props[index] != null)
+            if (_props[index] == null)
             {
                 _props.Add(new MetaData<T>(index, defaultValue));
             }
@@ -127,8 +127,6 @@ namespace JB2.Common
             //update Last Update if needed
             if (changeLastUpdate)
                 _lastupdate = System.DateTime.Now;
-
-
         }
 
         public virtual DateTime GetLastUpdate()

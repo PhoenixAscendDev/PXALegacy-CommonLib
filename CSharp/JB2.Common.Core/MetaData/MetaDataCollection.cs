@@ -11,11 +11,14 @@ namespace JB2.Common
     {
         #region Fields
         private IDictionary<string, IMetaData> _dictionary;
+
+        protected DateTime _lastupdate;
+        protected bool _defaultchangeLastUpdate;
         #endregion Fields
 
         #region Constructors
 
-        public MetaDataCollection() : base()
+        public MetaDataCollection(bool defaultchangeLastUpdate=false) : base()
         {
             _dictionary = new Dictionary<string, IMetaData>();
         }
@@ -77,13 +80,59 @@ namespace JB2.Common
                     return _dictionary[propertyName];
                 else
                 {
-                    _dictionary.Add(propertyName, new MetaData<object>(propertyName,null));
+                    _dictionary.Add(propertyName, new MetaData<object>(propertyName, null));
                     return _dictionary[propertyName];
                 }
             }
         }
 
+        public virtual T GetProperty<T>(string index)
+        {
 
+            if (this[index] != null)
+            {
+                this.Add(new MetaData<T>(index, default(T)));
+            }
+
+            return (T)this[index].GetValue().ObjectValue;
+        }
+
+        public virtual T GetProperty<T>(string index, T defaultValue)
+        {            
+            if (this[index] != null)
+            {
+                this.Add(new MetaData<T>(index, defaultValue));
+            }
+            return (T)this[index].GetValue().ObjectValue;
+        }
+
+        public virtual void SetProperty<T>(string index, T newValue)
+        {
+            SetProperty<T>(index, newValue, _defaultchangeLastUpdate);
+        }
+
+        public virtual void SetProperty<T>(string index, T newValue, bool changeLastUpdate)
+        {
+            MetaData<T> newMeta = new MetaData<T>(index, newValue);
+
+            //if property already exists and different then  dump and add
+            if (this[index] != null)
+            {
+                this[index].UpdateValue(newValue);
+            }
+            else
+            {
+                this.Add(newMeta);
+            }
+
+            //update Last Update if needed
+            if (changeLastUpdate)
+                _lastupdate = System.DateTime.Now;
+        }
+        public virtual DateTime GetLastUpdate()
+        {
+            return _lastupdate;
+        }
 
         public ServiceResult Add(IMetaData item)
         {

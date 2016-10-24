@@ -20,6 +20,13 @@ namespace JB2.Common
         where TLogEntry : ILogEntry<TKey,TServerity>
     {
         bool IsEnabled(TServerity severity);
-        void Log(TLogEntry entry);       
+        void Log(TLogEntry entry);
+
+        #region Events
+        event Action<ILogger<TServerity, TKey, TLogEntry>, TServerity, TLogEntry> EntryLogged;
+
+        void OnEntryLogged(ILogger<TServerity, TKey, TLogEntry> logger, TServerity serverity, TLogEntry logentry);
+
+        #endregion Events
     }
 }

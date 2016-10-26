@@ -69,6 +69,20 @@ namespace JB2.Common
             return value == null ? string.Empty : value.ToString();
         }
 
+        public static string TrimLastCharacter(this String str)
+        {
+
+            //sourcr: http://stackoverflow.com/questions/3573284/trim-last-character-from-a-string
+            if (String.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+            else
+            {
+                return str.TrimEnd(str[str.Length - 1]);
+            }
+        }
+
 
     }
 

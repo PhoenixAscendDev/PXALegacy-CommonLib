@@ -34,6 +34,24 @@ namespace JB2.Common
 
         }
 
+        public static string ProductID(int segments = 3, char seperator = '-')
+        {
+            return ProductID("{0}", segments, seperator);
+        }
+
+        public static string ProductID(string wrapper, int segments = 3,char seperator = '-')
+        {
+            StringBuilder str = new StringBuilder();
+
+            for(int i = 0; i < segments; i++)
+            {
+                string s = UriHash(new Uri("http://jbean.io/id?guid=" + Guid() + "&ticks=" + TickHash() )).ToUpper();
+                str.Append(str);
+                str.Append(seperator);                
+            }
+            return wrapit(wrapper,str.ToString().TrimLastCharacter());
+        }
+
 
         public static string TimeHash()
         {

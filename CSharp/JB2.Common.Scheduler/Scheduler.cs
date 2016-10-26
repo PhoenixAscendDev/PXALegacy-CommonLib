@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using JB2.Helpers;
 using JB2.Common.Log;
+using JB2.Helpers;
 
 namespace JB2.Common.Scheduler
 {

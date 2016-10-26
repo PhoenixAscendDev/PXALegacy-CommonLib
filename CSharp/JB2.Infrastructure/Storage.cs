@@ -25,6 +25,9 @@ namespace JB2.Infrastructure
         private const string BLUFFSTREETACCOUNT = "JB2:bluffStreetStorageName";
         private const string BLUFFSTREETKEYNAME = "JB2:bluffStreetStorageKey";
 
+        private const string APIACCOUNT = "JB2:apiStorageName";
+        private const string APIKEYNAME = "JB2:apiStorageKey";
+
 
 
         private const string ASSETTABLENAME = "assets";
@@ -79,6 +82,17 @@ namespace JB2.Infrastructure
                 var storagekey = ConfigurationManager.AppSettings[BOWTIEKEYNAME];
                 return StorageAccount.FromAzureStorage("jb2bowtie", storagekey);
                 //return AzureHelper.GetStorageAccount("jbsquared7", storagekey);
+            }
+        }
+
+        public static StorageAccount APIKeyAccount
+        {
+            get
+            {
+                var storagekey = ConfigurationManager.AppSettings[APIKEYNAME];
+                var storageName = ConfigurationManager.AppSettings[APIACCOUNT];
+
+                return StorageAccount.FromAzureStorage(storageName, storagekey);
             }
         }
 

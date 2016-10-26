@@ -46,12 +46,11 @@ namespace JB2.Common
             for(int i = 0; i < segments; i++)
             {
                 string s = UriHash(new Uri("http://jbean.io/id?guid=" + Guid() + "&ticks=" + TickHash() )).ToUpper();
-                str.Append(str);
+                str.Append(s);
                 str.Append(seperator);                
             }
             return wrapit(wrapper,str.ToString().TrimLastCharacter());
         }
-
 
         public static string TimeHash()
         {

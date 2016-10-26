@@ -126,34 +126,15 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            var s1 = "help me obi-wan, c3-PO , and r2-d2";
-            Console.WriteLine(JB2.Common.Utility.WordCount(s1));
-            Console.WriteLine(s1);
-            //var table = JB2.Infrastructure.Storage.LogAccount.GetTable("apptest");
-            //var test = new JB2.Common.Log.AzureRepo(table, "logentry");
-            //var entry = JB2.Common.Log.LogEntry.NewLogEntry(JB2.Common.Log.Enum.LogServerityType.Informational, "This is a message");
-            //test.StoreLogEntry(entry);
-            //var t = JB2.Info.Project.GetVersions().LastOrDefault();
 
-            //var v = JB2.Common.VersionNumber.FromString("0.1.3",'.');
-
-            //Console.WriteLine(v.ToInt().ToString());
-            var date = new JB2.Common.JB2Date(Convert.ToInt32("20160428"));
-            Console.WriteLine((System.DateTime)date);
-            Console.ReadLine();
-            //var scheduler = new TestScheduler(null);
-
-            for (int i = 0; i < 110; i++)
+            for (int i = 0; i < 3; i++)
             {
-                //Console.Write(JB2.Common.Utility.RandomNumber(1, 3).ToString());
-                Console.WriteLine(JB2.Common.NewID.Pronounceable(8));
-
+                var id = JB2.Common.NewID.ProductID(4);
+                Console.WriteLine(id);
             }
-            //Console.ReadLine();
-            //scheduler.StartJobs();
 
 
-            
+
 
 
 

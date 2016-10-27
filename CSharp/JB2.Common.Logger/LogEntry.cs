@@ -11,27 +11,31 @@ namespace JB2.Common.Log
 {
     public  class LogEntry : LogEntry<string,LogServerityType>, ILogEntry
     {
-        public LogEntry(string id, LogServerityType serverity, string message, Exception exception, DateTime logDate)
-            : base(id,serverity,message,exception,logDate)
+
+        #region Constructors
+            : base(id,serverity,message,exception,logDate,logCode)
         {
         }
 
-        public static LogEntry NewLogEntry(LogServerityType serverity, string message)
+        #endregion Constructors
+
+        public static LogEntry NewLogEntry(LogServerityType serverity, string message,string logcode="")
         {
 
-            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, message,null,DateTime.Now);
+            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, message,null,DateTime.Now,logcode);
         }
 
-        public static LogEntry NewLogEntry(LogServerityType serverity, Exception exception)
+        public static LogEntry NewLogEntry(LogServerityType serverity, Exception exception,string logcode = "")
         {
-            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, exception.Message, exception, DateTime.Now);
+            return new LogEntry(JB2.Common.ShortGuid.NewGuid(), serverity, exception.Message, exception, DateTime.Now,logcode);
             
         }
+ 
     }
 
 
 
-    public class LogEntry<TKey,TServerity> : ILogEntry<TKey,TServerity>
+    public class LogEntry<TKey,TServerity> : JB2Class, ILogEntry<TKey,TServerity>
     {
         #region Fields
 
@@ -45,17 +49,15 @@ namespace JB2.Common.Log
 
         #region Constructor
 
-        public LogEntry(TKey id,TServerity serverity, string message,Exception exception,DateTime logDate)
         {
             _exception = exception;
             _id = id;
             _logDate = logDate;
             _message = message;
             _serverity = serverity;
+            _props.SetProperty<string>("LogCode", logCode);
+
         }
-
-
-
 
         #endregion Constructor
 
@@ -65,8 +67,35 @@ namespace JB2.Common.Log
         public DateTime LogDate { get { return _logDate; } }
         public string Message { get { return _message; } }
         public TServerity Serverity { get { return _serverity; } }
+
+        public string LogCode
+        {
+            get
+            {
+                return _props.GetProperty<string>("LogCode", string.Empty);
+            }
+            set
+            {
+                _props.SetProperty<string>("LogCode", value);
+            }
+        }
         #endregion Properties
-        
+
+
+        #region ITags
+        public IEnumerable<Tag> GetTags()
+        {
+        }
+
+        public bool AddTag(Tag tag)
+        {
+        }
+
+        public bool RemoveTag(Tag tag)
+        {
+        }
+        #endregion ITags
+
         public static LogEntry<TKey,TServerity> NewLogEntry(TKey id, TServerity serverity,string message)
         {
             return new LogEntry<TKey, TServerity>(id, serverity, message, null, DateTime.Now);
@@ -76,5 +105,6 @@ namespace JB2.Common.Log
              return new LogEntry<TKey, TServerity>(id, serverity, exception.Message, exception, DateTime.Now);
         }
 
+        
     }
 }

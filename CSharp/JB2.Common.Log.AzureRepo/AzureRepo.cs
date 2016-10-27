@@ -12,7 +12,6 @@ using JB2.Common.Data;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
-
 namespace JB2.Common.Log
 {
     public class AzureRepo : ILogRepo
@@ -101,6 +100,14 @@ namespace JB2.Common.Log
 
         private static LogTableEntry entryfromLog(ILogEntry e, string partition)
         {
+
+            List<string> taglist = new List<string>();
+            IEnumerable<Tag> tags = e.GetTags();
+            foreach (var t in tags)
+            {
+                taglist.Add(t);
+            }
+
             return new LogTableEntry(partition, "id:" + e.ID)
             {
                 Exception = e.Exception == null ? string.Empty : e.Exception.ToString(),
@@ -108,15 +115,42 @@ namespace JB2.Common.Log
                 LogDate = e.LogDate.ToString(),
                 Message = e.Message,
                 Serverity = e.Serverity.ToString(),
-                Tick = e.LogDate.Ticks.ToString()
+                Tick = e.LogDate.Ticks.ToString(),
+                LogCode = e.LogCode,
+                Tags = string.Join(",",taglist.ToArray())            
             };
         }
 
         private static ILogEntry logfromentry(LogTableEntry e)
         {
+
+            string[] taglist = e.Tags.Split(",");
+                       
+
             LogServerityType type = (LogServerityType)Convert.ToInt32(e.Serverity);
             DateTime dt = Convert.ToDateTime(e.LogDate);
-            return new LogEntry(e.ID, type, e.Message, null, dt);
+
+            ILogEntry entry = new LogEntry(e.ID, type, e.Message, null, dt, e.LogCode);
+
+            foreach (var t in taglist)
+            {
+                try
+                {
+                    string name = t.Split(":")[0];
+                    string value = t.Split(":")[0];
+                    var newTag = new Tag(name, value);
+
+                    entry.AddTag(newTag);
+                }
+                catch(Exception ex)
+                {
+                    ///TODO oh well
+                }
+                
+
+            }
+
+            return entry;
         }
 
         private static TableQuery<LogTableEntry> azurequeryfromSearch(ILogSearch s,string partitionKey)
@@ -212,14 +246,6 @@ namespace JB2.Common.Log
             return new TableQuery<LogTableEntry>().Where(filterString);
 
         }
-
-
-
-
-
-            
-
-
 
 
         //    public static IEnumerable<TElement> StartsWith<TElement>

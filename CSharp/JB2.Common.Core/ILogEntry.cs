@@ -10,13 +10,15 @@ namespace JB2.Common
     {
 
     }
-    public interface ILogEntry<TKey, TSeverity>
+    public interface ILogEntry<TKey, TSeverity> : ITagable<Tag>
     {
         TSeverity Serverity { get; }
         TKey ID { get; }
         string Message { get; }
         Exception Exception { get; }
         DateTime LogDate { get; }
+
+        string LogCode { get; }
     }
 
     

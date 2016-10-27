@@ -138,6 +138,7 @@
     <Compile Include="ShortGUID.cs" />
     <Compile Include="SmallNumberRange.cs" />
     <Compile Include="StringName.cs" />
+    <Compile Include="Tag.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="TimeRange.cs" />
     <Compile Include="Validation.cs" />

@@ -32,6 +32,10 @@ namespace JB2.Common.Log
 
         public string Tick { get; set; }
 
+        public string LogCode { get; set; }
+
+        public string Tags { get; set; }
+
         #endregion Properties
     }
 }

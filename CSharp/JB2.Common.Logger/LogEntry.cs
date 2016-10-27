@@ -13,6 +13,7 @@ namespace JB2.Common.Log
     {
 
         #region Constructors
+        public LogEntry(string id, LogServerityType serverity, string message, Exception exception, DateTime logDate,string logCode = "")
             : base(id,serverity,message,exception,logDate,logCode)
         {
         }
@@ -44,11 +45,13 @@ namespace JB2.Common.Log
         private readonly string _message;
         private readonly DateTime _logDate;
         private TServerity _serverity;
+        protected BaseCollection<Tag> _tags;
 
         #endregion Fields
 
         #region Constructor
 
+         public LogEntry(TKey id,TServerity serverity, string message,Exception exception,DateTime logDate,string logCode = "") :base ()
         {
             _exception = exception;
             _id = id;
@@ -85,14 +88,17 @@ namespace JB2.Common.Log
         #region ITags
         public IEnumerable<Tag> GetTags()
         {
+            return _tags;
         }
 
         public bool AddTag(Tag tag)
         {
+            return _tags.Add(tag);
         }
 
         public bool RemoveTag(Tag tag)
         {
+            return _tags.Remove(tag);
         }
         #endregion ITags
 

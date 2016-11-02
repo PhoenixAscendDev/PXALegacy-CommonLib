@@ -22,6 +22,10 @@ namespace JB2.Infrastructure
         private const string ECONOMYKEYNAME = "JB2:economyStorageKey";
         private const string ECONOMYACCOUNT = "JB2:economy";
 
+        private const string GRAPHACCOUNT = "JB2:graphStorageName";
+        private const string GRAPHKEYNAME = "JB2:graphStorageKey";
+        
+
         private const string BLUFFSTREETACCOUNT = "JB2:bluffStreetStorageName";
         private const string BLUFFSTREETKEYNAME = "JB2:bluffStreetStorageKey";
 
@@ -111,6 +115,16 @@ namespace JB2.Infrastructure
             {
                 var key = ConfigurationManager.AppSettings[ECONOMYKEYNAME];
                 var account = ConfigurationManager.AppSettings[ECONOMYACCOUNT];
+                return StorageAccount.FromAzureStorage(account, key);
+            }
+        }
+
+        public static StorageAccount GraphAccount
+        {
+            get
+            {
+                var key = ConfigurationManager.AppSettings[GRAPHKEYNAME];
+                var account = ConfigurationManager.AppSettings[GRAPHACCOUNT];
                 return StorageAccount.FromAzureStorage(account, key);
             }
         }

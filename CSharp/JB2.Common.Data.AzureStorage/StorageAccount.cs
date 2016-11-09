@@ -37,11 +37,23 @@ namespace JB2.Common.Data
             {
                 return new AzureTableRepository(_azureStorage, tableName);
             }
-            catch(StorageException ex)
+            catch (StorageException ex)
             {
-                throw new JB2.Common.Exceptions.StorageTableException(string.Format("Error connecting to table {0}",tableName), _azureStorage, tableName, ex);
+                throw new JB2.Common.Exceptions.StorageTableException(string.Format("Error connecting to table {0}", tableName), _azureStorage, tableName, ex);
             }
-            
+
+        }
+
+        public AzureQueueRepository GetQueue(string queue)
+        {
+            try
+            {
+                return new AzureQueueRepository(_azureStorage, queue);
+            }
+            catch (StorageException ex)
+            {
+                throw new JB2.Common.Exceptions.StorageQueueException(string.Format("Error connecting to queue {0}", queue), _azureStorage, queue, ex);
+            }
         }
 
         #endregion Properties

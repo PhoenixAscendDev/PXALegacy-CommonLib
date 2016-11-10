@@ -12,11 +12,11 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using JB2.Common.Data;
 
 using JB2.Common.Extensions;
-
+using JB2.Common.Data.Enum;
 
 namespace JB2.Common.Data
 {
-    public class AzureTableRepository
+    public class AzureTableRepository  : ContainerRepository
     {
         #region Fields
         private CloudTableClient _tableClient;
@@ -40,12 +40,13 @@ namespace JB2.Common.Data
         }
 
 
-        public AzureTableRepository(CloudStorageAccount account, string tableName)
+        public AzureTableRepository(CloudStorageAccount account, string tableName) : base(account)
         {
             _tableClient = account.CreateCloudTableClient();
             _table = _tableClient.GetTableReference(tableName);
 
             _table.CreateIfNotExists();
+
 
             //_key = new RsaKey("private:key1");
             _resolver = new LocalResolver();
@@ -55,6 +56,10 @@ namespace JB2.Common.Data
 
         #endregion Constructors
 
+
+        #region Properties
+
+        #endregion Properties
 
         #region Inserts
 
@@ -322,6 +327,11 @@ namespace JB2.Common.Data
             return result;
         }
 
+        public override string GetName()
+        {
+            return _table.Name;
+        }
+
 
         private string startsWithfilter(string partitionKey, string searchStr,string columnName = "RowKey")
         {
@@ -344,23 +354,10 @@ namespace JB2.Common.Data
 
             return filterString;
         }
-       
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public override ContainerType GetContainerType()
+        {
+            return ContainerType.Table;
+        }
     }
 }

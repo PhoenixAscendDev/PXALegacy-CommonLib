@@ -11,6 +11,7 @@ namespace JB2.Common.Data
         #region Fields
         protected JB2.Common.Data.AzureTableRepository _table;
         protected JB2.Common.Data.AzureBlobRepository _blob;
+        protected JB2.Common.Data.AzureQueueRepository _queue;
         #endregion Fields
 
         #region Properties
@@ -28,6 +29,14 @@ namespace JB2.Common.Data
             get
             {
                 return _blob;
+            }
+        }
+
+        public virtual AzureQueueRepository AzureQueue
+        {
+            get
+            {
+                return _queue;
             }
         }
 

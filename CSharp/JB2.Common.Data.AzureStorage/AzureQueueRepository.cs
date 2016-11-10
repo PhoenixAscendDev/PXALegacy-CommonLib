@@ -11,10 +11,11 @@ using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Queue;
 
 using Microsoft.WindowsAzure.Storage.Auth;
+using JB2.Common.Data.Enum;
 
 namespace JB2.Common.Data
 {
-    public class AzureQueueRepository
+    public class AzureQueueRepository :  ContainerRepository
     {
 
         #region Fields
@@ -31,7 +32,7 @@ namespace JB2.Common.Data
         }
 
 
-        public AzureQueueRepository(CloudStorageAccount account, string queueName)
+        public AzureQueueRepository(CloudStorageAccount account, string queueName): base(account)
         {
             _queueClient = account.CreateCloudQueueClient();
             _queue = _queueClient.GetQueueReference(queueName);
@@ -69,7 +70,18 @@ namespace JB2.Common.Data
             }
         }
 
+
         #endregion Properties
+
+        public override string GetName()
+        {
+            return _queue.Name;
+        }
+
+        public override ContainerType GetContainerType()
+        {
+            return ContainerType.Queue;
+        }
 
         #region Add Methods
 
@@ -338,6 +350,10 @@ namespace JB2.Common.Data
         }
 
 
-        #endregion Helpders
+
+
+        #endregion Helpers
+
+
     }
 }

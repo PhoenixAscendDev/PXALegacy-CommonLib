@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 using Microsoft.WindowsAzure.Storage.Queue;
 
-namespace JB2.Common.Data.AzureStorage
-{
+namespace JB2.Common.Data
+{ 
     public class QueueItem
     {
 
@@ -45,43 +45,57 @@ namespace JB2.Common.Data.AzureStorage
         #region Properties
 
         
-        public byte[] AsBytes { get { return _message.AsBytes } }
+        public byte[] AsBytes { get { return _message.AsBytes; } }
         //
         // Summary:
         //     Gets the content of the message, as a string.
-        public string AsString { get { return _message.AsString} }
+        public string AsString { get { return _message.AsString; } }
         //
         // Summary:
         //     Gets the number of times this message has been dequeued.
-        public int DequeueCount { get { return _message.DequeueCount } }
+        public int DequeueCount { get { return _message.DequeueCount; } }
         //
         // Summary:
         //     Gets the time that the message expires.
-        public DateTimeOffset? ExpirationTime { get { return _message.ExpirationTime } }
+        public DateTimeOffset? ExpirationTime { get { return _message.ExpirationTime; } }
         //
         // Summary:
         //     Gets the message ID.
-        public string Id { get { return _message.Id } }
+        public string Id { get { return _message.Id; } }
         //
         // Summary:
         //     Gets the time that the message was added to the queue.
-        public DateTimeOffset? InsertionTime { get { return _message.InsertionTime } }
+        public DateTimeOffset? InsertionTime { get { return _message.InsertionTime; } }
         //
         // Summary:
         //     Gets the time that the message will next be visible.
-        public DateTimeOffset? NextVisibleTime { get { return _message.NextVisibleTime } }
+        public DateTimeOffset? NextVisibleTime { get { return _message.NextVisibleTime; } }
         //
         // Summary:
         //     Gets the message's pop receipt.
-        public string PopReceipt { get { return _message.PopReceipt } }
+        public string PopReceipt { get { return _message.PopReceipt; } }
 
 
-        #endregion Properties
+    #endregion Properties
 
 
-        #region To Methods
+    #region Methods
 
-        public CloudQueueMessage ToCloudQueueMessage()
+    public void SetContent(byte[] content)
+    {
+        _message.SetMessageContent(content);
+    }
+    public void SetContent(string content)
+    {
+        _message.SetMessageContent(content);
+    }
+
+    #endregion Methods
+
+
+    #region To Methods
+
+    public CloudQueueMessage ToCloudQueueMessage()
         {
             return _message;
         }

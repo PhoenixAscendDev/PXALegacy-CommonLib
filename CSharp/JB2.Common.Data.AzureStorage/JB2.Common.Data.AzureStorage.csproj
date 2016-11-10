@@ -123,8 +123,10 @@
     <Compile Include="AddressEntry.cs" />
     <Compile Include="AzureBlobRepository.cs" />
     <Compile Include="AzureCloudExtensions.cs" />
+    <Compile Include="AzureQueueRepository.cs" />
     <Compile Include="AzureRepositoryWithCache.cs" />
     <Compile Include="AzureTableEntity.cs" />
+    <Compile Include="Exceptions\QueueException.cs" />
     <Compile Include="Exceptions\StorageException.cs" />
     <Compile Include="Extensions\AzureExtensions.cs" />
     <Compile Include="Helper.cs" />
@@ -132,6 +134,7 @@
     <Compile Include="InsertOption.cs" />
     <Compile Include="LocalResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueItem.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="StorageAccount.cs" />
     <Compile Include="TableBatchOperations.cs" />

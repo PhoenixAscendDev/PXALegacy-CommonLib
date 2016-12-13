@@ -181,6 +181,7 @@
     <Compile Include="CompanyInfo.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Counter.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="HQAddress.cs" />
     <Compile Include="JB2ReleaseVersion.cs" />
     <Compile Include="KeyVaultUtility.cs" />

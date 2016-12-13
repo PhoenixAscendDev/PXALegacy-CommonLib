@@ -27,8 +27,8 @@ namespace JB2.Common
             this.TagName = name;
             this.Value = value;
         }
-        TKey TagName { get; set; }
-        TValue Value { get; set; }
+        public TKey TagName { get; set; }
+        public TValue Value { get; set; }
 
         public override string ToString()
         {

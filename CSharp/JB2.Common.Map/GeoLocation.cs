@@ -40,7 +40,14 @@ namespace JB2.Common
             return JB2.Common.Helpers.MapHelper.GetDistance(this.Latitude, this.Longitude, othergeo.Latitude, othergeo.Longitude, Enum.GeoDistanceType.Miles);
 
         }
+
+        public override string ToString()
+        {
+            return "[" + mLatitude.ToString()  + "," + mLongitude.ToString() + "]";
+        }
         #endregion Public Methods
+
+
 
     }
 }

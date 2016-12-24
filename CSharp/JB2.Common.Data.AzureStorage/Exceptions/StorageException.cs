@@ -13,7 +13,7 @@ namespace JB2.Common.Exceptions
         protected string _tableName;
 
         public StorageTableException(string message, Microsoft.WindowsAzure.Storage.CloudStorageAccount account,string tableName, Exception innerException)
-            : base(message)
+            : base(message,innerException)
         {
             _tableName = tableName;
             _account = account;

@@ -31,6 +31,10 @@ namespace JB2.Infrastructure.Test
             //    Console.WriteLine( JB2.Common.NewID.Base62(i));
             //}
 
+            var a = JB2.Infrastructure.Storage.GraphAccount;
+
+
+            
             project.Logger.LogInformation("This is a test message");
             Console.ReadLine();
         }

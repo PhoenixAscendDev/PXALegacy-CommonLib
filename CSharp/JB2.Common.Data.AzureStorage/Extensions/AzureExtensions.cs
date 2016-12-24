@@ -25,7 +25,7 @@ namespace JB2.Common.Data
         public static EntityProperty SetProperty<T>(this DynamicTableEntity e, string propertyName, T value)
         {
 
-            EntityProperty prop = new EntityProperty(string.Empty);
+            EntityProperty prop = new EntityProperty((string)(object)value.ToString());
 
             if (typeof(T) == typeof(String))
                 prop = new EntityProperty((string)(object)value);
@@ -39,6 +39,8 @@ namespace JB2.Common.Data
                 prop = new EntityProperty((bool)(object)value);
             else if (typeof(T) == typeof(DateTime))
                 prop = new EntityProperty((DateTime)(object)value);
+            else if (typeof(T) == typeof(Byte))
+                prop = new EntityProperty((Int16)(object)value);
 
 
             if (e.Properties.ContainsKey(propertyName))

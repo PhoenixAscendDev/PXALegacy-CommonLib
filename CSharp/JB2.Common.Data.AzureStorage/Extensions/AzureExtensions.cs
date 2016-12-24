@@ -24,23 +24,32 @@ namespace JB2.Common.Data
 
         public static EntityProperty SetProperty<T>(this DynamicTableEntity e, string propertyName, T value)
         {
+            EntityProperty prop = null;
 
-            EntityProperty prop = new EntityProperty((string)(object)value.ToString());
+            if (value == null || value.Equals(default(T)))
+                prop = new EntityProperty(string.Empty);
+            else
+            {
+                prop = new EntityProperty((string)(object)value.ToString());
 
-            if (typeof(T) == typeof(String))
-                prop = new EntityProperty((string)(object)value);
-            else if (typeof(T) == typeof(Int16))
-                prop = new EntityProperty((Int16)(object)value);
-            else if (typeof(T) == typeof(Int32))
-                prop = new EntityProperty((Int32)(object)value);
-            else if (typeof(T) == typeof(Int64))
-                prop = new EntityProperty((Int64)(object)value);
-            else if (typeof(T) == typeof(bool))
-                prop = new EntityProperty((bool)(object)value);
-            else if (typeof(T) == typeof(DateTime))
-                prop = new EntityProperty((DateTime)(object)value);
-            else if (typeof(T) == typeof(Byte))
-                prop = new EntityProperty((Int16)(object)value);
+                if (typeof(T) == typeof(String))
+                    prop = new EntityProperty((string)(object)value);
+                else if (typeof(T) == typeof(Int16))
+                    prop = new EntityProperty((Int16)(object)value);
+                else if (typeof(T) == typeof(Int32))
+                    prop = new EntityProperty((Int32)(object)value);
+                else if (typeof(T) == typeof(Int64))
+                    prop = new EntityProperty((Int64)(object)value);
+                else if (typeof(T) == typeof(bool))
+                    prop = new EntityProperty((bool)(object)value);
+                else if (typeof(T) == typeof(DateTime))
+                    prop = new EntityProperty((DateTime)(object)value);
+                else if (typeof(T) == typeof(Byte))
+                    prop = new EntityProperty(Convert.ToInt32((object)value));
+
+               
+            }
+
 
 
             if (e.Properties.ContainsKey(propertyName))

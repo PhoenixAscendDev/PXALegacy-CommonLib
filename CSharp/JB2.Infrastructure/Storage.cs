@@ -32,7 +32,8 @@ namespace JB2.Infrastructure
         private const string APIACCOUNT = "JB2:apiStorageName";
         private const string APIKEYNAME = "JB2:apiStorageKey";
 
-
+        private const string BEEFOURACCOUNT = "JB2:beefourStorageName";
+        private const string BEEFOURKEYNAME = "JB2:beefourStorageKey";
 
         private const string ASSETTABLENAME = "assets";
         private const string JBEAN_TABLENAME = "currency-jbean";
@@ -142,6 +143,16 @@ namespace JB2.Infrastructure
             get
             {
                 return BowtieAccount.GetTable(JBEAN_TABLENAME);
+            }
+        }
+
+        public static StorageAccount BeeFourAccount
+        {
+            get
+            {
+                var key = ConfigurationManager.AppSettings[BEEFOURKEYNAME];
+                var account = ConfigurationManager.AppSettings[BEEFOURACCOUNT];
+                return StorageAccount.FromAzureStorage(account, key);
             }
         }
     }

@@ -9,10 +9,11 @@ using System.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using JB2.Common.Data.Enum;
 
 namespace JB2.Common.Data
 {
-    public class AzureBlobRepository
+    public class AzureBlobRepository : ContainerRepository
     {
         private CloudBlobClient _blobclient;
         private CloudBlobContainer _container;
@@ -23,13 +24,26 @@ namespace JB2.Common.Data
 
         }
 
-        public AzureBlobRepository(CloudStorageAccount account, string containerName)
+        public AzureBlobRepository(CloudStorageAccount account, string containerName) : base(account)
         {
             _blobclient = account.CreateCloudBlobClient();
             _container = _blobclient.GetContainerReference(containerName);
 
             _container.CreateIfNotExists();
         }
+
+
+        public override string GetName()
+        {
+            return _container.Name;
+        }
+
+        public override ContainerType GetContainerType()
+        {
+            return ContainerType.Blob;
+        }
+
+
 
         public bool Insert(byte[] content, string blobName)
         {
@@ -132,7 +146,6 @@ namespace JB2.Common.Data
             
         }
 
-    
-
+       
     }
 }

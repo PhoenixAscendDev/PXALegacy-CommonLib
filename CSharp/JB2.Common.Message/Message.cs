@@ -96,7 +96,7 @@ namespace JB2.Common
 
         public virtual string GetID()
         {
-            return this.GetID();
+            return this.GetProperity<string>("ID");
         }
 
         public abstract IPerson<string> GetSender();

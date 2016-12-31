@@ -42,11 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="CompassDirectionType.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="EmptyAddress.cs" />
     <Compile Include="GeoDistanceType.cs" />
     <Compile Include="GeoLocation.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IAddress.cs" />
     <Compile Include="MapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

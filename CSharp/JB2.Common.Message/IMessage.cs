@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
+
+    public interface IMessage: IMessage<string,JB2.Common.Tag>
+    {
+
+    }
+
+
     public interface IMessage<Tkey,TTag> : IIDProp<Tkey>, ITagable<TTag>
         where Tkey : IComparable
     {

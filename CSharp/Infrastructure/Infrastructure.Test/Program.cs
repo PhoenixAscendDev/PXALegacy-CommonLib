@@ -10,7 +10,12 @@ namespace Infrastructure.Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(JB2.Info.Project);
+            //Console.WriteLine(JB2.Info.Project);
+
+
+            var rng = JB2.Global.RNG;
+
+            Console.WriteLine(rng.ToString());
             Console.ReadLine();
         }
     }

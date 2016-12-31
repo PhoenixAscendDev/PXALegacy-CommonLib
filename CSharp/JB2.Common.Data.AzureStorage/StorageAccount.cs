@@ -76,7 +76,18 @@ namespace JB2.Common.Data
 
         public static StorageAccount FromAzureStorage(string accountName, string accountkey)
         {
-            var storage = AzureHelper.GetStorageAccount(accountName, accountkey);
+            CloudStorageAccount storage = null;
+            try
+            {
+                storage = AzureHelper.GetStorageAccount(accountName, accountkey);
+                var account = new StorageAccount(storage);
+
+            }
+            catch(Exception ex)
+            {
+                storage = Microsoft.WindowsAzure.Storage.CloudStorageAccount.DevelopmentStorageAccount;
+                
+            }
             return new StorageAccount(storage);
         }
 

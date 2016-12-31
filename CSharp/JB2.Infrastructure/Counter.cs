@@ -188,19 +188,5 @@ namespace JB2.Infrastructure
             }
         }
 
-        
-        //private static DynamicTableEntity counterEntity
-        //{
-        //    get
-        //    {
-        //        var e = new DynamicTableEntity();
-        //        e.Properties.Add( )
-        //        var e = new DynamicTableEntity(partitionKey, rowKey, "*",
-        //        new Dictionary<string, EntityProperty>{
-        //        {"Prop1", new EntityProperty("stringVal")},
-        //        {"Prop2", new EntityProperty(DateTimeOffset.UtcNow)},
-        //        });
-        //    }
-        //}
-    }
+      }
 }

@@ -83,7 +83,10 @@ namespace JB2.Common
             }
         }
 
-
+        public static Tag ToTag(this string str, string seperator=":")
+        {
+            return Tag.FromString(str, seperator);
+        }
     }
 
     public static class ObjectExtensions

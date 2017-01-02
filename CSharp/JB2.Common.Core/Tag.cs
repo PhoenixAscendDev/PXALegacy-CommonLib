@@ -17,6 +17,19 @@ namespace JB2.Common
             return t.ToString();
         }
 
+        public static Tag FromString(string str, string seperator = ":")
+        {
+            try
+            {
+                string[] strArray = str.Split(seperator);
+                return new Tag(strArray[0], strArray[1]);
+            }
+            catch (Exception ex)
+            {
+                return new Common.Tag(string.Empty, str);
+            }
+        }
+
 
     }
     public class Tag<TKey,TValue>
@@ -32,9 +45,19 @@ namespace JB2.Common
 
         public override string ToString()
         {
+            return ToString(":");
+        }
+
+        public string ToString(char seperator)
+        {
+            return ToString(seperator.ToString());
+        }
+
+        public  string ToString( string seperator)
+        {
             StringBuilder str = new StringBuilder();
             str.Append(TagName.ToString());
-            str.Append(":");
+            str.Append(seperator);
             str.Append(Value.ToString());
 
             return str.ToString();
@@ -52,6 +75,9 @@ namespace JB2.Common
             return kv;
         }
 
-
+        public static implicit operator string (Tag<TKey,TValue> t)
+        {
+            return t.ToString();
+        }
     }
 }

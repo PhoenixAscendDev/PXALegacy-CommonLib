@@ -5,9 +5,73 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class ServiceResult : IServiceResult
+    public class ServiceResult : ServiceResult<object>
+    {
+        #region Constructor
+
+        public ServiceResult(object obj) : base(obj)
+        {
+
+        }
+
+
+        public ServiceResult() : base()
+        {
+
+        }
+
+        public ServiceResult(Exception ex) : base(ex)
+        {
+
+        }
+
+        #endregion Constructor
+
+        public static implicit operator ServiceResult(bool b)
+        {
+            return (ServiceResult)b;
+        }
+
+        public static implicit operator bool(ServiceResult sr)
+        {
+            return (bool)sr;
+        }
+
+        public static implicit operator Exception(ServiceResult sr)
+        {
+            return (Exception)sr;
+        }
+
+        public static implicit operator List<IValidation>(ServiceResult sr)
+        {
+            return (List<IValidation>)sr;
+
+        }
+
+        public static implicit operator ServiceResult(List<IValidation> v)
+        {
+            return (ServiceResult)v;
+        }
+
+        public static implicit operator ServiceResult(string s)
+        {
+            return (ServiceResult)s;
+        }
+
+
+    }
+
+    public class ServiceResult<Tobject> : IServiceResult<Tobject>
     {
         private List<IValidation> _validation;
+        private Tobject _object;
+
+
+        public ServiceResult(Tobject obj)
+        {
+            _object = obj;
+        }
+
 
         public ServiceResult()
         {
@@ -46,17 +110,22 @@ namespace JB2.Common
             }
         }
 
-        public static implicit operator bool(ServiceResult sr)
+        public Tobject ToObject()
+        {
+            return _object;
+        }
+
+        public static implicit operator bool(ServiceResult<Tobject> sr)
         {
             return sr._validation == null || sr._validation.Count == 0 || !sr._validation.Exists(v => !v.IsValid);
         }
 
-        public static implicit operator ServiceResult(bool b)
+        public static implicit operator ServiceResult<Tobject>(bool b)
         {
-            return new ServiceResult() { _validation = b ? null : new List<IValidation>(new IValidation[] { new Validation() }) };
+            return new ServiceResult<Tobject>() { _validation = b ? null : new List<IValidation>(new IValidation[] { new Validation() }) };
         }
 
-        public static implicit operator Exception(ServiceResult sr)
+        public static implicit operator Exception(ServiceResult<Tobject> sr)
         {
             if (sr.Count > 0)
                 return sr._validation[0].ToException();
@@ -64,21 +133,27 @@ namespace JB2.Common
                 return new ResultException("IsValid");
         }
 
-        public static implicit operator List<IValidation>(ServiceResult sr)
+        public static implicit operator Tobject(ServiceResult<Tobject> sr)
+        {
+            return sr.ToObject();
+        }
+
+        public static implicit operator List<IValidation>(ServiceResult<Tobject> sr)
         {
             return sr.Validation;
 
         }
 
-        public static implicit operator ServiceResult(List<IValidation> v)
+        public static implicit operator ServiceResult<Tobject>(List<IValidation> v)
         {
-            return new ServiceResult() { _validation = v, };
+            return new ServiceResult<Tobject>() { _validation = v, };
         }
 
-        public static implicit operator ServiceResult(string s)
+        public static implicit operator ServiceResult<Tobject>(string s)
         {
-            return new ServiceResult { _validation = new List<IValidation>(new IValidation[] { new Validation() { Message = string.IsNullOrEmpty(s) ? null : s, } }) };
+            return new ServiceResult<Tobject>{ _validation = new List<IValidation>(new IValidation[] { new Validation() { Message = string.IsNullOrEmpty(s) ? null : s, } }) };
         }
+
 
         public IValidation[] ToArray()
         {

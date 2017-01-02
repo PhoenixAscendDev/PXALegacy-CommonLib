@@ -225,6 +225,23 @@ namespace JB2.Common.Data
 
         #endregion Deletes
 
+        #region Counts
+
+        public int GetCountByPartitionKey(string partitionKey)
+        {
+            TableQuery<DynamicTableEntity> query = new TableQuery<DynamicTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey)).Select(new List<string> { "PartitionKey", "RowKey", "Timestamp" });
+
+            return this.ExecuteQuery<DynamicTableEntity>(query, 0).Count();
+        }
+
+        #endregion Counts
+
+        public int GetCountByRowKeyStartWith(string partitionKey, string startwith)
+        {
+            var query = new TableQuery<DynamicTableEntity>().Where(startsWithfilter(partitionKey, startwith)).Select(new List<string> { "PartitionKey", "RowKey", "Timestamp" });
+            return this.ExecuteQuery<DynamicTableEntity>(query, 0).Count();
+        }
+
         public IEnumerable<T> ExecuteQuery<T>(TableQuery<T> query, int noOfRecords = 0) where T : ITableEntity, new()
         {
             List<T> result = null;

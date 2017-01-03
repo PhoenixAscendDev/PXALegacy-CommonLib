@@ -88,6 +88,8 @@ namespace JB2.Common.Log
         #region ITags
         public IEnumerable<Tag> GetTags()
         {
+            if (_tags == null)
+                return new Tag[0];
             return _tags;
         }
 

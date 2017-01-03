@@ -33,8 +33,8 @@ namespace JB2.Infrastructure.Test
 
             var a = JB2.Infrastructure.Storage.GraphAccount;
 
-
-            
+            var logger = new JB2.Infrastructure.ProjectLogger(new JB2.Common.Log.AzureRepo(JB2.Infrastructure.Storage.LogAccount.GetTable("gabby2")));
+            project.Logger = logger;
             project.Logger.LogInformation("This is a test message");
             Console.ReadLine();
         }

@@ -55,12 +55,12 @@
       <HintPath>packages\JB2.Date.0.2.0\lib\JB2.Common.Date.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Log, Version=0.2.1.19800, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\JB2.Log.0.2.1\lib\JB2.Common.Log.dll</HintPath>
+    <Reference Include="JB2.Common.Log, Version=0.3.0.28091, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Log.0.3.0\lib\JB2.Common.Log.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JB2.Common.Log.AzureRepo, Version=0.2.3.3738, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\JB2.Log.AzureRepo.0.2.3.1\lib\JB2.Common.Log.AzureRepo.dll</HintPath>
+    <Reference Include="JB2.Common.Log.AzureRepo, Version=0.3.0.28091, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JB2.Log.AzureRepo.0.3.0\lib\JB2.Common.Log.AzureRepo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JB2.Common.Map, Version=0.2.3.3053, Culture=neutral, processorArchitecture=MSIL">

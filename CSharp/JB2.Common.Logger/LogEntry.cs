@@ -59,6 +59,7 @@ namespace JB2.Common.Log
             _message = message;
             _serverity = serverity;
             _props.SetProperty<string>("LogCode", logCode);
+            _tags = new BaseCollection<Tag>();
 
         }
 

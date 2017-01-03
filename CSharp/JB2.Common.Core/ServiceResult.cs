@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class ServiceResult : ServiceResult<object>
+    public class ServiceResult : ServiceResult<object>, IServiceResult
     {
         #region Constructor
 
@@ -27,35 +27,38 @@ namespace JB2.Common
 
         #endregion Constructor
 
-        public static implicit operator ServiceResult(bool b)
-        {
-            return (ServiceResult)b;
-        }
-
         public static implicit operator bool(ServiceResult sr)
         {
-            return (bool)sr;
+            return sr._validation == null || sr._validation.Count == 0 || !sr._validation.Exists(v => !v.IsValid);
+        }
+
+        public static implicit operator ServiceResult(bool b)
+        {
+            return new ServiceResult() { _validation = b ? null : new List<IValidation>(new IValidation[] { new Validation() }) };
         }
 
         public static implicit operator Exception(ServiceResult sr)
         {
-            return (Exception)sr;
+            if (sr.Count > 0)
+                return sr._validation[0].ToException();
+            else
+                return new ResultException("IsValid");
         }
 
         public static implicit operator List<IValidation>(ServiceResult sr)
         {
-            return (List<IValidation>)sr;
+            return sr.Validation;
 
         }
 
         public static implicit operator ServiceResult(List<IValidation> v)
         {
-            return (ServiceResult)v;
+            return new ServiceResult() { _validation = v, };
         }
 
         public static implicit operator ServiceResult(string s)
         {
-            return (ServiceResult)s;
+            return new ServiceResult { _validation = new List<IValidation>(new IValidation[] { new Validation() { Message = string.IsNullOrEmpty(s) ? null : s, } }) };
         }
 
 
@@ -63,8 +66,8 @@ namespace JB2.Common
 
     public class ServiceResult<Tobject> : IServiceResult<Tobject>
     {
-        private List<IValidation> _validation;
-        private Tobject _object;
+        protected  List<IValidation> _validation;
+        protected  Tobject _object;
 
 
         public ServiceResult(Tobject obj)
@@ -81,7 +84,8 @@ namespace JB2.Common
         public ServiceResult(Exception ex)
         {
             _validation = new List<IValidation>();
-            _validation.Add(new Validation(ex.ToString(), ex.Message) { IsValid = false });
+            _validation.Add(new Validation(ex));
+           // _validation.Add(new Validation(ex.ToString(), ex.Message) { IsValid = false });
         }
 
         public int Count

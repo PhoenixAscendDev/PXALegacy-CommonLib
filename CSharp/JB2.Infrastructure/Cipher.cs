@@ -8,7 +8,7 @@ namespace JB2.Infrastructure
 {
     public static class Cipher
     {
-
+        
         public static string Encrypt(string plainText)
         {
             //get key index

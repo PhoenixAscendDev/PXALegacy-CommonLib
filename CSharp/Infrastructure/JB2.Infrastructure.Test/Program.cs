@@ -12,30 +12,18 @@ namespace JB2.Infrastructure.Test
     {
         static void Main(string[] args)
         {
-            // var list = JB2.Infrastructure.Counter.GetNext("dewdrop", 10, 1000000);
-            //var id = JB2.Infrastructure.Counter.GetNext("fivetwo_entryitem");
-            //Console.WriteLine(id);
 
-            //for (int i = 1; i <= 20; i++)
-            //{
+            string plainText = "ThisIsATestItwouldBeAwesomeIfThisActuallyWorksWhyDoesSometimeIfFails";
 
-            //}
-
-            var project = JB2.Info.Project;
-
-            // var result = JB2.Configuration.GetAppSetting("JB2:gerbigStorageKey");
-            var result = JB2.Info.Project.GetRNG();
-            Console.WriteLine(result);
-            //foreach(long i in list)
-            //{
-            //    Console.WriteLine( JB2.Common.NewID.Base62(i));
-            //}
-
-            var a = JB2.Infrastructure.Storage.GraphAccount;
-
-            var logger = new JB2.Infrastructure.ProjectLogger(new JB2.Common.Log.AzureRepo(JB2.Infrastructure.Storage.LogAccount.GetTable("gabby2")));
-            project.Logger = logger;
-            project.Logger.LogInformation("This is a test message");
+            for (int i = 0; i < 15; i++)
+            {
+                string encryptText = JB2.Infrastructure.Cipher.Encrypt(plainText);
+                string decryptText = JB2.Infrastructure.Cipher.Decrypt(encryptText);
+                //Console.WriteLine(plainText);
+                //Console.WriteLine(encryptText);
+                //Console.WriteLine(decryptText);
+                Console.WriteLine(plainText == decryptText);
+            }
             Console.ReadLine();
         }
     }

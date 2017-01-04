@@ -21,30 +21,33 @@ namespace JB2.Infrastructure
                 var keys = JB2.Configuration.GetAppSetting(keyIndexSettingName).Split(',');
 
                 var randomIndex = JB2.Common.RNG.ThreadSafe(keys.Count());
-                //keyIndex = keys[randomIndex];
+                keyIndex = keys[randomIndex];
 
-                keyIndex = "fjcq";
-                key = getkey(randomIndex);
+                //keyIndex = "aaaa";
+                key = getkeybyRef(keyIndex);
+                //key = getkey(randomIndex);
 
                 encryptText = cindyEncrypt(plainText, key.Substring(0,plainText.Length));
+
+                encryptText = "a" + keyIndex + encryptText;
 
                 //Console.WriteLine("encrypt keyIndex:" + keyIndex);
                 //Console.WriteLine("encrypt presalt:" + encryptText);
                 //embed the keyIndex into the final text
-                var keyPositionSettingName = "JB2:Cipher:position-A";
+ 
 
-                var positions = JB2.Configuration.GetAppSetting(keyPositionSettingName).Split(',');
-                for (int i = 0; i < positions.Count(); i++)
-                {
-                    int position = i;
-                    int.TryParse(positions[i], out position);
+                //var positions = JB2.Configuration.GetAppSetting(keyPositionSettingName).Split(',');
+                //for (int i = 0; i < positions.Count(); i++)
+                //{
+                //    int position = i;
+                //    int.TryParse(positions[i], out position);
 
-                    if (position > encryptText.Length)
-                        position = 0;
+                //    if (position > encryptText.Length)
+                //        position = 0;
 
-                    encryptText = encryptText.Insert(position, keyIndex[i].ToString());
-                }
-                //Console.WriteLine("encript final:" + encryptText);
+                //    encryptText = encryptText.Insert(position, keyIndex[i].ToString());
+                //}
+                //Console.WriteLine("encrypt final:" + encryptText);
             }
             catch (Exception ex)
             {
@@ -62,42 +65,48 @@ namespace JB2.Infrastructure
             try
             {
                 //Step 1 obtain the embedded keyindex
+                
+
+
                 var keyPositionSettingName = "JB2:Cipher:position-A";
                 var positions = JB2.Configuration.GetAppSetting(keyPositionSettingName).Split(',');
                 string keyIndex = string.Empty;
 
-                for (int i = 0; i < positions.Count(); i++)
-                {
-                    int position = i;
-                    int.TryParse(positions[i], out position);
+                keyIndex = encryptedText.Substring(1, 4);
 
-                    if (position > encryptedText.Length)
-                        position = 0;
-                    keyIndex = keyIndex + encryptedText[position];
-                }
-                keyIndex = "fjcq";
+                //for (int i = 0; i < positions.Count(); i++)
+                //{
+                //    int position = i;
+                //    int.TryParse(positions[i], out position);
+
+                //    if (position > encryptedText.Length)
+                //        position = 0;
+                //    keyIndex = keyIndex + encryptedText[position];
+                //}
+                //keyIndex = "haot";
 
                 //Console.WriteLine("decrypt keyIndex:" + keyIndex);
                 //Console.WriteLine("decrypt presalt:" + encryptedText);
                 //remove the keyindexs
-                for (int i = positions.Count()-1; i >= 0; i--)
-                {
-                    int position = i;
-                    int.TryParse(positions[i], out position);
 
-                    if (position > encryptedText.Length)
-                        position = 0;
-                    encryptedText = encryptedText.Remove(position, 1);
-                }
+                //for (int i = positions.Count()-1; i >= 0; i--)
+                //{
+                //    int position = i;
+                //    int.TryParse(positions[i], out position);
+
+                //    if (position > encryptedText.Length)
+                //        position = 0;
+                //    encryptedText = encryptedText.Remove(position, 1);
+                //}
 
                 //Step 2 obtain the key
-                var keySettingName = "JB2:Cipher:{0}";
 
-                var key = JB2.Configuration.GetAppSetting(string.Format(keySettingName, keyIndex));
+                encryptedText = encryptedText.Remove(0, 5);
+                var key = getkeybyRef(keyIndex);
 
                 //Setp 3 decrypt the key
                 var plainText = cindyDecrypt(encryptedText, key.Substring(0, encryptedText.Length));
-                //Console.WriteLine("encriptfinal:" + encryptedText);
+                //Console.WriteLine("decript final:" + encryptedText);
 
                 return plainText;
                 
@@ -135,6 +144,15 @@ namespace JB2.Infrastructure
 
                 return JB2.Common.NewID.Base62();
             }
+        }
+
+        private static string getkeybyRef(string keyRef)
+        {
+            var keySettingName = "JB2:Cipher:{0}";
+
+            var key = JB2.Configuration.GetAppSetting(string.Format(keySettingName, keyRef));
+
+            return key;
         }
 
         private static int getkeyCount()

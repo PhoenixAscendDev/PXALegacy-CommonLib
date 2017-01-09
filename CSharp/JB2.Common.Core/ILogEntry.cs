@@ -19,6 +19,8 @@ namespace JB2.Common
         DateTime LogDate { get; }
 
         string LogCode { get; }
+
+
     }
 
     

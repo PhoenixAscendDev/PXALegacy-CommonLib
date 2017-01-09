@@ -83,12 +83,30 @@ namespace JB2.Common.Data
                 var account = new StorageAccount(storage);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 storage = Microsoft.WindowsAzure.Storage.CloudStorageAccount.DevelopmentStorageAccount;
-                
+
             }
             return new StorageAccount(storage);
+        }
+
+        public static StorageAccount FromAzureStorage(CloudStorageAccount azure)
+        {
+            
+            try
+            {
+                return new StorageAccount(azure);
+
+            }
+            catch (Exception ex)
+            {
+                var d = Microsoft.WindowsAzure.Storage.CloudStorageAccount.DevelopmentStorageAccount;
+
+                return new StorageAccount(d);
+
+            }
+            
         }
 
         #endregion From 

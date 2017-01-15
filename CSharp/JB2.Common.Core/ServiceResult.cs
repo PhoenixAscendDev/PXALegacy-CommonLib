@@ -129,6 +129,8 @@ namespace JB2.Common
             return new ServiceResult<Tobject>() { _validation = b ? null : new List<IValidation>(new IValidation[] { new Validation() }) };
         }
 
+
+
         public static implicit operator Exception(ServiceResult<Tobject> sr)
         {
             if (sr.Count > 0)
@@ -140,6 +142,11 @@ namespace JB2.Common
         public static implicit operator Tobject(ServiceResult<Tobject> sr)
         {
             return sr.ToObject();
+        }
+
+        public static implicit operator ServiceResult<Tobject>(Tobject obj)
+        {
+            return new ServiceResult<Tobject>() { _validation = null, _object = obj };
         }
 
         public static implicit operator List<IValidation>(ServiceResult<Tobject> sr)

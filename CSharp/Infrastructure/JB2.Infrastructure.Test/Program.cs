@@ -28,7 +28,7 @@ namespace JB2.Infrastructure.Test
 
             Stopwatch sw = new Stopwatch();
 
-            int testloop = 10;
+            int testloop = 500;
             sw.Start();
             for (int i = 0; i < testloop; i++)
             {
@@ -52,7 +52,7 @@ namespace JB2.Infrastructure.Test
                 //Console.WriteLine();
                 //Console.WriteLine("decript:" + "(" + decryptText.Count() + ")" + decryptText);
                 //Console.WriteLine("");
-               Console.WriteLine( (plainText == decryptText) && (plainText != encryptText));
+               //Console.WriteLine( (plainText == decryptText) && (plainText != encryptText));
             }
 
             sw.Stop();
@@ -67,11 +67,13 @@ namespace JB2.Infrastructure.Test
 
                 var et = JB2.Infrastructure.Cipher.Encrypt2(plainText);
 
-               //Console.WriteLine("----Decrypt----");
+                //Console.WriteLine("----Decrypt----");
+                Console.WriteLine(et);
+                Console.WriteLine("");
 
-                var dt = JB2.Infrastructure.Cipher.Decrypt2(et);
+               // var dt = JB2.Infrastructure.Cipher.Decrypt2(et);
 
-                Console.WriteLine((plainText == dt) && (et != plainText));
+                //Console.WriteLine((plainText == dt) && (et != plainText));
             }
 
             sw.Stop();

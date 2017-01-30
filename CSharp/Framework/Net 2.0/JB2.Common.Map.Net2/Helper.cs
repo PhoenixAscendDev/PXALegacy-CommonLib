@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 
 using JB2.Common;
@@ -56,7 +55,7 @@ namespace JB2.Helpers
                         //if (!(CultureList.Contains(GetRegionInfo.EnglishName)))
                         //{
                         Country c = new Country(GetRegionInfo.ThreeLetterISORegionName, GetRegionInfo.EnglishName);
-                        if (!CultureList.Contains<Country>(c))
+                        if (!CultureList.Contains(c))
                             CultureList.Add(c);
                         //}
                     }
@@ -67,6 +66,15 @@ namespace JB2.Helpers
             }
 
         }
+
+        public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute
+        {
+            var type = enumVal.GetType();
+            var memInfo = type.GetMember(enumVal.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
+            return (attributes.Length > 0) ? (T)attributes[0] : null;
+        }
+
         public static USAStates AllUSAStates
         {
             get
@@ -78,7 +86,6 @@ namespace JB2.Helpers
             }
 
         }
-
 
 
         public static Country GetCountryByCountryCode(string code)

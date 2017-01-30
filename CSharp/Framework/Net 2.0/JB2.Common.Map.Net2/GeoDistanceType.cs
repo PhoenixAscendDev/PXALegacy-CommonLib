@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace JB2.Common.Enum
+{
+    public enum GeoDistanceType
+    {
+        Miles = 0,
+        Kilometers = 1
+    }
+}

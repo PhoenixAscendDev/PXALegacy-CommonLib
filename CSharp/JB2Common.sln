@@ -60,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Game", "JB2.Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.StockMarket", "JB2.Common.StockMarket\JB2.Common.StockMarket.csproj", "{BA16C116-FA82-469B-9296-2040A4B7D9D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Logger.Net2", "Framework\Net 2.0\JB2.Common.Logger.Net2\JB2.Common.Logger.Net2.csproj", "{43C0CB5C-C27A-4327-9385-CFA421B6CE43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -162,6 +164,10 @@ Global
 		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA16C116-FA82-469B-9296-2040A4B7D9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C0CB5C-C27A-4327-9385-CFA421B6CE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C0CB5C-C27A-4327-9385-CFA421B6CE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C0CB5C-C27A-4327-9385-CFA421B6CE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C0CB5C-C27A-4327-9385-CFA421B6CE43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

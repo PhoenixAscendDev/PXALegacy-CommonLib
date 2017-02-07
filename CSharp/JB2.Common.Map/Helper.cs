@@ -79,8 +79,6 @@ namespace JB2.Helpers
 
         }
 
-
-
         public static Country GetCountryByCountryCode(string code)
         {
             if (string.IsNullOrEmpty(code))

@@ -26,9 +26,6 @@ namespace JB2.Common
 
             foreach(Enum.USAStateType state in states)
             {
-
-
-
                 StateProvince sp = new StateProvince(state.ToString(), state.GetAttributeOfType<Description>().Value);
                 _dictionay.Add(state,sp);
             }

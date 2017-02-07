@@ -144,6 +144,7 @@
     <Compile Include="Tag.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="TimeRange.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Validation.cs" />
     <Compile Include="VersionNumber.cs" />
   </ItemGroup>

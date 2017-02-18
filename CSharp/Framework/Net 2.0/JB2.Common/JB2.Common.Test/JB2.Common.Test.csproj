@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JB2.Common.Test</RootNamespace>
     <AssemblyName>JB2.Common.Test</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -54,9 +54,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.Net35.csproj">
       <Project>{dfb5b63b-f413-4ac0-9480-36410d9735da}</Project>
-      <Name>JB2.Common.Core</Name>
+      <Name>JB2.Common.Core.Net35</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    [Serializable()]
+
     public class MetaDataCollection : IDNamePair, IEnumerable<IMetaData>, IObjectCollection<IMetaData>
     {
         #region Fields

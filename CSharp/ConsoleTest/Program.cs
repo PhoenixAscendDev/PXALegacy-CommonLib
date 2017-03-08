@@ -129,7 +129,7 @@ namespace ConsoleTest
 
             for (int i = 0; i < 3; i++)
             {
-                var id = JB2.Common.NewID.ProductID(4);
+                var id = JB2.Common.NewID.ProductID(1);
                 Console.WriteLine(id);
             }
 

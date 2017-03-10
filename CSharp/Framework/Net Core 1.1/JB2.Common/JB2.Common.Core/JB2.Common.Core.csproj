@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Version>0.4.5</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Joshua Bennett</Authors>
+    <Company>JBsquared LLC</Company>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+</Project>

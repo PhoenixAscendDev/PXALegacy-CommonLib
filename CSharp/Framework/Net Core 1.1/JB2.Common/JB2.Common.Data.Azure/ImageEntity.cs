@@ -21,7 +21,7 @@ namespace JB2.Common.Data
 
         }
 
-        [EncryptProperty]
+        //[EncryptProperty]
         public string Url { get; set; }
         public string ThumbnailUrl { get; set; }
 

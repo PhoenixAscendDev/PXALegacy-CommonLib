@@ -36,7 +36,7 @@ namespace JB2.Common.Extensions
                 prefixCondition
                 );
             var query = new TableQuery<TElement>().Where(filterString);
-            return table.ExecuteQuery<TElement>(query).Take(recordLimit);
+            return table.ExecuteQuerySegmentedAsync<TElement>(query,null).Result.Take(recordLimit);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace JB2.Common.Data
             _blobclient = account.CreateCloudBlobClient();
             _container = _blobclient.GetContainerReference(containerName);
 
-            _container.CreateIfNotExists();
+            _container.CreateIfNotExistsAsync();
         }
 
 
@@ -51,7 +51,7 @@ namespace JB2.Common.Data
 
             using (var stream = new MemoryStream(content, writable: false))
             {
-                blockBlob.UploadFromStream(stream);
+                blockBlob.UploadFromStreamAsync(stream);
             }
 
             return true;
@@ -61,7 +61,7 @@ namespace JB2.Common.Data
         {
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
-            blockBlob.UploadFromStream(stream);
+            blockBlob.UploadFromStreamAsync(stream);
 
             return true;
 
@@ -78,7 +78,7 @@ namespace JB2.Common.Data
 
             //return result;
 
-            blockBlob.FetchAttributes();
+            blockBlob.FetchAttributesAsync();
             long fileByteLength = blockBlob.Properties.Length;
             byte[] fileContent = new byte[fileByteLength];
             //for (int i = 0; i < fileByteLength; i++)
@@ -86,7 +86,7 @@ namespace JB2.Common.Data
             //    fileContent[i] = 0x20;
             //}
 
-            blockBlob.DownloadToByteArray(fileContent, 0);
+            blockBlob.DownloadToByteArrayAsync(fileContent, 0);
 
             return fileContent;
 
@@ -109,7 +109,7 @@ namespace JB2.Common.Data
 
             MemoryStream result = new MemoryStream();
 
-            blockBlob.DownloadToStream(result);
+            blockBlob.DownloadToStreamAsync(result);
 
             return result;
 
@@ -139,7 +139,7 @@ namespace JB2.Common.Data
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
             // Delete the blob.
-            blockBlob.Delete();
+            blockBlob.DeleteAsync();
 
             return true;
 

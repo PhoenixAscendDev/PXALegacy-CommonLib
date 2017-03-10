@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Exceptions
 {
-    public class StorageTableException : System.ApplicationException
+    public class StorageTableException : System.Exception
     {
         private string stackTraceOverride;
         protected Microsoft.WindowsAzure.Storage.CloudStorageAccount _account;
@@ -36,7 +36,7 @@ namespace JB2.Common.Exceptions
             this.stackTraceOverride = String.Join("\r\n", lines.ToArray());
         }
 
-        public override string StackTrace
+        public  string StackTrace
         {
             get
             {

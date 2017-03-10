@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Reflection;
+
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace JB2.Common.Data

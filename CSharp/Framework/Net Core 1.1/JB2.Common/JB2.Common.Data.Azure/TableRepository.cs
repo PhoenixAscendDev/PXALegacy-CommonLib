@@ -45,7 +45,7 @@ namespace JB2.Common.Data
             _tableClient = account.CreateCloudTableClient();
             _table = _tableClient.GetTableReference(tableName);
 
-            _table.CreateIfNotExists();
+            _table.CreateIfNotExistsAsync();
 
 
             //_key = new RsaKey("private:key1");
@@ -71,16 +71,16 @@ namespace JB2.Common.Data
             {
                
                 case TableInsertMode.Insert:
-                    _table.Execute(TableOperation.Insert(entity), encypt ? this._insertOptions : null);
+                    _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null,null);
                     break;
                 case TableInsertMode.Merge:
-                    _table.Execute(TableOperation.InsertOrMerge(entity), encypt ? this._insertOptions : null);
+                    _table.ExecuteAsync(TableOperation.InsertOrMerge(entity), encypt ? this._insertOptions : null, null);
                     break;
                 case TableInsertMode.Replace:
-                    _table.Execute(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null);
+                    _table.ExecuteAsync(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null, null);
                     break;
                 default:
-                    _table.Execute(TableOperation.Insert(entity), encypt ? this._insertOptions : null);
+                    _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null, null);
                     break;
 
             }
@@ -93,10 +93,10 @@ namespace JB2.Common.Data
         {
             if (replace)
             {
-                _table.Execute(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null);
+                _table.ExecuteAsync(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null,null);
             }
             else
-                _table.Execute(TableOperation.Insert(entity), encypt ? this._insertOptions : null);
+                _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null,null);
         }
         public void Insert<T>(T entity) where T : ITableEntity
         {
@@ -113,7 +113,7 @@ namespace JB2.Common.Data
             TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
 
             // Execute the operation.
-            TableResult retrievedResult = _table.Execute(retrieveOperation);
+            TableResult retrievedResult = _table.ExecuteAsync(retrieveOperation).Result;
 
             // Assign the result to a object.
             var updateEntity = (T)retrievedResult.Result;
@@ -124,7 +124,7 @@ namespace JB2.Common.Data
                 TableOperation updateOperation = TableOperation.Replace(updateEntity);
 
                 // Execute the operation.
-                _table.Execute(updateOperation);
+                _table.ExecuteAsync(updateOperation);
             }
             return true;
         }
@@ -138,7 +138,7 @@ namespace JB2.Common.Data
                 TableOperation updateOperation = TableOperation.Replace(entity);
 
                 // Execute the operation.
-                _table.Execute(updateOperation);
+                _table.ExecuteAsync(updateOperation);
                 isUpdate = true;
             }
             catch (Exception ex)
@@ -168,7 +168,7 @@ namespace JB2.Common.Data
         {
             var retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
             // Execute the retrieve operation.
-            var retrievedResult = _table.Execute(retrieveOperation, decrypt ? _retrieveOptions : null);
+            var retrievedResult = _table.ExecuteAsync(retrieveOperation, decrypt ? _retrieveOptions : null,null);
             return retrievedResult.Result as T;
         }
 
@@ -188,7 +188,7 @@ namespace JB2.Common.Data
             TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
 
             // Execute the operation.
-            var retrievedResult = _table.Execute(retrieveOperation);
+            var retrievedResult = _table.ExecuteAsync(retrieveOperation).Result;
 
             // Assign the result to a CustomerEntity.
             var deleteEntity = (T)retrievedResult.Result;
@@ -199,7 +199,7 @@ namespace JB2.Common.Data
                 TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
                 // Execute the operation.
-                _table.Execute(deleteOperation);
+                _table.ExecuteAsync(deleteOperation);
                 
             }
 
@@ -251,7 +251,7 @@ namespace JB2.Common.Data
             
             if (noOfRecords != 0 && noOfRecords <= 1000   )
             {
-                result = _table.ExecuteQuery<T>(query).Take(noOfRecords).ToList();
+                result = _table.ExecuteQuerySegmentedAsync<T>(query,null).Result.Take(noOfRecords).ToList();
             }
             else
             {
@@ -263,7 +263,7 @@ namespace JB2.Common.Data
                     ///https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/
                     // Retrieve a segment (up to 1,000 entities).
                     TableQuerySegment<T> tableQueryResult =
-                         _table.ExecuteQuerySegmented(query, continuationToken);
+                         _table.ExecuteQuerySegmentedAsync(query, continuationToken).Result;
 
                     // Assign the new continuation token to tell the service where to
                     // continue on the next iteration (or null if it has reached the end).
@@ -298,12 +298,14 @@ namespace JB2.Common.Data
 
                 _insertOptions = new TableRequestOptions()
                 {
-                    EncryptionPolicy = new TableEncryptionPolicy(this._key, null)
+                     
+                    
+                    //EncryptionPolicy = new TableEncryptionPolicy(this._key, null)
                 };
 
                 _retrieveOptions = new TableRequestOptions()
                 {
-                    EncryptionPolicy = new TableEncryptionPolicy(null, this._resolver)
+                   // EncryptionPolicy = new TableEncryptionPolicy(null, this._resolver)
                 };
 
 
@@ -328,7 +330,7 @@ namespace JB2.Common.Data
                 {
                     if( batch.Count == 100)
                     {
-                        var batchResults = _table.ExecuteBatch(batch);
+                        var batchResults = _table.ExecuteBatchAsync(batch).Result;
                         result.AddRange(batchResults);
                         batch = new TableBatchOperation();
                     }
@@ -336,7 +338,7 @@ namespace JB2.Common.Data
                 }
                 if(batch.Count > 0)
                 {
-                    var batchResults = _table.ExecuteBatch(batch);
+                    var batchResults = _table.ExecuteBatchAsync(batch).Result;
                     result.AddRange(batchResults);
                 }
             }

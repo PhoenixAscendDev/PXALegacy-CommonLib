@@ -31,6 +31,11 @@ namespace JB2.Common.Data
             return new AzureBlobRepository(_azureStorage, containerName);
         }
 
+        public AzureBlobRepository GetBlob(string containerName)
+        {
+            return new AzureBlobRepository(_azureStorage, containerName);
+        }
+
         public AzureTableRepository GetTable(string tableName)
         {
             try

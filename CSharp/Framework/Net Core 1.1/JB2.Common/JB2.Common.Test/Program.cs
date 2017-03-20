@@ -4,6 +4,10 @@ using Microsoft.WindowsAzure.Storage;
 using JB2.Common.Data;
 using Microsoft.WindowsAzure.Storage.Table;
 
+
+using System.Net;
+using System.IO;
+
 using System.Text;
 
 namespace JB2.Common.Test
@@ -55,9 +59,8 @@ namespace JB2.Common.Test
                 var urlstr = "http://id.jbsquared.com/test/?subject={0}";
                 //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
 
-                var playerid = "PA-" + ConvertToHash(string.Format(urlstr, subject));
+                
 
-                Console.WriteLine(playerid);
             }
 
             string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";
@@ -65,7 +68,12 @@ namespace JB2.Common.Test
             var account = StorageAccount.FromAzureStorage(storageAccount);
 
             var e =  account.GetTable("player").GetEntity<DynamicTableEntity>("testp", "testr");
-            Console.WriteLine(e);
+
+            var p = account.GetBlog("general").GetByteArray("avatar/partisan plot.jpg");
+
+            account.GetBlog("general").Insert(p, "avatar/new.jpg");
+
+            Console.WriteLine(p.Length);
             Console.ReadLine();
         }
     }

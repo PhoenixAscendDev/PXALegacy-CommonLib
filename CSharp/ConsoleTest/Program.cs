@@ -14,6 +14,9 @@ using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 
+
+using System.Security.Cryptography;
+
 using JB2.Common;
 
 using JB2.Common.Log;
@@ -123,67 +126,133 @@ namespace ConsoleTest
 
         //KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 
+        
+        //public  int GetHashCode(string tohash)
+        //{
+        //    fixed (char* str = tohash)
+        //    {
+        //        char* chPtr = str;
+        //        int num = 352654597;
+        //        int num2 = num;
+        //        int* numPtr = (int*)chPtr;
+        //        for (int i = tohash.Length; i > 0; i -= 4)
+        //        {
+        //            num = (((num << 5) + num) + (num >> 27)) ^ numPtr[0];
+        //            if (i <= 2)
+        //            {
+        //                break;
+        //            }
+        //            num2 = (((num2 << 5) + num2) + (num2 >> 27)) ^ numPtr[1];
+        //            numPtr += 2;
+        //        }
+        //        return (num + (num2 * 1566083941));
+        //    }
+        //}
+
+        static string ConvertToHash(string str)
+        {
+            byte[] sMsgBytes = Encoding.Unicode.GetBytes(str);
+            uint hashnumber = Adler32(sMsgBytes, 0, sMsgBytes.Length);
+            return hashnumber.ToString("X2");
+
+        }
+
+
+        // http://nareshjaiswalgrd.blogspot.com/2016/08/convert-stringtext-to-adler32-checksum.html
+
+        public static uint Adler32(byte[] bytesArray, int byteStart, int bytesToRead, uint checksum=1)
+        {
+            int n;
+            uint s1 = checksum & 0xFFFF;
+            uint s2 = checksum >> 16;
+
+            while (bytesToRead > 0)
+            {
+                n = (3800 > bytesToRead) ? bytesToRead : 3800;
+                bytesToRead -= n;
+
+                while (--n >= 0)
+                {
+                    s1 = s1 + (uint)(bytesArray[byteStart++] & 0xFF);
+                    s2 = s2 + s1;
+                }
+
+                s1 %= 65521;
+                s2 %= 65521;
+            }
+
+            checksum = (s2 << 16) | s1;
+            return checksum;
+        }
+
+
         static void Main(string[] args)
         {
 
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
-                var id = JB2.Common.NewID.ProductID(1);
-                Console.WriteLine(id);
+                var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
+                var urlstr = "http://id.jbsquared.com/test/?subject={0}";
+                //var playerid = JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)));
+                var playerid = ConvertToHash(string.Format(urlstr, subject));
+
+                Console.WriteLine(playerid);
             }
 
-
-
-
-
-
-
-            //var logentries = test.GetLogEntry(JB2.Common.Log.LogSearch.SearchByID("7yL5PlNxvEykzfTKZsdk9g"));
-            //var logentries = test.GetMostRecentLogEntries(2);
-            //Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
-            //System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
-
-            //var test = JB2.Infrastructure.KeyVaultUtility.JB2KeyVaultClient;
-
-            //var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
-
-            //var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
-            //var key2 = JB2.Infrastructure.Vault.RSAKey1;
-            var link = "http://www.jbsquared.com";
-            Console.WriteLine(Regex.IsMatch(link, "^(?i)(https?|ftp)://.*$"));
-            //var link = new Uri("www.jbsquared.com");
-            Console.WriteLine(JB2.Common.NewID.ShortGuid("start_{0}_end"));
-            Console.WriteLine(JB2.Common.NewID.Guid());
-            Console.WriteLine(JB2.Common.NewID.Base62());
-            Console.WriteLine(JB2.Common.NewID.TickHash());
-            Console.WriteLine(JB2.Common.NewID.TimeHash());
-            Console.WriteLine(JB2.Common.NewID.UriHash(new Uri("http://wwww.jbsquared.com")));
-            Console.WriteLine(JB2.Common.NewID.Pronounceable(8));
-            //JB2.Common.RGB rgb = new RGB("fff1f1");
-
-            //Console.WriteLine(rgb.ToString());
-
-            //var countries = JB2.Common.MapHelper.AllCountries;
-
-            //var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
-
-            //JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");
             Console.ReadLine();
-            //JB2.Common.Data.AzureHelper.AccountName = "jb2bowtie";
-            //JB2.Common.Data.AzureHelper.AccountKey = "frIlemrNzlvAbKNhiyYCeW+otbFXBoJb0TodzbgwzF8IBEZMtifrHfx0Y+o1+jwvUL4FcAGYepHlgqrG0iCc1Q==";
 
-            //JB2.Common.Data.AzureBlobRepository cardRepo = new JB2.Common.Data.AzureBlobRepository("gameobjects");
-            //string link = cardRepo.GetUrl("EmptyBingoCard_5x5.png");
 
-            //var webClient = new System.Net.WebClient();
-            //byte[] imageBytes = webClient.DownloadData("https://jb2bowtie.blob.core.windows.net/gameobjects/EmptyBingoCard_5x5.png");
 
-            //System.IO.MemoryStream cardStream = cardRepo.GetStream("EmptyBingoCard_5x5.png");
 
-            ////byte[] cardByte = cardRepo.GetByteArray("EmptyBingoCard_5x5.png");
-            //JB2Image cardimage = JB2Image.FromUrl("https://jb2bowtie.blob.core.windows.net/gameobjects/EmptyBingoCard_5x5.png");
-            //JB2Image cardimage1 = JB2Image.FromByteArray(imageBytes);
+
+
+
+            ////var logentries = test.GetLogEntry(JB2.Common.Log.LogSearch.SearchByID("7yL5PlNxvEykzfTKZsdk9g"));
+            ////var logentries = test.GetMostRecentLogEntries(2);
+            ////Microsoft.Azure.KeyVault.RsaKey key = new RsaKey("private:key1");
+            ////System.Drawing.Font f = JB2.Common.FontHelper.GetFont("ffft1");
+
+            ////var test = JB2.Infrastructure.KeyVaultUtility.JB2KeyVaultClient;
+
+            ////var keyid = JB2.Infrastructure.KeyVaultUtility.CreateRSAKey("JBsquaredRSAKey1");
+
+            ////var key1 = JB2.Infrastructure.KeyVaultUtility.RSAKey1;
+            ////var key2 = JB2.Infrastructure.Vault.RSAKey1;
+            //var link = "http://www.jbsquared.com";
+            //Console.WriteLine(Regex.IsMatch(link, "^(?i)(https?|ftp)://.*$"));
+            ////var link = new Uri("www.jbsquared.com");
+            //Console.WriteLine(JB2.Common.NewID.ShortGuid("start_{0}_end"));
+            //Console.WriteLine(JB2.Common.NewID.Guid());
+            //Console.WriteLine(JB2.Common.NewID.Base62());
+            //Console.WriteLine(JB2.Common.NewID.TickHash());
+            //Console.WriteLine(JB2.Common.NewID.TimeHash());
+            //Console.WriteLine(JB2.Common.NewID.UriHash(new Uri("http://wwww.jbsquared.com")));
+            //Console.WriteLine(JB2.Common.NewID.Pronounceable(8));
+            ////JB2.Common.RGB rgb = new RGB("fff1f1");
+
+            ////Console.WriteLine(rgb.ToString());
+
+            ////var countries = JB2.Common.MapHelper.AllCountries;
+
+            ////var c = countries.FirstOrDefault(x => x.Abbreviation == "USA");
+
+            ////JB2.Common.JB2Color color = JB2Color.FromHex("6B4106");
+            //Console.ReadLine();
+            ////JB2.Common.Data.AzureHelper.AccountName = "jb2bowtie";
+            ////JB2.Common.Data.AzureHelper.AccountKey = "frIlemrNzlvAbKNhiyYCeW+otbFXBoJb0TodzbgwzF8IBEZMtifrHfx0Y+o1+jwvUL4FcAGYepHlgqrG0iCc1Q==";
+
+            ////JB2.Common.Data.AzureBlobRepository cardRepo = new JB2.Common.Data.AzureBlobRepository("gameobjects");
+            ////string link = cardRepo.GetUrl("EmptyBingoCard_5x5.png");
+
+            ////var webClient = new System.Net.WebClient();
+            ////byte[] imageBytes = webClient.DownloadData("https://jb2bowtie.blob.core.windows.net/gameobjects/EmptyBingoCard_5x5.png");
+
+            ////System.IO.MemoryStream cardStream = cardRepo.GetStream("EmptyBingoCard_5x5.png");
+
+            //////byte[] cardByte = cardRepo.GetByteArray("EmptyBingoCard_5x5.png");
+            ////JB2Image cardimage = JB2Image.FromUrl("https://jb2bowtie.blob.core.windows.net/gameobjects/EmptyBingoCard_5x5.png");
+            ////JB2Image cardimage1 = JB2Image.FromByteArray(imageBytes);
         }
     }
 }

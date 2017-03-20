@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+    <ProjectReference Include="..\JB2.Common.Data.Azure\JB2.Common.Data.Azure.csproj" />
+  </ItemGroup>
+
+</Project>

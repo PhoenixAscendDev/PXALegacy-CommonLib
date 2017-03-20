@@ -63,28 +63,37 @@ namespace JB2.Common.Data
 
         #region Inserts
 
+        public void Insert<T>(T entity, TableInsertMode option, bool encypt) where T : ITableEntity
+        {
+            var result = InsertAsync<T>(entity, option, encypt);
+        }
 
-        public void Insert<T>(T entity, TableInsertMode option, bool encypt)
+
+        public async Task<TableResult> InsertAsync<T>(T entity, TableInsertMode option, bool encypt)
             where T : ITableEntity
         {
-            switch(option)
+            TableResult retrievedResult;
+            switch (option)
             {
                
                 case TableInsertMode.Insert:
-                    _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null,null);
+                    retrievedResult = await _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null,null);
                     break;
                 case TableInsertMode.Merge:
-                    _table.ExecuteAsync(TableOperation.InsertOrMerge(entity), encypt ? this._insertOptions : null, null);
-                    break;
+                    retrievedResult = await _table.ExecuteAsync(TableOperation.InsertOrMerge(entity), encypt ? this._insertOptions : null, null);
+                   break;
                 case TableInsertMode.Replace:
-                    _table.ExecuteAsync(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null, null);
+                    retrievedResult = await _table.ExecuteAsync(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null, null);
                     break;
                 default:
-                    _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null, null);
+                    retrievedResult = await _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null, null);
                     break;
 
             }
-           
+
+            return retrievedResult;
+
+
         }
 
 
@@ -162,13 +171,16 @@ namespace JB2.Common.Data
             return result;
         }
 
+        public T GetEntity<T>(string partitionKey, string rowKey, bool decrypt = false) where T : class, ITableEntity, new()
+        {
+            return GetEntityAsync<T>(partitionKey, rowKey).Result;
+        }
 
-        
-        public T GetEntity<T>(string partitionKey, string rowKey, bool decrypt =false) where T : class, ITableEntity, new()
+        public async Task<T> GetEntityAsync<T>(string partitionKey, string rowKey, bool decrypt =false) where T : class, ITableEntity, new()
         {
             var retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
             // Execute the retrieve operation.
-            var retrievedResult = _table.ExecuteAsync(retrieveOperation, decrypt ? _retrieveOptions : null,null);
+            var retrievedResult = await _table.ExecuteAsync(retrieveOperation);
             return retrievedResult.Result as T;
         }
 

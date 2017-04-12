@@ -48,8 +48,6 @@ namespace JB2.Common.Data
                     prop = new EntityProperty((DateTime)(object)value);
                 else if (typeof(T) == typeof(Byte))
                     prop = new EntityProperty(Convert.ToInt32((object)value));
-
-               
             }
 
 

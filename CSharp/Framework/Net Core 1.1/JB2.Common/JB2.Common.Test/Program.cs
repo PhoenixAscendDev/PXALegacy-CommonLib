@@ -53,27 +53,33 @@ namespace JB2.Common.Test
         {
             Console.WriteLine("Hello World!");
 
-            for(int i=0;i < 10; i++)
-            {
-                var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
-                var urlstr = "http://id.jbsquared.com/test/?subject={0}";
-                //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
+
+            DynamicTableEntity e = new DynamicTableEntity();
+
+            e.SetProperty<bool>("Enabled",true);
+
+
+            //for(int i=0;i < 10; i++)
+            //{
+            //    var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
+            //    var urlstr = "http://id.jbsquared.com/test/?subject={0}";
+            //    //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
 
                 
 
-            }
+            //}
 
-            string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_connectionString);
-            var account = StorageAccount.FromAzureStorage(storageAccount);
+            //string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";
+            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_connectionString);
+            //var account = StorageAccount.FromAzureStorage(storageAccount);
 
-            var e =  account.GetTable("player").GetEntity<DynamicTableEntity>("testp", "testr");
+            //var e =  account.GetTable("player").GetEntity<DynamicTableEntity>("testp", "testr");
 
-            var p = account.GetBlog("general").GetByteArray("avatar/partisan plot.jpg");
+            //var p = account.GetBlog("general").GetByteArray("avatar/partisan plot.jpg");
 
-            account.GetBlog("general").Insert(p, "avatar/new.jpg");
+            //account.GetBlog("general").Insert(p, "avatar/new.jpg");
 
-            Console.WriteLine(p.Length);
+            //Console.WriteLine(p.Length);
             Console.ReadLine();
         }
     }

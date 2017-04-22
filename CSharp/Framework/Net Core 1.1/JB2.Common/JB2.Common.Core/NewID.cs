@@ -86,10 +86,17 @@ namespace JB2.Common
         }
         public static string UriHash(string wrapper, Uri u)
         {
-            int hashcode = u.GetHashCode();
-            var t = string.Format("{0:X}", hashcode).ToLower();
+            //int hashcode = u.GetHashCode();
+            //var t = string.Format("{0:X}", hashcode).ToLower();
 
-            return wrapit(wrapper, t);
+            //return wrapit(wrapper, t);
+
+            return UriHash(wrapper, u, Enum.HashType.NetHashCode);
+        }
+
+        public static string UriHash(string wrapper, Uri u, Enum.HashType hashType)
+        {
+            return wrapit(wrapper,JB2.Common.Hash.HashString(u.ToString(), hashType));
         }
 
         //public static string Base62(long? number = null)

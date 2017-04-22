@@ -59,15 +59,21 @@ namespace JB2.Common.Test
             e.SetProperty<bool>("Enabled",true);
 
 
-            //for(int i=0;i < 10; i++)
-            //{
-            //    var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
-            //    var urlstr = "http://id.jbsquared.com/test/?subject={0}";
-            //    //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
+            for (int i = 0; i < 10; i++)
+            {
+                var subject = JB2.Common.NewID.Guid();
+                var urlstr = "http://id.jbsquared.com/test/?subject={0}";
+                Console.WriteLine(subject);
+                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject))));
+                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)),Enum.HashType.NetHashCode));
+                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.Adler32));
+                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.MD5));
 
-                
+                //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
 
-            //}
+
+
+            }
 
             //string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";
             //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_connectionString);

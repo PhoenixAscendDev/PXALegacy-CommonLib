@@ -5,8 +5,20 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class JB2Exception : Exception
+
+    public interface IException
     {
+        string ErrorCode { get; set; }
+    }
+    
+    public class JB2Exception : Exception, IException
+    {
+
+        #region Fields
+
+        protected string _code;
+
+        #endregion Fields
         public JB2Exception()
             : this("Setting was not configured")
         {
@@ -20,9 +32,13 @@ namespace JB2.Common
 
         public JB2Exception(string message, Exception innerException, string code="") : base(message, innerException)
         {
-
+            _code = code;
         }
 
-        public string Code { get; }
+        public string Code { get => _code; }
+        public string ErrorCode { get => _code; set => _code = value; }
+
+        
+
     }
 }

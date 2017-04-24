@@ -5,7 +5,8 @@
     <AssemblyName>JB2.Common.Exceptions</AssemblyName>
     <RootNamespace>JB2.Common</RootNamespace>
     <PackageId>JB2.Common.Exceptions.NetCore11</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

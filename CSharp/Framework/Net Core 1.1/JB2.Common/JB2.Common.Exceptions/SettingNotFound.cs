@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class class SettingNotFound : JB2Exception
+    public class SettingNotFound : JB2Exception
     {
         public SettingNotFound()
             : this("Setting Not Found")

@@ -78,6 +78,7 @@ namespace JB2.Dictionary
             _errorCodes = new Dictionary<string, StatusCode>();
             _errorCodes.Add("E-01-100011", new StatusCode("E-01-100011", "Setting Not Found"));
             _errorCodes.Add("E-01-100010", new StatusCode("E-01-100010", "Settings was not configured"));
+            _errorCodes.Add("E-01-000200", new StatusCode("E-01-000200", "No Error"));
 
         }
     }

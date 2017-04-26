@@ -64,6 +64,23 @@ namespace JB2.Common
             return new System.Collections.BitArray(marks.ToArray());
         }
 
+        public static string TrySplit(this string value, char seperator, int index)
+        {
+            return TrySplit(value, seperator.ToString(), index);
+        }
+        public static string TrySplit(this string value, string seperator, int index)
+        {
+            try
+            {
+                var result = System.Text.RegularExpressions.Regex.Split(value, seperator);
+                return result[index];
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
         public static string ToStringOrEmpty(this Object value)
         {
             return value == null ? string.Empty : value.ToString();

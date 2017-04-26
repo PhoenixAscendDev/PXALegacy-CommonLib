@@ -8,10 +8,17 @@ using Microsoft.WindowsAzure.Storage.Table;
 using System.Net;
 using System.IO;
 
+using JB2.Common;
+
 using System.Text;
 
 namespace JB2.Common.Test
 {
+
+    public class Dude : IDNamePair<string,string>, IIDNamePair<string, string>
+    {
+        public string PropertyName123 { get; set; }
+    }
     class Program
     {
 
@@ -59,7 +66,7 @@ namespace JB2.Common.Test
             e.SetProperty<bool>("Enabled",true);
 
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 0; i++)
             {
                 var subject = JB2.Common.NewID.Guid();
                 var urlstr = "http://id.jbsquared.com/test/?subject={0}";
@@ -70,10 +77,29 @@ namespace JB2.Common.Test
                 Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.MD5));
 
                 //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
-
-
-
             }
+
+            var pair = new IDNamePair<string, string>();
+
+            pair.ID = "IDValue";
+            pair.Name = "NameValue";
+
+
+            var pairEntity = new DynamicTableEntity();
+            pairEntity.Properties = pair.ToEntityProperties();
+
+            var pair2 = pairEntity.ToObject<IDNamePair<string, string>>(new IDNamePair<string, string>() { ID = "eset" });
+
+            var dude = new Dude() { ID = "IDTest", Name = "NameTest", PropertyName123 = "TestProperty" };
+
+            var dudeEntity = new DynamicTableEntity();
+            dudeEntity.Properties = dude.ToEntityProperties();
+
+
+            var dude2 = dudeEntity.ToObject<Dude>(new Dude() { ID = "default" });
+
+            Console.WriteLine(dude == dude2);
+
 
             //string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";
             //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_connectionString);

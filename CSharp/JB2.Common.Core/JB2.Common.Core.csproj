@@ -49,6 +49,7 @@
     <Compile Include="DoubleRange.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Enum\ElevatorDirectionType.cs" />
+    <Compile Include="Enum\HashType.cs" />
     <Compile Include="Enum\KeyBitSize.cs" />
     <Compile Include="Enum\Rotation.cs" />
     <Compile Include="Enum\SortDirection.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Extensions\DataExtenstions.cs" />
     <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="ExtenstionAttribute.cs" />
+    <Compile Include="Hash.cs" />
     <Compile Include="IClass.cs" />
     <Compile Include="ILogEntry.cs" />
     <Compile Include="ILogger.cs" />

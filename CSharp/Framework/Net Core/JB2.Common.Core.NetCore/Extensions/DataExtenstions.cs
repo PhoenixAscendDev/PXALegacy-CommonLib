@@ -155,5 +155,22 @@ namespace JB2.Common
 
             return sb.ToString();
         }
+
+        public static string TrySplit(this string value, char seperator, int index)
+        {
+            return TrySplit(value, seperator.ToString(), index);
+        }
+        public static string TrySplit(this string value, string seperator, int index)
+        {
+            try
+            {
+                var result = System.Text.RegularExpressions.Regex.Split(value, seperator);
+                return result[index];
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
     }
 }

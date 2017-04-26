@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>JB2.Common.Serialization.Json.NetCore11</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Joshua Bennett</Authors>
+    <Company>JBsquared LLC</Company>
+    <Product />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JB2.Common.Core.NetCore" Version="0.4.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+
+</Project>

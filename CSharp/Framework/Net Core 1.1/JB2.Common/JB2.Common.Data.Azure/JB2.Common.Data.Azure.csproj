@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+    <ProjectReference Include="..\JB2.Common.Serialization.Json\JB2.Common.Serialization.Json.csproj" />
   </ItemGroup>
 
 </Project>

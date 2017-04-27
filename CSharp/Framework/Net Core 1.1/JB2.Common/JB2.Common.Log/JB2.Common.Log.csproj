@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>JB2.Common.Log.NetCore11</PackageId>
+    <Version>0.3.1</Version>
+    <Authors>Joshua Bennett</Authors>
+    <Company>JBsquared LLC</Company>
+    <Product>Common  Lib</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ILogEntry.cs" />
+    <Compile Remove="ILogger.cs" />
+    <Compile Remove="LogServerityType.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+  </ItemGroup>
+
+</Project>

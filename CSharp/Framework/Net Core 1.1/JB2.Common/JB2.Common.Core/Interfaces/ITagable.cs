@@ -10,5 +10,7 @@ namespace JB2.Common
         IEnumerable<T> GetTags();
         bool AddTag(T tag);
         bool RemoveTag(T tag);
+
+        JB2.Common.ServiceResult LoadTags(IEnumerable<T> tags);
     }
 }

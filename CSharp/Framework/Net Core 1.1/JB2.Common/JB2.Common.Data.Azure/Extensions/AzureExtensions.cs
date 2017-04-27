@@ -198,6 +198,22 @@ namespace JB2.Common.Data
 
         }
 
+
+        private static IDictionary<string, EntityProperty> ToEntityProperties(this JB2.Common.Name e, string propertyNameFormat = "{0}" )
+        {
+            DynamicTableEntity entry = new DynamicTableEntity();
+
+            var name = e;
+            entry.Properties.Add(string.Format(propertyNameFormat, "Name"), e.ToSerializedEntityProperty());
+            entry.SetProperty<string>(string.Format(propertyNameFormat, "Name_FirstName"), name.First);
+            entry.SetProperty<string>(string.Format(propertyNameFormat, "Name_FullName"), name.FullName);
+            entry.SetProperty<string>(string.Format(propertyNameFormat, "Name_LastName"), name.Last);
+            entry.SetProperty<string>(string.Format(propertyNameFormat, "Name_MiddleName"), name.Middle);
+            entry.SetProperty<string>(string.Format(propertyNameFormat, "Name_Salutaion"), name.Salutaion);
+
+            return entry.Properties;
+
+        }
         public static IDictionary<string, EntityProperty> ToEntityProperties(this object o, string propertyNameFormat = "{0}")
         {
             DynamicTableEntity entry = new DynamicTableEntity();
@@ -224,7 +240,11 @@ namespace JB2.Common.Data
                 else if (prop.PropertyType == typeof(short))
                     entry.SetProperty<short>(string.Format(propertyNameFormat, prop.Name), (short)prop.GetValue(o));              
                 else if (prop.PropertyType == typeof(bool))
-                    entry.SetProperty<bool>(string.Format(propertyNameFormat, prop.Name), (bool)prop.GetValue(o));               
+                    entry.SetProperty<bool>(string.Format(propertyNameFormat, prop.Name), (bool)prop.GetValue(o));
+                //else if (prop.PropertyType == typeof(JB2.Common.Name))
+                //{
+                //    var properties = (IIDNamePair)
+                //}
                 else
                 {
 
@@ -233,14 +253,10 @@ namespace JB2.Common.Data
 
             }
 
-
-
-
-
-
             return entry.Properties;
 
         }
+
         public static  T ToObject<T>(this DynamicTableEntity e, T defaultValue, string propertyNameFormat = "{0}")
             where T : new()
         {
@@ -255,93 +271,54 @@ namespace JB2.Common.Data
 
             try
             {
-                if (typeof(ILogEntry).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
-                {
-                    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
-                    o.LogDate = e.GetPropertyValue<DateTime>(string.Format(propertyNameFormat, "LogDateTicks"), DateTime.MinValue);
-                    o.Message = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
-                    o.LogCode = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "LogCode"), string.Empty);
+                //if (typeof(ILogEntry).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
+                //{
+                //    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
+                //    o.LogDate = e.GetPropertyValue<DateTime>(string.Format(propertyNameFormat, "LogDateTicks"), DateTime.MinValue);
+                //    o.Message = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
+                //    o.LogCode = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "LogCode"), string.Empty);
 
-                    //exception
-                    var exjson = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Exception"), string.Empty);
-                    o.Exception = Newtonsoft.Json.JsonConvert.DeserializeObject<Exception>(exjson);
+                //    //exception
+                //    var exjson = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Exception"), string.Empty);
+                //    o.Exception = Newtonsoft.Json.JsonConvert.DeserializeObject<Exception>(exjson);
 
-                    //serveritytype
-                    JB2.Common.Enum.LogServerityType sertype = Common.Enum.LogServerityType.Informational;
-                    var serstring = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Serverity"), string.Empty);
-                    System.Enum.TryParse<JB2.Common.Enum.LogServerityType>(serstring, out sertype);
-                    o.Serverity = sertype;
+                //    //serveritytype
+                //    JB2.Common.Enum.LogServerityType sertype = Common.Enum.LogServerityType.Informational;
+                //    var serstring = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Serverity"), string.Empty);
+                //    System.Enum.TryParse<JB2.Common.Enum.LogServerityType>(serstring, out sertype);
+                //    o.Serverity = sertype;
 
-                    
-                }
 
-                if(typeof(ITagable<JB2.Common.Tag>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
-                {
-                    // Tags
-                    var tagsjson = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Tags"), string.Empty);
-                    IEnumerable<JB2.Common.Tag> tags = new JB2.Common.Tag[0];
-                    tags = Newtonsoft.Json.JsonConvert.DeserializeObject<List<JB2.Common.Tag>>(tagsjson);
-                    o.Tags = tags;
+                //}
 
-                    o.GetTags = (Func<IEnumerable<JB2.Common.Tag>>)(() =>
-                    {
-                        return o.Tags;
-                    });
 
-                    o.AddTag = (Func<JB2.Common.Tag, bool>)((JB2.Common.Tag t) =>
-                    {
-                        try
-                        {
-                            ((List<JB2.Common.Tag>)o.Tags).Add(t);
-                            return true;
-                        }
-                        catch
-                        {
-                            return false;
-                        }
-                    });
 
-                    o.RemoveTag = (Func<JB2.Common.Tag, bool>)((JB2.Common.Tag t) =>
-                    {
-                        try
-                        {
-                            ((List<JB2.Common.Tag>)o.Tags).Remove(t);
+                //if (typeof(IPerson<string>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
+                //{
+                //    o.DisplayName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "DisplayName"), string.Empty);
+                //}
 
-                            return true;
-                        }
-                        catch
-                        {
-                            return false;
-                        }
-                    });
-                }
+                //if(typeof(IIDNamePair<string, string>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
+                //{                 
+                //    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
+                //    o.Name = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name"), string.Empty);
+                //}
 
-                if (typeof(IPerson<string>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
-                {
-                    o.DisplayName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "DisplayName"), string.Empty);
-                }
+                //if(typeof(IIDNamePair<string, JB2.Common.Name>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
+                //{
+                //    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
+                //    var name = new JB2.Common.Name();
 
-                if(typeof(IIDNamePair<string, string>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
-                {                 
-                    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
-                    o.Name = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name"), string.Empty);
-                }
+                //    name.First = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_FirstName"), string.Empty);
+                //    name.FullName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_FullName"), string.Empty);
+                //    name.Last = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_LastName"), string.Empty);
+                //    name.Middle = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_MiddleName"), string.Empty);
+                //    name.Salutaion = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_Salutaion"), string.Empty);
 
-                if(typeof(IIDNamePair<string, JB2.Common.Name>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
-                {
-                    o.ID = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "ID"), string.Empty);
-                    var name = new JB2.Common.Name();
+                //    o.Name = name;
+                //    //o.DisplayName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "DisplayName"), string.Empty);
 
-                    name.First = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_FirstName"), string.Empty);
-                    name.FullName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_FullName"), string.Empty);
-                    name.Last = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_LastName"), string.Empty);
-                    name.Middle = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_MiddleName"), string.Empty);
-                    name.Salutaion = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Name_Salutaion"), string.Empty);
-
-                    o.Name = name;
-                    //o.DisplayName = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "DisplayName"), string.Empty);
-
-                }
+                //}
 
                 var properties = typeof(T).GetProperties();
 
@@ -376,7 +353,22 @@ namespace JB2.Common.Data
                 
                 var seralize = Newtonsoft.Json.JsonConvert.SerializeObject(o);
 
-                return (T)Newtonsoft.Json.JsonConvert.DeserializeObject<T>(seralize);
+
+                T result = (T)Newtonsoft.Json.JsonConvert.DeserializeObject<T>(seralize); ;
+
+
+                //set the Tags
+                if (typeof(ITagable<JB2.Common.Tag>).GetTypeInfo().IsAssignableFrom(typeof(T).Ge‌​tTypeInfo()))
+                {
+                    // Tags
+                    var tagsjson = e.GetPropertyValue<string>(string.Format(propertyNameFormat, "Tags"), string.Empty);
+                    IEnumerable<JB2.Common.Tag> tags = new JB2.Common.Tag[0];
+                    tags = Newtonsoft.Json.JsonConvert.DeserializeObject<List<JB2.Common.Tag>>(tagsjson);
+
+                    ((ITagable<JB2.Common.Tag>)result).LoadTags(tags);
+                }
+
+                return result;
                     //(T)Convert.ChangeType(o, typeof(T));
             }
             catch(Exception ex)

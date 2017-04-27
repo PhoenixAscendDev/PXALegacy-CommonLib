@@ -15,7 +15,7 @@ using System.Text;
 namespace JB2.Common.Test
 {
 
-    public class Dude : IDNamePair<string,string>, IIDNamePair<string, string>
+    public class Dude : IDNamePair<string,Name>, IIDNamePair<string, Name>
     {
         public string PropertyName123 { get; set; }
     }
@@ -90,7 +90,7 @@ namespace JB2.Common.Test
 
             var pair2 = pairEntity.ToObject<IDNamePair<string, string>>(new IDNamePair<string, string>() { ID = "eset" });
 
-            var dude = new Dude() { ID = "IDTest", Name = "NameTest", PropertyName123 = "TestProperty" };
+            var dude = new Dude() { ID = "IDTest", Name = new Name() { First = "FirstTest", Last = "LastTest" }, PropertyName123 = "TestProperty" };
 
             var dudeEntity = new DynamicTableEntity();
             dudeEntity.Properties = dude.ToEntityProperties();

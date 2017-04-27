@@ -31,6 +31,20 @@ namespace JB2.Common
             return _tags.Remove(tag);
         }
 
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<TTag> tags)
+        {
+            
+            try
+            {
+                var w = from tag in tags select _tags.Add(tag);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
 
 
         #endregion IObject

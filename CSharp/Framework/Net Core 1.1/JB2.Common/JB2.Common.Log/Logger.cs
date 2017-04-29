@@ -90,12 +90,12 @@ namespace JB2.Common.Log
                 _serverityFlag[type] = enable;
         }
 
-        public virtual void Log(ILogEntry entry)
+        public virtual async Task LogAsync(ILogEntry entry)
         {
             if (this.EntryLogged != null)
                 EntryLogged(this, entry.Serverity, entry);
 
-            switch(entry.Serverity)
+            switch (entry.Serverity)
             {
                 case LogServerityType.Debug:
                     if (this.DebugLogged != null)
@@ -122,6 +122,11 @@ namespace JB2.Common.Log
                         WarningLogged(this, entry);
                     break;
             }
+        }
+
+        public virtual void Log(ILogEntry entry)
+        {
+            
         }
     }
 }

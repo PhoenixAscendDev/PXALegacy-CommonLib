@@ -128,5 +128,12 @@ namespace JB2.Common.Log
         {
             
         }
+
+        public abstract void LogDebugMessage(string message, string logcode = "");
+
+
+        public abstract void LogError(Exception ex, string message = "", string logcode = "");
+
+        public abstract void LogMessage(string message, string logcode = "");
     }
 }

@@ -22,6 +22,12 @@ namespace JB2.Common
         bool IsEnabled(TServerity severity);
         void Log(TLogEntry entry);
 
+        void LogDebugMessage(string message, string logcode = "");
+
+        void LogError(Exception ex, string message = "", string logcode = "");
+
+        void LogMessage(string message, string logcode = "");
+
         #region Events
         event Action<ILogger<TServerity, TKey, TLogEntry>, TServerity, TLogEntry> EntryLogged;
 

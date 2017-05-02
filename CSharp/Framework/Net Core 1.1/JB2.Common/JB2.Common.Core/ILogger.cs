@@ -47,6 +47,12 @@ namespace JB2.Common
         where TLogEntry : ILogEntry<TKey, TServerity>
     {
         Task LogAsync(TLogEntry entry);
+
+        Task LogDebugMessageAsync(string message, string logcode = "");
+
+        Task LogErrorAsync(Exception ex, string message = "", string logcode = "");
+
+        Task LogMessageAsync(string message, string logcode = "");
     }
 
 }

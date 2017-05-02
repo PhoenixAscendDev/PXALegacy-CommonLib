@@ -24,11 +24,9 @@ namespace JB2.Common.Web.Api
 
         
 
-        Task RequestAsync(JB2.Common.Web.Api.APIRequest request,
+        JB2.Common.ILoggerAsync Logger { get; set; }
+        Task<APIResult> RequestAsync(JB2.Common.Web.Api.APIRequest request,
                           JB2.Common.Web.ProcessAPIRequest processSuccess = null,
                           JB2.Common.Web.ProcessAPIRequest processFailure = null);
-
-
-
     }
 }

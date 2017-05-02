@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>JB2.Common.Web.NetCore11</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Joshua Allen Bennett</Authors>
+    <Company>JBsquared LLC</Company>
+    <Product>Common Lib</Product>
   </PropertyGroup>
 
   <ItemGroup>

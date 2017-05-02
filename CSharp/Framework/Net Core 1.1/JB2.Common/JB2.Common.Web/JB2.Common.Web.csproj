@@ -9,4 +9,14 @@
     <Compile Remove="ImageResult.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+    <ProjectReference Include="..\JB2.Common.Exceptions\JB2.Common.Exceptions.csproj" />
+    <ProjectReference Include="..\JB2.Common.Serialization.Json\JB2.Common.Serialization.Json.csproj" />
+  </ItemGroup>
+
 </Project>

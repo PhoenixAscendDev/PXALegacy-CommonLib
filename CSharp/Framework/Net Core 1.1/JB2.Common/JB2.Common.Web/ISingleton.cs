@@ -5,7 +5,7 @@ using System.Text;
 namespace JB2.Common
 {
     public interface ISingleton<Tobject>
-        where Tobject : class
+        where Tobject : class, new()
     {
 
         Tobject Instance { get; }

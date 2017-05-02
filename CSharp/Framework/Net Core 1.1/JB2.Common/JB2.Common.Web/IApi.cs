@@ -5,22 +5,24 @@ using System.Threading.Tasks;
 
 namespace JB2.Common.Web.Api
 {
-    public interface IExternalApi<TClass> : JB2.Common.ISingleton<IExternalApi<TClass>>
-        where TClass : class, new()
+    public interface IExternalApi 
+        //where TClass : IExternalApi, new()
     {
 
         #region Events
-        event Action<IExternalApi<TClass>, APIResult, DateTime> RequestCompleted;
-        event Action<IExternalApi<TClass>, APIRequest, DateTime> RequestSent;
+        event Action<IExternalApi, APIResult, DateTime> RequestCompleted;
+        event Action<IExternalApi, APIRequest, DateTime> RequestSent;
 
-        void OnRequestCompleted(IExternalApi<TClass> api, APIResult result, DateTime dateCompleted);
-        void OnRequestSent(IExternalApi<TClass> api, APIRequest request, DateTime dateSent);
+        void OnRequestCompleted(IExternalApi api, APIResult result, DateTime dateCompleted);
+        void OnRequestSent(IExternalApi api, APIRequest request, DateTime dateSent);
 
 
         #endregion Events
         ITransportConfig  TransportConfig { get; set; }
 
         ApiKeySecretPair APIKey { get; set; }
+
+        
 
         Task RequestAsync(JB2.Common.Web.Api.APIRequest request,
                           JB2.Common.Web.ProcessAPIRequest processSuccess = null,

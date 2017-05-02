@@ -12,5 +12,8 @@ namespace JB2.Common.Web.Api
         public ApiRequestMethodType SendType { get; set; }
         public IDictionary<string, object> MethodParameters { get; set; }
 
+
+       
+
     }
 }

@@ -53,7 +53,6 @@ namespace JB2.Common.Web.Api
         {
             var instance = ExternalAPI.Instance;
 
-
             using (System.Net.Http.HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(instance.TransportConfig.Endpoint);
@@ -65,9 +64,6 @@ namespace JB2.Common.Web.Api
             }
                 
             //setup the header
-
-
-
             
         }
 
@@ -85,8 +81,8 @@ namespace JB2.Common.Web.Api
                     //client.BaseAddress = new Uri(instance.TransportConfig.Endpoint);
                     //setup the header
 
-                    System.Net.Http.Headers.MediaTypeWithQualityHeaderValue contentType = new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json");
-                    client.DefaultRequestHeaders.Accept.Add(contentType);
+                    //System.Net.Http.Headers.MediaTypeWithQualityHeaderValue contentType = new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json");
+                    //client.DefaultRequestHeaders.Accept.Add(contentType);
 
                     //set data
                     var uri = request.MethodUrl;

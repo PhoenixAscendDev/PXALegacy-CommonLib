@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+    <ProjectReference Include="..\JB2.Common.Exceptions\JB2.Common.Exceptions.csproj" />
+    <ProjectReference Include="..\JB2.Common.Log\JB2.Common.Log.csproj" />
+  </ItemGroup>
+
+</Project>

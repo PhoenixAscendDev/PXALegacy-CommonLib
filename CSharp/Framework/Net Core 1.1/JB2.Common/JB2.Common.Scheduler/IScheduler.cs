@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace JB2.Common.Scheduler
 {
     public interface IScheduler: IScheduler<IJob<string,object>,string,object>
-    { }
+    {
+
+    }
 
     public interface IScheduler<TJobKey,TJobParameter> : IScheduler<IJob<TJobKey,TJobParameter>,TJobKey,TJobParameter>
         where TJobKey : IComparable
@@ -44,6 +46,6 @@ namespace JB2.Common.Scheduler
         where TJobKey : IComparable
     {
         Task StartJobsAsync();
-        Task StartJobAsync();
+        Task StopJobAsync();
     }
 }

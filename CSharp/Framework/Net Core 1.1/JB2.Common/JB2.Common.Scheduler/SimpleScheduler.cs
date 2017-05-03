@@ -19,12 +19,12 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public SimpleScheduler(IJob job, JB2.Common.ILogger logger) : base(job,logger)
+        public SimpleScheduler(IJobAsync job, JB2.Common.ILogger logger) : base(job,logger)
         {
 
         }
 
-        public SimpleScheduler( IEnumerable<IJob> jobs, JB2.Common.ILogger logger)
+        public SimpleScheduler( IEnumerable<IJobAsync> jobs, JB2.Common.ILogger logger)
             : base(jobs,logger)
         {
 
@@ -40,20 +40,20 @@ namespace JB2.Common.Scheduler
     {
 
         #region Fields
-        private List<IJob<TJobKey, TJobParameter>> _jobs;
+        private List<IJobAsync<TJobKey, TJobParameter>> _jobs;
         private JB2.Common.ILogger _logger;
         #endregion Fields;
 
         #region Constructors
 
-        public SimpleScheduler(IEnumerable<IJob<TJobKey, TJobParameter>> jobs, JB2.Common.ILogger logger)
+        public SimpleScheduler(IEnumerable<IJobAsync<TJobKey, TJobParameter>> jobs, JB2.Common.ILogger logger)
         {
             _jobs = jobs.ToList();
             _logger = logger;
         }
-        public SimpleScheduler( IJob<TJobKey,TJobParameter> job, JB2.Common.ILogger logger)
+        public SimpleScheduler( IJobAsync<TJobKey,TJobParameter> job, JB2.Common.ILogger logger)
         {
-            _jobs = new List<IJob<TJobKey, TJobParameter>>();
+            _jobs = new List<IJobAsync<TJobKey, TJobParameter>>();
             _jobs.Add(job);
             _logger = logger;
         }
@@ -61,19 +61,19 @@ namespace JB2.Common.Scheduler
 
         public SimpleScheduler()
         {
-            _jobs = new List<IJob<TJobKey, TJobParameter>>();
+            _jobs = new List<IJobAsync<TJobKey, TJobParameter>>();
             _logger = null;
         }
 
         #endregion Constructors
 
         #region IScheduler
-        public override void Add(IJob<TJobKey, TJobParameter> job)
+        public override void Add(IJobAsync<TJobKey, TJobParameter> job)
         {
             _jobs.Add(job);
         }
 
-        public override IEnumerable<IJob<TJobKey, TJobParameter>> GetJobs()
+        public override IEnumerable<IJobAsync<TJobKey, TJobParameter>> GetJobs()
         {
             return _jobs;
         }
@@ -88,7 +88,7 @@ namespace JB2.Common.Scheduler
             return _logger != null;
         }
 
-        public override void Remove(IJob<TJobKey, TJobParameter> job)
+        public override void Remove(IJobAsync<TJobKey, TJobParameter> job)
         {
             _jobs.Remove(job);
         }

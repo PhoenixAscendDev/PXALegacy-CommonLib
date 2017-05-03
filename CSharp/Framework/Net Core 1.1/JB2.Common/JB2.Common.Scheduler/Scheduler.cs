@@ -11,7 +11,7 @@ using JB2.Helpers;
 namespace JB2.Common.Scheduler
 {
    
-    public abstract class ThreadScheduler<TJobKey,TJobParameter> : IScheduler<TJobKey,TJobParameter>
+    public abstract class ThreadScheduler<TJobKey,TJobParameter> : ISchedulerAsync<TJobKey,TJobParameter>
         where TJobKey : IComparable
     {
         #region Fields
@@ -24,12 +24,29 @@ namespace JB2.Common.Scheduler
 
         public void StartJobs()
         {
+            StartJobsAsync();
+        }
 
+        public virtual void StopJobs()
+        {
+            StopJobAsync();
+        }
+
+
+        public abstract IEnumerable<IJobAsync<TJobKey, TJobParameter>> GetJobs();
+        public abstract JB2.Common.ILogger GetLogger();
+
+        public abstract void Add(IJobAsync<TJobKey, TJobParameter> job);
+        public abstract void Remove(IJobAsync<TJobKey, TJobParameter> job);
+        public abstract bool LoggingEnabled();
+
+        public Task StartJobsAsync()
+        {
             _hasStarted = true;
             var logger = GetLogger();
 
             if (Started != null)
-                Started(this);                            
+                Started(this);
 
             var jobs = GetJobs();
             if ((jobs != null) && (jobs.Count() > 0))
@@ -37,7 +54,7 @@ namespace JB2.Common.Scheduler
                 Thread thread = null;
                 foreach (var job in jobs)
                 {
-                    if( SchedulerHelper.IsRealJob(job.GetType()))
+                    if (SchedulerHelper.IsRealJob(job.GetType()))
                     {
                         try
                         {
@@ -47,16 +64,16 @@ namespace JB2.Common.Scheduler
                             if (LoggingEnabled())
                                 logger.LogMessage(string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                     job.Name,
-                                                                    job.ID.ToString()));                          
-                        }       
-                        catch(Exception ex)
+                                                                    job.ID.ToString()));
+                        }
+                        catch (Exception ex)
                         {
                             var schedulerEx = new SchedulerException(string.Format("The Job  \"{0}\" could not be started successfully (JobID:{1})",
                                                                 job.Name,
                                                                 job.ID.ToString()), ex);
-                            if(LoggingEnabled())
+                            if (LoggingEnabled())
                                 logger.LogError(schedulerEx);
-                        }                   
+                        }
                     }
                     else
                     {
@@ -67,11 +84,14 @@ namespace JB2.Common.Scheduler
                             logger.LogError(schedulerEx);
                     }
                 }
-               
             }
+
+            return Task.CompletedTask;
+
+
         }
 
-        public virtual void StopJobs()
+        public Task StopJobAsync()
         {
             var logger = GetLogger();
             if (_hasStarted)
@@ -83,23 +103,17 @@ namespace JB2.Common.Scheduler
                 }
 
                 if (LoggingEnabled())
-                    logger.LogMessage("Scheduler has stopped jobs");
+                     logger.LogMessage("Scheduler has stopped jobs");
 
                 if (Stopped != null)
                     Stopped(this);
             }
+
+            return Task.CompletedTask;
         }
 
-
-        public abstract IEnumerable<IJob<TJobKey, TJobParameter>> GetJobs();
-        public abstract JB2.Common.ILogger GetLogger();
-
-        public abstract void Add(IJob<TJobKey, TJobParameter> job);
-        public abstract void Remove(IJob<TJobKey, TJobParameter> job);
-        public abstract bool LoggingEnabled();
-
-        public event Action<IScheduler<IJob<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Started;
-        public event Action<IScheduler<IJob<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Stopped;
+        public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Started;
+        public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Stopped;
 
 
 

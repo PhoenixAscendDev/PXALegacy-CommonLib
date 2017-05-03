@@ -21,14 +21,15 @@ namespace JB2.Common.Scheduler
             return int.MaxValue;
         }
 
-        public override void DoWorkAndSetFlags()
+        public override async Task DoWorkAndSetFlags()
         {
             var today = DateTime.Now;
             var range = GetDayofWeekTimeRange();
 
             //if within range then do the work;
             if(range.IsWithinRange(today))
-                base.DoWorkAndSetFlags();
+                await base.DoWorkAndSetFlags();
+
         }
 
 

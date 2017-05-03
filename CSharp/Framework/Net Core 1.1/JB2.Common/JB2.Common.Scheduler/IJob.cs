@@ -49,5 +49,7 @@ namespace JB2.Common.Scheduler
     {
         Task StartAsync();
         Task CancelAsync();
+
+        Task<ServiceResult> DoWorkAsync();
     }
 }

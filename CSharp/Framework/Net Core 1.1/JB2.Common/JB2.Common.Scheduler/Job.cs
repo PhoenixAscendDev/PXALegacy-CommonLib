@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace JB2.Common.Scheduler
 {
-    public abstract class Job : IDNamePair, IJob
+    public abstract class Job : IDNamePair, IJobAsync
     {
         #region Fields
         protected DateTime _exTime;
@@ -13,19 +14,9 @@ namespace JB2.Common.Scheduler
         protected bool _cancelled;
 
         #endregion Fields
-        public virtual void Start()
+        public virtual async void Start()
         {
-            _cancelled = false;
-            if(IsRepeatable())
-            {
-                while(!_cancelled)
-                {
-                    DoWorkAndSetFlags();
-                    Thread.Sleep(GetCoolDownSeconds());
-                }
-            }
-            else
-                DoWorkAndSetFlags();
+            await StartAsync();
 
         }
 
@@ -35,6 +26,31 @@ namespace JB2.Common.Scheduler
             _cancelled = true;
             if (ProgressChanged != null)
                 ProgressChanged(this, "Job manually canceled", 1);
+        }
+
+        public async Task StartAsync()
+        {
+            _cancelled = false;
+            if (IsRepeatable())
+            {
+                while (!_cancelled)
+                {
+                    await DoWorkAndSetFlags();
+                    Thread.Sleep(GetCoolDownSeconds());
+                }
+            }
+            else
+               await DoWorkAndSetFlags();
+        }
+
+        public Task CancelAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResult> DoWorkAsync()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -59,7 +75,9 @@ namespace JB2.Common.Scheduler
             }
         }
 
-        public virtual void DoWorkAndSetFlags()
+        
+
+        public virtual async Task DoWorkAndSetFlags()
         {
             if (Started != null)
                 Started(this);
@@ -67,7 +85,7 @@ namespace JB2.Common.Scheduler
             _inprogress = true;
             _exTime = DateTime.Now;
 
-            DoWork();
+            await DoWorkAsync();
 
             _inprogress = false;
             if (Completed != null)
@@ -84,6 +102,8 @@ namespace JB2.Common.Scheduler
             this._id = null;
             this._name = null;
         }
+
+
 
         public event Action<IJob<string, object>> Started;
         public event Action<IJob<string, object>> Completed;

@@ -12,6 +12,9 @@ namespace JB2.Common.Scheduler
         protected DateTime _exTime;
         protected bool _inprogress;
         protected bool _cancelled;
+        protected Scheduler.JobWork _workDelegate;
+
+ 
 
         #endregion Fields
         public virtual async void Start()
@@ -20,15 +23,34 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public void Cancel()
+        public Scheduler.JobWork  WorkDelegate
+        {
+            get
+            {
+                return _workDelegate;
+            }
+            set
+            {
+                _workDelegate = value;
+            }
+        }
+
+        public virtual async void Cancel()
+        {
+            await CancelAsync();
+        }
+
+        public virtual Task CancelAsync()
         {
             _inprogress = false;
             _cancelled = true;
             if (ProgressChanged != null)
                 ProgressChanged(this, "Job manually canceled", 1);
+
+            return Task.CompletedTask;
         }
 
-        public async Task StartAsync()
+        public virtual async Task StartAsync()
         {
             _cancelled = false;
             if (IsRepeatable())
@@ -36,23 +58,12 @@ namespace JB2.Common.Scheduler
                 while (!_cancelled)
                 {
                     await DoWorkAndSetFlags();
-                    Thread.Sleep(GetCoolDownSeconds());
+                    
                 }
             }
             else
                await DoWorkAndSetFlags();
         }
-
-        public Task CancelAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ServiceResult> DoWorkAsync()
-        {
-            throw new NotImplementedException();
-        }
-
 
         public virtual Object GetParameters()
         {
@@ -75,7 +86,6 @@ namespace JB2.Common.Scheduler
             }
         }
 
-        
 
         public virtual async Task DoWorkAndSetFlags()
         {
@@ -85,16 +95,60 @@ namespace JB2.Common.Scheduler
             _inprogress = true;
             _exTime = DateTime.Now;
 
-            await DoWorkAsync();
-
+            var result = await  DoWorkAsync();
             _inprogress = false;
-            if (Completed != null)
-                Completed(this);
+
+            if(result)
+            {
+                if (Completed != null)
+                    Completed(this, _exTime - DateTime.Now);
+            }
+            else
+            {
+                if (Failed != null)
+                    Failed(this, result);
+            }
+
+            
+            
+        }
+
+        public virtual async Task DoWorkAndSetFlags( JobWork work)
+        {
+            this.WorkDelegate = work;
+            await DoWorkAndSetFlags();
         }
 
 
         public abstract bool IsRepeatable();
-        public abstract ServiceResult DoWork();
+        public virtual ServiceResult DoWork()
+        {
+            return DoWorkAsync().Result;
+        }
+
+
+        public virtual Task<ServiceResult> DoWorkAsync()
+        {
+            try
+            {
+                WorkDelegate?.Invoke();
+
+                return Task.FromResult<ServiceResult>(true);
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult<ServiceResult>(new ServiceResult(ex));
+            }
+        }
+
+        public virtual Task<ServiceResult> DoWorkAsync(JobWork work)
+        {
+            this.WorkDelegate = work;
+
+            return DoWorkAsync();
+        }
+
+
         public abstract int GetCoolDownSeconds();
 
         public virtual void Dispose()
@@ -103,10 +157,9 @@ namespace JB2.Common.Scheduler
             this._name = null;
         }
 
-
-
         public event Action<IJob<string, object>> Started;
-        public event Action<IJob<string, object>> Completed;
-        public event Action<IJob<string, object>, string,int> ProgressChanged;
+        public event Action<IJob<string, object>,TimeSpan> Completed;
+        public event Action<IJob<string, object>, string, int> ProgressChanged;
+        public event Action<IJob<string, object>, ServiceResult> Failed;
     }
 }

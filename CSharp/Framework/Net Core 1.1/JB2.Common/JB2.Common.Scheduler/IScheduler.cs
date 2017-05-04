@@ -31,8 +31,23 @@ namespace JB2.Common.Scheduler
 
         bool LoggingEnabled();
 
+        #region Events
+
         event Action<IScheduler<TJob,TJobKey, TJobParameter>> Started;
+        event Action<IScheduler<TJob, TJobKey, TJobParameter>,IJob<TJobKey, TJobParameter>, ServiceResult> JobStarted;
+        event Action<IScheduler<TJob, TJobKey, TJobParameter>, IJob<TJobKey, TJobParameter>, ServiceResult,TimeSpan> JobEnded;
+        event Action<IScheduler<TJob, TJobKey, TJobParameter>, IJob<TJobKey, TJobParameter>, ServiceResult> JobFailed;
         event Action<IScheduler<TJob,TJobKey, TJobParameter>> Stopped;
+
+        void OnStopped(IScheduler<TJob, TJobKey, TJobParameter> schedule);
+        void OnStarted(IScheduler<TJob, TJobKey, TJobParameter> schedule);
+
+        void OnJobEnded(IScheduler<TJob, TJobKey, TJobParameter> schedule, IJob<TJobKey, TJobParameter> job, ServiceResult result, TimeSpan duration);
+
+        void OnJobStarted(IScheduler<TJob, TJobKey, TJobParameter> schedule, IJob<TJobKey, TJobParameter> job, ServiceResult result);
+       
+
+        #endregion Events
     }
 
     public interface ISchedulerAsync : ISchedulerAsync<string, object>

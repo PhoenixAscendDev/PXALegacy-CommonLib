@@ -10,8 +10,6 @@ namespace JB2.Common.Scheduler
 
     public class SimpleScheduler : SimpleScheduler<string,object>
     {
-
-
         #region Constructors
 
         public SimpleScheduler() : base()

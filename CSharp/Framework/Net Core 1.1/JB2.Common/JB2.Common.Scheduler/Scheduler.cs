@@ -15,8 +15,8 @@ namespace JB2.Common.Scheduler
         where TJobKey : IComparable
     {
         #region Fields
-        private bool _isLogEnabled;
-        private bool _hasStarted;
+        protected bool _isLogEnabled;
+        protected bool _hasStarted;
         #endregion Fields
 
 
@@ -40,20 +40,23 @@ namespace JB2.Common.Scheduler
         public abstract void Remove(IJobAsync<TJobKey, TJobParameter> job);
         public abstract bool LoggingEnabled();
 
-        public Task StartJobsAsync()
+        public virtual Task StartJobsAsync()
         {
             _hasStarted = true;
             var logger = GetLogger();
 
-            if (Started != null)
-                Started(this);
+            OnStarted(this);
 
             var jobs = GetJobs();
+            
             if ((jobs != null) && (jobs.Count() > 0))
             {
+                
                 Thread thread = null;
                 foreach (var job in jobs)
                 {
+                    
+                    
                     if (SchedulerHelper.IsRealJob(job.GetType()))
                     {
                         try
@@ -91,7 +94,7 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public Task StopJobAsync()
+        public virtual Task StopJobAsync()
         {
             var logger = GetLogger();
             if (_hasStarted)
@@ -105,8 +108,7 @@ namespace JB2.Common.Scheduler
                 if (LoggingEnabled())
                      logger.LogMessage("Scheduler has stopped jobs");
 
-                if (Stopped != null)
-                    Stopped(this);
+                OnStopped(this);
             }
 
             return Task.CompletedTask;
@@ -114,9 +116,42 @@ namespace JB2.Common.Scheduler
 
         public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Started;
         public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>> Stopped;
+        public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>, IJob<TJobKey, TJobParameter>, ServiceResult,TimeSpan> JobEnded;
+        public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>, IJob<TJobKey, TJobParameter>, ServiceResult> JobStarted;
+        public event Action<IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter>, IJob<TJobKey, TJobParameter>, ServiceResult> JobFailed;
+
+        public void OnStopped(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule)
+        {
+            if (Stopped != null)
+                Stopped(schedule);
+        }
+
+        public void OnStarted(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule)
+        {
+            if (Started != null)
+                Started(schedule);
+        }
 
 
 
+
+        public void OnJobEnded(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule, IJob<TJobKey, TJobParameter> job, ServiceResult result,TimeSpan duration)
+        {
+            if (JobEnded != null)
+                JobEnded(schedule, job, result,duration);
+        }
+
+        public void OnJobStarted(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule, IJob<TJobKey, TJobParameter> job, ServiceResult result)
+        {
+            if (JobStarted != null)
+                JobStarted(schedule, job, result);
+        }
+
+        public void OnJobFailed(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule, IJob<TJobKey, TJobParameter> job, ServiceResult result)
+        {
+            if (JobFailed != null)
+                JobFailed(schedule, job, result);
+        }
 
     }
 }

@@ -30,13 +30,14 @@ namespace JB2.Common.Scheduler
         ServiceResult DoWork();
 
         event Action<IJob<TKey, TParameter>> Started;
-        event Action<IJob<TKey, TParameter>> Completed;
+        event Action<IJob<TKey, TParameter>,TimeSpan> Completed;
         event Action<IJob<TKey, TParameter>, string,int> ProgressChanged;
+        event Action<IJob<TKey, TParameter>, ServiceResult> Failed;
     }
 
     public interface IJobAsync : IJobAsync<string>
     {
-
+       
     }
     public interface IJobAsync<TKey> : IJobAsync<TKey, object>
          where TKey : IComparable
@@ -51,5 +52,9 @@ namespace JB2.Common.Scheduler
         Task CancelAsync();
 
         Task<ServiceResult> DoWorkAsync();
+
+        //new event Action<IJobAsync<TKey, TParameter>> Started;
+        //new event Action<IJobAsync<TKey, TParameter>> Completed;
+        //new event Action<IJobAsync<TKey, TParameter>, string, int> ProgressChanged;
     }
 }

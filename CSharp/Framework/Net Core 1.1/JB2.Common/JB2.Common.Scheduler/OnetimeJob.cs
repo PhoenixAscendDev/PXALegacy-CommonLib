@@ -19,13 +19,12 @@ namespace JB2.Common.Scheduler
             return false;
         }
 
-        public override abstract ServiceResult DoWork();
-
 
         public override int GetCoolDownSeconds()
         {
             throw new NotImplementedException();
         }
+
         #endregion IJob
     }
 }

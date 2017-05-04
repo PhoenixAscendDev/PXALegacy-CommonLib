@@ -32,8 +32,6 @@ namespace JB2.Common.Scheduler
 
         }
 
-
-
         public abstract DayofWeekTimeRange GetDayofWeekTimeRange();
     }
 }

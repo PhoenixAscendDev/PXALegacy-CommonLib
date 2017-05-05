@@ -10,9 +10,23 @@ using JB2.Common.Enum;
 
 namespace JB2.Common.Log
 {
-    public abstract class Logger : ILoggerAsync
+    public abstract class Logger :  ILoggerAsync
     {
+
+        #region Fields
         private Dictionary<Enum.LogServerityType, bool> _serverityFlag = new Dictionary<LogServerityType, bool>();
+
+        #endregion Fields
+
+        #region Constructors
+
+        public Logger()
+        {
+
+        }
+
+        #endregion Constructors
+
 
 
         #region events
@@ -64,6 +78,8 @@ namespace JB2.Common.Log
 
 
         #endregion events
+
+        
 
         public  abstract JB2.Common.Log.Logit GetLogMethod();
 

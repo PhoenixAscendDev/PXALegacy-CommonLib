@@ -9,12 +9,6 @@ using JB2.Common.Enum;
 namespace JB2.Common
 {
 
-    public interface ILoggerAsync : ILogger<LogServerityType, string, ILogEntry>
-    {
-
-    }
-
-
     public interface ILogger<TServerity, TKey, TLogEntry>
         where TServerity : IComparable
         where TLogEntry : ILogEntry<TKey, TServerity>

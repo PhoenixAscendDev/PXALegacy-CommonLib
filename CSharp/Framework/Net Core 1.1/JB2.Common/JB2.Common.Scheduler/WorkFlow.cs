@@ -149,6 +149,11 @@ namespace JB2.Common.Scheduler
             _rules.Remove(job.ID);
         }
 
+        public void EnableLoging()
+        {
+            this._isLogEnabled = true;
+        }
+
         private void jobStartHandler(IJob<string, object> task)
         {
             var logger = GetLogger();
@@ -193,14 +198,26 @@ namespace JB2.Common.Scheduler
             OnJobEnded(this, task,false,duration);
         }
 
-        private void jobFailedHandler(IJob<string, object> task, ServiceResult result)
+        private async void jobFailedHandler(IJob<string, object> task, ServiceResult result)
         {
             var logger = GetLogger();
             if (LoggingEnabled())
+            {
                 logger.LogMessage(string.Format("The Job  \"{0}\" has failed (JobID:{1})",
                                                     task.Name,
                                                     task.ID.ToString()));
+                logger.LogError(result, result.Validation[0].Message);
+            }
+            
             OnJobFailed(this, task, result);
+            //run the next task
+            var nextTask = getNextJobToRun(false,result);
+
+            // if no nextTask then end the workflow
+            if (nextTask == null)
+                await this.StopJobAsync();
+            else
+                await runJob(nextTask);
 
         }
 

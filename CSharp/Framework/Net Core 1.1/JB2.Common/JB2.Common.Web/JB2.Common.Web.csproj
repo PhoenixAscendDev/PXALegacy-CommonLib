@@ -13,6 +13,7 @@
   <ItemGroup>
     <Compile Remove="ControllerExtention.cs" />
     <Compile Remove="ImageResult.cs" />
+    <Compile Remove="Singleton.cs" />
   </ItemGroup>
 
   <ItemGroup>

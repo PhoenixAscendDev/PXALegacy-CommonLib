@@ -7,9 +7,25 @@ namespace JB2.Common.Log
 {
     public class ConsoleLogger : Logger
     {
+        #region Fields
+
+        internal static ConsoleLogger _instance = null;
+        internal static readonly object padlock = new object();
+        #endregion Fields
+
+        #region Constructors
+
+        public ConsoleLogger() : base()
+        {
+
+        }
+
+        #endregion Constructors
+
+
         public override Logit GetLogMethod()
         {
-            return new Logit(ConsoleLogit);
+            return new Logit(consoleLogit);
         }
 
         public override async Task LogDebugMessageAsync(string message, string logcode = "")
@@ -29,16 +45,57 @@ namespace JB2.Common.Log
 
         public override async Task LogMessageAsync(string message, string logcode = "")
         {
-            var entry = new LogEntry(JB2.Common.NewID.ShortGuid(), Enum.LogServerityType.Informational, message, ex, DateTime.Now, logcode);
+            var entry = new LogEntry(JB2.Common.NewID.ShortGuid(), Enum.LogServerityType.Informational, message, null, DateTime.Now, logcode);
 
             await LogAsync(entry);
         }
 
-        public static ServiceResult ConsoleLogit(ILogEntry e)
+        internal static ServiceResult consoleLogit(ILogEntry e)
         {
-            Console.WriteLine(e.Message);
+
+            ConsoleColor typeColor = ConsoleColor.White;
+
+            switch(e.Serverity)
+            {
+                case Enum.LogServerityType.Debug:
+                    typeColor = ConsoleColor.Green;
+                    break;
+                case Enum.LogServerityType.Error:
+                    typeColor = ConsoleColor.Red;
+                    break;
+                case Enum.LogServerityType.Informational:
+                    typeColor = ConsoleColor.Yellow;
+                    break;
+                default:
+                    typeColor = ConsoleColor.White;
+                    break;
+            }
+            Console.ResetColor();
+            Console.ForegroundColor = typeColor;
+            Console.Write(e.Serverity.ToString().PadLeft(20,' ') );
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(": " + e.Message);
+            Console.WriteLine();
 
             return true;
+        }
+
+        public static ConsoleLogger Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (_instance == null)
+                    {
+                        ConsoleLogger c = new ConsoleLogger();
+                        _instance = c;
+                    }
+                    return _instance;
+                }
+
+            }
         }
     }
 }

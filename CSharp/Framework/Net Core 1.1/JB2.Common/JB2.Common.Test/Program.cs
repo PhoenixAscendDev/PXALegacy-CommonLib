@@ -68,6 +68,13 @@ namespace JB2.Common.Test
         {
             Console.WriteLine("In Task2");
 
+            return new ServiceResult(new Exception("This is an exception"));
+        }
+
+        static JB2.Common.ServiceResult Task3()
+        {
+            Console.WriteLine("In Task3");
+
             return true;
         }
 
@@ -81,10 +88,13 @@ namespace JB2.Common.Test
 
             //e.SetProperty<bool>("Enabled",true);
 
-            var workflow = new JB2.Common.Scheduler.SimpleWorkflow();
+            var workflow = new JB2.Common.Scheduler.SimpleWorkflow(JB2.Common.Log.ConsoleLogger.Instance);
+            workflow.EnableLoging();
 
+            
             workflow.Add(new JB2.Common.Scheduler.JobWork(Task1));
             workflow.Add(new JB2.Common.Scheduler.JobWork(Task2));
+            workflow.Add(new JB2.Common.Scheduler.JobWork(Task3));
 
             workflow.StartJobsAsync().Wait();
 

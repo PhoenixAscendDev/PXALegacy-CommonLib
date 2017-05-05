@@ -9,7 +9,7 @@ namespace JB2.Common.Scheduler
         #region Fields
 
         protected ILoggerAsync _logger;
-        protected bool _logenabled;
+       
 
         #endregion Fields
 
@@ -47,7 +47,7 @@ namespace JB2.Common.Scheduler
 
         public override bool LoggingEnabled()
         {
-            return (_logger != null && _logenabled);
+            return (_logger != null && _isLogEnabled);
         }
     }
 }

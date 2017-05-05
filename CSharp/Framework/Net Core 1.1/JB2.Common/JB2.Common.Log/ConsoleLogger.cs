@@ -32,7 +32,7 @@ namespace JB2.Common.Log
         {
             var entry = new LogEntry(JB2.Common.NewID.ShortGuid(),Enum.LogServerityType.Debug, message, null, DateTime.Now, logcode);
 
-            await LogAsync(entry);
+            LogAsync(entry).Wait();
             
         }
 
@@ -40,14 +40,14 @@ namespace JB2.Common.Log
         {
             var entry = new LogEntry(JB2.Common.NewID.ShortGuid(), Enum.LogServerityType.Error, message, ex, DateTime.Now, logcode);
 
-            await LogAsync(entry);
+            LogAsync(entry).Wait();
         }
 
         public override async Task LogMessageAsync(string message, string logcode = "")
         {
             var entry = new LogEntry(JB2.Common.NewID.ShortGuid(), Enum.LogServerityType.Informational, message, null, DateTime.Now, logcode);
 
-            await LogAsync(entry);
+            LogAsync(entry).Wait();
         }
 
         internal static ServiceResult consoleLogit(ILogEntry e)
@@ -71,11 +71,49 @@ namespace JB2.Common.Log
                     break;
             }
             Console.ResetColor();
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;          
+                Console.WriteLine("<log id:" + e.ID + ">");
+            Console.ResetColor();
+
+
+            //print the Log Type
             Console.ForegroundColor = typeColor;
-            Console.Write(e.Serverity.ToString().PadLeft(20,' ') );
+            Console.Write(e.Serverity.ToString());
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(": " + e.Message);
+            Console.Write(": ");
+            Console.ResetColor();
+
+            //If code exists, print it out
+            if (!string.IsNullOrEmpty(e.LogCode))
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("[" + e.LogCode + "] => ");
+                Console.ResetColor();
+            }
+
+            //print the message
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(e.Message);
+            Console.ResetColor();
+
+            if(e.Serverity == Enum.LogServerityType.Error)
+            {
+                Console.WriteLine();
+                Console.Write("   Stack Trace => " + e.Exception.StackTrace);
+            }
+
+
+
+            // end the log
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("</log id:" + e.ID + ">");
+            Console.ResetColor();
+
+
             Console.WriteLine();
 
             return true;
@@ -90,12 +128,22 @@ namespace JB2.Common.Log
                     if (_instance == null)
                     {
                         ConsoleLogger c = new ConsoleLogger();
+                        c.SetAllServerity(true);
                         _instance = c;
                     }
                     return _instance;
                 }
 
             }
+        }
+
+        public static ConsoleLogger OnlyLogErrors()
+        {
+            var result = new ConsoleLogger();
+            result.SetAllServerity(false);
+            result.SetServerityType(Enum.LogServerityType.Error, true);
+
+            return result;
         }
     }
 }

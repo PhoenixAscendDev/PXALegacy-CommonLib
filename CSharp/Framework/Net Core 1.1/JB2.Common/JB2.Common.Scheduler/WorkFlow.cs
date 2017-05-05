@@ -128,18 +128,18 @@ namespace JB2.Common.Scheduler
                 {
                     var schedulerEx = new SchedulerException(string.Format("The Job  \"{0}\" could not be started successfully (JobID:{1})",
                                                         task.Name,
-                                                        task.ID.ToString()), ex);
+                                                        task.ID.ToString()), ex, "E-01-100300");
                     if (LoggingEnabled())
-                        logger.LogError(schedulerEx);
+                        logger.LogError(schedulerEx,logcode: "E-01-100300");
                 }
             }
             else
             {
                 var schedulerEx = new SchedulerException(string.Format("The Job  \"{0}\" is not a valid Job (JobID:{1})",
                                                             task.Name,
-                                                            task.ID.ToString()));
+                                                            task.ID.ToString()), "E-01-100301");
                 if (LoggingEnabled())
-                    logger.LogError(schedulerEx);
+                    logger.LogError(schedulerEx,logcode:"E-01-100301");
             }
         }
 
@@ -160,7 +160,7 @@ namespace JB2.Common.Scheduler
             if (LoggingEnabled())
                 logger.LogMessage(string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                     task.Name,
-                                                    task.ID.ToString()));
+                                                    task.ID.ToString()), "E-01-100302");
             _currentStep = _rules[task.ID].StepNumber;
             _lastJobRan = _jobs[task.ID];
             OnJobStarted(this, task, true);
@@ -173,7 +173,7 @@ namespace JB2.Common.Scheduler
             if (LoggingEnabled())
                 logger.LogMessage(string.Format("The Job  \"{0}\" has been successfully completed (JobID:{1})",
                                                     task.Name,
-                                                    task.ID.ToString()));
+                                                    task.ID.ToString()), "E-01-100302");
             //trigger event
             OnJobEnded(this, task, true,executeDuration);
 
@@ -192,9 +192,12 @@ namespace JB2.Common.Scheduler
         {
             var logger = GetLogger();
             if (LoggingEnabled())
+            {
+
                 logger.LogMessage(string.Format("The Job  \"{0}\" has been cancelled (JobID:{1})",
                                                     task.Name,
-                                                    task.ID.ToString()));
+                                                    task.ID.ToString()), "E-01-100304");
+            }
             OnJobEnded(this, task,false,duration);
         }
 
@@ -203,10 +206,11 @@ namespace JB2.Common.Scheduler
             var logger = GetLogger();
             if (LoggingEnabled())
             {
-                logger.LogMessage(string.Format("The Job  \"{0}\" has failed (JobID:{1})",
+                logger.LogError(result,string.Format("The Job  \"{0}\" has failed (JobID:{1}) : {2}",
                                                     task.Name,
-                                                    task.ID.ToString()));
-                logger.LogError(result, result.Validation[0].Message);
+                                                    task.ID.ToString(),
+                                                    result.Validation[0].Message), "E-01-100303");
+                //logger.LogError(result, );
             }
             
             OnJobFailed(this, task, result);
@@ -287,10 +291,6 @@ namespace JB2.Common.Scheduler
                 
 
         }
-
- 
-
-
 
     }
 }

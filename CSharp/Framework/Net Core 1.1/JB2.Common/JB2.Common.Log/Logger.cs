@@ -110,39 +110,41 @@ namespace JB2.Common.Log
 
         public virtual async Task LogAsync(ILogEntry entry)
         {
-
-            var workResult = await Task.Run(() => GetLogMethod()?.Invoke(entry));
-
-            if (workResult)
+            if (IsEnabled(entry.Serverity))
             {
-                if (this.EntryLogged != null)
-                    EntryLogged(this, entry.Serverity, entry);
-                switch (entry.Serverity)
+                var workResult = await Task.Run(() => GetLogMethod()?.Invoke(entry));
+
+                if (workResult)
                 {
-                    case LogServerityType.Debug:
-                        if (this.DebugLogged != null)
-                            DebugLogged(this, entry);
-                        break;
-                    case LogServerityType.Error:
-                        if (this.ErrorLogged != null)
-                            ErrorLogged(this, entry);
-                        break;
-                    case LogServerityType.Fatel:
-                        if (this.FatelLogged != null)
-                            FatelLogged(this, entry);
-                        break;
-                    case LogServerityType.Informational:
-                        if (this.InfomationalLogged != null)
-                            InfomationalLogged(this, entry);
-                        break;
-                    case LogServerityType.Verbose:
-                        if (this.VerboseLogged != null)
-                            VerboseLogged(this, entry);
-                        break;
-                    case LogServerityType.Warning:
-                        if (this.WarningLogged != null)
-                            WarningLogged(this, entry);
-                        break;
+                    if (this.EntryLogged != null)
+                        EntryLogged(this, entry.Serverity, entry);
+                    switch (entry.Serverity)
+                    {
+                        case LogServerityType.Debug:
+                            if (this.DebugLogged != null)
+                                DebugLogged(this, entry);
+                            break;
+                        case LogServerityType.Error:
+                            if (this.ErrorLogged != null)
+                                ErrorLogged(this, entry);
+                            break;
+                        case LogServerityType.Fatel:
+                            if (this.FatelLogged != null)
+                                FatelLogged(this, entry);
+                            break;
+                        case LogServerityType.Informational:
+                            if (this.InfomationalLogged != null)
+                                InfomationalLogged(this, entry);
+                            break;
+                        case LogServerityType.Verbose:
+                            if (this.VerboseLogged != null)
+                                VerboseLogged(this, entry);
+                            break;
+                        case LogServerityType.Warning:
+                            if (this.WarningLogged != null)
+                                WarningLogged(this, entry);
+                            break;
+                    }
                 }
             }
         }

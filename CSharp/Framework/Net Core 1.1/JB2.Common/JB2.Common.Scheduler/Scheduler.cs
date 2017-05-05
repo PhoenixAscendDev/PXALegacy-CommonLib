@@ -17,7 +17,32 @@ namespace JB2.Common.Scheduler
         #region Fields
         protected bool _isLogEnabled;
         protected bool _hasStarted;
+
+        protected static bool _addErrorCodes;
         #endregion Fields
+
+        #region Constructors
+
+        public ThreadScheduler()
+        {
+            if (!_addErrorCodes)
+            {
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100300", "Error in starting Schedule Job"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100301", "Scheduler Job is not a valid Job"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100302", "Scheduler Job completed successfully"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100303", "Scheduler Job failed"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100304", "Scheduler Job cancelled"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100305", "Scheduler Job has started"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100306", "Scheduler has started"));
+                JB2.Dictionary.ErrorCodes.Add(new StatusCode("E-01-100307", "Scheduler has stopped"));
+
+                _addErrorCodes = true;
+            }
+
+
+        }
+
+#endregion Constructors
 
 
         //http://www.codeproject.com/Articles/591271/A-Simple-Scheduler-in-Csharp
@@ -67,24 +92,24 @@ namespace JB2.Common.Scheduler
                             if (LoggingEnabled())
                                 logger.LogMessage(string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                     job.Name,
-                                                                    job.ID.ToString()));
+                                                                    job.ID.ToString()), "E-01-100305");
                         }
                         catch (Exception ex)
                         {
                             var schedulerEx = new SchedulerException(string.Format("The Job  \"{0}\" could not be started successfully (JobID:{1})",
                                                                 job.Name,
-                                                                job.ID.ToString()), ex);
+                                                                job.ID.ToString()), ex, "E-01-100300");
                             if (LoggingEnabled())
-                                logger.LogError(schedulerEx);
+                                logger.LogError(schedulerEx,logcode: "E-01-100300");
                         }
                     }
                     else
                     {
                         var schedulerEx = new SchedulerException(string.Format("The Job  \"{0}\" is not a valid Job (JobID:{1})",
                                                                     job.Name,
-                                                                    job.ID.ToString()));
+                                                                    job.ID.ToString()), "E-01-100301");
                         if (LoggingEnabled())
-                            logger.LogError(schedulerEx);
+                            logger.LogError(schedulerEx,logcode: "E-01-100301");
                     }
                 }
             }
@@ -122,14 +147,29 @@ namespace JB2.Common.Scheduler
 
         public void OnStopped(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule)
         {
+            var logger = GetLogger();
+
+            if (LoggingEnabled())
+                logger.LogMessage(string.Format("Scheduler has stopped"), "E-01-100307");
+
             if (Stopped != null)
                 Stopped(schedule);
         }
 
         public void OnStarted(IScheduler<IJobAsync<TJobKey, TJobParameter>, TJobKey, TJobParameter> schedule)
         {
+            var logger = GetLogger();
+
+            if (LoggingEnabled())
+                logger.LogMessage(string.Format("Scheduler has started"), "E-01-100306");
+
             if (Started != null)
                 Started(schedule);
+
+            
+
+
+
         }
 
 

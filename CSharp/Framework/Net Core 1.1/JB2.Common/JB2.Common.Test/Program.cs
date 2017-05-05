@@ -90,6 +90,7 @@ namespace JB2.Common.Test
 
             var workflow = new JB2.Common.Scheduler.SimpleWorkflow(JB2.Common.Log.ConsoleLogger.Instance);
             workflow.EnableLoging();
+           
 
             
             workflow.Add(new JB2.Common.Scheduler.JobWork(Task1));

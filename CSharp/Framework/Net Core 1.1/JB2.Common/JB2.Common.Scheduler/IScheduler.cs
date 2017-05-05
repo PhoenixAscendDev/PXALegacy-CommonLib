@@ -24,7 +24,7 @@ namespace JB2.Common.Scheduler
         void Add(TJob job);
         void Remove(TJob job);
 
-        JB2.Common.ILogger GetLogger();
+        JB2.Common.ILoggerAsync GetLogger();
 
         void StartJobs();
         void StopJobs();

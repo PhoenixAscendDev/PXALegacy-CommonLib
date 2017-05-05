@@ -10,7 +10,7 @@ using JB2.Common.Enum;
 
 namespace JB2.Common.Log
 {
-    public abstract class Logger : ILogger
+    public abstract class Logger : ILoggerAsync
     {
         private Dictionary<Enum.LogServerityType, bool> _serverityFlag = new Dictionary<LogServerityType, bool>();
 
@@ -65,6 +65,8 @@ namespace JB2.Common.Log
 
         #endregion events
 
+        public  abstract JB2.Common.Log.Logit GetLogMethod();
+
         public virtual bool IsEnabled(LogServerityType serverity)
         {
             if (!_serverityFlag.ContainsKey(serverity))
@@ -92,48 +94,68 @@ namespace JB2.Common.Log
 
         public virtual async Task LogAsync(ILogEntry entry)
         {
-            if (this.EntryLogged != null)
-                EntryLogged(this, entry.Serverity, entry);
 
-            switch (entry.Serverity)
+            var workResult = await Task.Run(() => GetLogMethod()?.Invoke(entry));
+
+            if (workResult)
             {
-                case LogServerityType.Debug:
-                    if (this.DebugLogged != null)
-                        DebugLogged(this, entry);
-                    break;
-                case LogServerityType.Error:
-                    if (this.ErrorLogged != null)
-                        ErrorLogged(this, entry);
-                    break;
-                case LogServerityType.Fatel:
-                    if (this.FatelLogged != null)
-                        FatelLogged(this, entry);
-                    break;
-                case LogServerityType.Informational:
-                    if (this.InfomationalLogged != null)
-                        InfomationalLogged(this, entry);
-                    break;
-                case LogServerityType.Verbose:
-                    if (this.VerboseLogged != null)
-                        VerboseLogged(this, entry);
-                    break;
-                case LogServerityType.Warning:
-                    if (this.WarningLogged != null)
-                        WarningLogged(this, entry);
-                    break;
+                if (this.EntryLogged != null)
+                    EntryLogged(this, entry.Serverity, entry);
+                switch (entry.Serverity)
+                {
+                    case LogServerityType.Debug:
+                        if (this.DebugLogged != null)
+                            DebugLogged(this, entry);
+                        break;
+                    case LogServerityType.Error:
+                        if (this.ErrorLogged != null)
+                            ErrorLogged(this, entry);
+                        break;
+                    case LogServerityType.Fatel:
+                        if (this.FatelLogged != null)
+                            FatelLogged(this, entry);
+                        break;
+                    case LogServerityType.Informational:
+                        if (this.InfomationalLogged != null)
+                            InfomationalLogged(this, entry);
+                        break;
+                    case LogServerityType.Verbose:
+                        if (this.VerboseLogged != null)
+                            VerboseLogged(this, entry);
+                        break;
+                    case LogServerityType.Warning:
+                        if (this.WarningLogged != null)
+                            WarningLogged(this, entry);
+                        break;
+                }
             }
         }
 
         public virtual void Log(ILogEntry entry)
         {
-            
+            LogAsync(entry);
         }
 
-        public abstract void LogDebugMessage(string message, string logcode = "");
+        public void LogDebugMessage(string message, string logcode = "")
+        {
+            LogDebugMessageAsync(message, logcode);
+        }
 
+        public  void LogError(Exception ex, string message = "", string logcode = "")
+        {
+            LogErrorAsync(ex, message, logcode);
+        }
 
-        public abstract void LogError(Exception ex, string message = "", string logcode = "");
+        public  void LogMessage(string message, string logcode = "")
+        {
+            LogMessageAsync(message, logcode);
+        }
 
-        public abstract void LogMessage(string message, string logcode = "");
+        public abstract Task LogDebugMessageAsync(string message, string logcode = "");
+
+        public abstract Task LogErrorAsync(Exception ex, string message = "", string logcode = "");
+
+        public abstract Task LogMessageAsync(string message, string logcode = "");
+       
     }
 }

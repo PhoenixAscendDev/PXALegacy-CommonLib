@@ -8,14 +8,14 @@ namespace JB2.Common.Scheduler
     {
         #region Fields
 
-        protected ILogger _logger;
+        protected ILoggerAsync _logger;
         protected bool _logenabled;
 
         #endregion Fields
 
         #region Constructors
 
-        public SimpleWorkflow(ILogger logger, IEnumerable<WorkflowTask> tasks) : this(logger)
+        public SimpleWorkflow(ILoggerAsync logger, IEnumerable<WorkflowTask> tasks) : this(logger)
         {
             _logger = logger;
             foreach(var task in tasks)
@@ -25,7 +25,7 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public SimpleWorkflow(ILogger logger) : this()
+        public SimpleWorkflow(ILoggerAsync logger) : this()
         {
             _logger = logger;
         }
@@ -40,7 +40,7 @@ namespace JB2.Common.Scheduler
 
 
 
-        public override ILogger GetLogger()
+        public override ILoggerAsync GetLogger()
         {
             return _logger;
         }

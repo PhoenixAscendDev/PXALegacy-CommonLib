@@ -8,17 +8,17 @@ namespace JB2.Common.Log
 {
     public class LogManager
     {
-        private static ILogger _logger;
+        private static ILoggerAsync _logger;
         private static ILogRepo _logrepo;
         private static bool _repoEnabled;
 
-        public static void Configure( ILogger logger, ILogRepo repository,bool enableRepo  = false)
+        public static void Configure( ILoggerAsync logger, ILogRepo repository,bool enableRepo  = false)
         {
              _logger = logger;
             _logrepo = repository;
         }
 
-        public static ILogger Logger
+        public static ILoggerAsync Logger
         {
             get
             {

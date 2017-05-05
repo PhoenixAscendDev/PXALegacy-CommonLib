@@ -22,7 +22,7 @@ namespace JB2.Common
 
         IAPIKeySecretPair GetAPIKey(string apiName);
 
-        ILogger GetLogger();
+        ILoggerAsync GetLogger();
 
     }
 }

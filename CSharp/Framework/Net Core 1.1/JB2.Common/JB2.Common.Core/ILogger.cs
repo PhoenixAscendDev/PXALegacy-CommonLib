@@ -9,7 +9,7 @@ using JB2.Common.Enum;
 namespace JB2.Common
 {
 
-    public interface ILogger : ILogger<LogServerityType, string, ILogEntry>
+    public interface ILoggerAsync : ILogger<LogServerityType, string, ILogEntry>
     {
 
     }

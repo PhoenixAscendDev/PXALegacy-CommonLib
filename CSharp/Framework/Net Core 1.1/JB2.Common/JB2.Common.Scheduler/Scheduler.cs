@@ -34,7 +34,7 @@ namespace JB2.Common.Scheduler
 
 
         public abstract IEnumerable<IJobAsync<TJobKey, TJobParameter>> GetJobs();
-        public abstract JB2.Common.ILogger GetLogger();
+        public abstract JB2.Common.ILoggerAsync GetLogger();
 
         public abstract void Add(IJobAsync<TJobKey, TJobParameter> job);
         public abstract void Remove(IJobAsync<TJobKey, TJobParameter> job);

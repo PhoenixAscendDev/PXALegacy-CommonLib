@@ -6,7 +6,7 @@ using System.Text;
 namespace JB2.Common
 {
     public abstract class JB2ClassWithLog<TLogger> : JB2ClassWithLog<TLogger, Enum.LogServerityType, string, ILogEntry>, IClass
-        where TLogger : ILogger
+        where TLogger : ILoggerAsync
     {
         public JB2ClassWithLog(TLogger logger) : base(logger)
         {

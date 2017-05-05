@@ -23,7 +23,7 @@ namespace JB2.Common.Scheduler
 
         }
 
-        public Scheduler.JobWork  WorkDelegate
+        public  Scheduler.JobWork  WorkDelegate
         {
             get
             {
@@ -131,9 +131,10 @@ namespace JB2.Common.Scheduler
         {
             try
             {
-                WorkDelegate?.Invoke();
+                var workResult =  Task.Run(() => WorkDelegate?.Invoke());
 
-                return Task.FromResult<ServiceResult>(true);
+
+                return Task.FromResult<ServiceResult>(workResult.Result);
             }
             catch (Exception ex)
             {

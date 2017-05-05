@@ -8,6 +8,11 @@
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
     <ProjectReference Include="..\JB2.Common.Data.Azure\JB2.Common.Data.Azure.csproj" />
+    <ProjectReference Include="..\JB2.Common.Date\JB2.Common.Date.csproj" />
+    <ProjectReference Include="..\JB2.Common.Exceptions\JB2.Common.Exceptions.csproj" />
+    <ProjectReference Include="..\JB2.Common.Log\JB2.Common.Log.csproj" />
+    <ProjectReference Include="..\JB2.Common.Scheduler\JB2.Common.Scheduler.csproj" />
+    <ProjectReference Include="..\JB2.Common.Serialization.Json\JB2.Common.Serialization.Json.csproj" />
   </ItemGroup>
 
 </Project>

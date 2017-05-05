@@ -56,49 +56,75 @@ namespace JB2.Common.Test
 
         }
 
+
+        static JB2.Common.ServiceResult Task1()
+        {
+            Console.WriteLine("In Task1");
+
+            return true;
+        }
+
+        static JB2.Common.ServiceResult Task2()
+        {
+            Console.WriteLine("In Task2");
+
+            return true;
+        }
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
 
-            DynamicTableEntity e = new DynamicTableEntity();
+            //DynamicTableEntity e = new DynamicTableEntity();
 
-            e.SetProperty<bool>("Enabled",true);
+            //e.SetProperty<bool>("Enabled",true);
 
+            var workflow = new JB2.Common.Scheduler.SimpleWorkflow();
 
-            for (int i = 0; i < 0; i++)
-            {
-                var subject = JB2.Common.NewID.Guid();
-                var urlstr = "http://id.jbsquared.com/test/?subject={0}";
-                Console.WriteLine(subject);
-                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject))));
-                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)),Enum.HashType.NetHashCode));
-                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.Adler32));
-                Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.MD5));
+            workflow.Add(new JB2.Common.Scheduler.JobWork(Task1));
+            workflow.Add(new JB2.Common.Scheduler.JobWork(Task2));
 
-                //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
-            }
-
-            var pair = new IDNamePair<string, string>();
-
-            pair.ID = "IDValue";
-            pair.Name = "NameValue";
+            workflow.StartJobsAsync().Wait();
 
 
-            var pairEntity = new DynamicTableEntity();
-            pairEntity.Properties = pair.ToEntityProperties();
-
-            var pair2 = pairEntity.ToObject<IDNamePair<string, string>>(new IDNamePair<string, string>() { ID = "eset" });
-
-            var dude = new Dude() { ID = "IDTest", Name = new Name() { First = "FirstTest", Last = "LastTest" }, PropertyName123 = "TestProperty" };
-
-            var dudeEntity = new DynamicTableEntity();
-            dudeEntity.Properties = dude.ToEntityProperties();
 
 
-            var dude2 = dudeEntity.ToObject<Dude>(new Dude() { ID = "default" });
 
-            Console.WriteLine(dude == dude2);
+            //for (int i = 0; i < 0; i++)
+            //{
+            //    var subject = JB2.Common.NewID.Guid();
+            //    var urlstr = "http://id.jbsquared.com/test/?subject={0}";
+            //    Console.WriteLine(subject);
+            //    Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject))));
+            //    Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)),Enum.HashType.NetHashCode));
+            //    Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.Adler32));
+            //    Console.WriteLine(JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)), Enum.HashType.MD5));
+
+            //    //var playerid = JB2.Common.NewID.UriHash("PA-{0}",new Uri(string.Format(urlstr, subject)));
+            //}
+
+            //var pair = new IDNamePair<string, string>();
+
+            //pair.ID = "IDValue";
+            //pair.Name = "NameValue";
+
+
+            //var pairEntity = new DynamicTableEntity();
+            //pairEntity.Properties = pair.ToEntityProperties();
+
+            //var pair2 = pairEntity.ToObject<IDNamePair<string, string>>(new IDNamePair<string, string>() { ID = "eset" });
+
+            //var dude = new Dude() { ID = "IDTest", Name = new Name() { First = "FirstTest", Last = "LastTest" }, PropertyName123 = "TestProperty" };
+
+            //var dudeEntity = new DynamicTableEntity();
+            //dudeEntity.Properties = dude.ToEntityProperties();
+
+
+            //var dude2 = dudeEntity.ToObject<Dude>(new Dude() { ID = "default" });
+
+            //Console.WriteLine(dude == dude2);
 
 
             //string _connectionString = "DefaultEndpointsProtocol=https;AccountName=jb2idc4ews41t736wok1;AccountKey=lrbqd8UuHgSwUQ9i+LKzs7P0ohZBVEsyTE187AopxYnPhzxU3GxoLo1eQ/gv9EcpCrCJ/P1i1gzWynM6VkcBoA==";

@@ -17,6 +17,7 @@ namespace JB2.Common.Scheduler
         {
             this._workDelegate = worktoDo;
             this._id = id;
+            this._rule = rule;
 
 
         }
@@ -36,7 +37,7 @@ namespace JB2.Common.Scheduler
 
         public override bool IsRepeatable()
         {
-            return true;
+            return false;
         }
     }
 }

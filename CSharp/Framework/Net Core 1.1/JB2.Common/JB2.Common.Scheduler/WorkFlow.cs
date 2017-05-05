@@ -19,6 +19,18 @@ namespace JB2.Common.Scheduler
 
         #endregion Fields
 
+        #region Constructors
+
+        public WorkFlow()
+        {
+            _rules = new Dictionary<string, WorkflowRule<string>>();
+            _jobs = new Dictionary<string, IJobAsync<string, object>>();
+        }
+
+        #endregion Constructors
+
+
+        #region IScheduler
 
         public override void Add(IJobAsync<string, object> job)
         {
@@ -39,24 +51,49 @@ namespace JB2.Common.Scheduler
             _rules.Add(job.ID, rule);
         }
 
+        public override IEnumerable<IJobAsync<string, object>> GetJobs()
+        {
+            if (_jobs != null)
+                return _jobs.Values;
+            else
+                return new IJobAsync<string, object>[0]; 
+        }
+
+
+
+        #endregion IScheduler
+
+        public void Add(WorkflowTask task)
+        {
+           
+
+            task.Started += jobStartHandler;
+            task.Completed += jobEndHandler;
+            task.Failed += jobFailedHandler;
+
+            _jobs.Add(task.ID, task);
+            _rules.Add(task.ID, task.GetRule());
+
+
+        }
+
+
+
         public void Add(JobWork worktoDo, Enum.StepType onSuccess = Enum.StepType.GotoNext, Enum.StepType onFail = Enum.StepType.GotoNext, int stepNumber = 0)
         {
             var rule = new WorkflowRule<string>();
 
             var id = JB2.Common.NewID.ShortGuid();
             rule.JobID = id;
-            rule.LogSuccess = true;
+            rule.LogSuccess = false;
             rule.LogFailure = false;
             rule.StepNumber = stepNumber == 0 ? _jobs.Count : stepNumber;
+            rule.OnFailure = onFail;
+            rule.OnSuccess = onSuccess;
 
-            var job = new WorkflowTask(id, worktoDo, rule);
+            var task = new WorkflowTask(id, worktoDo, rule);
 
-            job.Started += jobStartHandler;
-            job.Completed += jobEndHandler;
-            job.Failed += jobFailedHandler;
-
-            _jobs.Add(job.ID, job);
-            _rules.Add(job.ID, rule);
+            Add(task);
         }
 
         public override Task StopJobAsync()
@@ -124,7 +161,7 @@ namespace JB2.Common.Scheduler
             OnJobStarted(this, task, true);
         }
 
-        private void jobEndHandler(IJob<string, object> task, TimeSpan executeDuration)
+        private async void jobEndHandler(IJob<string, object> task, TimeSpan executeDuration)
         {
             //log it
             var logger = GetLogger();
@@ -140,7 +177,9 @@ namespace JB2.Common.Scheduler
 
             // if no nextTask then end the workflow
             if (nextTask == null)
-                this.StopJobAsync();
+                await this.StopJobAsync();
+            else
+                await runJob(nextTask);
 
         }
 
@@ -188,10 +227,10 @@ namespace JB2.Common.Scheduler
                         default:
                         case Enum.StepType.GotoNext:
                             var jobid = nextStepJobID();
-                            return _jobs[jobid];
+                            return string.IsNullOrEmpty(jobid) ? null : _jobs[jobid];
                         case Enum.StepType.JumptoJob:
                             var jobid2 = rule.JumpToJobID;
-                            return _jobs[jobid2];
+                            return string.IsNullOrEmpty(jobid2) ? null : _jobs[jobid2];
                         case Enum.StepType.Retry:
                             return _lastJobRan;
                         case Enum.StepType.Stop:
@@ -214,7 +253,7 @@ namespace JB2.Common.Scheduler
             WorkflowRule<string> rule = null;
             for (int i = _currentStep; i < 100; i++)
             {
-                var list = _rules.Values.Where(x => x.StepNumber == i);
+                var list = _rules.Values.Where(x => x.StepNumber == i && (_lastJobRan == null || x.JobID != _lastJobRan.ID));
                 if(list.Count() > 0)
                 {
                     rule = list.FirstOrDefault();
@@ -232,9 +271,7 @@ namespace JB2.Common.Scheduler
 
         }
 
-        #region IScheduler
-
-        #endregion IScheduler
+ 
 
 
 

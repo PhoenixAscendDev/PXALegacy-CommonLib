@@ -119,11 +119,6 @@ namespace JB2.Common.Data
                 await _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null, null);
         }
 
-
-
-
-
-
         public void Insert<T>(T entity, bool replace) where T : ITableEntity
         {
             Insert<T>(entity, replace, false);

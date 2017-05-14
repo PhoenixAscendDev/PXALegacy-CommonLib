@@ -107,38 +107,59 @@ namespace JB2.Common.Data
             else
                 _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null,null);
         }
-        public void Insert<T>(T entity) where T : ITableEntity
+
+        public async Task InsertAsync<T>(T entity, bool replace, bool encypt)
+            where T : ITableEntity
         {
-            Insert<T>(entity, false);
+            if (replace)
+            {
+                await _table.ExecuteAsync(TableOperation.InsertOrReplace(entity), encypt ? this._insertOptions : null, null);
+            }
+            else
+                await _table.ExecuteAsync(TableOperation.Insert(entity), encypt ? this._insertOptions : null, null);
         }
+
+
+
+
+
 
         public void Insert<T>(T entity, bool replace) where T : ITableEntity
         {
             Insert<T>(entity, replace, false);
         }
 
+        public async void InsertAsync<T>(T entity, bool replace) where T : ITableEntity
+        {
+            await InsertAsync<T>(entity, replace, false);
+        }
+
+
+        public void Insert<T>(T entity) where T : ITableEntity
+        {
+            Insert<T>(entity, false);
+        }
+
+        public async Task InsertAsync<T>(T entity) where T : ITableEntity
+        {
+            await InsertAsync<T>(entity);
+        }
+
+        #endregion Inserts
+
+            #region Updates
+
         public ServiceResult UpdateEntity<T>(String partitionKey, String rowKey) where T : class, ITableEntity, new()
         {
-            TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
-
-            // Execute the operation.
-            TableResult retrievedResult = _table.ExecuteAsync(retrieveOperation).Result;
-
-            // Assign the result to a object.
-            var updateEntity = (T)retrievedResult.Result;
-
-            if (updateEntity != null)
-            {
-                // Create the InsertOrReplace TableOperation
-                TableOperation updateOperation = TableOperation.Replace(updateEntity);
-
-                // Execute the operation.
-                _table.ExecuteAsync(updateOperation);
-            }
-            return true;
+            return UpdateEntityAsync<T>(partitionKey, rowKey).Result;
         }
 
         public ServiceResult UpdateEntity<T>(T entity) where T : class, ITableEntity, new()
+        {
+            return UpdateEntityAsync(entity).Result;
+        }
+
+        public async Task<ServiceResult> UpdateEntityAsync<T>(T entity) where T : class, ITableEntity, new()
         {
             ServiceResult isUpdate = false;
             try
@@ -147,7 +168,7 @@ namespace JB2.Common.Data
                 TableOperation updateOperation = TableOperation.Replace(entity);
 
                 // Execute the operation.
-                _table.ExecuteAsync(updateOperation);
+                await _table.ExecuteAsync(updateOperation);
                 isUpdate = true;
             }
             catch (Exception ex)
@@ -158,7 +179,33 @@ namespace JB2.Common.Data
             return isUpdate;
         }
 
-        #endregion Inserts
+        public async Task<ServiceResult> UpdateEntityAsync<T>(String partitionKey, String rowKey) where T : class, ITableEntity, new()
+        {
+            TableOperation retrieveOperation = TableOperation.Retrieve<T>(partitionKey, rowKey);
+
+            // Execute the operation.
+            TableResult retrievedResult = await _table.ExecuteAsync(retrieveOperation);
+
+            // Assign the result to a object.
+            var updateEntity = (T)retrievedResult.Result;
+
+            if (updateEntity != null)
+            {
+                // Create the InsertOrReplace TableOperation
+                TableOperation updateOperation = TableOperation.Replace(updateEntity);
+
+                // Execute the operation.
+                await _table.ExecuteAsync(updateOperation);
+            }
+            return true;
+        }
+
+
+        #endregion Updates
+
+
+
+
 
 
         #region Retrieves
@@ -254,16 +301,21 @@ namespace JB2.Common.Data
             return this.ExecuteQuery<DynamicTableEntity>(query, 0).Count();
         }
 
-        public IEnumerable<T> ExecuteQuery<T>(TableQuery<T> query, int noOfRecords = 0) where T : ITableEntity, new()
+        #region Execute 
+
+        public async Task<IEnumerable<T>> ExecuteQueryAsync<T>(TableQuery<T> query, int noOfRecords = 0)  where T : ITableEntity, new()
         {
             List<T> result = null;
 
             if (noOfRecords < 0)
                 noOfRecords = 0;
-            
-            if (noOfRecords != 0 && noOfRecords <= 1000   )
+
+            if (noOfRecords != 0 && noOfRecords <= 1000)
             {
-                result = _table.ExecuteQuerySegmentedAsync<T>(query,null).Result.Take(noOfRecords).ToList();
+                var all = await _table.ExecuteQuerySegmentedAsync<T>(query, null);
+
+
+                result = all.Take(noOfRecords).ToList();
             }
             else
             {
@@ -271,11 +323,10 @@ namespace JB2.Common.Data
                 result = new List<T>(noOfRecords);
                 do
                 {
-                    Console.WriteLine(result.Count());
+                    //Console.WriteLine(result.Count());
                     ///https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/
                     // Retrieve a segment (up to 1,000 entities).
-                    TableQuerySegment<T> tableQueryResult =
-                         _table.ExecuteQuerySegmentedAsync(query, continuationToken).Result;
+                    TableQuerySegment<T> tableQueryResult = await _table.ExecuteQuerySegmentedAsync(query, continuationToken);
 
                     // Assign the new continuation token to tell the service where to
                     // continue on the next iteration (or null if it has reached the end).
@@ -290,14 +341,24 @@ namespace JB2.Common.Data
                         continuationToken = null;
 
                     // Loop until a null continuation token is received, indicating the end of the table.
-                } while (continuationToken != null) ;
+                } while (continuationToken != null);
                 Console.WriteLine("done with query");
             }
             Console.WriteLine("return results:" + result.Count());
-            if(noOfRecords != 0)
+            if (noOfRecords != 0)
                 return result.Take(noOfRecords).ToList();
             return result.ToList();
         }
+
+        public IEnumerable<T> ExecuteQuery<T>(TableQuery<T> query, int noOfRecords = 0) where T : ITableEntity, new()
+        {
+            return ExecuteQueryAsync<T>(query, noOfRecords).Result;
+        }
+
+        #endregion Execute
+
+
+
 
         public ServiceResult SetEncyptKey(Microsoft.Azure.KeyVault.Core.IKey key)
         {
@@ -329,28 +390,28 @@ namespace JB2.Common.Data
             }
         }
 
-        public IList<TableResult> ExecuteBulk(TableOperationCollection collection)
+        public async Task<IList<TableResult>> ExecuteBulkAsync(TableOperationCollection collection)
         {
             var result = new List<TableResult>();
 
-            foreach(var pkey in collection.PartitionKeys)
+            foreach (var pkey in collection.PartitionKeys)
             {
                 var operations = collection.GetOperationsByPartitionKey(pkey);
 
                 TableBatchOperation batch = new TableBatchOperation();
-                foreach(var o in operations)
+                foreach (var o in operations)
                 {
-                    if( batch.Count == 100)
+                    if (batch.Count == 100)
                     {
-                        var batchResults = _table.ExecuteBatchAsync(batch).Result;
+                        var batchResults = await _table.ExecuteBatchAsync(batch);
                         result.AddRange(batchResults);
                         batch = new TableBatchOperation();
                     }
-                    batch.Add(o);                  
+                    batch.Add(o);
                 }
-                if(batch.Count > 0)
+                if (batch.Count > 0)
                 {
-                    var batchResults = _table.ExecuteBatchAsync(batch).Result;
+                    var batchResults = await _table.ExecuteBatchAsync(batch);
                     result.AddRange(batchResults);
                 }
             }
@@ -358,11 +419,23 @@ namespace JB2.Common.Data
             return result;
         }
 
+        public IList<TableResult> ExecuteBulk(TableOperationCollection collection)
+        {
+            return ExecuteBulkAsync(collection).Result;
+        }
+
         public override string GetName()
         {
             return _table.Name;
         }
 
+        public override ContainerType GetContainerType()
+        {
+            return ContainerType.Table;
+        }
+
+
+        #region helpers
 
         private string startsWithfilter(string partitionKey, string searchStr,string columnName = "RowKey")
         {
@@ -386,9 +459,8 @@ namespace JB2.Common.Data
             return filterString;
         }
 
-        public override ContainerType GetContainerType()
-        {
-            return ContainerType.Table;
-        }
+        #endregion helpers
+
+
     }
 }

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace JB2.Common
 {
-    [Serializable()]
-    public abstract class ObjectWithMetadata<TKind, TKey, TTag> : IDNamePair<TKey,string>, IObject<TKind, TKey, TTag>,IMetaDatable
+
+    public abstract class ObjectWithMetadata<TKind, TKey, TTag> : IDNamePair<TKey, string>, IObject<TKind, TKey, TTag>, IMetaDatable
         where TKey : IComparable
     {
         #region Fields
@@ -31,6 +31,20 @@ namespace JB2.Common
             return _tags.Remove(tag);
         }
 
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<TTag> tags)
+        {
+
+            try
+            {
+                var w = from tag in tags select _tags.Add(tag);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
 
 
         #endregion IObject
@@ -50,7 +64,7 @@ namespace JB2.Common
             _metadata[propertyname].UpdateValue(value);
             return true;
         }
-        
+
         public virtual bool RemoveMetaData(IMetaData item)
         {
             return _metadata.Remove(item);

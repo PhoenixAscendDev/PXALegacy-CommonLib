@@ -30,6 +30,24 @@ namespace JB2.Common
             return true;
         }
 
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<string> tags)
+        {
+
+            try
+            {
+                foreach(var tag in tags)
+                {
+                    _tags.Add(tag);
+                }
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
         public abstract byte[] GetFileContent();
 
 

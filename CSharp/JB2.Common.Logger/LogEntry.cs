@@ -103,6 +103,21 @@ namespace JB2.Common.Log
         {
             return _tags.Remove(tag);
         }
+
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<Tag> tags)
+        {
+
+            try
+            {
+                var w = from tag in tags select _tags.Add(tag);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
+
         #endregion ITags
 
         public static LogEntry<TKey,TServerity> NewLogEntry(TKey id, TServerity serverity,string message)

@@ -88,6 +88,19 @@ namespace JB2.Common
             return _tags.Add(tag);
         }
 
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<Tag> tags)
+        {
+
+            try
+            {
+                var w = from tag in tags select _tags.Add(tag);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult(ex);
+            }
+        }
         public abstract IEnumerable<IMessageAttachment> GetAttachments();
 
 

@@ -29,7 +29,7 @@ namespace JB2.Common.Data
             _blobclient = account.CreateCloudBlobClient();
             _container = _blobclient.GetContainerReference(containerName);
 
-            _container.CreateIfNotExists();
+            _container.CreateIfNotExistsAsync();
         }
 
 
@@ -43,31 +43,46 @@ namespace JB2.Common.Data
             return ContainerType.Blob;
         }
 
-
-
         public bool Insert(byte[] content, string blobName)
         {
-            CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
+            return InsertAsync(content, blobName).Result;
+        }
 
-            using (var stream = new MemoryStream(content, writable: false))
+        public async Task<bool> InsertAsync(byte[] content, string blobName)
+        {
+            try
             {
-                blockBlob.UploadFromStream(stream);
-            }
+                CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
-            return true;
+                using (var stream = new MemoryStream(content, writable: false))
+                {
+                    await blockBlob.UploadFromStreamAsync(stream);
+                }
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Insert(Stream stream, string blobName)
         {
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
-            blockBlob.UploadFromStream(stream);
+            blockBlob.UploadFromStreamAsync(stream);
 
             return true;
 
         }
 
         public byte[] GetByteArray(string blobName)
+        {
+            return GetByteArrayAsync(blobName).Result;
+        }
+
+        public async Task<byte[]> GetByteArrayAsync(string blobName)
         {
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
@@ -77,18 +92,23 @@ namespace JB2.Common.Data
             //blockBlob.DownloadToByteArray(result, 0);
 
             //return result;
-
-            blockBlob.FetchAttributes();
+            Stream stream = null;
+            //byte[] fileContent = new byte[0];
+            await blockBlob.FetchAttributesAsync();
             long fileByteLength = blockBlob.Properties.Length;
             byte[] fileContent = new byte[fileByteLength];
-            //for (int i = 0; i < fileByteLength; i++)
-            //{
-            //    fileContent[i] = 0x20;
-            //}
-
-            blockBlob.DownloadToByteArray(fileContent, 0);
-
+            for (int i = 0; i < fileByteLength; i++)
+            {
+                fileContent[i] = 0x20;
+            }
+            var retrievedResult = await blockBlob.DownloadToByteArrayAsync(fileContent, 0);
+            //await blockBlob.DownloadToStreamAsync(stream);
             return fileContent;
+            
+
+            
+
+           /// return fil
 
 
             //byte[] data = ;
@@ -109,7 +129,7 @@ namespace JB2.Common.Data
 
             MemoryStream result = new MemoryStream();
 
-            blockBlob.DownloadToStream(result);
+            blockBlob.DownloadToStreamAsync(result);
 
             return result;
 
@@ -139,7 +159,7 @@ namespace JB2.Common.Data
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(blobName);
 
             // Delete the blob.
-            blockBlob.Delete();
+            blockBlob.DeleteAsync();
 
             return true;
 

@@ -26,7 +26,7 @@ namespace JB2.Common.Data
 
         public QueueItem(byte[] content)
         {
-            _message = new CloudQueueMessage(content);
+            _message = CloudQueueMessage.CreateCloudQueueMessageFromByteArray(content);
         }
 
         public QueueItem(string id, string receipt)

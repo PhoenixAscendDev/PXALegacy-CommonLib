@@ -36,7 +36,7 @@ namespace JB2.Common.Data
         {
             _queueClient = account.CreateCloudQueueClient();
             _queue = _queueClient.GetQueueReference(queueName);
-            _queue.CreateIfNotExists();
+            _queue.CreateIfNotExistsAsync();
 
             _popVisibilityTimeout = 30;
             _updateVisbilityTimeout = 60;
@@ -141,7 +141,7 @@ namespace JB2.Common.Data
         [DoesServiceRequest]
         protected void addItem(QueueItem item, TimeSpan? timeToLive = default(TimeSpan?), TimeSpan? initialVisibilityDelay = default(TimeSpan?), QueueRequestOptions options = null, OperationContext operationContext = null)
         {
-            _queue.AddMessage(item, timeToLive, initialVisibilityDelay, options, operationContext);
+            _queue.AddMessageAsync(item, timeToLive, initialVisibilityDelay, options, operationContext);
         }
 
         [DoesServiceRequest]
@@ -171,7 +171,7 @@ namespace JB2.Common.Data
 
         protected QueueItem peek(QueueRequestOptions options = null, OperationContext operationContext = null)
         {
-            var message = _queue.PeekMessage(options, operationContext);
+            var message = _queue.PeekMessageAsync(options, operationContext).Result;
 
             return (QueueItem)message;
         }
@@ -203,7 +203,7 @@ namespace JB2.Common.Data
 
         protected void updateItem(QueueItem item, TimeSpan visibilityTimeout, MessageUpdateFields updateFields, QueueRequestOptions options = null, OperationContext operationContext = null)
         {
-            _queue.UpdateMessage(item, visibilityTimeout, updateFields, options, operationContext);
+            _queue.UpdateMessageAsync(item, visibilityTimeout, updateFields, options, operationContext);
         }
 
 
@@ -226,7 +226,7 @@ namespace JB2.Common.Data
 
         protected QueueItem pop(TimeSpan? visibilityTimeout = default(TimeSpan?), QueueRequestOptions options = null, OperationContext operationContext = null)
         {
-            return _queue.GetMessage(visibilityTimeout, options, null);
+            return _queue.GetMessageAsync(visibilityTimeout, options, null).Result;
         }
 
 
@@ -257,7 +257,7 @@ namespace JB2.Common.Data
 
         public IEnumerable<QueueItem> PopBulk(int count, TimeSpan visibilityTimeout)
         {
-            var list = _queue.GetMessages(count, visibilityTimeout, null, null);
+            var list = _queue.GetMessagesAsync(count, visibilityTimeout, null, null).Result;
 
             return list.Cast<QueueItem>().ToList();
         }
@@ -298,7 +298,7 @@ namespace JB2.Common.Data
 
         public void Remove(string id, string receipt)
         {
-            _queue.DeleteMessage(id, receipt, null, null);
+            _queue.DeleteMessageAsync(id, receipt, null, null);
         }
 
         public Task RemoveAsync(QueueItem item)
@@ -313,7 +313,7 @@ namespace JB2.Common.Data
 
         protected void removeItem(QueueItem item, QueueRequestOptions options = null, OperationContext operationContext = null)
         {
-            _queue.DeleteMessage(item, options, operationContext);
+            _queue.DeleteMessageAsync(item, options, operationContext);
         }
 
         protected Task removeItemAsync(QueueItem item, QueueRequestOptions options, OperationContext operationContext, CancellationToken? cancellationToken = null)
@@ -321,7 +321,11 @@ namespace JB2.Common.Data
             if (cancellationToken == null)
                 return _queue.DeleteMessageAsync(item, options, operationContext);
             else
-                return _queue.DeleteMessageAsync(item, options, operationContext, cancellationToken.GetValueOrDefault());
+            {
+                string popreceipt = string.Empty;
+                return _queue.DeleteMessageAsync(item, popreceipt, options, operationContext, cancellationToken.GetValueOrDefault());
+            }
+                
         }
 
         #endregion Remove Methods

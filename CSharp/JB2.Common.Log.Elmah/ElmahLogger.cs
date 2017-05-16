@@ -17,6 +17,11 @@ namespace JB2.Common.Log
             base.SetAllServerity(true);
 
         }
+
+        public override Logit GetLogMethod()
+        {
+            throw new NotImplementedException();
+        }
         #endregion Constructor
 
 
@@ -48,6 +53,21 @@ namespace JB2.Common.Log
             {
                 //not good not good
             }
+        }
+
+        public override Task LogDebugMessageAsync(string message, string logcode = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task LogErrorAsync(Exception ex, string message = "", string logcode = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task LogMessageAsync(string message, string logcode = "")
+        {
+            throw new NotImplementedException();
         }
 
         #endregion ILogger

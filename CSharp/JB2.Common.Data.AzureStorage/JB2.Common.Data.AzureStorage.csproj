@@ -149,6 +149,10 @@
       <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
       <Name>JB2.Common.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JB2.Common.Serialization.Json\JB2.Common.Serialization.Json.csproj">
+      <Project>{d6785d1c-f41e-4117-a842-466ffa9f2913}</Project>
+      <Name>JB2.Common.Serialization.Json</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

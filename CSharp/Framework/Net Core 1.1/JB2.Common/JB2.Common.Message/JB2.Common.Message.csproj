@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>JB2.Common.Message.NetCore11</PackageId>
+    <PackageId>JB2.Common.Message</PackageId>
     <Version>0.3.2.0</Version>
     <Authors>Joshua Allen Bennett</Authors>
     <Company>JBsquared LLC</Company>

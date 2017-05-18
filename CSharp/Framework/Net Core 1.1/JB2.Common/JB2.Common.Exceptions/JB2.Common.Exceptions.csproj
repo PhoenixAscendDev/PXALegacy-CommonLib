@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>JB2.Common.Exceptions</AssemblyName>
     <RootNamespace>JB2.Common</RootNamespace>
-    <PackageId>JB2.Common.Exceptions.NetCore11</PackageId>
+    <PackageId>JB2.Common.Exceptions</PackageId>
     <Version>0.1.3</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>

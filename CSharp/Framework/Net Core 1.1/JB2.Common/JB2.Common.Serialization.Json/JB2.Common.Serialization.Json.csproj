@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>JB2.Common.Serialization.Json.NetCore11</PackageId>
+    <PackageId>JB2.Common.Serialization.Json</PackageId>
     <Version>0.1.1</Version>
     <Authors>Joshua Bennett</Authors>
     <Company>JBsquared LLC</Company>
@@ -11,8 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JB2.Common.Core.NetCore" Version="0.4.7" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
   </ItemGroup>
 
 </Project>

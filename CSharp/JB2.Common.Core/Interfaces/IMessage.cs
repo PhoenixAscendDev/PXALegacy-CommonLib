@@ -6,10 +6,10 @@ using System.Text;
 namespace JB2.Common
 {
 
-    public interface IMessage : IIDProp<string>, ITagable<JB2.Common.Tag>
+    public interface IMessage : IMessage<string>
     {
     }
-    public interface IMessage<Tkey> : IIDProp<Tkey>, ITagable<JB2.Common.Tag>
+    public interface IMessage<Tkey> : IMessage<Tkey,JB2.Common.Tag>
         where Tkey : IComparable
     {
 

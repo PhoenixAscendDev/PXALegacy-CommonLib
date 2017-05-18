@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public delegate Task<ServiceResult<TMessage>> SendMessage<TMessage, TMessageKey, TMessageTag>(IMessage<TMessageKey, TMessageTag> message)
+    public delegate Task<ServiceResult<TMessage>> SendMessage<TMessage, TMessageKey, TMessageTag>(TMessage message)
         where TMessage : IMessage<TMessageKey, TMessageTag>
         where TMessageKey : IComparable;
 }

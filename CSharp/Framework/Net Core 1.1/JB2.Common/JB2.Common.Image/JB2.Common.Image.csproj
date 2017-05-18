@@ -3,15 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>JB2.Common.Message.NetCore11</PackageId>
-    <Version>0.3.2.0</Version>
+    <PackageId>JB2.Common.Image.NetCore11</PackageId>
+    <Version>0.2.2</Version>
     <Authors>Joshua Allen Bennett</Authors>
     <Company>JBsquared LLC</Company>
     <Product>Common Lib</Product>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ImageAttachment.cs" />
+    <PackageReference Include="CoreCompat.System.Drawing" Version="1.0.0-beta006" />
   </ItemGroup>
 
   <ItemGroup>

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="delegates.cs" />
     <Compile Include="GenericAttachment.cs" />
     <Compile Include="ImageAttachment.cs" />
     <Compile Include="IMessage.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="IMessageHeader.cs" />
     <Compile Include="IMessager.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="Messager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

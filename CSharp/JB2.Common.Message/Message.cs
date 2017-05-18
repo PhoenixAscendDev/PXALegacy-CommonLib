@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace JB2.Common
 {
-    public abstract class JB2Message : JB2.Common.JB2Class, IMessage
+    public abstract class JB2Message : JB2Message<string>
+    {
+
+    }
+    public abstract class JB2Message<TKey> : JB2Message<TKey,Tag>
+                where TKey : IComparable
+    {
+
+    }
+    
+    public abstract class JB2Message<TKey,TTag> : JB2.Common.JB2Class, JB2.Common.Message.IMessage<TKey,TTag>
+        where TKey : IComparable
     {
 
         #region Fields
-
-        protected BaseCollection<Tag> _tags;
+        
+        protected BaseCollection<TTag> _tags;
 
         #endregion Fields
 
@@ -41,16 +52,16 @@ namespace JB2.Common
             }
         }
 
-        public virtual string From
+        public virtual TKey From
         {
             get
             {
-                return GetProperity<string>("FROM");
+                return GetProperity<TKey>("FROM");
             }
 
             set
             {
-                SetProperty<string>("FROM", value);
+                SetProperty<TKey>("FROM", value);
             }
         }
 
@@ -70,25 +81,25 @@ namespace JB2.Common
             }
         }
 
-        public virtual string To
+        public virtual TKey To
         {
             get
             {
-                return GetProperity<string>("TO");
+                return GetProperity<TKey>("TO");
             }
 
             set
             {
-                SetProperty<string>("TO", value);
+                SetProperty<TKey>("TO", value);
             }
         }
 
-        public virtual bool AddTag(Tag tag)
+        public virtual bool AddTag(TTag tag)
         {
             return _tags.Add(tag);
         }
 
-        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<Tag> tags)
+        public virtual JB2.Common.ServiceResult LoadTags(IEnumerable<TTag> tags)
         {
 
             try
@@ -104,17 +115,17 @@ namespace JB2.Common
         public abstract IEnumerable<IMessageAttachment> GetAttachments();
 
 
-        public abstract IMessageHeader GetHeaderInfo();
+        public abstract JB2.Common.Message.IMessageHeader GetHeaderInfo();
 
 
-        public virtual string GetID()
+        public virtual TKey GetID()
         {
-            return this.GetProperity<string>("ID");
+            return this.GetProperity<TKey>("ID");
         }
 
-        public abstract IPerson<string> GetSender();
+        public abstract IPerson<TKey> GetSender();
 
-        public virtual IEnumerable<Tag> GetTags()
+        public virtual IEnumerable<TTag> GetTags()
         {
             return _tags;
         }
@@ -122,7 +133,7 @@ namespace JB2.Common
         public abstract void Read();
 
 
-        public bool RemoveTag(Tag tag)
+        public bool RemoveTag(TTag tag)
         {
             return _tags.Remove(tag);
         }

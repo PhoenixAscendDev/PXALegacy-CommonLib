@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JB2.Common
-{
+namespace JB2.Common.Message
+{ 
     public interface IMessageHeader  : IObjectCollection<KeyValuePair<string,object>>
     {
 

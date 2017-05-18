@@ -121,6 +121,7 @@
     <Compile Include="AzureQueueRepository.cs" />
     <Compile Include="AzureRepositoryWithCache.cs" />
     <Compile Include="AzureTableEntity.cs" />
+    <Compile Include="AzureTableRepository.cs" />
     <Compile Include="ContainerType.cs" />
     <Compile Include="Exceptions\QueueException.cs" />
     <Compile Include="Exceptions\StorageException.cs" />
@@ -137,7 +138,6 @@
     <Compile Include="StorageAccount.cs" />
     <Compile Include="TableBatchOperations.cs" />
     <Compile Include="TableOperationType.cs" />
-    <Compile Include="TableRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">

@@ -4,31 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JB2.Common
+namespace JB2.Common.Message
 {
 
-    public interface IMessager:  IMessager<IMessage,string>
+    #region IMessager
+    public interface IMessager:  IMessager<string>
     {
 
     }
 
-    public interface IMessager<TMessage,TMailbox>
-        where TMessage : JB2.Common.IMessage 
+    public interface IMessager<TMailbox> : IMessager<IMessage,TMailbox>
     {
-        ServiceResult<TMessage> Deliever(TMessage message);
 
+    }
+
+    public interface IMessager<TMessage,TMailbox> : JB2.Common.IMessagerAsync<TMessage>
+        where TMessage : JB2.Common.Message.IMessage 
+    {
         ServiceResult<IEnumerable<TMessage>> RecieveMessages(TMailbox mailbox);
 
         #region Events
-
-        event Action<IMessager<TMessage,TMailbox>, TMessage, System.DateTime> DelieverySuccess;
-
-        event Action<IMessager<TMessage, TMailbox>, TMessage, ServiceResult<TMessage>> DelieveryFailed;
-
-        event Action<IMessager<TMessage, TMailbox>, TMessage, ServiceResult<TMessage>> Delivered;
 
         event Action<IMessager<TMessage, TMailbox>, IEnumerable<TMessage>, TMailbox,System.DateTime> Recieved;
 
         #endregion Events
     }
+
+    #endregion IMessager
+
+    #region IMessagerAsync
+
+    public interface IMessagerAsync<TMessage, TMailbox> : JB2.Common.Message.IMessager<TMessage,TMailbox>
+       where TMessage : JB2.Common.Message.IMessage
+    {
+        Task<ServiceResult<IEnumerable<TMessage>>> RecieveMessagesAsync(TMailbox mailbox);
+    }
+
+
+
+    #endregion IMessagerAsync
 }

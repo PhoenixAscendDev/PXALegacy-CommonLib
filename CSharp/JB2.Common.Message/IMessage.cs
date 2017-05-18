@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JB2.Common
+namespace JB2.Common.Message
 {
 
     public interface IMessage: IMessage<string,JB2.Common.Tag>
@@ -13,15 +13,10 @@ namespace JB2.Common
     }
 
 
-    public interface IMessage<Tkey,TTag> : IIDProp<Tkey>, ITagable<TTag>
+    public interface IMessage<Tkey,TTag> : JB2.Common.IMessage<Tkey,TTag>
         where Tkey : IComparable
     {
         IPerson<Tkey> GetSender();
-        Tkey To { get; set; }
-        Tkey From { get; set; }
-        string Subject { get; set; }
-        string Body { get; set; }
-        DateTime DateSent { get; set; }
 
         bool IsRead { get; }
         IMessageHeader GetHeaderInfo();

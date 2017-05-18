@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>JB2.Common.Message.NetCore11</PackageId>
+    <Version>0.3.2.0</Version>
+    <Authors>Joshua Allen Bennett</Authors>
+    <Company>JBsquared LLC</Company>
+    <Product>Common Lib</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj" />
+  </ItemGroup>
+
+</Project>

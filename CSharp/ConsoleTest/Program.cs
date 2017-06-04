@@ -186,19 +186,35 @@ namespace ConsoleTest
         }
 
 
+
+        public static void TestJB2Time()
+        {
+
+
+            for(int i=86399;i <= 86399; i++)
+            {
+                var t = JB2Time.FromTimePart(seconds: i);
+                Console.WriteLine(t.TimeSecUSA + " - " + t.AmPm + " - " + t.DaytimeName);
+               
+            }
+        }
+
         static void Main(string[] args)
         {
 
 
-            for (int i = 0; i < 10; i++)
-            {
-                var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
-                var urlstr = "http://id.jbsquared.com/test/?subject={0}";
-                //var playerid = JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)));
-                var playerid = ConvertToHash(string.Format(urlstr, subject));
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    var subject = "203cd762-a99e-4126-9b62-7c80f044a557";
+            //    var urlstr = "http://id.jbsquared.com/test/?subject={0}";
+            //    //var playerid = JB2.Common.NewID.UriHash("PA-{0}", new Uri(string.Format(urlstr, subject)));
+            //    var playerid = ConvertToHash(string.Format(urlstr, subject));
 
-                Console.WriteLine(playerid);
-            }
+            //    Console.WriteLine(playerid);
+            //}
+
+
+            TestJB2Time();
 
             Console.ReadLine();
 

@@ -42,6 +42,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="JB2Date.cs" />
     <Compile Include="ChineseZodiac.cs" />
+    <Compile Include="JB2Time.cs" />
     <Compile Include="LunarPhaseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

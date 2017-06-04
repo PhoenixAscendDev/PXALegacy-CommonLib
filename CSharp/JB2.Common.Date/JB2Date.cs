@@ -12,9 +12,9 @@ namespace JB2.Common
 {
     public class JB2Date
     {
-        private int _datekey;
-        private string _dateStringFormat = "";
-        private DateTime? _dt;
+        protected int _datekey;
+        protected string _dateStringFormat = "";
+        protected DateTime? _dt;
         static readonly int MINKEY = 17500101;
         static readonly int MAXKEY = 20201231;
 
@@ -351,9 +351,11 @@ namespace JB2.Common
             bool result = true;
             if (key < MINKEY || key > MAXKEY)
                 return false;
+
+
             try
             {
-                string strDate = key.ToString();
+                string strDate =  key.ToString();
                 System.Globalization.DateTimeFormatInfo dtfi = new System.Globalization.DateTimeFormatInfo();
                 dtfi.ShortDatePattern = "yyyyMMdd";
                 dtfi.DateSeparator = "";

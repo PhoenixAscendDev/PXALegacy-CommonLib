@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>JB2.Common.Date</PackageId>
-    <Version>0.2.2</Version>
+    <Version>0.3.0</Version>
     <Authors>Joshua Bennett</Authors>
     <Company>JBsquared LLC</Company>
     <Product>Common Lib</Product>

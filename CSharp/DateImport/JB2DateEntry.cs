@@ -77,6 +77,9 @@ namespace DateImport
         public int Year { get; set; }
         public int WeekOfMonth { get; set; }
         public int WeekOfYear { get; set; }
+
+        public bool IsDay { get; set; }
+        public bool IsNight { get; set; }
         
 
 

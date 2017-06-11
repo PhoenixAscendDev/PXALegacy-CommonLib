@@ -246,7 +246,7 @@ namespace JB2.Common
             }
         }
 
-        public string DateNight
+        public string DayNight
         {
             get
             {

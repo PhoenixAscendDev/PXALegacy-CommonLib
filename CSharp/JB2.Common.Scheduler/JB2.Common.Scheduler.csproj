@@ -63,10 +63,6 @@
       <Project>{3f3b616b-80f8-4cfd-9296-b8d677dedbd9}</Project>
       <Name>JB2.Common.Date</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Logger\JB2.Common.Logger.csproj">
-      <Project>{e1ea875a-2865-45ec-9296-b278f5815da9}</Project>
-      <Name>JB2.Common.Logger</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

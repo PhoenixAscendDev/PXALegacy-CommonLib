@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using JB2.Common.Log;
 using JB2.Helpers;
 
 namespace JB2.Common.Scheduler
@@ -45,7 +44,7 @@ namespace JB2.Common.Scheduler
                             thread = new Thread(new ThreadStart(job.Start));
                             thread.Start();
                             if(LoggingEnabled())
-                            logger.Log( Enum.LogServerityType.Debug, string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
+                            logger.LogDebugMessage( string.Format("The Job  \"{0}\" has been successfully been started (JobID:{1})",
                                                                 job.Name,
                                                                 job.ID.ToString()));
                         }       
@@ -64,7 +63,7 @@ namespace JB2.Common.Scheduler
                                                                     job.Name,
                                                                     job.ID.ToString()));
                         if (LoggingEnabled())
-                            logger.Log(Enum.LogServerityType.Error,schedulerEx);
+                            logger.LogError(schedulerEx);
                     }
                 }
                
@@ -83,7 +82,7 @@ namespace JB2.Common.Scheduler
                 }
 
                 if (LoggingEnabled())
-                    logger.LogInformation("Scheduler has stopped on jobs");
+                    logger.LogMessage("Scheduler has stopped on jobs");
 
                 if (Stopped != null)
                     Stopped(this);

@@ -56,7 +56,6 @@ namespace JB2.Common.Data
 
         #endregion Constructors
 
-
         #region Properties
 
         #endregion Properties
@@ -142,7 +141,7 @@ namespace JB2.Common.Data
 
         #endregion Inserts
 
-            #region Updates
+        #region Updates
 
         public ServiceResult UpdateEntity<T>(String partitionKey, String rowKey) where T : class, ITableEntity, new()
         {
@@ -197,11 +196,6 @@ namespace JB2.Common.Data
 
 
         #endregion Updates
-
-
-
-
-
 
         #region Retrieves
         public IEnumerable<T> GetByPartitionKey<T>(string partitionKey, int noOfRecords = 0) where T : ITableEntity, new()

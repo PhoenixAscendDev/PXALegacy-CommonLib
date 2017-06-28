@@ -20,7 +20,7 @@ namespace JB2.Common
 
         public JB2Exception(string message, Exception innerException, string code="") : base(message, innerException)
         {
-
+            Code = code;
         }
 
         public string Code { get; }

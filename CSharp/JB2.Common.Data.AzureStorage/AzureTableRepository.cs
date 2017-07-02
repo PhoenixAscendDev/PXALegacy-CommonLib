@@ -333,7 +333,7 @@ namespace JB2.Common.Data
                 } while (continuationToken != null);
                 Console.WriteLine("done with query");
             }
-            Console.WriteLine("return results:" + result.Count());
+            //Console.WriteLine("return results:" + result.Count());
             if (noOfRecords != 0)
                 return result.Take(noOfRecords).ToList();
             return result.ToList();

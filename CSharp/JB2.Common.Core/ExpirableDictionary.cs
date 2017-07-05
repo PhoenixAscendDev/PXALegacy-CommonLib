@@ -278,7 +278,16 @@ namespace JB2.Common
         {
             get
             {
-                return this.Cast<T>().ToList();
+                ClearExpiredItems();
+
+                ICollection<T> list = new List<T>();
+
+                foreach(var v in _innerDictionary.Values )
+                {
+                    list.Add(v.Value);
+                }
+
+                return list;
             }
         }
 

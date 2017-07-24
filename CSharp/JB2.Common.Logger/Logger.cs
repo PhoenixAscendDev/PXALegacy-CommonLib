@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +26,6 @@ namespace JB2.Common.Log
         }
 
         #endregion Constructors
-
-
 
         #region events
         public event Action<ILogger<LogServerityType, string, ILogEntry>, LogServerityType, ILogEntry> EntryLogged;

@@ -10,8 +10,20 @@ namespace JB2.Common.Log
 {
     public abstract class Logger : ILogger
     {
+
+        #region Fields
         private Dictionary<Enum.LogServerityType, bool> _serverityFlag = new Dictionary<LogServerityType, bool>();
 
+        #endregion Fields
+
+        #region Constructors
+
+        public Logger()
+        {
+
+        }
+
+        #endregion Constructors
 
         #region events
         public event Action<ILogger<LogServerityType, string, ILogEntry>, LogServerityType, ILogEntry> EntryLogged;
@@ -63,6 +75,10 @@ namespace JB2.Common.Log
 
         #endregion events
 
+
+
+        public abstract JB2.Common.Log.Logit GetLogMethod();
+
         public virtual bool IsEnabled(LogServerityType serverity)
         {
             if (!_serverityFlag.ContainsKey(serverity))
@@ -74,7 +90,7 @@ namespace JB2.Common.Log
         public void SetAllServerity(bool enable)
         {
             _serverityFlag = new Dictionary<LogServerityType, bool>();
-            foreach(Enum.LogServerityType e in System.Enum.GetValues(typeof(Enum.LogServerityType)))
+            foreach (Enum.LogServerityType e in System.Enum.GetValues(typeof(Enum.LogServerityType)))
             {
                 _serverityFlag.Add(e, enable);
             }
@@ -88,38 +104,55 @@ namespace JB2.Common.Log
                 _serverityFlag[type] = enable;
         }
 
-        public virtual void Log(ILogEntry entry)
+        public virtual void  Log(ILogEntry entry)
         {
-            if (this.EntryLogged != null)
-                EntryLogged(this, entry.Serverity, entry);
-
-            switch(entry.Serverity)
+            if (IsEnabled(entry.Serverity))
             {
-                case LogServerityType.Debug:
-                    if (this.DebugLogged != null)
-                        DebugLogged(this, entry);
-                    break;
-                case LogServerityType.Error:
-                    if (this.ErrorLogged != null)
-                        ErrorLogged(this, entry);
-                    break;
-                case LogServerityType.Fatel:
-                    if (this.FatelLogged != null)
-                        FatelLogged(this, entry);
-                    break;
-                case LogServerityType.Informational:
-                    if (this.InfomationalLogged != null)
-                        InfomationalLogged(this, entry);
-                    break;
-                case LogServerityType.Verbose:
-                    if (this.VerboseLogged != null)
-                        VerboseLogged(this, entry);
-                    break;
-                case LogServerityType.Warning:
-                    if (this.WarningLogged != null)
-                        WarningLogged(this, entry);
-                    break;
+                var workResult = GetLogMethod()?.Invoke(entry); // await Task.Run(() => GetLogMethod()?.Invoke(entry));
+
+                if (workResult)
+                {
+                    if (this.EntryLogged != null)
+                        EntryLogged(this, entry.Serverity, entry);
+                    switch (entry.Serverity)
+                    {
+                        case LogServerityType.Debug:
+                            if (this.DebugLogged != null)
+                                DebugLogged(this, entry);
+                            break;
+                        case LogServerityType.Error:
+                            if (this.ErrorLogged != null)
+                                ErrorLogged(this, entry);
+                            break;
+                        case LogServerityType.Fatel:
+                            if (this.FatelLogged != null)
+                                FatelLogged(this, entry);
+                            break;
+                        case LogServerityType.Informational:
+                            if (this.InfomationalLogged != null)
+                                InfomationalLogged(this, entry);
+                            break;
+                        case LogServerityType.Verbose:
+                            if (this.VerboseLogged != null)
+                                VerboseLogged(this, entry);
+                            break;
+                        case LogServerityType.Warning:
+                            if (this.WarningLogged != null)
+                                WarningLogged(this, entry);
+                            break;
+                    }
+                }
             }
         }
+
+        public abstract void LogDebugMessage(string message, string logcode = "");
+
+
+        public abstract void LogError(Exception ex, string message = "", string logcode = "");
+
+
+        public abstract void LogMessage(string message, string logcode = "");
+
+
     }
 }

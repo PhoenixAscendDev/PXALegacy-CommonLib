@@ -136,6 +136,7 @@
     <Compile Include="Setting.cs" />
     <Compile Include="SettingCollection.cs" />
     <Compile Include="ShortGUID.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="SmallNumberRange.cs" />
     <Compile Include="StringName.cs" />
     <Compile Include="Tag.cs" />

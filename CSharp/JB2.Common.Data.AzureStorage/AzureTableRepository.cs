@@ -331,7 +331,7 @@ namespace JB2.Common.Data
 
                     // Loop until a null continuation token is received, indicating the end of the table.
                 } while (continuationToken != null);
-                Console.WriteLine("done with query");
+                //Console.WriteLine("done with query");
             }
             //Console.WriteLine("return results:" + result.Count());
             if (noOfRecords != 0)

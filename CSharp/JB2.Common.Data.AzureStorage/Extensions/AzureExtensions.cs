@@ -27,7 +27,7 @@ namespace JB2.Common.Data
 
             if (typeof(T) == typeof(DateTime))
             {
-                var ticks = e.Properties.ContainsKey(propertyName) ? (string)e.Properties[propertyName].PropertyAsObject : "0";
+                var ticks = e.Properties.ContainsKey(propertyName) ? e.Properties[propertyName].PropertyAsObject.ToString() : "0";
                 DateTime dt = DateTime.MinValue;
                 if (ticks.IsNumber())
                     dt = new DateTime(Convert.ToInt64(ticks));

@@ -29,8 +29,11 @@ namespace JB2.Common.Data
             {
                 var ticks = e.Properties.ContainsKey(propertyName) ? e.Properties[propertyName].PropertyAsObject.ToString() : "0";
                 DateTime dt = DateTime.MinValue;
-                if (ticks.IsNumber())
-                    dt = new DateTime(Convert.ToInt64(ticks));
+
+                long tickLong = 0;
+
+                if(long.TryParse(ticks,out tickLong))
+                    dt = new DateTime(tickLong);
                 else
                     dt = (DateTime)e.Properties[propertyName].PropertyAsObject;
 

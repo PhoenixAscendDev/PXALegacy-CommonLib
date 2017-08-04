@@ -110,7 +110,7 @@ namespace JB2.Common
     {
         public static bool IsNumber(this object value)
         {
-            return value is sbyte
+            bool result =  value is sbyte
                     || value is byte
                     || value is short
                     || value is ushort
@@ -121,6 +121,57 @@ namespace JB2.Common
                     || value is float
                     || value is double
                     || value is decimal;
+
+            if (result)
+                return result;
+
+            //tryparse
+            int numInt = 0;
+            if (int.TryParse(value.ToString(), out numInt))
+                return true;
+
+            sbyte numsByte = 0;
+            if (sbyte.TryParse(value.ToString(), out numsByte))
+                return true;
+
+            byte numByte = 0;
+            if (byte.TryParse(value.ToString(), out numByte))
+                return true;
+
+            short numShort = 0;
+            if (short.TryParse(value.ToString(), out numShort))
+                return true;
+
+            ushort numUshort = 0;
+            if (ushort.TryParse(value.ToString(), out numUshort))
+                return true;
+
+            uint numUint = 0;
+            if (uint.TryParse(value.ToString(), out numUint))
+                return true;
+
+            long numLong = 0;
+            if (long.TryParse(value.ToString(), out numLong))
+                return true;
+
+            ulong numUlong = 0;
+            if (ulong.TryParse(value.ToString(), out numUlong))
+                return true;
+
+            float numFloat = 0;
+            if (float.TryParse(value.ToString(), out numFloat))
+                return true;
+
+            double numDouble = 0;
+            if (double.TryParse(value.ToString(), out numDouble))
+                return true;
+
+            decimal numDecimal = 0;
+            if (decimal.TryParse(value.ToString(), out numDecimal))
+                return true;
+
+            return true;
+
         }
     }
 

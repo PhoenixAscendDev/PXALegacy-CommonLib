@@ -14,6 +14,10 @@ using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 
+using JB2.Common.Data;
+
+using Microsoft.WindowsAzure.Storage.Table;
+
 
 using System.Security.Cryptography;
 
@@ -199,9 +203,35 @@ namespace ConsoleTest
             }
         }
 
+
+        //public static T GetPropertyValue<T>(this DynamicTableEntity e, string propertyName, T defaultValue)
+        //{
+
+
+        //    if (typeof(T) == typeof(DateTime))
+        //    {
+        //        var ticks =  e.Properties.ContainsKey(propertyName) ? e.Properties[propertyName].PropertyAsObject.ToString() : "0";
+        //        DateTime dt = DateTime.MinValue;
+        //        if (ticks.IsNumber())
+        //            dt = new DateTime(Convert.ToInt64(ticks));
+        //        else
+        //            dt = (DateTime)e.Properties[propertyName].PropertyAsObject;
+
+        //        return (T)Convert.ChangeType(dt, typeof(T));
+        //    }
+        //    else
+        //        return e.Properties.ContainsKey(propertyName) ? (T)e.Properties[propertyName].PropertyAsObject : (T)defaultValue;
+        //}
+
         static void Main(string[] args)
         {
+            var e = new DynamicTableEntity();
 
+            //e.SetProperty<DateTime>("PriceDate", DateTime.Now);
+
+            e.Properties.Add("PriceDate", new EntityProperty(DateTime.Now));
+
+            DateTime date = e.GetPropertyValue<DateTime>("PriceDate", DateTime.Now);
 
             //for (int i = 0; i < 10; i++)
             //{
@@ -214,7 +244,9 @@ namespace ConsoleTest
             //}
 
 
-            TestJB2Time();
+            //TestJB2Time();
+
+
 
             Console.ReadLine();
 

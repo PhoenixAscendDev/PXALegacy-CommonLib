@@ -227,11 +227,14 @@ namespace ConsoleTest
         {
             var e = new DynamicTableEntity();
 
-            //e.SetProperty<DateTime>("PriceDate", DateTime.Now);
+            e.SetProperty<long>("PriceDate", 0);
 
-            e.Properties.Add("PriceDate", new EntityProperty(DateTime.Now));
+            //e.Properties.Add("PriceDate", new EntityProperty((long)0));
 
-            DateTime date = e.GetPropertyValue<DateTime>("PriceDate", DateTime.Now);
+            var s = e.GetPropertyValue<long>("PriceDate", -1);
+
+            Console.WriteLine(s);
+            //DateTime date = e.GetPropertyValue<DateTime>("PriceDate", DateTime.Now);
 
             //for (int i = 0; i < 10; i++)
             //{

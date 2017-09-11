@@ -37,6 +37,12 @@ namespace JB2.Common
             return new ServiceResult() { _validation = b ? null : new List<IValidation>(new IValidation[] { new Validation() }) };
         }
 
+
+        public static implicit operator ServiceResult(Exception ex)
+        {
+            return new ServiceResult(ex);
+        }
+
         public static implicit operator Exception(ServiceResult sr)
         {
             if (sr.Count > 0)

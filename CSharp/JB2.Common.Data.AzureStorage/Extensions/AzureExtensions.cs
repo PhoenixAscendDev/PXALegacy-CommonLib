@@ -40,7 +40,8 @@ namespace JB2.Common.Data
                 return (T)Convert.ChangeType(dt, typeof(T));
             }
             else
-                return e.Properties.ContainsKey(propertyName) ? (T)e.Properties[propertyName].PropertyAsObject : (T)defaultValue;
+               
+                return e.Properties.ContainsKey(propertyName) ? (T)Convert.ChangeType(e.Properties[propertyName].PropertyAsObject, typeof(T)) : (T)defaultValue;
         }
 
         public static EntityProperty SetProperty<T>(this DynamicTableEntity e, string propertyName, T value)
@@ -48,7 +49,15 @@ namespace JB2.Common.Data
             EntityProperty prop = null;
 
             if (value == null || value.Equals(default(T)))
-                prop = new EntityProperty(string.Empty);
+                if (typeof(T) == typeof(DateTime))
+                {
+                    DateTime dt = Convert.ToDateTime(value);
+                    prop = dt.ToEntityProperty();
+                }
+                else
+                {
+                    prop = new EntityProperty(default(T).ToString());
+                }
             else
             {
                 prop = new EntityProperty((string)(object)value.ToString());

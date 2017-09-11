@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Collections;
+
 
 
 
@@ -175,6 +177,101 @@ namespace JB2.Common
         }
     }
 
+    public static class BitArrayExtensions
+    {
+        public static string ToBitString(this System.Collections.BitArray bits)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < bits.Count; i++)
+            {
+                char c = bits[i] ? '1' : '0';
+                sb.Append(c);
+            }
+
+            return sb.ToString();
+        }
+
+        public static System.Collections.BitArray GetSubSet(this System.Collections.BitArray bits,int index,int length)
+        {
+            bool[] result = new bool[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = bits[index + i];
+            }
+            return new System.Collections.BitArray(result);
+        }
+
+        public static T ToNumber<T>(System.Collections.BitArray b)
+        {
+
+            object result = 0;
+
+            if (typeof(T) == typeof(ulong))
+            {
+                var array = new byte[8];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToUInt64(array, 0);
+            }
+
+            else if (typeof(T) == typeof(long))
+            {
+                var array = new byte[8];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToInt64(array, 0);
+            }
+
+            else if (typeof(T) == typeof(uint))
+            {
+                var array = new byte[4];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToUInt32(array, 0);
+            }
+
+
+
+            if (typeof(T) == typeof(int))
+            {
+                var array = new byte[4];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToInt32(array, 0);
+            }
+
+
+            else if (typeof(T) == typeof(ushort))
+            {
+                var array = new byte[2];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToUInt16(array, 0);
+            }
+
+            else if (typeof(T) == typeof(short))
+            {
+                var array = new byte[2];
+                b.CopyTo(array, 0);
+
+                result = BitConverter.ToInt16(array, 0);
+            }
+
+            return (T)Convert.ChangeType(result, typeof(T));
+        }
+
+        public static void Fill(this System.Collections.BitArray bits, bool fillWith)
+        {
+            for (int i = 0; i < bits.Length; i++)
+            {
+                bits[i] = fillWith;
+            }
+        }
+
+    }
+
     public static class JB2Extensions
     {
 
@@ -211,17 +308,76 @@ namespace JB2.Common
             }
         }
 
-        public static string ToBitString(this System.Collections.BitArray bits)
+       
+    }
+
+
+    public static class NumberExtensions
+    {
+        public static BitArray ToBitArray(this int number, int size = 32)
         {
-            var sb = new StringBuilder();
+            //string s = Convert.ToString(number, 2);
 
-            for (int i = 0; i < bits.Count; i++)
-            {
-                char c = bits[i] ? '1' : '0';
-                sb.Append(c);
-            }
+            bool[] bits = Convert.ToString((int)number, 2).PadLeft(size, '0').Select(s => s.Equals('1')).ToArray();
 
-            return sb.ToString();
+            Array.Reverse(bits);
+
+            BitArray result = new BitArray(bits);
+
+            return result;
         }
+
+        public static BitArray ToBitArray(this byte number, int size = 8)
+        {
+            //string s = Convert.ToString(number, 2);
+
+            bool[] bits = Convert.ToString((byte)number, 2).PadLeft(size, '0').Select(s => s.Equals('1')).ToArray();
+
+            Array.Reverse(bits);
+
+            BitArray result = new BitArray(bits);
+
+            return result;
+        }
+
+        public static BitArray ToBitArray(this short number, int size = 16)
+        {
+            //string s = Convert.ToString(number, 2);
+
+            bool[] bits = Convert.ToString((short)number, 2).PadLeft(size, '0').Select(s => s.Equals('1')).ToArray();
+
+            Array.Reverse(bits);
+
+            BitArray result = new BitArray(bits);
+
+            return result;
+        }
+
+        public static BitArray ToBitArray(this ushort number, int size = 16)
+        {
+            return ((short)number).ToBitArray(size);
+        }
+
+        public static BitArray ToBitArray(this long number, int size = 64)
+        {
+            //string s = Convert.ToString(number, 2);
+
+            bool[] bits = Convert.ToString((long)number, 2).PadLeft(size, '0').Select(s => s.Equals('1')).ToArray();
+
+            Array.Reverse(bits);
+
+            BitArray result = new BitArray(bits);
+
+            return result;
+        }
+
+        public static BitArray ToBitArray(this ulong number, int size = 16)
+        {
+            return ((long)number).ToBitArray(size);
+        }
+
+
+
+
     }
 }

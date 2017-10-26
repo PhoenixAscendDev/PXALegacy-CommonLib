@@ -102,7 +102,7 @@ namespace JB2.Common
             }
         }
 
-        public static Tag ToTag(this string str, string seperator=":")
+        public static Tag ToTag(this string str, string seperator = ":")
         {
             return Tag.FromString(str, seperator);
         }
@@ -112,7 +112,7 @@ namespace JB2.Common
     {
         public static bool IsNumber(this object value)
         {
-            bool result =  value is sbyte
+            bool result = value is sbyte
                     || value is byte
                     || value is short
                     || value is ushort
@@ -192,7 +192,7 @@ namespace JB2.Common
             return sb.ToString();
         }
 
-        public static System.Collections.BitArray GetSubSet(this System.Collections.BitArray bits,int index,int length)
+        public static System.Collections.BitArray GetSubSet(this System.Collections.BitArray bits, int index, int length)
         {
             bool[] result = new bool[length];
 
@@ -203,7 +203,7 @@ namespace JB2.Common
             return new System.Collections.BitArray(result);
         }
 
-        public static T ToNumber<T>(System.Collections.BitArray b)
+        public static T ToNumber<T>(this System.Collections.BitArray b)
         {
 
             object result = 0;
@@ -308,7 +308,7 @@ namespace JB2.Common
             }
         }
 
-       
+
     }
 
 
@@ -378,6 +378,19 @@ namespace JB2.Common
 
 
 
+
+    }
+
+
+    public static class EnumExtensions
+    {
+        public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute
+        {
+            var type = enumVal.GetType();
+            var memInfo = type.GetMember(enumVal.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
+            return (attributes.Length > 0) ? (T)attributes[0] : null;
+        }
 
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Attributes.cs" />
     <Compile Include="BaseCollection.cs" />
     <Compile Include="BaseExpireableObject.cs" />
+    <Compile Include="CodeNamePair.cs" />
     <Compile Include="DayofWeekTime.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="DoubleRange.cs" />

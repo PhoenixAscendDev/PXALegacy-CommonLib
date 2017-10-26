@@ -65,10 +65,6 @@
       <Project>{fdfcfac8-8074-48de-a2e1-b8471d087901}</Project>
       <Name>JB2.Common.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JB2.Common.Ultities\JB2.Common.Utility.csproj">
-      <Project>{b19984dc-e02f-4b64-9315-272060bf82ef}</Project>
-      <Name>JB2.Common.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -80,6 +80,11 @@ namespace JB2.Common
 
         public virtual T GetProperity<T>(string index)
         {
+            return GetProperty<T>(index);
+        }
+
+        public virtual T GetProperty<T>(string index)
+        {
             if (_props == null)
                 clearProps();
             if (_props[index] != null)
@@ -92,6 +97,11 @@ namespace JB2.Common
 
         public virtual T GetProperity<T>(string index, T defaultValue)
         {
+            return GetProperty<T>(index, defaultValue);
+        }
+
+        public virtual T GetProperty<T>(string index, T defaultValue)
+        {
             if (_props == null)
                 clearProps();
             if (!_props.PropertyNames.Contains(index))
@@ -101,6 +111,7 @@ namespace JB2.Common
 
             return (T)_props[index].GetValue().ObjectValue;
         }
+
 
         public virtual void SetProperty<T>(string index, T newValue)
         {

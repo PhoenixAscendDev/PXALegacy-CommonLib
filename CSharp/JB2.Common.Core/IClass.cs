@@ -9,6 +9,8 @@ namespace JB2.Common
     {
         T GetProperity<T>(string index, T defaultValue);
 
+        T GetProperty<T>(string index, T defaultValue);
+
         void SetProperty<T>(string index, T newValue, bool changeLastUpdate);
 
     }

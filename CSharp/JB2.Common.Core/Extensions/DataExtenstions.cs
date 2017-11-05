@@ -51,7 +51,7 @@ namespace JB2.Common
     {
         public static string[] Split(this string value, string seperator)
         {
-            return System.Text.RegularExpressions.Regex.Split(value, ">*<");
+            return System.Text.RegularExpressions.Regex.Split(value, seperator);
         }
 
         public static System.Collections.BitArray ToBitArray(this string s)
@@ -83,10 +83,7 @@ namespace JB2.Common
             }
         }
 
-        public static string ToStringOrEmpty(this Object value)
-        {
-            return value == null ? string.Empty : value.ToString();
-        }
+
 
         public static string TrimLastCharacter(this String str)
         {
@@ -174,6 +171,11 @@ namespace JB2.Common
 
             return true;
 
+        }
+
+        public static string ToStringOrEmpty(this object value)
+        {
+            return value == null ? string.Empty : value.ToString();
         }
     }
 

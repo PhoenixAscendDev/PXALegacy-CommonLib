@@ -223,9 +223,13 @@ namespace ConsoleTest
         //        return e.Properties.ContainsKey(propertyName) ? (T)e.Properties[propertyName].PropertyAsObject : (T)defaultValue;
         //}
 
+
+
         static void Main(string[] args)
         {
-           
+
+
+
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JB2.Common
 {
-    public class JB2Exception : Exception
+    public class JB2Exception : Exception, IException
     {
         public JB2Exception()
             : this("Setting was not configured")

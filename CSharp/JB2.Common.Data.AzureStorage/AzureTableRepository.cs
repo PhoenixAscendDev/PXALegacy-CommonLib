@@ -207,6 +207,15 @@ namespace JB2.Common.Data
             return result;
         }
 
+        public async Task<IEnumerable<T>> GetByPartitionKeyAsync<T>(string partitionKey, int noOfRecords = 0) where T : ITableEntity, new()
+        {
+            var query = new TableQuery<T>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
+            // result =  this.E   _table.ExecuteQuery(query).Take(noOfRecords).ToList();
+            var result = await ExecuteQueryAsync<T>(query, noOfRecords);
+
+            return result;
+        }
+
         public T GetEntity<T>(string partitionKey, string rowKey, bool decrypt = false) where T : class, ITableEntity, new()
         {
             return GetEntityAsync<T>(partitionKey, rowKey).Result;
@@ -226,6 +235,15 @@ namespace JB2.Common.Data
             var result = ExecuteQuery<T>(query, noOfRecords); //_table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords, decrypt);
             return result;
         }
+
+
+        public async Task<IEnumerable<T>> GetByRowKeyStartWithAsync<T>(string partitionKey, string startwith, int noOfRecords, bool decrypt = false) where T : ITableEntity, new()
+        {
+            var query = new TableQuery<T>().Where(startsWithfilter(partitionKey, startwith));
+            var result = await ExecuteQueryAsync<T>(query, noOfRecords); //_table.StartsWith<T>(partitionKey, startwith, "RowKey", noOfRecords, decrypt);
+            return result;
+        }
+
 
         #endregion Retrieves
 

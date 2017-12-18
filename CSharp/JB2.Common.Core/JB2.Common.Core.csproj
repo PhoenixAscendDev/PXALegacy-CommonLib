@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\IEmailMessage.cs" />
     <Compile Include="Interfaces\IEmailMessager.cs" />
     <Compile Include="Interfaces\IException.cs" />
+    <Compile Include="Interfaces\IKeyNamePair.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IAddressable.cs" />
     <Compile Include="ID\ID.cs" />

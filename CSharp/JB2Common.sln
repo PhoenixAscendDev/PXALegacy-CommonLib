@@ -70,13 +70,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Image.Net2", "JB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Serialization.Json", "JB2.Common.Serialization.Json\JB2.Common.Serialization.Json.csproj", "{D6785D1C-F41E-4117-A842-466FFA9F2913}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{118F1C2F-08AC-4DBE-8E84-77C4F894E3DD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net20", "Net20", "{118F1C2F-08AC-4DBE-8E84-77C4F894E3DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Core.Net35", "Framework\Net 2.0\JB2.Common\JB2.Common.Core\JB2.Common.Core.Net35.csproj", "{DFB5B63B-F413-4AC0-9480-36410D9735DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{C3451455-35CD-47C7-856B-4B05E541B996}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bigram", "Bigram\Bigram.csproj", "{D329DFC6-A691-4A03-9364-1D7BEC90187F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{D9862029-1C6B-41AD-B7FE-801B21FC71B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Core", "Framework\Net 3.5\JB2.Common.Core\JB2.Common.Core.csproj", "{74C16215-A93C-4DAF-967B-0D0B23208AF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,6 +212,10 @@ Global
 		{D329DFC6-A691-4A03-9364-1D7BEC90187F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D329DFC6-A691-4A03-9364-1D7BEC90187F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D329DFC6-A691-4A03-9364-1D7BEC90187F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C16215-A93C-4DAF-967B-0D0B23208AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C16215-A93C-4DAF-967B-0D0B23208AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C16215-A93C-4DAF-967B-0D0B23208AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C16215-A93C-4DAF-967B-0D0B23208AF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,6 +223,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{43C0CB5C-C27A-4327-9385-CFA421B6CE43} = {118F1C2F-08AC-4DBE-8E84-77C4F894E3DD}
 		{DFB5B63B-F413-4AC0-9480-36410D9735DA} = {118F1C2F-08AC-4DBE-8E84-77C4F894E3DD}
+		{74C16215-A93C-4DAF-967B-0D0B23208AF4} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45

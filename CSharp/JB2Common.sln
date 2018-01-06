@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2Common", "JB2Common\JB2Common.csproj", "{EF5BDC83-9C62-4AB5-AEE1-08BBC073610D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -74,8 +74,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net20", "Net20", "{118F1C2F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Core.Net35", "Framework\Net 2.0\JB2.Common\JB2.Common.Core\JB2.Common.Core.Net35.csproj", "{DFB5B63B-F413-4AC0-9480-36410D9735DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{C3451455-35CD-47C7-856B-4B05E541B996}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bigram", "Bigram\Bigram.csproj", "{D329DFC6-A691-4A03-9364-1D7BEC90187F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{D9862029-1C6B-41AD-B7FE-801B21FC71B4}"
@@ -83,6 +81,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Core", "Framework\Net 3.5\JB2.Common.Core\JB2.Common.Core.csproj", "{74C16215-A93C-4DAF-967B-0D0B23208AF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Date", "Framework\Net 3.5\JB2.Common.Date\JB2.Common.Date.csproj", "{628D9A10-0830-42E8-A7CB-9884257D9089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Color", "Framework\Net 3.5\JB2.Common.Color\JB2.Common.Color.csproj", "{8CE051ED-9488-42DC-9D60-A0EB72543D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Image.Net35", "Framework\Net 3.5\JB2.Common.Image.Net35\JB2.Common.Image.Net35.csproj", "{DA759CA6-9881-4C55-A929-A6FB0E9E1880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Map.Net35", "Framework\Net 3.5\JB2.Common.Map.Net35\JB2.Common.Map.Net35.csproj", "{A2AA095C-8497-4752-AF36-89E61CB737C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Message.Net35", "Framework\Net 3.5\JB2.Common.Message.Net35\JB2.Common.Message.Net35.csproj", "{07426688-4D90-4FB3-A557-1C9E70517B9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Schedular.Net35", "Framework\Net 3.5\JB2.Common.Schedular.Net35\JB2.Common.Schedular.Net35.csproj", "{A4FAED40-E1A9-4FA7-9976-33BE36EFA273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JB2.Common.Logger.Net35", "Framework\Net 3.5\JB2.Common.Logger.Net35\JB2.Common.Logger.Net35.csproj", "{C16CB8D6-10F5-4198-9DE2-49CB06186A96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -222,6 +232,30 @@ Global
 		{628D9A10-0830-42E8-A7CB-9884257D9089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{628D9A10-0830-42E8-A7CB-9884257D9089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{628D9A10-0830-42E8-A7CB-9884257D9089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE051ED-9488-42DC-9D60-A0EB72543D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE051ED-9488-42DC-9D60-A0EB72543D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE051ED-9488-42DC-9D60-A0EB72543D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE051ED-9488-42DC-9D60-A0EB72543D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA759CA6-9881-4C55-A929-A6FB0E9E1880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA759CA6-9881-4C55-A929-A6FB0E9E1880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA759CA6-9881-4C55-A929-A6FB0E9E1880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA759CA6-9881-4C55-A929-A6FB0E9E1880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2AA095C-8497-4752-AF36-89E61CB737C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2AA095C-8497-4752-AF36-89E61CB737C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2AA095C-8497-4752-AF36-89E61CB737C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2AA095C-8497-4752-AF36-89E61CB737C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07426688-4D90-4FB3-A557-1C9E70517B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07426688-4D90-4FB3-A557-1C9E70517B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07426688-4D90-4FB3-A557-1C9E70517B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07426688-4D90-4FB3-A557-1C9E70517B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FAED40-E1A9-4FA7-9976-33BE36EFA273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FAED40-E1A9-4FA7-9976-33BE36EFA273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FAED40-E1A9-4FA7-9976-33BE36EFA273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FAED40-E1A9-4FA7-9976-33BE36EFA273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16CB8D6-10F5-4198-9DE2-49CB06186A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16CB8D6-10F5-4198-9DE2-49CB06186A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16CB8D6-10F5-4198-9DE2-49CB06186A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16CB8D6-10F5-4198-9DE2-49CB06186A96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,8 +265,15 @@ Global
 		{DFB5B63B-F413-4AC0-9480-36410D9735DA} = {118F1C2F-08AC-4DBE-8E84-77C4F894E3DD}
 		{74C16215-A93C-4DAF-967B-0D0B23208AF4} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
 		{628D9A10-0830-42E8-A7CB-9884257D9089} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{8CE051ED-9488-42DC-9D60-A0EB72543D1D} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{DA759CA6-9881-4C55-A929-A6FB0E9E1880} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{A2AA095C-8497-4752-AF36-89E61CB737C1} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{07426688-4D90-4FB3-A557-1C9E70517B9C} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{A4FAED40-E1A9-4FA7-9976-33BE36EFA273} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
+		{C16CB8D6-10F5-4198-9DE2-49CB06186A96} = {D9862029-1C6B-41AD-B7FE-801B21FC71B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {6C5CBD40-60E5-4A13-B6F9-C22F89137569}
 	EndGlobalSection
 EndGlobal

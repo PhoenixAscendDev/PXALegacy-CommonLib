@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{628D9A10-0830-42E8-A7CB-9884257D9089}</ProjectGuid>
+    <ProjectGuid>{DA759CA6-9881-4C55-A929-A6FB0E9E1880}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JB2.Common.Date</RootNamespace>
-    <AssemblyName>JB2.Common.Date</AssemblyName>
+    <RootNamespace>JB2.Common.Image</RootNamespace>
+    <AssemblyName>JB2.Common.Image</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -33,18 +33,24 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChineseZodiac.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="JB2Date.cs" />
-    <Compile Include="JB2Time.cs" />
-    <Compile Include="LunarPhaseType.cs" />
+    <Compile Include="ImageFormatType.cs" />
+    <Compile Include="JB2Image.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JB2.Common.Core\JB2.Common.Core.csproj">
+      <Project>{74c16215-a93c-4daf-967b-0d0b23208af4}</Project>
+      <Name>JB2.Common.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
